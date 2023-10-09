@@ -1,0 +1,20 @@
+﻿2.2.0
+Changelog:
+-Fixed geometry index assignment bug.
+-Fixed gLTF2 buffer size bug.
+-Fixed gLTF2 albedo color mixing with texture bug.
+-Fixed FBX missing bone assignment bug.
+-Fixed FBX negative geometric scale bug.
+-Fixed Fbx.Reader.FbxReader.Pivot field processing.
+-Fixed DAE material assignment bug.
+-Fixed avatar mapping issues.
+-Refactored FBX ASCII parser.
+-Added support for diffuse textures inside zip files with the same short filename as the model file (Eg: model.png is assigned to the diffuse texture of model.fbx when the original texture isn't inside the zip file).
+-Added Blender FBX roughness/metallic material values support.
+-Added ConversionPrecision static field to the readers (Eg: Fbx.Reader.FbxReader.ConversionPrecision).
+-Added glTF2 double-sided materials support.
+-Added glTF2 mask alpha mode support.
+-Added glTF2 KHR_materials_emissive_strength extension support.
+-Deprecated the TextureMapper Asset Loader Option. Please fill the TextureMappers array field with your custom TextureMappers next time you have to use it.
+-Replaced the old "Map" method call from all TextureMappers with the new "Map" method override.
+-Misc. fixes.

@@ -1,0 +1,665 @@
+﻿#include "pch-c.h"
+#ifndef _MSC_VER
+# include <alloca.h>
+#else
+# include <malloc.h>
+#endif
+
+
+#include "codegen/il2cpp-codegen-metadata.h"
+
+
+
+
+
+// 0x00000001 System.Void TriLibCore.ThreeMf.ThreeMfGeometry::.ctor()
+extern void ThreeMfGeometry__ctor_m2367D0244F4F8AEC8A41326541EC65759526B282 (void);
+// 0x00000002 System.String TriLibCore.ThreeMf.ThreeMfMaterial::get_Name()
+extern void ThreeMfMaterial_get_Name_m4A20D8D2C39B2CD36D0772BD4BE682144177C136 (void);
+// 0x00000003 System.Void TriLibCore.ThreeMf.ThreeMfMaterial::set_Name(System.String)
+extern void ThreeMfMaterial_set_Name_m002F5F6B341DBA5D3FA6D02ECA0FC7171D69C546 (void);
+// 0x00000004 System.Boolean TriLibCore.ThreeMf.ThreeMfMaterial::get_Used()
+extern void ThreeMfMaterial_get_Used_m066D662B3B3BB2C9856467DC4B2572C41D7F1D30 (void);
+// 0x00000005 System.Void TriLibCore.ThreeMf.ThreeMfMaterial::set_Used(System.Boolean)
+extern void ThreeMfMaterial_set_Used_m55B1A1B7726EBF678242F1139C6C402E55DE4BA6 (void);
+// 0x00000006 System.Boolean TriLibCore.ThreeMf.ThreeMfMaterial::get_UsesAlpha()
+extern void ThreeMfMaterial_get_UsesAlpha_m9EE64BADB4167B23D90A334EE414F66CC3AF3D22 (void);
+// 0x00000007 System.Boolean TriLibCore.ThreeMf.ThreeMfMaterial::ApplyOffsetAndScale(TriLibCore.TextureLoadingContext)
+extern void ThreeMfMaterial_ApplyOffsetAndScale_m46007F44B8D1A3E3D91F3136A8E4D0FA18A8D511 (void);
+// 0x00000008 System.Void TriLibCore.ThreeMf.ThreeMfMaterial::AddProperty(System.String,System.Object,System.Boolean)
+extern void ThreeMfMaterial_AddProperty_m97B30BB27BA4AD12AD5E3C9C074E999029354E62 (void);
+// 0x00000009 System.String TriLibCore.ThreeMf.ThreeMfMaterial::GetGenericPropertyName(TriLibCore.General.GenericMaterialProperty)
+extern void ThreeMfMaterial_GetGenericPropertyName_mE903B493C7739D8EF35EAD42E9B7FBF5539FC474 (void);
+// 0x0000000A UnityEngine.Color TriLibCore.ThreeMf.ThreeMfMaterial::GetGenericColorValueMultiplied(TriLibCore.General.GenericMaterialProperty,TriLibCore.MaterialMapperContext)
+extern void ThreeMfMaterial_GetGenericColorValueMultiplied_m9D9D146BCB3DB4CF794C70D5D7BEA98230D7D7EE (void);
+// 0x0000000B System.Single TriLibCore.ThreeMf.ThreeMfMaterial::GetGenericFloatValueMultiplied(TriLibCore.General.GenericMaterialProperty,TriLibCore.MaterialMapperContext)
+extern void ThreeMfMaterial_GetGenericFloatValueMultiplied_m35377B487FEA6F78D6465F52AACE41683803CF45 (void);
+// 0x0000000C System.Single TriLibCore.ThreeMf.ThreeMfMaterial::GetGenericFloatValue(TriLibCore.General.GenericMaterialProperty)
+extern void ThreeMfMaterial_GetGenericFloatValue_m674862395625E1E61A45C700BBFD84BC4E1C7260 (void);
+// 0x0000000D System.Int32 TriLibCore.ThreeMf.ThreeMfMaterial::GetGenericIntValue(TriLibCore.General.GenericMaterialProperty)
+extern void ThreeMfMaterial_GetGenericIntValue_m3779B18897A0AF80549EE9EFDC833F402973B164 (void);
+// 0x0000000E System.String TriLibCore.ThreeMf.ThreeMfMaterial::GetGenericStringValue(TriLibCore.General.GenericMaterialProperty)
+extern void ThreeMfMaterial_GetGenericStringValue_m6B5CC6F25CC791C72D288656330C8FCE5B98D75B (void);
+// 0x0000000F UnityEngine.Vector3 TriLibCore.ThreeMf.ThreeMfMaterial::GetGenericVector3Value(TriLibCore.General.GenericMaterialProperty)
+extern void ThreeMfMaterial_GetGenericVector3Value_mF87AD85088342DB3E44A920921BAB2801FD17FF7 (void);
+// 0x00000010 UnityEngine.Vector4 TriLibCore.ThreeMf.ThreeMfMaterial::GetGenericVector4Value(TriLibCore.General.GenericMaterialProperty)
+extern void ThreeMfMaterial_GetGenericVector4Value_m129EA79DD402EEE6151876102695E22E077C7D09 (void);
+// 0x00000011 UnityEngine.Color TriLibCore.ThreeMf.ThreeMfMaterial::GetGenericColorValue(TriLibCore.General.GenericMaterialProperty)
+extern void ThreeMfMaterial_GetGenericColorValue_m4F27C1459446AF9C6208233BACB583477FF12105 (void);
+// 0x00000012 TriLibCore.Interfaces.ITexture TriLibCore.ThreeMf.ThreeMfMaterial::GetGenericTextureValue(TriLibCore.General.GenericMaterialProperty)
+extern void ThreeMfMaterial_GetGenericTextureValue_m04F5BFE6E34496C580B6EA95393752B708B48C91 (void);
+// 0x00000013 System.Boolean TriLibCore.ThreeMf.ThreeMfMaterial::get_DoubleSided()
+extern void ThreeMfMaterial_get_DoubleSided_mC88093A531E78E799D05EC0EDCEADC04BED8855F (void);
+// 0x00000014 System.Void TriLibCore.ThreeMf.ThreeMfMaterial::set_DoubleSided(System.Boolean)
+extern void ThreeMfMaterial_set_DoubleSided_m4BB1596EC5A80870132D0F1C6199DAE7D08D4688 (void);
+// 0x00000015 System.Boolean TriLibCore.ThreeMf.ThreeMfMaterial::get_MixAlbedoColorWithTexture()
+extern void ThreeMfMaterial_get_MixAlbedoColorWithTexture_mB0BCA5ABB6944EF6D1147B8B8B9A6C646ED9DFD8 (void);
+// 0x00000016 System.Single TriLibCore.ThreeMf.ThreeMfMaterial::GetFloatValue(System.String)
+extern void ThreeMfMaterial_GetFloatValue_m61B00C4ADFD70B2C062C5FEC1927998D79AD121E (void);
+// 0x00000017 System.Int32 TriLibCore.ThreeMf.ThreeMfMaterial::GetIntValue(System.String)
+extern void ThreeMfMaterial_GetIntValue_mA188416829493884BF82CA53E9A6E9B88A7DA2B7 (void);
+// 0x00000018 System.String TriLibCore.ThreeMf.ThreeMfMaterial::GetStringValue(System.String)
+extern void ThreeMfMaterial_GetStringValue_m69705831E0AAADE11CB184347D369AB2D369012C (void);
+// 0x00000019 UnityEngine.Vector3 TriLibCore.ThreeMf.ThreeMfMaterial::GetVector3Value(System.String)
+extern void ThreeMfMaterial_GetVector3Value_m16ACF010F6EF32F958AE8FA3D3A09E246FADBFDE (void);
+// 0x0000001A UnityEngine.Vector4 TriLibCore.ThreeMf.ThreeMfMaterial::GetVector4Value(System.String)
+extern void ThreeMfMaterial_GetVector4Value_m420D619FAC273D36284D94A289267C05E365F525 (void);
+// 0x0000001B UnityEngine.Color TriLibCore.ThreeMf.ThreeMfMaterial::GetColorValue(System.String)
+extern void ThreeMfMaterial_GetColorValue_m1B27819C3CCCB655A3BD12BDC1AB2A04F99D72B1 (void);
+// 0x0000001C TriLibCore.Interfaces.ITexture TriLibCore.ThreeMf.ThreeMfMaterial::GetTextureValue(System.String)
+extern void ThreeMfMaterial_GetTextureValue_mD455B481A11BCA5D352F576E8F1F619BD056D240 (void);
+// 0x0000001D System.Boolean TriLibCore.ThreeMf.ThreeMfMaterial::HasProperty(System.String)
+extern void ThreeMfMaterial_HasProperty_m7734B7EF64C21507B043A60376F8A67104135606 (void);
+// 0x0000001E System.Boolean TriLibCore.ThreeMf.ThreeMfMaterial::PostProcessTexture(TriLibCore.TextureLoadingContext)
+extern void ThreeMfMaterial_PostProcessTexture_mE11C9C1093C642B41B16BDD8616F76993B81785A (void);
+// 0x0000001F TriLibCore.General.MaterialShadingSetup TriLibCore.ThreeMf.ThreeMfMaterial::get_MaterialShadingSetup()
+extern void ThreeMfMaterial_get_MaterialShadingSetup_m316D83BE9778E590B3ABCE018078C2E7CB088BDD (void);
+// 0x00000020 System.Int32 TriLibCore.ThreeMf.ThreeMfMaterial::get_Index()
+extern void ThreeMfMaterial_get_Index_mFD1AE4393A505CACD8354102D9E56F08E165C3AC (void);
+// 0x00000021 System.Void TriLibCore.ThreeMf.ThreeMfMaterial::set_Index(System.Int32)
+extern void ThreeMfMaterial_set_Index_m71BDC99AC48D08F45581078FC809D058965EBEA3 (void);
+// 0x00000022 System.Boolean TriLibCore.ThreeMf.ThreeMfMaterial::get_IsAutodeskInteractive()
+extern void ThreeMfMaterial_get_IsAutodeskInteractive_mC8D282CC318BD87603EB3322ACD2939553655253 (void);
+// 0x00000023 System.Boolean TriLibCore.ThreeMf.ThreeMfMaterial::get_Processing()
+extern void ThreeMfMaterial_get_Processing_m129A935417291807646CA4332948C99DB7EA0779 (void);
+// 0x00000024 System.Void TriLibCore.ThreeMf.ThreeMfMaterial::set_Processing(System.Boolean)
+extern void ThreeMfMaterial_set_Processing_m2D09E198EBA033DFE8846970BC8DC7F4DE44A9C3 (void);
+// 0x00000025 System.Boolean TriLibCore.ThreeMf.ThreeMfMaterial::get_Processed()
+extern void ThreeMfMaterial_get_Processed_m12BA2A7C984C3F4F8CD81DDE149BAF6C3133E6EF (void);
+// 0x00000026 System.Void TriLibCore.ThreeMf.ThreeMfMaterial::set_Processed(System.Boolean)
+extern void ThreeMfMaterial_set_Processed_mB74759C70B110F6417E1EB558D74B8E67FA72715 (void);
+// 0x00000027 System.Void TriLibCore.ThreeMf.ThreeMfMaterial::.ctor()
+extern void ThreeMfMaterial__ctor_m3CF744F9935AF9396EF68721A53AAEF9C6E5EDAE (void);
+// 0x00000028 System.String TriLibCore.ThreeMf.ThreeMfModel::get_Name()
+extern void ThreeMfModel_get_Name_mD85649F6FC1A9EA3F22176AEC2AD1834F4AE3375 (void);
+// 0x00000029 System.Void TriLibCore.ThreeMf.ThreeMfModel::set_Name(System.String)
+extern void ThreeMfModel_set_Name_m21FBCCF3B97D2C9E64895710FAE11EF953431764 (void);
+// 0x0000002A System.Boolean TriLibCore.ThreeMf.ThreeMfModel::get_Used()
+extern void ThreeMfModel_get_Used_mFF9DD2062F3975F75D6E14E5819D1477F5EEAB00 (void);
+// 0x0000002B System.Void TriLibCore.ThreeMf.ThreeMfModel::set_Used(System.Boolean)
+extern void ThreeMfModel_set_Used_m86945E4B619523FC22A17210C7FB2E7B3C4C3DC3 (void);
+// 0x0000002C UnityEngine.Vector3 TriLibCore.ThreeMf.ThreeMfModel::get_Pivot()
+extern void ThreeMfModel_get_Pivot_m8C97F2FC8031BCA06C1338FEE2E649E6473D8F3F (void);
+// 0x0000002D System.Void TriLibCore.ThreeMf.ThreeMfModel::set_Pivot(UnityEngine.Vector3)
+extern void ThreeMfModel_set_Pivot_m50994610B5AC73D6DA8322613A2EBC2ABC123DDB (void);
+// 0x0000002E UnityEngine.Vector3 TriLibCore.ThreeMf.ThreeMfModel::get_LocalPosition()
+extern void ThreeMfModel_get_LocalPosition_m87D9A16BF29A9A300D61DB57810F9ED509B8B753 (void);
+// 0x0000002F System.Void TriLibCore.ThreeMf.ThreeMfModel::set_LocalPosition(UnityEngine.Vector3)
+extern void ThreeMfModel_set_LocalPosition_m27ADC7238172FF918A2FF49A1B6453845FDDE790 (void);
+// 0x00000030 UnityEngine.Quaternion TriLibCore.ThreeMf.ThreeMfModel::get_LocalRotation()
+extern void ThreeMfModel_get_LocalRotation_m7DAADAAE3F1FF47F600F5255AB3A72324E58C854 (void);
+// 0x00000031 System.Void TriLibCore.ThreeMf.ThreeMfModel::set_LocalRotation(UnityEngine.Quaternion)
+extern void ThreeMfModel_set_LocalRotation_m843DD3374636CF0354C942D8536B93E7E099FD68 (void);
+// 0x00000032 UnityEngine.Vector3 TriLibCore.ThreeMf.ThreeMfModel::get_LocalScale()
+extern void ThreeMfModel_get_LocalScale_mA2F8253B191922003FD41764C7B360450E10BDDB (void);
+// 0x00000033 System.Void TriLibCore.ThreeMf.ThreeMfModel::set_LocalScale(UnityEngine.Vector3)
+extern void ThreeMfModel_set_LocalScale_mCCA25D1A2671370FF2CE1C09C67113AEFF6CE511 (void);
+// 0x00000034 System.Boolean TriLibCore.ThreeMf.ThreeMfModel::get_Visibility()
+extern void ThreeMfModel_get_Visibility_m4629831C78AF3399C09663E81079D5BC85D1D556 (void);
+// 0x00000035 System.Void TriLibCore.ThreeMf.ThreeMfModel::set_Visibility(System.Boolean)
+extern void ThreeMfModel_set_Visibility_m483E998D63DD6717282BA41AC935D54C49C7FB38 (void);
+// 0x00000036 TriLibCore.Interfaces.IModel TriLibCore.ThreeMf.ThreeMfModel::get_Parent()
+extern void ThreeMfModel_get_Parent_mC5B39E7E77060C09104F29F8362645E50FEC567B (void);
+// 0x00000037 System.Void TriLibCore.ThreeMf.ThreeMfModel::set_Parent(TriLibCore.Interfaces.IModel)
+extern void ThreeMfModel_set_Parent_mA2A503AD0AEF4CEE4B01E4336B5F86F17ADBF521 (void);
+// 0x00000038 System.Collections.Generic.IList`1<TriLibCore.Interfaces.IModel> TriLibCore.ThreeMf.ThreeMfModel::get_Children()
+extern void ThreeMfModel_get_Children_m33E20C3B2FE5BB6AC5B9CC04D2799044A02CA52B (void);
+// 0x00000039 System.Void TriLibCore.ThreeMf.ThreeMfModel::set_Children(System.Collections.Generic.IList`1<TriLibCore.Interfaces.IModel>)
+extern void ThreeMfModel_set_Children_m34AEC0C516C267388A2BB961285270A0AAFB115A (void);
+// 0x0000003A System.Collections.Generic.IList`1<TriLibCore.Interfaces.IModel> TriLibCore.ThreeMf.ThreeMfModel::get_Bones()
+extern void ThreeMfModel_get_Bones_m569C47E576C11CE55D4D6D3CEADEFA4B577A460D (void);
+// 0x0000003B System.Void TriLibCore.ThreeMf.ThreeMfModel::set_Bones(System.Collections.Generic.IList`1<TriLibCore.Interfaces.IModel>)
+extern void ThreeMfModel_set_Bones_m4D1C6BE27031A4B7373887D1AED8548C4EB10219 (void);
+// 0x0000003C System.Boolean TriLibCore.ThreeMf.ThreeMfModel::get_IsBone()
+extern void ThreeMfModel_get_IsBone_mF183F5F5794C859402CB6328E1CE9E6807BC85F3 (void);
+// 0x0000003D System.Void TriLibCore.ThreeMf.ThreeMfModel::set_IsBone(System.Boolean)
+extern void ThreeMfModel_set_IsBone_m4031D1043A422E222ADF5E3667FA6E155D0644C9 (void);
+// 0x0000003E TriLibCore.Interfaces.IGeometryGroup TriLibCore.ThreeMf.ThreeMfModel::get_GeometryGroup()
+extern void ThreeMfModel_get_GeometryGroup_mD7EF5E0DB7855F8C0ADA0FE4D0763968E89E3C6D (void);
+// 0x0000003F System.Void TriLibCore.ThreeMf.ThreeMfModel::set_GeometryGroup(TriLibCore.Interfaces.IGeometryGroup)
+extern void ThreeMfModel_set_GeometryGroup_mB144E63A325B69CB31A29AD33958074A50E880CC (void);
+// 0x00000040 UnityEngine.Matrix4x4[] TriLibCore.ThreeMf.ThreeMfModel::get_BindPoses()
+extern void ThreeMfModel_get_BindPoses_mE9BBCF8F931001DC64CA04E0BBEB7C73E624996B (void);
+// 0x00000041 System.Void TriLibCore.ThreeMf.ThreeMfModel::set_BindPoses(UnityEngine.Matrix4x4[])
+extern void ThreeMfModel_set_BindPoses_m7A70E7E20C6050A1342D25CD5160B9231AD55DAA (void);
+// 0x00000042 System.Collections.Generic.IList`1<System.Int32> TriLibCore.ThreeMf.ThreeMfModel::get_MaterialIndices()
+extern void ThreeMfModel_get_MaterialIndices_m58DAD89ED69D1D79A4C3CEDEDC07B484BDC66760 (void);
+// 0x00000043 System.Void TriLibCore.ThreeMf.ThreeMfModel::set_MaterialIndices(System.Collections.Generic.IList`1<System.Int32>)
+extern void ThreeMfModel_set_MaterialIndices_mE86B1F2CA908139F9197AB187B478680C93A0C2F (void);
+// 0x00000044 System.Collections.Generic.Dictionary`2<System.String,System.Object> TriLibCore.ThreeMf.ThreeMfModel::get_UserProperties()
+extern void ThreeMfModel_get_UserProperties_mC0B70F6CE061FDB779AE5247803739FD4AFF45F0 (void);
+// 0x00000045 System.Void TriLibCore.ThreeMf.ThreeMfModel::set_UserProperties(System.Collections.Generic.Dictionary`2<System.String,System.Object>)
+extern void ThreeMfModel_set_UserProperties_m43E4FFF850362E9B05ADFBFA996EBD40AF4C62D5 (void);
+// 0x00000046 System.Boolean TriLibCore.ThreeMf.ThreeMfModel::get_HasCustomPivot()
+extern void ThreeMfModel_get_HasCustomPivot_m4F43D890546495CAB41802A7404209CE8840931A (void);
+// 0x00000047 System.Void TriLibCore.ThreeMf.ThreeMfModel::set_HasCustomPivot(System.Boolean)
+extern void ThreeMfModel_set_HasCustomPivot_m79965F56226B26609E40CD32C7663AD3B9957892 (void);
+// 0x00000048 UnityEngine.Matrix4x4 TriLibCore.ThreeMf.ThreeMfModel::get_OriginalGlobalMatrix()
+extern void ThreeMfModel_get_OriginalGlobalMatrix_mD771DBF91A919FEA1F9F6F128AEA7B77051BA1B5 (void);
+// 0x00000049 System.Void TriLibCore.ThreeMf.ThreeMfModel::set_OriginalGlobalMatrix(UnityEngine.Matrix4x4)
+extern void ThreeMfModel_set_OriginalGlobalMatrix_m32E4041D7325C669044380ADE1040D5F20F24079 (void);
+// 0x0000004A System.Void TriLibCore.ThreeMf.ThreeMfModel::.ctor()
+extern void ThreeMfModel__ctor_m1EBE95775668B6F2CC00222FA4FEE8A4BBFCD91F (void);
+// 0x0000004B TriLibCore.ThreeMf.ThreeMfGeometry TriLibCore.ThreeMf.ThreeMfProcessor::GetActiveGeometry(TriLibCore.Interfaces.IGeometryGroup,System.Int32,System.Boolean)
+extern void ThreeMfProcessor_GetActiveGeometry_m1CAE84C5C75675C426F9C43208D91229B7BE0CA3 (void);
+// 0x0000004C TriLibCore.Interfaces.IRootModel TriLibCore.ThreeMf.ThreeMfProcessor::Process(TriLibCore.ThreeMf.Reader.ThreeMfReader,System.IO.Stream)
+extern void ThreeMfProcessor_Process_mEE1F30A05FAB5E4CF66E68052827762CB8FAD3B5 (void);
+// 0x0000004D System.Void TriLibCore.ThreeMf.ThreeMfProcessor::ConvertTexture(IxMilia.ThreeMf.ThreeMfTexture2D)
+extern void ThreeMfProcessor_ConvertTexture_mB8E30F7427A10BE2FB97EE923422B5FEAFC1314F (void);
+// 0x0000004E System.Void TriLibCore.ThreeMf.ThreeMfProcessor::ConvertObject(IxMilia.ThreeMf.ThreeMfObject,IxMilia.ThreeMf.ThreeMfMatrix,TriLibCore.ThreeMf.ThreeMfModel)
+extern void ThreeMfProcessor_ConvertObject_m2AD1C96663F89D0EFC28B83F9FFFF6C373060CC8 (void);
+// 0x0000004F System.Void TriLibCore.ThreeMf.ThreeMfProcessor::ConvertMaterial(IxMilia.ThreeMf.ThreeMfBase)
+extern void ThreeMfProcessor_ConvertMaterial_m164747B85A2C27C6016698FCA56B4F7F7121B389 (void);
+// 0x00000050 System.Single TriLibCore.ThreeMf.ThreeMfProcessor::ConvertSingle(System.Double)
+extern void ThreeMfProcessor_ConvertSingle_m648827719259296C09ADE81E7CAEF493596AC550 (void);
+// 0x00000051 UnityEngine.Matrix4x4 TriLibCore.ThreeMf.ThreeMfProcessor::ConvertMatrix(IxMilia.ThreeMf.ThreeMfMatrix)
+extern void ThreeMfProcessor_ConvertMatrix_m974BAC42C17562BE72F4A16AF9D438FFCEE29E0D (void);
+// 0x00000052 TriLibCore.ThreeMf.ThreeMfModel TriLibCore.ThreeMf.ThreeMfProcessor::ConvertModel(IxMilia.ThreeMf.ThreeMfObject,IxMilia.ThreeMf.ThreeMfMatrix,TriLibCore.ThreeMf.ThreeMfModel)
+extern void ThreeMfProcessor_ConvertModel_mF06239B67807AE289D1772EEFBF9915C5DB59BC1 (void);
+// 0x00000053 TriLibCore.ThreeMf.ThreeMfMaterial TriLibCore.ThreeMf.ThreeMfProcessor::ConvertTextureMaterial(TriLibCore.ThreeMf.ThreeMfGeometry)
+extern void ThreeMfProcessor_ConvertTextureMaterial_mD1AAD0E1ED51023C169ECBE497D6EE7A3F6B3AAF (void);
+// 0x00000054 UnityEngine.Color TriLibCore.ThreeMf.ThreeMfProcessor::ConvertColor(IxMilia.ThreeMf.ThreeMfsRGBColor)
+extern void ThreeMfProcessor_ConvertColor_mDCA88339887F35347839FCF2BBEDC01FFA6EE73D (void);
+// 0x00000055 UnityEngine.Vector3 TriLibCore.ThreeMf.ThreeMfProcessor::ConvertVertex(IxMilia.ThreeMf.ThreeMfVertex)
+extern void ThreeMfProcessor_ConvertVertex_mE320117F257B6A3C52705E112BB3F2B3781FB336 (void);
+// 0x00000056 UnityEngine.Vector2 TriLibCore.ThreeMf.ThreeMfProcessor::ConvertUV(IxMilia.ThreeMf.ThreeMfTexture2DCoordinate)
+extern void ThreeMfProcessor_ConvertUV_m048A2F82A47DDF562E68D86F1CFCE95B55532864 (void);
+// 0x00000057 System.Void TriLibCore.ThreeMf.ThreeMfProcessor::.ctor()
+extern void ThreeMfProcessor__ctor_m6A2A8DFA00E55ECD0D2806D51C6CC65DFCFD5969 (void);
+// 0x00000058 System.Void TriLibCore.ThreeMf.ThreeMfProcessor/<>c::.cctor()
+extern void U3CU3Ec__cctor_mA004CFA3F1A6DE3483B23695572645CAD6F33220 (void);
+// 0x00000059 System.Void TriLibCore.ThreeMf.ThreeMfProcessor/<>c::.ctor()
+extern void U3CU3Ec__ctor_m258A4CC7D0526CF68C0104A08F36DA62992767A0 (void);
+// 0x0000005A System.Boolean TriLibCore.ThreeMf.ThreeMfProcessor/<>c::<Process>b__12_0(IxMilia.ThreeMf.ThreeMfResource)
+extern void U3CU3Ec_U3CProcessU3Eb__12_0_m46FECB5FD211B191DEF8712FAEFCEB83A9CAE533 (void);
+// 0x0000005B IxMilia.ThreeMf.ThreeMfBaseMaterials TriLibCore.ThreeMf.ThreeMfProcessor/<>c::<Process>b__12_1(IxMilia.ThreeMf.ThreeMfResource)
+extern void U3CU3Ec_U3CProcessU3Eb__12_1_m5E27FDAC41C2691832F19F94157F92D8B5AC9F6F (void);
+// 0x0000005C System.Boolean TriLibCore.ThreeMf.ThreeMfProcessor/<>c::<Process>b__12_2(IxMilia.ThreeMf.ThreeMfResource)
+extern void U3CU3Ec_U3CProcessU3Eb__12_2_m96B8019C25109DDD8FCB90857F55B6B67E53121D (void);
+// 0x0000005D IxMilia.ThreeMf.ThreeMfColorGroup TriLibCore.ThreeMf.ThreeMfProcessor/<>c::<Process>b__12_3(IxMilia.ThreeMf.ThreeMfResource)
+extern void U3CU3Ec_U3CProcessU3Eb__12_3_mC8DF387407FB5D0A4EDE713D81A1F61BDF591D34 (void);
+// 0x0000005E System.Boolean TriLibCore.ThreeMf.ThreeMfProcessor/<>c::<Process>b__12_4(IxMilia.ThreeMf.ThreeMfResource)
+extern void U3CU3Ec_U3CProcessU3Eb__12_4_m6E2AA8B5F6545EEFCAAA817B08175AA9CA10D7DA (void);
+// 0x0000005F IxMilia.ThreeMf.ThreeMfTexture2D TriLibCore.ThreeMf.ThreeMfProcessor/<>c::<Process>b__12_5(IxMilia.ThreeMf.ThreeMfResource)
+extern void U3CU3Ec_U3CProcessU3Eb__12_5_m7DE2A1A96B99DBE2A017A6479CB77065085C247F (void);
+// 0x00000060 System.Boolean TriLibCore.ThreeMf.ThreeMfProcessor/<>c::<Process>b__12_6(IxMilia.ThreeMf.ThreeMfResource)
+extern void U3CU3Ec_U3CProcessU3Eb__12_6_mC82A67C0D51A0A2C75DCCF679634D7A87360DBEC (void);
+// 0x00000061 IxMilia.ThreeMf.ThreeMfTexture2DGroup TriLibCore.ThreeMf.ThreeMfProcessor/<>c::<Process>b__12_7(IxMilia.ThreeMf.ThreeMfResource)
+extern void U3CU3Ec_U3CProcessU3Eb__12_7_mC01E940952DC25FFF6FAE10912969EB1C6395ABB (void);
+// 0x00000062 System.Collections.Generic.IList`1<TriLibCore.Interfaces.IModel> TriLibCore.ThreeMf.ThreeMfRootModel::get_AllModels()
+extern void ThreeMfRootModel_get_AllModels_mA5B002E8F8DCB0743D5CC592923428F293A8C988 (void);
+// 0x00000063 System.Void TriLibCore.ThreeMf.ThreeMfRootModel::set_AllModels(System.Collections.Generic.IList`1<TriLibCore.Interfaces.IModel>)
+extern void ThreeMfRootModel_set_AllModels_m151A59103F2E038F24F6FCDACC4E5A24A6739EC7 (void);
+// 0x00000064 System.Collections.Generic.IList`1<TriLibCore.Interfaces.IGeometryGroup> TriLibCore.ThreeMf.ThreeMfRootModel::get_AllGeometryGroups()
+extern void ThreeMfRootModel_get_AllGeometryGroups_m110F5C8D72CE7290D9FAA0B86A127B45E28BCA8C (void);
+// 0x00000065 System.Void TriLibCore.ThreeMf.ThreeMfRootModel::set_AllGeometryGroups(System.Collections.Generic.IList`1<TriLibCore.Interfaces.IGeometryGroup>)
+extern void ThreeMfRootModel_set_AllGeometryGroups_m9EEA26A0868A58C0D1C604870E7057434712555A (void);
+// 0x00000066 System.Collections.Generic.IList`1<TriLibCore.Interfaces.IAnimation> TriLibCore.ThreeMf.ThreeMfRootModel::get_AllAnimations()
+extern void ThreeMfRootModel_get_AllAnimations_m4C3B5326ED971D3F19F32ABACEA109D670AF47CB (void);
+// 0x00000067 System.Void TriLibCore.ThreeMf.ThreeMfRootModel::set_AllAnimations(System.Collections.Generic.IList`1<TriLibCore.Interfaces.IAnimation>)
+extern void ThreeMfRootModel_set_AllAnimations_mA5B5AE32A55F50CC0225CA5480EB12D79A2CF912 (void);
+// 0x00000068 System.Collections.Generic.IList`1<TriLibCore.Interfaces.IMaterial> TriLibCore.ThreeMf.ThreeMfRootModel::get_AllMaterials()
+extern void ThreeMfRootModel_get_AllMaterials_m49A7567D31149FEAABC40BF39A9D8DE7F8AD53F8 (void);
+// 0x00000069 System.Void TriLibCore.ThreeMf.ThreeMfRootModel::set_AllMaterials(System.Collections.Generic.IList`1<TriLibCore.Interfaces.IMaterial>)
+extern void ThreeMfRootModel_set_AllMaterials_m8DF9FE9FCCF64D7AD9F6735488347753DFF729EE (void);
+// 0x0000006A System.Collections.Generic.IList`1<TriLibCore.Interfaces.ITexture> TriLibCore.ThreeMf.ThreeMfRootModel::get_AllTextures()
+extern void ThreeMfRootModel_get_AllTextures_m6BA318190F3532D4567FF06753C7C22607DFC922 (void);
+// 0x0000006B System.Void TriLibCore.ThreeMf.ThreeMfRootModel::set_AllTextures(System.Collections.Generic.IList`1<TriLibCore.Interfaces.ITexture>)
+extern void ThreeMfRootModel_set_AllTextures_m9D6DCEBA785C6AB81579CA14AD77F75EA3B3782A (void);
+// 0x0000006C System.Collections.Generic.IList`1<TriLibCore.Interfaces.ICamera> TriLibCore.ThreeMf.ThreeMfRootModel::get_AllCameras()
+extern void ThreeMfRootModel_get_AllCameras_mC6486E7E3B97BBD7A0506BFD649456BFAF360F56 (void);
+// 0x0000006D System.Void TriLibCore.ThreeMf.ThreeMfRootModel::set_AllCameras(System.Collections.Generic.IList`1<TriLibCore.Interfaces.ICamera>)
+extern void ThreeMfRootModel_set_AllCameras_m612458E6C3FAEA69B6921182B827EFF1CF51D901 (void);
+// 0x0000006E System.Collections.Generic.IList`1<TriLibCore.Interfaces.ILight> TriLibCore.ThreeMf.ThreeMfRootModel::get_AllLights()
+extern void ThreeMfRootModel_get_AllLights_m7FFD7B61A8BA6ED8C9FD7FAFB8088764F3B7B6A1 (void);
+// 0x0000006F System.Void TriLibCore.ThreeMf.ThreeMfRootModel::set_AllLights(System.Collections.Generic.IList`1<TriLibCore.Interfaces.ILight>)
+extern void ThreeMfRootModel_set_AllLights_mFD1EF568490C3365E7D1B48AC6073872D35A2107 (void);
+// 0x00000070 System.Void TriLibCore.ThreeMf.ThreeMfRootModel::.ctor()
+extern void ThreeMfRootModel__ctor_m20B6723149DE88F383E01C55EDC59DBEE6C607A7 (void);
+// 0x00000071 System.String TriLibCore.ThreeMf.ThreeMfTexture::get_Name()
+extern void ThreeMfTexture_get_Name_mBA4568D57B7F96E06F6B7D2F684B4B60ABEF455F (void);
+// 0x00000072 System.Void TriLibCore.ThreeMf.ThreeMfTexture::set_Name(System.String)
+extern void ThreeMfTexture_set_Name_m151170B958E544BCD8FB19AFACEB10390027141E (void);
+// 0x00000073 System.Boolean TriLibCore.ThreeMf.ThreeMfTexture::get_Used()
+extern void ThreeMfTexture_get_Used_m313D04E29E497D294FA39BF096C5F0D747F5480E (void);
+// 0x00000074 System.Void TriLibCore.ThreeMf.ThreeMfTexture::set_Used(System.Boolean)
+extern void ThreeMfTexture_set_Used_m1170065864F0402CFD154629F47F790A1B7D4025 (void);
+// 0x00000075 TriLibCore.Interfaces.ITexture TriLibCore.ThreeMf.ThreeMfTexture::GetSubTexture(System.Int32)
+extern void ThreeMfTexture_GetSubTexture_mDEE5259ED6148DDC017EA085D2BD56278A4061FA (void);
+// 0x00000076 System.Int32 TriLibCore.ThreeMf.ThreeMfTexture::GetSubTextureCount()
+extern void ThreeMfTexture_GetSubTextureCount_m7AB28AD65CD180DDFFD46272DF5EAB047B2B32B6 (void);
+// 0x00000077 System.Single TriLibCore.ThreeMf.ThreeMfTexture::GetWeight(System.Int32)
+extern void ThreeMfTexture_GetWeight_m76BD76DCC028DF787160FDCA92D79D2EA3DF015D (void);
+// 0x00000078 System.Void TriLibCore.ThreeMf.ThreeMfTexture::AddTexture(TriLibCore.Interfaces.ITexture)
+extern void ThreeMfTexture_AddTexture_m781996454DB672C0AB1F5D301970C2307A94FA1E (void);
+// 0x00000079 System.Byte[] TriLibCore.ThreeMf.ThreeMfTexture::get_Data()
+extern void ThreeMfTexture_get_Data_mA8A7313E58B2A82DF2F0041733B5FDA794F1FDEC (void);
+// 0x0000007A System.Void TriLibCore.ThreeMf.ThreeMfTexture::set_Data(System.Byte[])
+extern void ThreeMfTexture_set_Data_m92319E1690DDFC71C167AC081528DCB2E79C3AA9 (void);
+// 0x0000007B System.IO.Stream TriLibCore.ThreeMf.ThreeMfTexture::get_DataStream()
+extern void ThreeMfTexture_get_DataStream_m20614831C0238973CD186B058B294C680A11419A (void);
+// 0x0000007C System.Void TriLibCore.ThreeMf.ThreeMfTexture::set_DataStream(System.IO.Stream)
+extern void ThreeMfTexture_set_DataStream_m782ADCF66199BF67B8B5579B7C0812C760F3F14E (void);
+// 0x0000007D System.String TriLibCore.ThreeMf.ThreeMfTexture::get_Filename()
+extern void ThreeMfTexture_get_Filename_m2F314A125327531249EB90C039AB60C5E45392CD (void);
+// 0x0000007E System.Void TriLibCore.ThreeMf.ThreeMfTexture::set_Filename(System.String)
+extern void ThreeMfTexture_set_Filename_m3E528F405AE92759860AB89F23062A4F0A7132C3 (void);
+// 0x0000007F UnityEngine.TextureWrapMode TriLibCore.ThreeMf.ThreeMfTexture::get_WrapModeU()
+extern void ThreeMfTexture_get_WrapModeU_m98E418E379797733334649B52492834F2DA27BD9 (void);
+// 0x00000080 System.Void TriLibCore.ThreeMf.ThreeMfTexture::set_WrapModeU(UnityEngine.TextureWrapMode)
+extern void ThreeMfTexture_set_WrapModeU_mE8194F482272DE2EB993C813B8FA60EF4DA23A16 (void);
+// 0x00000081 UnityEngine.TextureWrapMode TriLibCore.ThreeMf.ThreeMfTexture::get_WrapModeV()
+extern void ThreeMfTexture_get_WrapModeV_mDC8A6D0407FB174A61F3C24A39E797B7A7ECF8BC (void);
+// 0x00000082 System.Void TriLibCore.ThreeMf.ThreeMfTexture::set_WrapModeV(UnityEngine.TextureWrapMode)
+extern void ThreeMfTexture_set_WrapModeV_mD4816729A25B21A58ADD15A196218638177ED740 (void);
+// 0x00000083 UnityEngine.Vector2 TriLibCore.ThreeMf.ThreeMfTexture::get_Tiling()
+extern void ThreeMfTexture_get_Tiling_m0023E1FDF82EFE1104CC1854DE1B8D8D93BA4C03 (void);
+// 0x00000084 System.Void TriLibCore.ThreeMf.ThreeMfTexture::set_Tiling(UnityEngine.Vector2)
+extern void ThreeMfTexture_set_Tiling_m10201265B60174A66A495A5C1C28EF844B511E9A (void);
+// 0x00000085 UnityEngine.Vector2 TriLibCore.ThreeMf.ThreeMfTexture::get_Offset()
+extern void ThreeMfTexture_get_Offset_m04B8A81C956C14BEBC43C9723CD0F56592EA142D (void);
+// 0x00000086 System.Void TriLibCore.ThreeMf.ThreeMfTexture::set_Offset(UnityEngine.Vector2)
+extern void ThreeMfTexture_set_Offset_m3BF0022A7A87F6FC06B4FA605EDBDAE0F4919108 (void);
+// 0x00000087 System.Int32 TriLibCore.ThreeMf.ThreeMfTexture::get_TextureId()
+extern void ThreeMfTexture_get_TextureId_mCF557F5104482012F7BD1324C0C07295A70059EA (void);
+// 0x00000088 System.Void TriLibCore.ThreeMf.ThreeMfTexture::set_TextureId(System.Int32)
+extern void ThreeMfTexture_set_TextureId_mFE4B2B4DB4C7DC303F5905E7C1879E8735319AA1 (void);
+// 0x00000089 System.String TriLibCore.ThreeMf.ThreeMfTexture::get_ResolvedFilename()
+extern void ThreeMfTexture_get_ResolvedFilename_mCC007C77A210F80D6A49FD954928AB0E526FAC78 (void);
+// 0x0000008A System.Void TriLibCore.ThreeMf.ThreeMfTexture::set_ResolvedFilename(System.String)
+extern void ThreeMfTexture_set_ResolvedFilename_m0C9F8A5444D17FAE5EDEA2386E75357120F5C3A1 (void);
+// 0x0000008B System.Boolean TriLibCore.ThreeMf.ThreeMfTexture::get_IsValid()
+extern void ThreeMfTexture_get_IsValid_m701B0DA250205FB4E3A7CCAB7F03246671261C5D (void);
+// 0x0000008C System.Boolean TriLibCore.ThreeMf.ThreeMfTexture::get_HasAlpha()
+extern void ThreeMfTexture_get_HasAlpha_mFA7A6A35232B8979A356CA863FF0A6F692EDBBB5 (void);
+// 0x0000008D System.Void TriLibCore.ThreeMf.ThreeMfTexture::set_HasAlpha(System.Boolean)
+extern void ThreeMfTexture_set_HasAlpha_m24236CA1D0EBB7E2EF39482187918599C8728782 (void);
+// 0x0000008E TriLibCore.General.TextureFormat TriLibCore.ThreeMf.ThreeMfTexture::get_TextureFormat()
+extern void ThreeMfTexture_get_TextureFormat_m3F374C38C7CE2603EA199FAD6B3723AFB74FA082 (void);
+// 0x0000008F System.Void TriLibCore.ThreeMf.ThreeMfTexture::set_TextureFormat(TriLibCore.General.TextureFormat)
+extern void ThreeMfTexture_set_TextureFormat_m254482CE2243EC6A0F468DE098FE115ABA2EF8DE (void);
+// 0x00000090 System.Boolean TriLibCore.ThreeMf.ThreeMfTexture::Equals(TriLibCore.Interfaces.ITexture)
+extern void ThreeMfTexture_Equals_m6E20FD536CE4E407396C96A5FCA7ED44BD30BB0D (void);
+// 0x00000091 System.Boolean TriLibCore.ThreeMf.ThreeMfTexture::Equals(System.Object)
+extern void ThreeMfTexture_Equals_m50675993A71934E9CA5C4DAFF290F057A63A9EB8 (void);
+// 0x00000092 System.Int32 TriLibCore.ThreeMf.ThreeMfTexture::GetHashCode()
+extern void ThreeMfTexture_GetHashCode_m121ED3C2091487142AED222A5B960F434CFD7389 (void);
+// 0x00000093 System.Void TriLibCore.ThreeMf.ThreeMfTexture::.ctor()
+extern void ThreeMfTexture__ctor_m5D7BA899E1691F1736986FC5D838296D0786EAE8 (void);
+// 0x00000094 System.Int32 TriLibCore.ThreeMf.Reader.ThreeMfReader::get_ModelCount()
+extern void ThreeMfReader_get_ModelCount_m192820BD34A307DF915D3D8B9B48B8EB70C69386 (void);
+// 0x00000095 System.Void TriLibCore.ThreeMf.Reader.ThreeMfReader::set_ModelCount(System.Int32)
+extern void ThreeMfReader_set_ModelCount_mE9DEAC7E052E8B61BBC522C990CF7A5A6299E6BF (void);
+// 0x00000096 System.String[] TriLibCore.ThreeMf.Reader.ThreeMfReader::GetExtensions()
+extern void ThreeMfReader_GetExtensions_mE4D29623D2FF9B754D7625EDB88E129BA6CF7F65 (void);
+// 0x00000097 System.String TriLibCore.ThreeMf.Reader.ThreeMfReader::get_Name()
+extern void ThreeMfReader_get_Name_m20B5AF692F2C032274A27FACA6F265420CEFF5DC (void);
+// 0x00000098 System.Type TriLibCore.ThreeMf.Reader.ThreeMfReader::get_LoadingStepEnumType()
+extern void ThreeMfReader_get_LoadingStepEnumType_m7BB4AE012EA65A5FC08DE118ED7DB474FE58AB43 (void);
+// 0x00000099 TriLibCore.Interfaces.IRootModel TriLibCore.ThreeMf.Reader.ThreeMfReader::ReadStream(System.IO.Stream,TriLibCore.AssetLoaderContext,System.String,System.Action`2<TriLibCore.AssetLoaderContext,System.Single>)
+extern void ThreeMfReader_ReadStream_m34CE22AB4739DA0E8471E9C059B856A9B0C63B53 (void);
+// 0x0000009A TriLibCore.Interfaces.IRootModel TriLibCore.ThreeMf.Reader.ThreeMfReader::CreateRootModel()
+extern void ThreeMfReader_CreateRootModel_mFCCCD5A788DDEEB3D6C22F21DC2F5C612CF6906A (void);
+// 0x0000009B System.Void TriLibCore.ThreeMf.Reader.ThreeMfReader::.ctor()
+extern void ThreeMfReader__ctor_m3F85569377F8EE92C6630CB3DD33227AC84F927B (void);
+// 0x0000009C System.Void TriLibCore.ThreeMf.Reader.ThreeMfReader::.cctor()
+extern void ThreeMfReader__cctor_m520005299FD62B679928572CDD588A4AD7DCAA8C (void);
+static Il2CppMethodPointer s_methodPointers[156] = 
+{
+	ThreeMfGeometry__ctor_m2367D0244F4F8AEC8A41326541EC65759526B282,
+	ThreeMfMaterial_get_Name_m4A20D8D2C39B2CD36D0772BD4BE682144177C136,
+	ThreeMfMaterial_set_Name_m002F5F6B341DBA5D3FA6D02ECA0FC7171D69C546,
+	ThreeMfMaterial_get_Used_m066D662B3B3BB2C9856467DC4B2572C41D7F1D30,
+	ThreeMfMaterial_set_Used_m55B1A1B7726EBF678242F1139C6C402E55DE4BA6,
+	ThreeMfMaterial_get_UsesAlpha_m9EE64BADB4167B23D90A334EE414F66CC3AF3D22,
+	ThreeMfMaterial_ApplyOffsetAndScale_m46007F44B8D1A3E3D91F3136A8E4D0FA18A8D511,
+	ThreeMfMaterial_AddProperty_m97B30BB27BA4AD12AD5E3C9C074E999029354E62,
+	ThreeMfMaterial_GetGenericPropertyName_mE903B493C7739D8EF35EAD42E9B7FBF5539FC474,
+	ThreeMfMaterial_GetGenericColorValueMultiplied_m9D9D146BCB3DB4CF794C70D5D7BEA98230D7D7EE,
+	ThreeMfMaterial_GetGenericFloatValueMultiplied_m35377B487FEA6F78D6465F52AACE41683803CF45,
+	ThreeMfMaterial_GetGenericFloatValue_m674862395625E1E61A45C700BBFD84BC4E1C7260,
+	ThreeMfMaterial_GetGenericIntValue_m3779B18897A0AF80549EE9EFDC833F402973B164,
+	ThreeMfMaterial_GetGenericStringValue_m6B5CC6F25CC791C72D288656330C8FCE5B98D75B,
+	ThreeMfMaterial_GetGenericVector3Value_mF87AD85088342DB3E44A920921BAB2801FD17FF7,
+	ThreeMfMaterial_GetGenericVector4Value_m129EA79DD402EEE6151876102695E22E077C7D09,
+	ThreeMfMaterial_GetGenericColorValue_m4F27C1459446AF9C6208233BACB583477FF12105,
+	ThreeMfMaterial_GetGenericTextureValue_m04F5BFE6E34496C580B6EA95393752B708B48C91,
+	ThreeMfMaterial_get_DoubleSided_mC88093A531E78E799D05EC0EDCEADC04BED8855F,
+	ThreeMfMaterial_set_DoubleSided_m4BB1596EC5A80870132D0F1C6199DAE7D08D4688,
+	ThreeMfMaterial_get_MixAlbedoColorWithTexture_mB0BCA5ABB6944EF6D1147B8B8B9A6C646ED9DFD8,
+	ThreeMfMaterial_GetFloatValue_m61B00C4ADFD70B2C062C5FEC1927998D79AD121E,
+	ThreeMfMaterial_GetIntValue_mA188416829493884BF82CA53E9A6E9B88A7DA2B7,
+	ThreeMfMaterial_GetStringValue_m69705831E0AAADE11CB184347D369AB2D369012C,
+	ThreeMfMaterial_GetVector3Value_m16ACF010F6EF32F958AE8FA3D3A09E246FADBFDE,
+	ThreeMfMaterial_GetVector4Value_m420D619FAC273D36284D94A289267C05E365F525,
+	ThreeMfMaterial_GetColorValue_m1B27819C3CCCB655A3BD12BDC1AB2A04F99D72B1,
+	ThreeMfMaterial_GetTextureValue_mD455B481A11BCA5D352F576E8F1F619BD056D240,
+	ThreeMfMaterial_HasProperty_m7734B7EF64C21507B043A60376F8A67104135606,
+	ThreeMfMaterial_PostProcessTexture_mE11C9C1093C642B41B16BDD8616F76993B81785A,
+	ThreeMfMaterial_get_MaterialShadingSetup_m316D83BE9778E590B3ABCE018078C2E7CB088BDD,
+	ThreeMfMaterial_get_Index_mFD1AE4393A505CACD8354102D9E56F08E165C3AC,
+	ThreeMfMaterial_set_Index_m71BDC99AC48D08F45581078FC809D058965EBEA3,
+	ThreeMfMaterial_get_IsAutodeskInteractive_mC8D282CC318BD87603EB3322ACD2939553655253,
+	ThreeMfMaterial_get_Processing_m129A935417291807646CA4332948C99DB7EA0779,
+	ThreeMfMaterial_set_Processing_m2D09E198EBA033DFE8846970BC8DC7F4DE44A9C3,
+	ThreeMfMaterial_get_Processed_m12BA2A7C984C3F4F8CD81DDE149BAF6C3133E6EF,
+	ThreeMfMaterial_set_Processed_mB74759C70B110F6417E1EB558D74B8E67FA72715,
+	ThreeMfMaterial__ctor_m3CF744F9935AF9396EF68721A53AAEF9C6E5EDAE,
+	ThreeMfModel_get_Name_mD85649F6FC1A9EA3F22176AEC2AD1834F4AE3375,
+	ThreeMfModel_set_Name_m21FBCCF3B97D2C9E64895710FAE11EF953431764,
+	ThreeMfModel_get_Used_mFF9DD2062F3975F75D6E14E5819D1477F5EEAB00,
+	ThreeMfModel_set_Used_m86945E4B619523FC22A17210C7FB2E7B3C4C3DC3,
+	ThreeMfModel_get_Pivot_m8C97F2FC8031BCA06C1338FEE2E649E6473D8F3F,
+	ThreeMfModel_set_Pivot_m50994610B5AC73D6DA8322613A2EBC2ABC123DDB,
+	ThreeMfModel_get_LocalPosition_m87D9A16BF29A9A300D61DB57810F9ED509B8B753,
+	ThreeMfModel_set_LocalPosition_m27ADC7238172FF918A2FF49A1B6453845FDDE790,
+	ThreeMfModel_get_LocalRotation_m7DAADAAE3F1FF47F600F5255AB3A72324E58C854,
+	ThreeMfModel_set_LocalRotation_m843DD3374636CF0354C942D8536B93E7E099FD68,
+	ThreeMfModel_get_LocalScale_mA2F8253B191922003FD41764C7B360450E10BDDB,
+	ThreeMfModel_set_LocalScale_mCCA25D1A2671370FF2CE1C09C67113AEFF6CE511,
+	ThreeMfModel_get_Visibility_m4629831C78AF3399C09663E81079D5BC85D1D556,
+	ThreeMfModel_set_Visibility_m483E998D63DD6717282BA41AC935D54C49C7FB38,
+	ThreeMfModel_get_Parent_mC5B39E7E77060C09104F29F8362645E50FEC567B,
+	ThreeMfModel_set_Parent_mA2A503AD0AEF4CEE4B01E4336B5F86F17ADBF521,
+	ThreeMfModel_get_Children_m33E20C3B2FE5BB6AC5B9CC04D2799044A02CA52B,
+	ThreeMfModel_set_Children_m34AEC0C516C267388A2BB961285270A0AAFB115A,
+	ThreeMfModel_get_Bones_m569C47E576C11CE55D4D6D3CEADEFA4B577A460D,
+	ThreeMfModel_set_Bones_m4D1C6BE27031A4B7373887D1AED8548C4EB10219,
+	ThreeMfModel_get_IsBone_mF183F5F5794C859402CB6328E1CE9E6807BC85F3,
+	ThreeMfModel_set_IsBone_m4031D1043A422E222ADF5E3667FA6E155D0644C9,
+	ThreeMfModel_get_GeometryGroup_mD7EF5E0DB7855F8C0ADA0FE4D0763968E89E3C6D,
+	ThreeMfModel_set_GeometryGroup_mB144E63A325B69CB31A29AD33958074A50E880CC,
+	ThreeMfModel_get_BindPoses_mE9BBCF8F931001DC64CA04E0BBEB7C73E624996B,
+	ThreeMfModel_set_BindPoses_m7A70E7E20C6050A1342D25CD5160B9231AD55DAA,
+	ThreeMfModel_get_MaterialIndices_m58DAD89ED69D1D79A4C3CEDEDC07B484BDC66760,
+	ThreeMfModel_set_MaterialIndices_mE86B1F2CA908139F9197AB187B478680C93A0C2F,
+	ThreeMfModel_get_UserProperties_mC0B70F6CE061FDB779AE5247803739FD4AFF45F0,
+	ThreeMfModel_set_UserProperties_m43E4FFF850362E9B05ADFBFA996EBD40AF4C62D5,
+	ThreeMfModel_get_HasCustomPivot_m4F43D890546495CAB41802A7404209CE8840931A,
+	ThreeMfModel_set_HasCustomPivot_m79965F56226B26609E40CD32C7663AD3B9957892,
+	ThreeMfModel_get_OriginalGlobalMatrix_mD771DBF91A919FEA1F9F6F128AEA7B77051BA1B5,
+	ThreeMfModel_set_OriginalGlobalMatrix_m32E4041D7325C669044380ADE1040D5F20F24079,
+	ThreeMfModel__ctor_m1EBE95775668B6F2CC00222FA4FEE8A4BBFCD91F,
+	ThreeMfProcessor_GetActiveGeometry_m1CAE84C5C75675C426F9C43208D91229B7BE0CA3,
+	ThreeMfProcessor_Process_mEE1F30A05FAB5E4CF66E68052827762CB8FAD3B5,
+	ThreeMfProcessor_ConvertTexture_mB8E30F7427A10BE2FB97EE923422B5FEAFC1314F,
+	ThreeMfProcessor_ConvertObject_m2AD1C96663F89D0EFC28B83F9FFFF6C373060CC8,
+	ThreeMfProcessor_ConvertMaterial_m164747B85A2C27C6016698FCA56B4F7F7121B389,
+	ThreeMfProcessor_ConvertSingle_m648827719259296C09ADE81E7CAEF493596AC550,
+	ThreeMfProcessor_ConvertMatrix_m974BAC42C17562BE72F4A16AF9D438FFCEE29E0D,
+	ThreeMfProcessor_ConvertModel_mF06239B67807AE289D1772EEFBF9915C5DB59BC1,
+	ThreeMfProcessor_ConvertTextureMaterial_mD1AAD0E1ED51023C169ECBE497D6EE7A3F6B3AAF,
+	ThreeMfProcessor_ConvertColor_mDCA88339887F35347839FCF2BBEDC01FFA6EE73D,
+	ThreeMfProcessor_ConvertVertex_mE320117F257B6A3C52705E112BB3F2B3781FB336,
+	ThreeMfProcessor_ConvertUV_m048A2F82A47DDF562E68D86F1CFCE95B55532864,
+	ThreeMfProcessor__ctor_m6A2A8DFA00E55ECD0D2806D51C6CC65DFCFD5969,
+	U3CU3Ec__cctor_mA004CFA3F1A6DE3483B23695572645CAD6F33220,
+	U3CU3Ec__ctor_m258A4CC7D0526CF68C0104A08F36DA62992767A0,
+	U3CU3Ec_U3CProcessU3Eb__12_0_m46FECB5FD211B191DEF8712FAEFCEB83A9CAE533,
+	U3CU3Ec_U3CProcessU3Eb__12_1_m5E27FDAC41C2691832F19F94157F92D8B5AC9F6F,
+	U3CU3Ec_U3CProcessU3Eb__12_2_m96B8019C25109DDD8FCB90857F55B6B67E53121D,
+	U3CU3Ec_U3CProcessU3Eb__12_3_mC8DF387407FB5D0A4EDE713D81A1F61BDF591D34,
+	U3CU3Ec_U3CProcessU3Eb__12_4_m6E2AA8B5F6545EEFCAAA817B08175AA9CA10D7DA,
+	U3CU3Ec_U3CProcessU3Eb__12_5_m7DE2A1A96B99DBE2A017A6479CB77065085C247F,
+	U3CU3Ec_U3CProcessU3Eb__12_6_mC82A67C0D51A0A2C75DCCF679634D7A87360DBEC,
+	U3CU3Ec_U3CProcessU3Eb__12_7_mC01E940952DC25FFF6FAE10912969EB1C6395ABB,
+	ThreeMfRootModel_get_AllModels_mA5B002E8F8DCB0743D5CC592923428F293A8C988,
+	ThreeMfRootModel_set_AllModels_m151A59103F2E038F24F6FCDACC4E5A24A6739EC7,
+	ThreeMfRootModel_get_AllGeometryGroups_m110F5C8D72CE7290D9FAA0B86A127B45E28BCA8C,
+	ThreeMfRootModel_set_AllGeometryGroups_m9EEA26A0868A58C0D1C604870E7057434712555A,
+	ThreeMfRootModel_get_AllAnimations_m4C3B5326ED971D3F19F32ABACEA109D670AF47CB,
+	ThreeMfRootModel_set_AllAnimations_mA5B5AE32A55F50CC0225CA5480EB12D79A2CF912,
+	ThreeMfRootModel_get_AllMaterials_m49A7567D31149FEAABC40BF39A9D8DE7F8AD53F8,
+	ThreeMfRootModel_set_AllMaterials_m8DF9FE9FCCF64D7AD9F6735488347753DFF729EE,
+	ThreeMfRootModel_get_AllTextures_m6BA318190F3532D4567FF06753C7C22607DFC922,
+	ThreeMfRootModel_set_AllTextures_m9D6DCEBA785C6AB81579CA14AD77F75EA3B3782A,
+	ThreeMfRootModel_get_AllCameras_mC6486E7E3B97BBD7A0506BFD649456BFAF360F56,
+	ThreeMfRootModel_set_AllCameras_m612458E6C3FAEA69B6921182B827EFF1CF51D901,
+	ThreeMfRootModel_get_AllLights_m7FFD7B61A8BA6ED8C9FD7FAFB8088764F3B7B6A1,
+	ThreeMfRootModel_set_AllLights_mFD1EF568490C3365E7D1B48AC6073872D35A2107,
+	ThreeMfRootModel__ctor_m20B6723149DE88F383E01C55EDC59DBEE6C607A7,
+	ThreeMfTexture_get_Name_mBA4568D57B7F96E06F6B7D2F684B4B60ABEF455F,
+	ThreeMfTexture_set_Name_m151170B958E544BCD8FB19AFACEB10390027141E,
+	ThreeMfTexture_get_Used_m313D04E29E497D294FA39BF096C5F0D747F5480E,
+	ThreeMfTexture_set_Used_m1170065864F0402CFD154629F47F790A1B7D4025,
+	ThreeMfTexture_GetSubTexture_mDEE5259ED6148DDC017EA085D2BD56278A4061FA,
+	ThreeMfTexture_GetSubTextureCount_m7AB28AD65CD180DDFFD46272DF5EAB047B2B32B6,
+	ThreeMfTexture_GetWeight_m76BD76DCC028DF787160FDCA92D79D2EA3DF015D,
+	ThreeMfTexture_AddTexture_m781996454DB672C0AB1F5D301970C2307A94FA1E,
+	ThreeMfTexture_get_Data_mA8A7313E58B2A82DF2F0041733B5FDA794F1FDEC,
+	ThreeMfTexture_set_Data_m92319E1690DDFC71C167AC081528DCB2E79C3AA9,
+	ThreeMfTexture_get_DataStream_m20614831C0238973CD186B058B294C680A11419A,
+	ThreeMfTexture_set_DataStream_m782ADCF66199BF67B8B5579B7C0812C760F3F14E,
+	ThreeMfTexture_get_Filename_m2F314A125327531249EB90C039AB60C5E45392CD,
+	ThreeMfTexture_set_Filename_m3E528F405AE92759860AB89F23062A4F0A7132C3,
+	ThreeMfTexture_get_WrapModeU_m98E418E379797733334649B52492834F2DA27BD9,
+	ThreeMfTexture_set_WrapModeU_mE8194F482272DE2EB993C813B8FA60EF4DA23A16,
+	ThreeMfTexture_get_WrapModeV_mDC8A6D0407FB174A61F3C24A39E797B7A7ECF8BC,
+	ThreeMfTexture_set_WrapModeV_mD4816729A25B21A58ADD15A196218638177ED740,
+	ThreeMfTexture_get_Tiling_m0023E1FDF82EFE1104CC1854DE1B8D8D93BA4C03,
+	ThreeMfTexture_set_Tiling_m10201265B60174A66A495A5C1C28EF844B511E9A,
+	ThreeMfTexture_get_Offset_m04B8A81C956C14BEBC43C9723CD0F56592EA142D,
+	ThreeMfTexture_set_Offset_m3BF0022A7A87F6FC06B4FA605EDBDAE0F4919108,
+	ThreeMfTexture_get_TextureId_mCF557F5104482012F7BD1324C0C07295A70059EA,
+	ThreeMfTexture_set_TextureId_mFE4B2B4DB4C7DC303F5905E7C1879E8735319AA1,
+	ThreeMfTexture_get_ResolvedFilename_mCC007C77A210F80D6A49FD954928AB0E526FAC78,
+	ThreeMfTexture_set_ResolvedFilename_m0C9F8A5444D17FAE5EDEA2386E75357120F5C3A1,
+	ThreeMfTexture_get_IsValid_m701B0DA250205FB4E3A7CCAB7F03246671261C5D,
+	ThreeMfTexture_get_HasAlpha_mFA7A6A35232B8979A356CA863FF0A6F692EDBBB5,
+	ThreeMfTexture_set_HasAlpha_m24236CA1D0EBB7E2EF39482187918599C8728782,
+	ThreeMfTexture_get_TextureFormat_m3F374C38C7CE2603EA199FAD6B3723AFB74FA082,
+	ThreeMfTexture_set_TextureFormat_m254482CE2243EC6A0F468DE098FE115ABA2EF8DE,
+	ThreeMfTexture_Equals_m6E20FD536CE4E407396C96A5FCA7ED44BD30BB0D,
+	ThreeMfTexture_Equals_m50675993A71934E9CA5C4DAFF290F057A63A9EB8,
+	ThreeMfTexture_GetHashCode_m121ED3C2091487142AED222A5B960F434CFD7389,
+	ThreeMfTexture__ctor_m5D7BA899E1691F1736986FC5D838296D0786EAE8,
+	ThreeMfReader_get_ModelCount_m192820BD34A307DF915D3D8B9B48B8EB70C69386,
+	ThreeMfReader_set_ModelCount_mE9DEAC7E052E8B61BBC522C990CF7A5A6299E6BF,
+	ThreeMfReader_GetExtensions_mE4D29623D2FF9B754D7625EDB88E129BA6CF7F65,
+	ThreeMfReader_get_Name_m20B5AF692F2C032274A27FACA6F265420CEFF5DC,
+	ThreeMfReader_get_LoadingStepEnumType_m7BB4AE012EA65A5FC08DE118ED7DB474FE58AB43,
+	ThreeMfReader_ReadStream_m34CE22AB4739DA0E8471E9C059B856A9B0C63B53,
+	ThreeMfReader_CreateRootModel_mFCCCD5A788DDEEB3D6C22F21DC2F5C612CF6906A,
+	ThreeMfReader__ctor_m3F85569377F8EE92C6630CB3DD33227AC84F927B,
+	ThreeMfReader__cctor_m520005299FD62B679928572CDD588A4AD7DCAA8C,
+};
+static const int32_t s_InvokerIndices[156] = 
+{
+	7588,
+	7457,
+	6087,
+	7352,
+	5980,
+	7352,
+	4418,
+	1907,
+	5435,
+	2352,
+	2745,
+	5522,
+	5111,
+	5435,
+	5622,
+	5629,
+	4676,
+	5435,
+	7352,
+	5980,
+	7352,
+	5524,
+	5138,
+	5441,
+	5623,
+	5630,
+	4677,
+	5441,
+	4418,
+	4418,
+	7419,
+	7419,
+	6051,
+	7352,
+	7352,
+	5980,
+	7352,
+	5980,
+	7588,
+	7457,
+	6087,
+	7352,
+	5980,
+	7577,
+	6199,
+	7577,
+	6199,
+	7474,
+	6105,
+	7577,
+	6199,
+	7352,
+	5980,
+	7457,
+	6087,
+	7457,
+	6087,
+	7457,
+	6087,
+	7352,
+	5980,
+	7457,
+	6087,
+	7457,
+	6087,
+	7457,
+	6087,
+	7457,
+	6087,
+	7352,
+	5980,
+	7442,
+	6074,
+	7588,
+	1677,
+	2706,
+	6087,
+	1925,
+	6087,
+	10857,
+	10729,
+	1692,
+	5441,
+	10584,
+	10972,
+	10957,
+	7588,
+	11187,
+	7588,
+	4418,
+	5441,
+	4418,
+	5441,
+	4418,
+	5441,
+	4418,
+	5441,
+	7457,
+	6087,
+	7457,
+	6087,
+	7457,
+	6087,
+	7457,
+	6087,
+	7457,
+	6087,
+	7457,
+	6087,
+	7457,
+	6087,
+	7588,
+	7457,
+	6087,
+	7352,
+	5980,
+	5435,
+	7419,
+	5522,
+	6087,
+	7457,
+	6087,
+	7457,
+	6087,
+	7457,
+	6087,
+	7419,
+	6051,
+	7419,
+	6051,
+	7575,
+	6197,
+	7575,
+	6197,
+	7419,
+	6051,
+	7457,
+	6087,
+	7352,
+	7352,
+	5980,
+	7419,
+	6051,
+	4418,
+	4418,
+	7419,
+	7588,
+	7419,
+	6051,
+	11152,
+	7457,
+	7457,
+	1174,
+	7457,
+	7588,
+	11187,
+};
+IL2CPP_EXTERN_C const Il2CppCodeGenModule g_TriLibCore_ThreeMf_CodeGenModule;
+const Il2CppCodeGenModule g_TriLibCore_ThreeMf_CodeGenModule = 
+{
+	"TriLibCore.ThreeMf.dll",
+	156,
+	s_methodPointers,
+	0,
+	NULL,
+	s_InvokerIndices,
+	0,
+	NULL,
+	0,
+	NULL,
+	0,
+	NULL,
+	NULL,
+	NULL, // module initializer,
+	NULL,
+	NULL,
+	NULL,
+};
