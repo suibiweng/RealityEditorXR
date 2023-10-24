@@ -20,6 +20,8 @@ public class RealityEditorManager : MonoBehaviour
 
     int IDs=0;
 
+    public WsClient websocket;
+
 
 
 
@@ -28,6 +30,7 @@ public class RealityEditorManager : MonoBehaviour
     {
         osc=FindObjectOfType<OSC>();   
         modelDownloader=FindObjectOfType<ModelDownloader>();
+        websocket=FindObjectOfType<WsClient>();
         //GenCubes= new List<GameObject>();
 
         osc.SetAllMessageHandler(ReciveFromOSC);
@@ -185,6 +188,19 @@ public class RealityEditorManager : MonoBehaviour
         message.values.Add(promt);
 
          osc.Send(message);
+
+
+         if(websocket!=null){
+            WebSocketmessage msg=new WebSocketmessage();
+            msg.ID=id.ToString();
+            msg.prompt=promt;
+
+
+
+
+            websocket.sendMessageToServer(msg);
+
+         }
 
 
         

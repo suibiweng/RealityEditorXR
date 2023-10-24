@@ -20,6 +20,30 @@ namespace RealityEditor
 
     }
 
+    public class WebSocketmessage{
+        public string ID;
+        public string prompt;
+
+        public string getMsg(){
+
+            return ""+ID+","+prompt;
+
+        }
+
+        public void setMsg(string msg){
+            string [] data=msg.Split(",");
+
+            ID=data[0];
+            prompt=data[1];
+
+
+        }
+
+
+
+
+    }
+
 
 
 
