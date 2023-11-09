@@ -340,6 +340,8 @@ struct AndroidServiceConnection_t41C34BBF24CE0E2DFB04DB1E9412B64D36E134FB;
 struct AnimationTriggers_tA0DC06F89C5280C6DD972F6F4C8A56D7F4F79074;
 // Oculus.Voice.AppVoiceExperience
 struct AppVoiceExperience_t73F120132FB3DCEDD1AD48085A8A8D77419E60EF;
+// System.AsyncCallback
+struct AsyncCallback_t7FEF460CBDCFB9C5FA2EF776984778B9A4145F4C;
 // Meta.WitAi.Data.AudioBuffer
 struct AudioBuffer_t8F78C90BB0306EE2F5C4787B5D6ACF16EEF33E72;
 // Meta.WitAi.Data.AudioBufferConfiguration
@@ -392,6 +394,8 @@ struct GlobalJavaObjectRef_t20D8E5AAFC2EB2518FCABBF40465855E797FF0D8;
 struct Graphic_tCBFCA4585A19E2B75465AECFEAC43F4016BF7931;
 // System.Net.HttpWebRequest
 struct HttpWebRequest_tDE1EF6EAE715BE99DB1645ED937A6A2AB930E7C9;
+// System.IAsyncResult
+struct IAsyncResult_t7B9B5A0ECB35DCEC31B8A8122C37D687369253B5;
 // Meta.Voice.Audio.IAudioClipStream
 struct IAudioClipStream_t8C69DFC069C32750744A9CDED216D09F3788820F;
 // Meta.WitAi.Interfaces.IAudioInputSource

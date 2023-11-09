@@ -5769,6 +5769,21 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DateTimeResult_SetFailure_m24BEDE43DC1A9
 		return;
 	}
 }
+// System.Void System.DateTimeResult::SetFailure(System.ParseFailureKind,System.String,System.Object,System.String)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DateTimeResult_SetFailure_m62FF23BEC9EBC84811C7C2107A5C7633694FD601 (DateTimeResult_t88A2CAF7FB72DB24CD634B742B58043128BB9722* __this, int32_t ___failure0, String_t* ___failureMessageID1, RuntimeObject* ___failureMessageFormatArgument2, String_t* ___failureArgumentName3, const RuntimeMethod* method) 
+{
+	{
+		int32_t L_0 = ___failure0;
+		__this->___failure_12 = L_0;
+		String_t* L_1 = ___failureMessageID1;
+		__this->___failureMessageID_13 = L_1;
+		RuntimeObject* L_2 = ___failureMessageFormatArgument2;
+		__this->___failureMessageFormatArgument_14 = L_2;
+		String_t* L_3 = ___failureArgumentName3;
+		__this->___failureArgumentName_15 = L_3;
+		return;
+	}
+}
 #ifdef __clang__
 #pragma clang diagnostic pop
 #endif

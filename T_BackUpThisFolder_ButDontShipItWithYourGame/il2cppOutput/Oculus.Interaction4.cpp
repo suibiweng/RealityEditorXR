@@ -556,6 +556,8 @@ struct ActiveStateNodeUIHorizontal_t1CF787EA572B992D14A074264A79C4316894185F;
 struct ActiveStateNodeUIVertical_t08FA97E471ED58552C3A204BD0AFB225A2756507;
 // UnityEngine.AnimationCurve
 struct AnimationCurve_tCBFFAAD05CEBB35EF8D8631BD99914BE1A6BB354;
+// System.AsyncCallback
+struct AsyncCallback_t7FEF460CBDCFB9C5FA2EF776984778B9A4145F4C;
 // Oculus.Interaction.Surfaces.AxisAlignedBox
 struct AxisAlignedBox_t969420AA0CFA7AA2E9FDE36E4D4B603A89643F36;
 // UnityEngine.Behaviour
@@ -620,6 +622,8 @@ struct IActiveStateModel_t93AE51BF6106E48F01B4867CFC390FDAB1810D56;
 struct IActiveStateNodeUI_t06FC5CB67F17629C8D041C4DCBDFDB74C576F65D;
 // Oculus.Interaction.PoseDetection.Debug.IActiveStateTreeNode
 struct IActiveStateTreeNode_tE4AB6C58F42741CA9D0F34E3043A0453C3438E10;
+// System.IAsyncResult
+struct IAsyncResult_t7B9B5A0ECB35DCEC31B8A8122C37D687369253B5;
 // Oculus.Interaction.Input.IAxis1D
 struct IAxis1D_tE0056ECCFDD6D1CA7AA6016A1CACC2319B847803;
 // Oculus.Interaction.Input.IAxis2D

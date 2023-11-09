@@ -610,6 +610,8 @@ struct AssetUnloader_t0D2BB9FFD22854B175E3142E9BC1A30F4C7EE1D9;
 struct AssetViewer_tB69C5F511C06A52D1B35085F324E356134E41963;
 // TriLibCore.Samples.AssetViewerBase
 struct AssetViewerBase_tF645C73F1BE0AE38FF845B7CF255DF28E3E054E9;
+// System.AsyncCallback
+struct AsyncCallback_t7FEF460CBDCFB9C5FA2EF776984778B9A4145F4C;
 // UnityEngine.Avatar
 struct Avatar_t7861E57EEE2CF8CC61BD63C09737BA22F7ABCA0F;
 // TriLibCore.Samples.AvatarController
@@ -716,6 +718,8 @@ struct HumanDescription_t0BD271EF43944EC6940A10C164E94F8C7E750481;
 struct HumanoidAvatarMapper_t691E00A2CE4455F03562FF79A586CC717D38FB09;
 // ICSharpCode.SharpZipLib.Zip.IArchiveStorage
 struct IArchiveStorage_t360D581E170B19C039AD55B45C35D36E029F116B;
+// System.IAsyncResult
+struct IAsyncResult_t7B9B5A0ECB35DCEC31B8A8122C37D687369253B5;
 // TriLibCore.IContextualizedError
 struct IContextualizedError_t1A6D8852ADFE9A6599568194FA7AFAE8AB6B3E8D;
 // System.Collections.IDictionary
@@ -2316,17 +2320,17 @@ struct Capture_tE11B735186DAFEE5F7A3BF5A739E9CCCE99DC24A  : public RuntimeObject
 struct Encoding_t65CDEF28CF20A7B8C92E85A4E808920C2465F095  : public RuntimeObject
 {
 	// System.Int32 System.Text.Encoding::m_codePage
-	int32_t ___m_codePage_9;
+	int32_t ___m_codePage_55;
 	// System.Globalization.CodePageDataItem System.Text.Encoding::dataItem
-	CodePageDataItem_t52460FA30AE37F4F26ACB81055E58002262F19F2* ___dataItem_10;
+	CodePageDataItem_t52460FA30AE37F4F26ACB81055E58002262F19F2* ___dataItem_56;
 	// System.Boolean System.Text.Encoding::m_deserializedFromEverett
-	bool ___m_deserializedFromEverett_11;
+	bool ___m_deserializedFromEverett_57;
 	// System.Boolean System.Text.Encoding::m_isReadOnly
-	bool ___m_isReadOnly_12;
+	bool ___m_isReadOnly_58;
 	// System.Text.EncoderFallback System.Text.Encoding::encoderFallback
-	EncoderFallback_tD2C40CE114AA9D8E1F7196608B2D088548015293* ___encoderFallback_13;
+	EncoderFallback_tD2C40CE114AA9D8E1F7196608B2D088548015293* ___encoderFallback_59;
 	// System.Text.DecoderFallback System.Text.Encoding::decoderFallback
-	DecoderFallback_t7324102215E4ED41EC065C02EB501CB0BC23CD90* ___decoderFallback_14;
+	DecoderFallback_t7324102215E4ED41EC065C02EB501CB0BC23CD90* ___decoderFallback_60;
 };
 
 struct Encoding_t65CDEF28CF20A7B8C92E85A4E808920C2465F095_StaticFields
@@ -2350,7 +2354,7 @@ struct Encoding_t65CDEF28CF20A7B8C92E85A4E808920C2465F095_StaticFields
 	// System.Collections.Generic.Dictionary`2<System.Int32,System.Text.Encoding> modreq(System.Runtime.CompilerServices.IsVolatile) System.Text.Encoding::encodings
 	Dictionary_2_t87EDE08B2E48F793A22DE50D6B3CC2E7EBB2DB54* ___encodings_8;
 	// System.Object System.Text.Encoding::s_InternalSyncObject
-	RuntimeObject* ___s_InternalSyncObject_15;
+	RuntimeObject* ___s_InternalSyncObject_61;
 };
 
 // System.Text.RegularExpressions.GroupCollection
@@ -28669,7 +28673,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SimpleCustomLoaderSample_Start_m314ABE07
 		L_0 = Encoding_get_UTF8_m9FA98A53CE96FD6D02982625C5246DD36C1235C9(NULL);
 		NullCheck(L_0);
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_1;
-		L_1 = VirtualFuncInvoker1< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, String_t* >::Invoke(17 /* System.Byte[] System.Text.Encoding::GetBytes(System.String) */, L_0, _stringLiteralB8295165A7877FB0E8D060F6AAB529166762F69C);
+		L_1 = VirtualFuncInvoker1< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, String_t* >::Invoke(18 /* System.Byte[] System.Text.Encoding::GetBytes(System.String) */, L_0, _stringLiteralB8295165A7877FB0E8D060F6AAB529166762F69C);
 		// SimpleCustomAssetLoader.LoadModelFromByteData(cubeObjBytes, FileUtils.GetFileExtension(CubeObjFilename, false), OnError, OnProgress, OnModelFullyLoad, CustomDataReceivingCallback, CustomFilenameReceivingCallback, CustomTextureReceivingCallback, CubeObjFilename, gameObject);
 		String_t* L_2;
 		L_2 = FileUtils_GetFileExtension_mE4822C0AEF1DD8417DA323CA947E741082724F99(_stringLiteralFE39BFF49019C771F2863F561B4BAAB1FB90EBE0, (bool)0, NULL);
@@ -28785,7 +28789,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Stream_tF844051B786E8F7F4244DBD218D74E8617B9A
 		L_3 = Encoding_get_UTF8_m9FA98A53CE96FD6D02982625C5246DD36C1235C9(NULL);
 		NullCheck(L_3);
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_4;
-		L_4 = VirtualFuncInvoker1< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, String_t* >::Invoke(17 /* System.Byte[] System.Text.Encoding::GetBytes(System.String) */, L_3, _stringLiteralD7D29841ADAEBB1570B62DEB375AF3459F4A109E);
+		L_4 = VirtualFuncInvoker1< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, String_t* >::Invoke(18 /* System.Byte[] System.Text.Encoding::GetBytes(System.String) */, L_3, _stringLiteralD7D29841ADAEBB1570B62DEB375AF3459F4A109E);
 		// return new MemoryStream(cubeMtlBytes);
 		MemoryStream_tAAED1B42172E3390584E4194308AB878E786AAC2* L_5 = (MemoryStream_tAAED1B42172E3390584E4194308AB878E786AAC2*)il2cpp_codegen_object_new(MemoryStream_tAAED1B42172E3390584E4194308AB878E786AAC2_il2cpp_TypeInfo_var);
 		NullCheck(L_5);

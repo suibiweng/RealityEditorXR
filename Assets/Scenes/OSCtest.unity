@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inPort: 1337
-  outIP: 192.168.0.139
+  outIP: 127.0.0.1
   outPort: 8888
 --- !u!4 &621109942
 Transform:
@@ -282,6 +282,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdf04f9043b47484db18b0e144559440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  connectURL: ws://34.106.250.143:8888/websocket
 --- !u!4 &655541541
 Transform:
   m_ObjectHideFlags: 0

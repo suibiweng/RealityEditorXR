@@ -29,7 +29,7 @@ public class GenerateSpot : MonoBehaviour
 
    public bool isselsected=false;
 
-public string Prompt;
+  public string Prompt;
 
 
 
@@ -73,14 +73,23 @@ public GameObject VoicePanel;
     externalController=GetComponent<GrabObject>();
     modelDownloader=FindObjectOfType<ModelDownloader>();
 
-        // if (externalController)
-        // {
-        //     externalController.GrabbedObjectDelegate += Grab;
-        //     externalController.ReleasedObjectDelegate += Release;
-        // }
+        if (externalController)
+        {
+            externalController.GrabbedObjectDelegate += Grab;
+            externalController.ReleasedObjectDelegate += Release;
+        }
 
         
         ControlPanels();
+    }
+
+    public void OnSelect(){
+
+        manager.updateSelected(id);
+        isselsected=true;
+
+
+
     }
 
 
@@ -88,13 +97,15 @@ public GameObject VoicePanel;
     public void Grab(OVRInput.Controller grabHand)
     {
         manager.updateSelected(id);
-        Outlinebox.line_renderer=true;
+        isselsected=true;
+
+      //  Outlinebox.line_renderer=true;
     }
 
     public void Release()
     {
 
-    Outlinebox.line_renderer=false;
+   // Outlinebox.line_renderer=false;
         
     }
 
@@ -141,7 +152,7 @@ public void onLitsenClick(){
 
         updateTheTransform();
         
-        PromtText.text=Prompt;
+    if(isselsected)  PromtText.text=Prompt;
       
         if(Input.GetKeyDown(KeyCode.Space)){
 
@@ -198,8 +209,6 @@ public void onLitsenClick(){
     }
 
     public void DebugLoadModel(){
-     
-
     
 
         modelDownloader.LoadModel(        
@@ -208,10 +217,6 @@ public void onLitsenClick(){
             gameobjectWarp=TargetObject
 
         }  );
-
-
-
-
 
 
     }

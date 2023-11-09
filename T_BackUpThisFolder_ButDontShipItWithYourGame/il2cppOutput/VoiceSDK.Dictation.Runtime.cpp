@@ -203,6 +203,8 @@ struct AndroidJavaProxy_tE5521F9761F7B95444B9C39FB15FDFC23F80A78D;
 struct AndroidServiceConnection_t41C34BBF24CE0E2DFB04DB1E9412B64D36E134FB;
 // Oculus.Voice.Dictation.AppDictationExperience
 struct AppDictationExperience_t98BF0BE35FF8640B3D7F63323F222AC5B7242F42;
+// System.AsyncCallback
+struct AsyncCallback_t7FEF460CBDCFB9C5FA2EF776984778B9A4145F4C;
 // Meta.WitAi.Events.AudioDurationTrackerFinishedEvent
 struct AudioDurationTrackerFinishedEvent_t23E275CDD44C7923B60C067FAFF9FA926AB30647;
 // Oculus.Voice.Core.Bindings.Android.BaseServiceBinding
@@ -243,6 +245,8 @@ struct DictationSessionEvent_t81D21E72E38C3F5D76E064553C027E68D9289B97;
 struct GameObject_t76FEDD663AB33C991A9C9A23129337651094216F;
 // UnityEngine.GlobalJavaObjectRef
 struct GlobalJavaObjectRef_t20D8E5AAFC2EB2518FCABBF40465855E797FF0D8;
+// System.IAsyncResult
+struct IAsyncResult_t7B9B5A0ECB35DCEC31B8A8122C37D687369253B5;
 // Meta.WitAi.Dictation.IDictationService
 struct IDictationService_tB2BC91A139297C3D8A0A27B32EC92B14437C8F10;
 // System.Collections.IDictionary
