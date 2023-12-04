@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RealityEditor;
+using Normal.Realtime; 
 
 using TriLibCore.Dae.Schema;
 
@@ -77,11 +78,12 @@ public class RealityEditorManager : MonoBehaviour
     
     
     void createSpot(Vector3 pos){
-        GameObject gcube= Instantiate(generateSpotPreFab,pos,Quaternion.identity);
+        GameObject gcube= Realtime.Instantiate("GenrateSpot",pos,Quaternion.identity);
         GenCubes.Add(gcube);
         gcube.GetComponent<GenerateSpot>().id=IDs;
-
         IDs++;
+        RealtimeTransform _realtimeTransform = gcube.GetComponent<RealtimeTransform>();
+        _realtimeTransform.RequestOwnership();
 
     }
 
