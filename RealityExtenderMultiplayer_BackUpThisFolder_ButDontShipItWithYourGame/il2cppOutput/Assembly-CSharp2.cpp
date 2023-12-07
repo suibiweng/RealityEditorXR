@@ -447,10 +447,6 @@ struct Queue_1_t1FF73914A1CB7D2DFC1BFD8FAA96C8701452A85B;
 struct Queue_1_t64CA9F9A18DB743C0281B8C8F81AA53C18D44982;
 // System.Collections.Generic.Queue`1<System.Object>
 struct Queue_1_tE9EF546915795972C3BFD68FBB8FA859D3BAF3B5;
-// Normal.Realtime.RealtimeComponent`1<System.Object>
-struct RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77;
-// Normal.Realtime.RealtimeComponent`1<Normal.Realtime.RealtimeTransformModel>
-struct RealtimeComponent_1_t2EEBF8143F45E3E28BC948B231BE66DFB5EA890C;
 // System.Threading.Tasks.Task`1<System.Int32>
 struct Task_1_t4C228DE57804012969575431CFF12D57C875552D;
 // UnityEngine.UI.CoroutineTween.TweenRunner`1<UnityEngine.UI.CoroutineTween.ColorTween>
@@ -1702,7 +1698,6 @@ IL2CPP_EXTERN_C const RuntimeMethod* Queue_1_Enqueue_mDEDCB733C589510F70933504C6
 IL2CPP_EXTERN_C const RuntimeMethod* Queue_1__ctor_m5A0B13A622E769217C13F99774EBF46D16655B53_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Queue_1_get_Count_m63754F416F785237B7B167B2A37E79CEB622576E_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* RealityEditorManager_ReciveFromOSC_mD2D481F5979B31E438BE9271EB88444643D8220E_RuntimeMethod_var;
-IL2CPP_EXTERN_C const RuntimeMethod* RealtimeComponent_1_RequestOwnership_m9A3EA642943D74939F1D7CDC03728B13B61994EB_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* ReceiveAll_OnReceive_m25219DB1F52AE0FD25113E9953D6B967E5520E34_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* ReceiveFFT_OnReceive_m73019465DB04F92B1585F2486027F4E181EFE35F_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* ReceiveLevel_OnReceive_m630F07895A56641642ACF74A33BC2F8A2C6BB2A2_RuntimeMethod_var;
@@ -11158,8 +11153,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* Queue_1_Dequeue_m86B243DF9EC23
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Action_2__ctor_m600728814D64949FB42DEE273E5E146A5E015BE1_gshared (Action_2_t4A5313D1C1FEF099C0E5969104BDE957CD82CF22* __this, RuntimeObject* ___0_object, intptr_t ___1_method, const RuntimeMethod* method) ;
 // System.Void System.Collections.Generic.List`1<System.Object>::Add(T)
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void List_1_Add_mEBCF994CC3814631017F46A387B1A192ED6C85C7_gshared_inline (List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D* __this, RuntimeObject* ___0_item, const RuntimeMethod* method) ;
-// System.Void Normal.Realtime.RealtimeComponent`1<System.Object>::RequestOwnership()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealtimeComponent_1_RequestOwnership_m168701E9D4E8E789234DAF1CF2695220778C2291_gshared (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77* __this, const RuntimeMethod* method) ;
 // System.Void System.Collections.Generic.List`1<System.Object>::RemoveAt(System.Int32)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void List_1_RemoveAt_m54F62297ADEE4D4FDA697F49ED807BF901201B54_gshared (List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D* __this, int32_t ___0_index, const RuntimeMethod* method) ;
 // System.Void UnityEngine.Events.UnityAction`1<System.Object>::.ctor(System.Object,System.IntPtr)
@@ -11858,11 +11851,6 @@ inline void List_1_Add_m43FBF207375C6E06B8C45ECE614F9B8008FB686E_inline (List_1_
 inline RealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E* GameObject_GetComponent_TisRealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E_m1B7B6D23D06B14176AB099A50360DE6D8E3CD17A (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* __this, const RuntimeMethod* method)
 {
 	return ((  RealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E* (*) (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*, const RuntimeMethod*))GameObject_GetComponent_TisRuntimeObject_m6EAED4AA356F0F48288F67899E5958792395563B_gshared)(__this, method);
-}
-// System.Void Normal.Realtime.RealtimeComponent`1<Normal.Realtime.RealtimeTransformModel>::RequestOwnership()
-inline void RealtimeComponent_1_RequestOwnership_m9A3EA642943D74939F1D7CDC03728B13B61994EB (RealtimeComponent_1_t2EEBF8143F45E3E28BC948B231BE66DFB5EA890C* __this, const RuntimeMethod* method)
-{
-	((  void (*) (RealtimeComponent_1_t2EEBF8143F45E3E28BC948B231BE66DFB5EA890C*, const RuntimeMethod*))RealtimeComponent_1_RequestOwnership_m168701E9D4E8E789234DAF1CF2695220778C2291_gshared)(__this, method);
 }
 // UnityEngine.GameObject UnityEngine.GameObject::get_gameObject()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* GameObject_get_gameObject_m0878015B8CF7F5D432B583C187725810D27B57DC (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* __this, const RuntimeMethod* method) ;
@@ -17980,7 +17968,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealityEditorManager_createSpot_m4EBD767
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GameObject_GetComponent_TisGenerateSpot_t0E9A4B7A1CA1F7F52A3F0FF2D579BCC64F76F01F_m2EA77CD9ABC6BA75AEDC575AF11243D107C46EE9_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GameObject_GetComponent_TisRealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E_m1B7B6D23D06B14176AB099A50360DE6D8E3CD17A_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&List_1_Add_m43FBF207375C6E06B8C45ECE614F9B8008FB686E_RuntimeMethod_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&RealtimeComponent_1_RequestOwnership_m9A3EA642943D74939F1D7CDC03728B13B61994EB_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Realtime_tCAD6AEE825118705C9F20591846AA624D890AD3D_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral56AF57CAA4B4B765C800B2A81608A7BFC34F6045);
 		s_Il2CppMethodInitialized = true;
@@ -18016,9 +18003,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealityEditorManager_createSpot_m4EBD767
 		NullCheck(L_9);
 		RealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E* L_10;
 		L_10 = GameObject_GetComponent_TisRealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E_m1B7B6D23D06B14176AB099A50360DE6D8E3CD17A(L_9, GameObject_GetComponent_TisRealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E_m1B7B6D23D06B14176AB099A50360DE6D8E3CD17A_RuntimeMethod_var);
-		// _realtimeTransform.RequestOwnership();
-		NullCheck(L_10);
-		RealtimeComponent_1_RequestOwnership_m9A3EA642943D74939F1D7CDC03728B13B61994EB(L_10, RealtimeComponent_1_RequestOwnership_m9A3EA642943D74939F1D7CDC03728B13B61994EB_RuntimeMethod_var);
 		// }
 		return;
 	}

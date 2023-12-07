@@ -689,6 +689,14 @@ IL2CPP_EXTERN_C const RuntimeMethod* ReadOnlySpan_1_GetHashCode_mDC71816B8A88A16
 IL2CPP_EXTERN_C const RuntimeMethod* RealtimeArray_1_Add_m049A487C4662C22344E02E7BE2B7D29C86D54205_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* RealtimeArray_1_get_Item_m63AC172C9ED1078DA63A0B75FE1B7E826C1D21AA_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* RealtimeComponent_1_ThrowIfModelMissing_m84938FAE7721DDCB44781F349BB5B12AD201CBBF_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* RealtimeComponent_1_get_isOwnedLocallyInHierarchy_m60F671EDDE100FE6C3EEE35071FBFB549917DB23_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* RealtimeComponent_1_get_isOwnedLocallySelf_m71DC9690F570460BF8351F15275B0A79445E47ED_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* RealtimeComponent_1_get_isOwnedRemotelyInHierarchy_mA475970A6BB64714A6A4F04E89DE87F92F3DA950_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* RealtimeComponent_1_get_isOwnedRemotelySelf_m8A8EF25B1E78F19C4B02EA0111022E579B4987BA_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* RealtimeComponent_1_get_isUnownedInHierarchy_m24DBF137C954C3383C3E087B5FED41BECFF65C8F_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* RealtimeComponent_1_get_isUnownedSelf_mC8D999B707C38076B08A3784510C6576B3D4115A_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* RealtimeComponent_1_get_ownerIDInHierarchy_m63E6EE9CA3BBD32D27AE42C10214E71145192759_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* RealtimeComponent_1_get_ownerIDSelf_m56EF361B2174D92F3F52CDF1AED892EFCB3012F9_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* RealtimeDictionary_1_Insert_mD429BB8808251CD5AB643315262025CE9776D43D_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* RealtimeDictionary_1_Remove_m5E0856A185B56F0E087E07E00657749187096153_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* RealtimeDictionary_1__ctor_m9F937200065E503C4FAC258C50E3ED7E59417BF2_RuntimeMethod_var;
@@ -12162,6 +12170,23 @@ IL_000c:
 		return L_2;
 	}
 }
+// System.Exception Normal.Realtime.RealtimeComponent`1<System.Object>::ModelMissingException()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Exception_t* RealtimeComponent_1_ModelMissingException_mE06EA04BE87E3BEE3F05529CABA6BF5B412AB004_gshared (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Exception_t_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral120FF13CCF824B40CF20104C6FA78E4227245DDB);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		Exception_t* L_0 = (Exception_t*)il2cpp_codegen_object_new(Exception_t_il2cpp_TypeInfo_var);
+		NullCheck(L_0);
+		Exception__ctor_m9B2BD92CD68916245A75109105D9071C9D430E7F(L_0, _stringLiteral120FF13CCF824B40CF20104C6FA78E4227245DDB, NULL);
+		return L_0;
+	}
+}
 // System.Void Normal.Realtime.RealtimeComponent`1<System.Object>::ThrowIfModelMissing()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealtimeComponent_1_ThrowIfModelMissing_m84938FAE7721DDCB44781F349BB5B12AD201CBBF_gshared (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77* __this, const RuntimeMethod* method) 
 {
@@ -12170,17 +12195,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealtimeComponent_1_ThrowIfModelMissing_
 		L_0 = ((  RuntimeObject* (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
 		if (L_0)
 		{
-			goto IL_0018;
+			goto IL_0013;
 		}
 	}
 	{
-		Exception_t* L_1 = (Exception_t*)il2cpp_codegen_object_new(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Exception_t_il2cpp_TypeInfo_var)));
-		NullCheck(L_1);
-		Exception__ctor_m9B2BD92CD68916245A75109105D9071C9D430E7F(L_1, ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral120FF13CCF824B40CF20104C6FA78E4227245DDB)), NULL);
+		Exception_t* L_1;
+		L_1 = ((  Exception_t* (*) (const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 12)))(il2cpp_rgctx_method(method->klass->rgctx_data, 12));
 		IL2CPP_RAISE_MANAGED_EXCEPTION(L_1, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&RealtimeComponent_1_ThrowIfModelMissing_m84938FAE7721DDCB44781F349BB5B12AD201CBBF_RuntimeMethod_var)));
 	}
 
-IL_0018:
+IL_0013:
 	{
 		return;
 	}
@@ -12214,7 +12238,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool RealtimeComponent_1_get_isOwnedLocally_m
 {
 	{
 		bool L_0;
-		L_0 = ((  bool (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 12)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 12));
+		L_0 = ((  bool (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 14)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 14));
 		return L_0;
 	}
 }
@@ -12223,112 +12247,248 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool RealtimeComponent_1_get_isOwnedRemotely_
 {
 	{
 		bool L_0;
-		L_0 = ((  bool (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 13)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 13));
+		L_0 = ((  bool (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 15)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 15));
 		return L_0;
 	}
 }
 // System.Int32 Normal.Realtime.RealtimeComponent`1<System.Object>::get_ownerIDSelf()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t RealtimeComponent_1_get_ownerIDSelf_m56EF361B2174D92F3F52CDF1AED892EFCB3012F9_gshared (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77* __this, const RuntimeMethod* method) 
 {
+	RuntimeObject* G_B2_0 = NULL;
+	RuntimeObject* G_B1_0 = NULL;
 	{
-		((  void (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 14)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 14));
 		RuntimeObject* L_0;
 		L_0 = ((  RuntimeObject* (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
-		NullCheck((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)L_0);
-		int32_t L_1;
-		L_1 = RealtimeModel_get_ownerIDSelf_m3737278BB200C4944BCE99A7AF7DA1DAD802FA2D((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)L_0, NULL);
-		return L_1;
+		RuntimeObject* L_1 = L_0;
+		G_B1_0 = ((RuntimeObject*)(L_1));
+		if (L_1)
+		{
+			G_B2_0 = ((RuntimeObject*)(L_1));
+			goto IL_0015;
+		}
+	}
+	{
+		Exception_t* L_2;
+		L_2 = ((  Exception_t* (*) (const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 12)))(il2cpp_rgctx_method(method->klass->rgctx_data, 12));
+		IL2CPP_RAISE_MANAGED_EXCEPTION(L_2, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&RealtimeComponent_1_get_ownerIDSelf_m56EF361B2174D92F3F52CDF1AED892EFCB3012F9_RuntimeMethod_var)));
+	}
+
+IL_0015:
+	{
+		NullCheck((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)G_B2_0);
+		int32_t L_3;
+		L_3 = RealtimeModel_get_ownerIDSelf_m3737278BB200C4944BCE99A7AF7DA1DAD802FA2D((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)G_B2_0, NULL);
+		return L_3;
 	}
 }
 // System.Int32 Normal.Realtime.RealtimeComponent`1<System.Object>::get_ownerIDInHierarchy()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t RealtimeComponent_1_get_ownerIDInHierarchy_m63E6EE9CA3BBD32D27AE42C10214E71145192759_gshared (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77* __this, const RuntimeMethod* method) 
 {
+	RuntimeObject* G_B2_0 = NULL;
+	RuntimeObject* G_B1_0 = NULL;
 	{
-		((  void (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 14)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 14));
 		RuntimeObject* L_0;
 		L_0 = ((  RuntimeObject* (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
-		NullCheck((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)L_0);
-		int32_t L_1;
-		L_1 = RealtimeModel_get_ownerIDInHierarchy_m112D43A5ABBD619DC32FBB1BEC2938C21120BAF0((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)L_0, NULL);
-		return L_1;
+		RuntimeObject* L_1 = L_0;
+		G_B1_0 = ((RuntimeObject*)(L_1));
+		if (L_1)
+		{
+			G_B2_0 = ((RuntimeObject*)(L_1));
+			goto IL_0015;
+		}
+	}
+	{
+		Exception_t* L_2;
+		L_2 = ((  Exception_t* (*) (const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 12)))(il2cpp_rgctx_method(method->klass->rgctx_data, 12));
+		IL2CPP_RAISE_MANAGED_EXCEPTION(L_2, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&RealtimeComponent_1_get_ownerIDInHierarchy_m63E6EE9CA3BBD32D27AE42C10214E71145192759_RuntimeMethod_var)));
+	}
+
+IL_0015:
+	{
+		NullCheck((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)G_B2_0);
+		int32_t L_3;
+		L_3 = RealtimeModel_get_ownerIDInHierarchy_m112D43A5ABBD619DC32FBB1BEC2938C21120BAF0((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)G_B2_0, NULL);
+		return L_3;
 	}
 }
 // System.Boolean Normal.Realtime.RealtimeComponent`1<System.Object>::get_isUnownedSelf()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool RealtimeComponent_1_get_isUnownedSelf_mC8D999B707C38076B08A3784510C6576B3D4115A_gshared (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77* __this, const RuntimeMethod* method) 
 {
+	RuntimeObject* G_B2_0 = NULL;
+	RuntimeObject* G_B1_0 = NULL;
 	{
-		((  void (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 14)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 14));
 		RuntimeObject* L_0;
 		L_0 = ((  RuntimeObject* (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
-		NullCheck((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)L_0);
-		bool L_1;
-		L_1 = RealtimeModel_get_isUnownedSelf_mC5DDE2FB1FA9BEEB118F647527B057C9FCA7B019((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)L_0, NULL);
-		return L_1;
+		RuntimeObject* L_1 = L_0;
+		G_B1_0 = ((RuntimeObject*)(L_1));
+		if (L_1)
+		{
+			G_B2_0 = ((RuntimeObject*)(L_1));
+			goto IL_0015;
+		}
+	}
+	{
+		Exception_t* L_2;
+		L_2 = ((  Exception_t* (*) (const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 12)))(il2cpp_rgctx_method(method->klass->rgctx_data, 12));
+		IL2CPP_RAISE_MANAGED_EXCEPTION(L_2, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&RealtimeComponent_1_get_isUnownedSelf_mC8D999B707C38076B08A3784510C6576B3D4115A_RuntimeMethod_var)));
+	}
+
+IL_0015:
+	{
+		NullCheck((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)G_B2_0);
+		bool L_3;
+		L_3 = RealtimeModel_get_isUnownedSelf_mC5DDE2FB1FA9BEEB118F647527B057C9FCA7B019((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)G_B2_0, NULL);
+		return L_3;
 	}
 }
 // System.Boolean Normal.Realtime.RealtimeComponent`1<System.Object>::get_isUnownedInHierarchy()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool RealtimeComponent_1_get_isUnownedInHierarchy_m24DBF137C954C3383C3E087B5FED41BECFF65C8F_gshared (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77* __this, const RuntimeMethod* method) 
 {
+	RuntimeObject* G_B2_0 = NULL;
+	RuntimeObject* G_B1_0 = NULL;
 	{
-		((  void (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 14)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 14));
 		RuntimeObject* L_0;
 		L_0 = ((  RuntimeObject* (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
-		NullCheck((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)L_0);
-		bool L_1;
-		L_1 = RealtimeModel_get_isUnownedInHierarchy_m40C5841686BD3CDA18441E21A128BE59221B68D0((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)L_0, NULL);
-		return L_1;
+		RuntimeObject* L_1 = L_0;
+		G_B1_0 = ((RuntimeObject*)(L_1));
+		if (L_1)
+		{
+			G_B2_0 = ((RuntimeObject*)(L_1));
+			goto IL_0015;
+		}
+	}
+	{
+		Exception_t* L_2;
+		L_2 = ((  Exception_t* (*) (const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 12)))(il2cpp_rgctx_method(method->klass->rgctx_data, 12));
+		IL2CPP_RAISE_MANAGED_EXCEPTION(L_2, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&RealtimeComponent_1_get_isUnownedInHierarchy_m24DBF137C954C3383C3E087B5FED41BECFF65C8F_RuntimeMethod_var)));
+	}
+
+IL_0015:
+	{
+		NullCheck((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)G_B2_0);
+		bool L_3;
+		L_3 = RealtimeModel_get_isUnownedInHierarchy_m40C5841686BD3CDA18441E21A128BE59221B68D0((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)G_B2_0, NULL);
+		return L_3;
 	}
 }
 // System.Boolean Normal.Realtime.RealtimeComponent`1<System.Object>::get_isOwnedLocallySelf()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool RealtimeComponent_1_get_isOwnedLocallySelf_m71DC9690F570460BF8351F15275B0A79445E47ED_gshared (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77* __this, const RuntimeMethod* method) 
 {
+	RuntimeObject* G_B2_0 = NULL;
+	RuntimeObject* G_B1_0 = NULL;
 	{
-		((  void (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 14)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 14));
 		RuntimeObject* L_0;
 		L_0 = ((  RuntimeObject* (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
-		NullCheck((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)L_0);
-		bool L_1;
-		L_1 = RealtimeModel_get_isOwnedLocallySelf_m1E85DA3147F22531E5B85948007C1EC362900825((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)L_0, NULL);
-		return L_1;
+		RuntimeObject* L_1 = L_0;
+		G_B1_0 = ((RuntimeObject*)(L_1));
+		if (L_1)
+		{
+			G_B2_0 = ((RuntimeObject*)(L_1));
+			goto IL_0015;
+		}
+	}
+	{
+		Exception_t* L_2;
+		L_2 = ((  Exception_t* (*) (const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 12)))(il2cpp_rgctx_method(method->klass->rgctx_data, 12));
+		IL2CPP_RAISE_MANAGED_EXCEPTION(L_2, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&RealtimeComponent_1_get_isOwnedLocallySelf_m71DC9690F570460BF8351F15275B0A79445E47ED_RuntimeMethod_var)));
+	}
+
+IL_0015:
+	{
+		NullCheck((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)G_B2_0);
+		bool L_3;
+		L_3 = RealtimeModel_get_isOwnedLocallySelf_m1E85DA3147F22531E5B85948007C1EC362900825((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)G_B2_0, NULL);
+		return L_3;
 	}
 }
 // System.Boolean Normal.Realtime.RealtimeComponent`1<System.Object>::get_isOwnedLocallyInHierarchy()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool RealtimeComponent_1_get_isOwnedLocallyInHierarchy_m60F671EDDE100FE6C3EEE35071FBFB549917DB23_gshared (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77* __this, const RuntimeMethod* method) 
 {
+	RuntimeObject* G_B2_0 = NULL;
+	RuntimeObject* G_B1_0 = NULL;
 	{
-		((  void (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 14)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 14));
 		RuntimeObject* L_0;
 		L_0 = ((  RuntimeObject* (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
-		NullCheck((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)L_0);
-		bool L_1;
-		L_1 = RealtimeModel_get_isOwnedLocallyInHierarchy_m03CFD286E6DD4D9BAB947760A45D0D357181D60B((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)L_0, NULL);
-		return L_1;
+		RuntimeObject* L_1 = L_0;
+		G_B1_0 = ((RuntimeObject*)(L_1));
+		if (L_1)
+		{
+			G_B2_0 = ((RuntimeObject*)(L_1));
+			goto IL_0015;
+		}
+	}
+	{
+		Exception_t* L_2;
+		L_2 = ((  Exception_t* (*) (const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 12)))(il2cpp_rgctx_method(method->klass->rgctx_data, 12));
+		IL2CPP_RAISE_MANAGED_EXCEPTION(L_2, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&RealtimeComponent_1_get_isOwnedLocallyInHierarchy_m60F671EDDE100FE6C3EEE35071FBFB549917DB23_RuntimeMethod_var)));
+	}
+
+IL_0015:
+	{
+		NullCheck((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)G_B2_0);
+		bool L_3;
+		L_3 = RealtimeModel_get_isOwnedLocallyInHierarchy_m03CFD286E6DD4D9BAB947760A45D0D357181D60B((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)G_B2_0, NULL);
+		return L_3;
 	}
 }
 // System.Boolean Normal.Realtime.RealtimeComponent`1<System.Object>::get_isOwnedRemotelySelf()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool RealtimeComponent_1_get_isOwnedRemotelySelf_m8A8EF25B1E78F19C4B02EA0111022E579B4987BA_gshared (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77* __this, const RuntimeMethod* method) 
 {
+	RuntimeObject* G_B2_0 = NULL;
+	RuntimeObject* G_B1_0 = NULL;
 	{
-		((  void (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 14)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 14));
 		RuntimeObject* L_0;
 		L_0 = ((  RuntimeObject* (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
-		NullCheck((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)L_0);
-		bool L_1;
-		L_1 = RealtimeModel_get_isOwnedRemotelySelf_mBE2E2174F6E3303746C5F9632BF8706F1633BF1B((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)L_0, NULL);
-		return L_1;
+		RuntimeObject* L_1 = L_0;
+		G_B1_0 = ((RuntimeObject*)(L_1));
+		if (L_1)
+		{
+			G_B2_0 = ((RuntimeObject*)(L_1));
+			goto IL_0015;
+		}
+	}
+	{
+		Exception_t* L_2;
+		L_2 = ((  Exception_t* (*) (const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 12)))(il2cpp_rgctx_method(method->klass->rgctx_data, 12));
+		IL2CPP_RAISE_MANAGED_EXCEPTION(L_2, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&RealtimeComponent_1_get_isOwnedRemotelySelf_m8A8EF25B1E78F19C4B02EA0111022E579B4987BA_RuntimeMethod_var)));
+	}
+
+IL_0015:
+	{
+		NullCheck((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)G_B2_0);
+		bool L_3;
+		L_3 = RealtimeModel_get_isOwnedRemotelySelf_mBE2E2174F6E3303746C5F9632BF8706F1633BF1B((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)G_B2_0, NULL);
+		return L_3;
 	}
 }
 // System.Boolean Normal.Realtime.RealtimeComponent`1<System.Object>::get_isOwnedRemotelyInHierarchy()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool RealtimeComponent_1_get_isOwnedRemotelyInHierarchy_mA475970A6BB64714A6A4F04E89DE87F92F3DA950_gshared (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77* __this, const RuntimeMethod* method) 
 {
+	RuntimeObject* G_B2_0 = NULL;
+	RuntimeObject* G_B1_0 = NULL;
 	{
-		((  void (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 14)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 14));
 		RuntimeObject* L_0;
 		L_0 = ((  RuntimeObject* (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
-		NullCheck((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)L_0);
-		bool L_1;
-		L_1 = RealtimeModel_get_isOwnedRemotelyInHierarchy_m8698E5D6DB5B14AEAE5F6774CA91A932E7CFDF12((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)L_0, NULL);
-		return L_1;
+		RuntimeObject* L_1 = L_0;
+		G_B1_0 = ((RuntimeObject*)(L_1));
+		if (L_1)
+		{
+			G_B2_0 = ((RuntimeObject*)(L_1));
+			goto IL_0015;
+		}
+	}
+	{
+		Exception_t* L_2;
+		L_2 = ((  Exception_t* (*) (const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 12)))(il2cpp_rgctx_method(method->klass->rgctx_data, 12));
+		IL2CPP_RAISE_MANAGED_EXCEPTION(L_2, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&RealtimeComponent_1_get_isOwnedRemotelyInHierarchy_mA475970A6BB64714A6A4F04E89DE87F92F3DA950_RuntimeMethod_var)));
+	}
+
+IL_0015:
+	{
+		NullCheck((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)G_B2_0);
+		bool L_3;
+		L_3 = RealtimeModel_get_isOwnedRemotelyInHierarchy_m8698E5D6DB5B14AEAE5F6774CA91A932E7CFDF12((RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931*)G_B2_0, NULL);
+		return L_3;
 	}
 }
 // System.Void Normal.Realtime.RealtimeComponent`1<System.Object>::RequestOwnership()
@@ -12337,7 +12497,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealtimeComponent_1_RequestOwnership_m16
 	RuntimeObject* G_B2_0 = NULL;
 	RuntimeObject* G_B1_0 = NULL;
 	{
-		((  void (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 14)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 14));
+		((  void (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 16)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 16));
 		RuntimeObject* L_0;
 		L_0 = ((  RuntimeObject* (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
 		RuntimeObject* L_1 = L_0;
@@ -12365,7 +12525,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealtimeComponent_1_SetOwnership_m27BEF3
 	RuntimeObject* G_B2_0 = NULL;
 	RuntimeObject* G_B1_0 = NULL;
 	{
-		((  void (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 14)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 14));
+		((  void (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 16)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 16));
 		RuntimeObject* L_0;
 		L_0 = ((  RuntimeObject* (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
 		RuntimeObject* L_1 = L_0;
@@ -12394,7 +12554,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealtimeComponent_1_ClearOwnership_m0994
 	RuntimeObject* G_B2_0 = NULL;
 	RuntimeObject* G_B1_0 = NULL;
 	{
-		((  void (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 14)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 14));
+		((  void (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 16)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 16));
 		RuntimeObject* L_0;
 		L_0 = ((  RuntimeObject* (*) (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
 		RuntimeObject* L_1 = L_0;
@@ -17005,8 +17165,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReliableProperty_1_set_value_mF9D65CBEF5
 {
 	{
 		bool L_0 = ___0_value;
-		__this->____value_3 = L_0;
-		((  void (*) (ReliableProperty_1_t1C09DBA0767299ADCA1BDEBD090F78AE6F9BCA34*, bool, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 4)))(__this, (bool)1, il2cpp_rgctx_method(method->klass->rgctx_data, 4));
+		((  void (*) (ReliableProperty_1_t1C09DBA0767299ADCA1BDEBD090F78AE6F9BCA34*, bool, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
 		return;
 	}
 }
@@ -17024,6 +17183,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReliableProperty_1_set_dirty_m19B7EE2896
 	{
 		bool L_0 = ___0_value;
 		__this->___U3CdirtyU3Ek__BackingField_5 = L_0;
+		return;
+	}
+}
+// System.Void Normal.Realtime.ReliableProperty`1<System.Boolean>::UpdateValue(T)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReliableProperty_1_UpdateValue_m050E9509B9524970D640CDAAB9332AB6215F23F5_gshared (ReliableProperty_1_t1C09DBA0767299ADCA1BDEBD090F78AE6F9BCA34* __this, bool ___0_value, const RuntimeMethod* method) 
+{
+	{
+		bool L_0 = ___0_value;
+		__this->____value_3 = L_0;
+		((  void (*) (ReliableProperty_1_t1C09DBA0767299ADCA1BDEBD090F78AE6F9BCA34*, bool, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 4)))(__this, (bool)1, il2cpp_rgctx_method(method->klass->rgctx_data, 4));
 		return;
 	}
 }
@@ -17048,7 +17217,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ReliableProperty_1_ShouldWrite_mEB5ECD36
 	}
 	{
 		bool L_4;
-		L_4 = ((  bool (*) (ReliableProperty_1_t1C09DBA0767299ADCA1BDEBD090F78AE6F9BCA34*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
+		L_4 = ((  bool (*) (ReliableProperty_1_t1C09DBA0767299ADCA1BDEBD090F78AE6F9BCA34*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
 		return L_4;
 	}
 
@@ -17068,7 +17237,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t ReliableProperty_1_WriteLength_m3859B
 	{
 		StreamContext_tB6F602239FAE27C560565D545DC928557584E72F L_0 = ___0_context;
 		bool L_1;
-		L_1 = ((  bool (*) (ReliableProperty_1_t1C09DBA0767299ADCA1BDEBD090F78AE6F9BCA34*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
+		L_1 = ((  bool (*) (ReliableProperty_1_t1C09DBA0767299ADCA1BDEBD090F78AE6F9BCA34*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 7)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 7));
 		if (L_1)
 		{
 			goto IL_000b;
@@ -17083,7 +17252,7 @@ IL_000b:
 		PropertySerializer_1_t6A16B80BD581B245522DE3FAB3E9744918D94AEA* L_2 = (PropertySerializer_1_t6A16B80BD581B245522DE3FAB3E9744918D94AEA*)(&__this->___serializer_0);
 		bool L_3 = (bool)__this->____value_3;
 		int32_t L_4;
-		L_4 = PropertySerializer_1_Length_mFB4FA0A7FBAB516CB4FCC57B66CD7BE1CF56FF99(L_2, L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 7));
+		L_4 = PropertySerializer_1_Length_mFB4FA0A7FBAB516CB4FCC57B66CD7BE1CF56FF99(L_2, L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 8));
 		return L_4;
 	}
 }
@@ -17099,7 +17268,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ReliableProperty_1_Write_m990B593E785AE6
 	{
 		StreamContext_tB6F602239FAE27C560565D545DC928557584E72F L_0 = ___1_context;
 		bool L_1;
-		L_1 = ((  bool (*) (ReliableProperty_1_t1C09DBA0767299ADCA1BDEBD090F78AE6F9BCA34*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
+		L_1 = ((  bool (*) (ReliableProperty_1_t1C09DBA0767299ADCA1BDEBD090F78AE6F9BCA34*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 7)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 7));
 		if (L_1)
 		{
 			goto IL_000b;
@@ -17113,8 +17282,8 @@ IL_000b:
 	{
 		PropertySerializer_1_t6A16B80BD581B245522DE3FAB3E9744918D94AEA* L_2 = (PropertySerializer_1_t6A16B80BD581B245522DE3FAB3E9744918D94AEA*)(&__this->___serializer_0);
 		bool L_3 = (bool)__this->____value_3;
-		PropertySerializer_1_Write_m2AB0A3670B1D57F7B9C3F100AAE7C384B5C2915C(L_2, (&___0_stream), L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 8));
-		((  void (*) (ReliableProperty_1_t1C09DBA0767299ADCA1BDEBD090F78AE6F9BCA34*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 9)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 9));
+		PropertySerializer_1_Write_m2AB0A3670B1D57F7B9C3F100AAE7C384B5C2915C(L_2, (&___0_stream), L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 9));
+		((  void (*) (ReliableProperty_1_t1C09DBA0767299ADCA1BDEBD090F78AE6F9BCA34*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 10)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 10));
 		StreamContext_tB6F602239FAE27C560565D545DC928557584E72F L_4 = ___1_context;
 		bool L_5 = (bool)L_4.___fullModel_2;
 		if (!L_5)
@@ -17168,9 +17337,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ReliableProperty_1_Read_m174AEE163815A63
 		V_0 = L_0;
 		PropertySerializer_1_t6A16B80BD581B245522DE3FAB3E9744918D94AEA* L_1 = (PropertySerializer_1_t6A16B80BD581B245522DE3FAB3E9744918D94AEA*)(&__this->___serializer_0);
 		bool* L_2 = (bool*)(&__this->____confirmed_2);
-		PropertySerializer_1_Read_mA6469B238B3619495FA8B3EB42AE94814BEBD368(L_1, (&___0_stream), L_2, il2cpp_rgctx_method(method->klass->rgctx_data, 10));
+		PropertySerializer_1_Read_mA6469B238B3619495FA8B3EB42AE94814BEBD368(L_1, (&___0_stream), L_2, il2cpp_rgctx_method(method->klass->rgctx_data, 11));
 		bool L_3;
-		L_3 = ((  bool (*) (ReliableProperty_1_t1C09DBA0767299ADCA1BDEBD090F78AE6F9BCA34*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
+		L_3 = ((  bool (*) (ReliableProperty_1_t1C09DBA0767299ADCA1BDEBD090F78AE6F9BCA34*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
 		if (L_3)
 		{
 			goto IL_002f;
@@ -17200,7 +17369,7 @@ IL_0031:
 		bool L_9 = (bool)__this->____value_3;
 		NullCheck(L_7);
 		bool L_10;
-		L_10 = InterfaceFuncInvoker2< bool, bool, bool >::Invoke(0 /* System.Boolean System.Collections.Generic.IEqualityComparer`1<System.Boolean>::Equals(T,T) */, il2cpp_rgctx_data(method->klass->rgctx_data, 11), L_7, L_8, L_9);
+		L_10 = InterfaceFuncInvoker2< bool, bool, bool >::Invoke(0 /* System.Boolean System.Collections.Generic.IEqualityComparer`1<System.Boolean>::Equals(T,T) */, il2cpp_rgctx_data(method->klass->rgctx_data, 12), L_7, L_8, L_9);
 		return (bool)((((int32_t)L_10) == ((int32_t)0))? 1 : 0);
 	}
 }
@@ -17344,7 +17513,7 @@ IL_007b:
 IL_008b:
 	{
 		bool L_25;
-		L_25 = ((  bool (*) (ReliableProperty_1_t1C09DBA0767299ADCA1BDEBD090F78AE6F9BCA34*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
+		L_25 = ((  bool (*) (ReliableProperty_1_t1C09DBA0767299ADCA1BDEBD090F78AE6F9BCA34*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
 		if (L_25)
 		{
 			goto IL_009f;
@@ -17453,8 +17622,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReliableProperty_1_set_value_m41B253ACC8
 {
 	{
 		int32_t L_0 = ___0_value;
-		__this->____value_3 = L_0;
-		((  void (*) (ReliableProperty_1_tD4A125869A36F60BE9E74CADD1C1C607274FA896*, bool, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 4)))(__this, (bool)1, il2cpp_rgctx_method(method->klass->rgctx_data, 4));
+		((  void (*) (ReliableProperty_1_tD4A125869A36F60BE9E74CADD1C1C607274FA896*, int32_t, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
 		return;
 	}
 }
@@ -17472,6 +17640,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReliableProperty_1_set_dirty_m525924F4D3
 	{
 		bool L_0 = ___0_value;
 		__this->___U3CdirtyU3Ek__BackingField_5 = L_0;
+		return;
+	}
+}
+// System.Void Normal.Realtime.ReliableProperty`1<System.Int32>::UpdateValue(T)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReliableProperty_1_UpdateValue_m5D99A1B2203827E6D7F0AF630506BBB93CAB5130_gshared (ReliableProperty_1_tD4A125869A36F60BE9E74CADD1C1C607274FA896* __this, int32_t ___0_value, const RuntimeMethod* method) 
+{
+	{
+		int32_t L_0 = ___0_value;
+		__this->____value_3 = L_0;
+		((  void (*) (ReliableProperty_1_tD4A125869A36F60BE9E74CADD1C1C607274FA896*, bool, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 4)))(__this, (bool)1, il2cpp_rgctx_method(method->klass->rgctx_data, 4));
 		return;
 	}
 }
@@ -17496,7 +17674,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ReliableProperty_1_ShouldWrite_mA02DCF9F
 	}
 	{
 		bool L_4;
-		L_4 = ((  bool (*) (ReliableProperty_1_tD4A125869A36F60BE9E74CADD1C1C607274FA896*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
+		L_4 = ((  bool (*) (ReliableProperty_1_tD4A125869A36F60BE9E74CADD1C1C607274FA896*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
 		return L_4;
 	}
 
@@ -17516,7 +17694,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t ReliableProperty_1_WriteLength_mC405A
 	{
 		StreamContext_tB6F602239FAE27C560565D545DC928557584E72F L_0 = ___0_context;
 		bool L_1;
-		L_1 = ((  bool (*) (ReliableProperty_1_tD4A125869A36F60BE9E74CADD1C1C607274FA896*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
+		L_1 = ((  bool (*) (ReliableProperty_1_tD4A125869A36F60BE9E74CADD1C1C607274FA896*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 7)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 7));
 		if (L_1)
 		{
 			goto IL_000b;
@@ -17531,7 +17709,7 @@ IL_000b:
 		PropertySerializer_1_tD487F4DC7B2D4D87EC187CF6E20212DCB6B32C03* L_2 = (PropertySerializer_1_tD487F4DC7B2D4D87EC187CF6E20212DCB6B32C03*)(&__this->___serializer_0);
 		int32_t L_3 = (int32_t)__this->____value_3;
 		int32_t L_4;
-		L_4 = PropertySerializer_1_Length_m17A237A12E6E43A217377860511D5B2D3B47792B(L_2, L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 7));
+		L_4 = PropertySerializer_1_Length_m17A237A12E6E43A217377860511D5B2D3B47792B(L_2, L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 8));
 		return L_4;
 	}
 }
@@ -17547,7 +17725,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ReliableProperty_1_Write_m1EFD808E2F4C64
 	{
 		StreamContext_tB6F602239FAE27C560565D545DC928557584E72F L_0 = ___1_context;
 		bool L_1;
-		L_1 = ((  bool (*) (ReliableProperty_1_tD4A125869A36F60BE9E74CADD1C1C607274FA896*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
+		L_1 = ((  bool (*) (ReliableProperty_1_tD4A125869A36F60BE9E74CADD1C1C607274FA896*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 7)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 7));
 		if (L_1)
 		{
 			goto IL_000b;
@@ -17561,8 +17739,8 @@ IL_000b:
 	{
 		PropertySerializer_1_tD487F4DC7B2D4D87EC187CF6E20212DCB6B32C03* L_2 = (PropertySerializer_1_tD487F4DC7B2D4D87EC187CF6E20212DCB6B32C03*)(&__this->___serializer_0);
 		int32_t L_3 = (int32_t)__this->____value_3;
-		PropertySerializer_1_Write_m8CD6AB1B8BAC20D8548384280A2F5B706999797B(L_2, (&___0_stream), L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 8));
-		((  void (*) (ReliableProperty_1_tD4A125869A36F60BE9E74CADD1C1C607274FA896*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 9)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 9));
+		PropertySerializer_1_Write_m8CD6AB1B8BAC20D8548384280A2F5B706999797B(L_2, (&___0_stream), L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 9));
+		((  void (*) (ReliableProperty_1_tD4A125869A36F60BE9E74CADD1C1C607274FA896*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 10)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 10));
 		StreamContext_tB6F602239FAE27C560565D545DC928557584E72F L_4 = ___1_context;
 		bool L_5 = (bool)L_4.___fullModel_2;
 		if (!L_5)
@@ -17616,9 +17794,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ReliableProperty_1_Read_m1576BDB6CAAA506
 		V_0 = L_0;
 		PropertySerializer_1_tD487F4DC7B2D4D87EC187CF6E20212DCB6B32C03* L_1 = (PropertySerializer_1_tD487F4DC7B2D4D87EC187CF6E20212DCB6B32C03*)(&__this->___serializer_0);
 		int32_t* L_2 = (int32_t*)(&__this->____confirmed_2);
-		PropertySerializer_1_Read_m958BD2C0CBA7E5D195329D5E9F004F81F3103940(L_1, (&___0_stream), L_2, il2cpp_rgctx_method(method->klass->rgctx_data, 10));
+		PropertySerializer_1_Read_m958BD2C0CBA7E5D195329D5E9F004F81F3103940(L_1, (&___0_stream), L_2, il2cpp_rgctx_method(method->klass->rgctx_data, 11));
 		bool L_3;
-		L_3 = ((  bool (*) (ReliableProperty_1_tD4A125869A36F60BE9E74CADD1C1C607274FA896*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
+		L_3 = ((  bool (*) (ReliableProperty_1_tD4A125869A36F60BE9E74CADD1C1C607274FA896*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
 		if (L_3)
 		{
 			goto IL_002f;
@@ -17648,7 +17826,7 @@ IL_0031:
 		int32_t L_9 = (int32_t)__this->____value_3;
 		NullCheck(L_7);
 		bool L_10;
-		L_10 = InterfaceFuncInvoker2< bool, int32_t, int32_t >::Invoke(0 /* System.Boolean System.Collections.Generic.IEqualityComparer`1<System.Int32>::Equals(T,T) */, il2cpp_rgctx_data(method->klass->rgctx_data, 11), L_7, L_8, L_9);
+		L_10 = InterfaceFuncInvoker2< bool, int32_t, int32_t >::Invoke(0 /* System.Boolean System.Collections.Generic.IEqualityComparer`1<System.Int32>::Equals(T,T) */, il2cpp_rgctx_data(method->klass->rgctx_data, 12), L_7, L_8, L_9);
 		return (bool)((((int32_t)L_10) == ((int32_t)0))? 1 : 0);
 	}
 }
@@ -17792,7 +17970,7 @@ IL_007b:
 IL_008b:
 	{
 		bool L_25;
-		L_25 = ((  bool (*) (ReliableProperty_1_tD4A125869A36F60BE9E74CADD1C1C607274FA896*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
+		L_25 = ((  bool (*) (ReliableProperty_1_tD4A125869A36F60BE9E74CADD1C1C607274FA896*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
 		if (L_25)
 		{
 			goto IL_009f;
@@ -17902,9 +18080,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReliableProperty_1_set_value_mF2C0E0CA1E
 {
 	{
 		RuntimeObject* L_0 = ___0_value;
-		__this->____value_3 = L_0;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->____value_3), (void*)L_0);
-		((  void (*) (ReliableProperty_1_tD15B3F2F9591C94A51DE4E4BF60987E1CD6BAADB*, bool, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 4)))(__this, (bool)1, il2cpp_rgctx_method(method->klass->rgctx_data, 4));
+		((  void (*) (ReliableProperty_1_tD15B3F2F9591C94A51DE4E4BF60987E1CD6BAADB*, RuntimeObject*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
 		return;
 	}
 }
@@ -17922,6 +18098,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReliableProperty_1_set_dirty_mE0166B4EEB
 	{
 		bool L_0 = ___0_value;
 		__this->___U3CdirtyU3Ek__BackingField_5 = L_0;
+		return;
+	}
+}
+// System.Void Normal.Realtime.ReliableProperty`1<System.Object>::UpdateValue(T)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReliableProperty_1_UpdateValue_m6D59D1386397EBCA052E209CB189BA2DE6CF6E6F_gshared (ReliableProperty_1_tD15B3F2F9591C94A51DE4E4BF60987E1CD6BAADB* __this, RuntimeObject* ___0_value, const RuntimeMethod* method) 
+{
+	{
+		RuntimeObject* L_0 = ___0_value;
+		__this->____value_3 = L_0;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->____value_3), (void*)L_0);
+		((  void (*) (ReliableProperty_1_tD15B3F2F9591C94A51DE4E4BF60987E1CD6BAADB*, bool, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 4)))(__this, (bool)1, il2cpp_rgctx_method(method->klass->rgctx_data, 4));
 		return;
 	}
 }
@@ -17946,7 +18133,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ReliableProperty_1_ShouldWrite_mEF059D16
 	}
 	{
 		bool L_4;
-		L_4 = ((  bool (*) (ReliableProperty_1_tD15B3F2F9591C94A51DE4E4BF60987E1CD6BAADB*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
+		L_4 = ((  bool (*) (ReliableProperty_1_tD15B3F2F9591C94A51DE4E4BF60987E1CD6BAADB*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
 		return L_4;
 	}
 
@@ -17966,7 +18153,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t ReliableProperty_1_WriteLength_mE5AAB
 	{
 		StreamContext_tB6F602239FAE27C560565D545DC928557584E72F L_0 = ___0_context;
 		bool L_1;
-		L_1 = ((  bool (*) (ReliableProperty_1_tD15B3F2F9591C94A51DE4E4BF60987E1CD6BAADB*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
+		L_1 = ((  bool (*) (ReliableProperty_1_tD15B3F2F9591C94A51DE4E4BF60987E1CD6BAADB*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 7)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 7));
 		if (L_1)
 		{
 			goto IL_000b;
@@ -17981,7 +18168,7 @@ IL_000b:
 		PropertySerializer_1_t7AF73F04BE7B1D880DD7528C5F2AC46A0D483725* L_2 = (PropertySerializer_1_t7AF73F04BE7B1D880DD7528C5F2AC46A0D483725*)(&__this->___serializer_0);
 		RuntimeObject* L_3 = (RuntimeObject*)__this->____value_3;
 		int32_t L_4;
-		L_4 = PropertySerializer_1_Length_m7EFE1774B842788341523FE85EA5D58729FF3046(L_2, L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 7));
+		L_4 = PropertySerializer_1_Length_m7EFE1774B842788341523FE85EA5D58729FF3046(L_2, L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 8));
 		return L_4;
 	}
 }
@@ -17997,7 +18184,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ReliableProperty_1_Write_mEB8692EB26AE43
 	{
 		StreamContext_tB6F602239FAE27C560565D545DC928557584E72F L_0 = ___1_context;
 		bool L_1;
-		L_1 = ((  bool (*) (ReliableProperty_1_tD15B3F2F9591C94A51DE4E4BF60987E1CD6BAADB*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
+		L_1 = ((  bool (*) (ReliableProperty_1_tD15B3F2F9591C94A51DE4E4BF60987E1CD6BAADB*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 7)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 7));
 		if (L_1)
 		{
 			goto IL_000b;
@@ -18011,8 +18198,8 @@ IL_000b:
 	{
 		PropertySerializer_1_t7AF73F04BE7B1D880DD7528C5F2AC46A0D483725* L_2 = (PropertySerializer_1_t7AF73F04BE7B1D880DD7528C5F2AC46A0D483725*)(&__this->___serializer_0);
 		RuntimeObject* L_3 = (RuntimeObject*)__this->____value_3;
-		PropertySerializer_1_Write_m8F6287FBFE70BFA55BD022DE60EB805D6868490B(L_2, (&___0_stream), L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 8));
-		((  void (*) (ReliableProperty_1_tD15B3F2F9591C94A51DE4E4BF60987E1CD6BAADB*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 9)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 9));
+		PropertySerializer_1_Write_m8F6287FBFE70BFA55BD022DE60EB805D6868490B(L_2, (&___0_stream), L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 9));
+		((  void (*) (ReliableProperty_1_tD15B3F2F9591C94A51DE4E4BF60987E1CD6BAADB*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 10)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 10));
 		StreamContext_tB6F602239FAE27C560565D545DC928557584E72F L_4 = ___1_context;
 		bool L_5 = (bool)L_4.___fullModel_2;
 		if (!L_5)
@@ -18067,9 +18254,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ReliableProperty_1_Read_m8CD3518BDC4B728
 		V_0 = L_0;
 		PropertySerializer_1_t7AF73F04BE7B1D880DD7528C5F2AC46A0D483725* L_1 = (PropertySerializer_1_t7AF73F04BE7B1D880DD7528C5F2AC46A0D483725*)(&__this->___serializer_0);
 		RuntimeObject** L_2 = (RuntimeObject**)(&__this->____confirmed_2);
-		PropertySerializer_1_Read_mC8345A362B6624A8688A3CD7252EAEBCE882ACCF(L_1, (&___0_stream), L_2, il2cpp_rgctx_method(method->klass->rgctx_data, 10));
+		PropertySerializer_1_Read_mC8345A362B6624A8688A3CD7252EAEBCE882ACCF(L_1, (&___0_stream), L_2, il2cpp_rgctx_method(method->klass->rgctx_data, 11));
 		bool L_3;
-		L_3 = ((  bool (*) (ReliableProperty_1_tD15B3F2F9591C94A51DE4E4BF60987E1CD6BAADB*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
+		L_3 = ((  bool (*) (ReliableProperty_1_tD15B3F2F9591C94A51DE4E4BF60987E1CD6BAADB*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
 		if (L_3)
 		{
 			goto IL_002f;
@@ -18100,7 +18287,7 @@ IL_0031:
 		RuntimeObject* L_9 = (RuntimeObject*)__this->____value_3;
 		NullCheck(L_7);
 		bool L_10;
-		L_10 = InterfaceFuncInvoker2< bool, RuntimeObject*, RuntimeObject* >::Invoke(0 /* System.Boolean System.Collections.Generic.IEqualityComparer`1<System.Object>::Equals(T,T) */, il2cpp_rgctx_data(method->klass->rgctx_data, 11), L_7, L_8, L_9);
+		L_10 = InterfaceFuncInvoker2< bool, RuntimeObject*, RuntimeObject* >::Invoke(0 /* System.Boolean System.Collections.Generic.IEqualityComparer`1<System.Object>::Equals(T,T) */, il2cpp_rgctx_data(method->klass->rgctx_data, 12), L_7, L_8, L_9);
 		return (bool)((((int32_t)L_10) == ((int32_t)0))? 1 : 0);
 	}
 }
@@ -18244,7 +18431,7 @@ IL_007b:
 IL_008b:
 	{
 		bool L_25;
-		L_25 = ((  bool (*) (ReliableProperty_1_tD15B3F2F9591C94A51DE4E4BF60987E1CD6BAADB*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
+		L_25 = ((  bool (*) (ReliableProperty_1_tD15B3F2F9591C94A51DE4E4BF60987E1CD6BAADB*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
 		if (L_25)
 		{
 			goto IL_009f;
@@ -18354,8 +18541,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReliableProperty_1_set_value_mD67DF45F2E
 {
 	{
 		float L_0 = ___0_value;
-		__this->____value_3 = L_0;
-		((  void (*) (ReliableProperty_1_t19D0594554F0A09F2047F4948D2E7B061B29B0C1*, bool, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 4)))(__this, (bool)1, il2cpp_rgctx_method(method->klass->rgctx_data, 4));
+		((  void (*) (ReliableProperty_1_t19D0594554F0A09F2047F4948D2E7B061B29B0C1*, float, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
 		return;
 	}
 }
@@ -18373,6 +18559,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReliableProperty_1_set_dirty_m619DD75D56
 	{
 		bool L_0 = ___0_value;
 		__this->___U3CdirtyU3Ek__BackingField_5 = L_0;
+		return;
+	}
+}
+// System.Void Normal.Realtime.ReliableProperty`1<System.Single>::UpdateValue(T)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReliableProperty_1_UpdateValue_m10110D0437B2FEF78F430335717CB965E9E1C218_gshared (ReliableProperty_1_t19D0594554F0A09F2047F4948D2E7B061B29B0C1* __this, float ___0_value, const RuntimeMethod* method) 
+{
+	{
+		float L_0 = ___0_value;
+		__this->____value_3 = L_0;
+		((  void (*) (ReliableProperty_1_t19D0594554F0A09F2047F4948D2E7B061B29B0C1*, bool, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 4)))(__this, (bool)1, il2cpp_rgctx_method(method->klass->rgctx_data, 4));
 		return;
 	}
 }
@@ -18397,7 +18593,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ReliableProperty_1_ShouldWrite_m9C4FBF8C
 	}
 	{
 		bool L_4;
-		L_4 = ((  bool (*) (ReliableProperty_1_t19D0594554F0A09F2047F4948D2E7B061B29B0C1*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
+		L_4 = ((  bool (*) (ReliableProperty_1_t19D0594554F0A09F2047F4948D2E7B061B29B0C1*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
 		return L_4;
 	}
 
@@ -18417,7 +18613,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t ReliableProperty_1_WriteLength_mD7034
 	{
 		StreamContext_tB6F602239FAE27C560565D545DC928557584E72F L_0 = ___0_context;
 		bool L_1;
-		L_1 = ((  bool (*) (ReliableProperty_1_t19D0594554F0A09F2047F4948D2E7B061B29B0C1*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
+		L_1 = ((  bool (*) (ReliableProperty_1_t19D0594554F0A09F2047F4948D2E7B061B29B0C1*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 7)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 7));
 		if (L_1)
 		{
 			goto IL_000b;
@@ -18432,7 +18628,7 @@ IL_000b:
 		PropertySerializer_1_tB0DBCE1CE4E9C3A10BD0DFEC3E78DB5C2C38174A* L_2 = (PropertySerializer_1_tB0DBCE1CE4E9C3A10BD0DFEC3E78DB5C2C38174A*)(&__this->___serializer_0);
 		float L_3 = (float)__this->____value_3;
 		int32_t L_4;
-		L_4 = PropertySerializer_1_Length_mFF8F3E10C3CA35640C7887494A23E810E76F692B(L_2, L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 7));
+		L_4 = PropertySerializer_1_Length_mFF8F3E10C3CA35640C7887494A23E810E76F692B(L_2, L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 8));
 		return L_4;
 	}
 }
@@ -18448,7 +18644,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ReliableProperty_1_Write_mCDB8897B547ACA
 	{
 		StreamContext_tB6F602239FAE27C560565D545DC928557584E72F L_0 = ___1_context;
 		bool L_1;
-		L_1 = ((  bool (*) (ReliableProperty_1_t19D0594554F0A09F2047F4948D2E7B061B29B0C1*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
+		L_1 = ((  bool (*) (ReliableProperty_1_t19D0594554F0A09F2047F4948D2E7B061B29B0C1*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 7)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 7));
 		if (L_1)
 		{
 			goto IL_000b;
@@ -18462,8 +18658,8 @@ IL_000b:
 	{
 		PropertySerializer_1_tB0DBCE1CE4E9C3A10BD0DFEC3E78DB5C2C38174A* L_2 = (PropertySerializer_1_tB0DBCE1CE4E9C3A10BD0DFEC3E78DB5C2C38174A*)(&__this->___serializer_0);
 		float L_3 = (float)__this->____value_3;
-		PropertySerializer_1_Write_m57B519D8AE55A0473C4F3F8C3C77E7FC7C9E1357(L_2, (&___0_stream), L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 8));
-		((  void (*) (ReliableProperty_1_t19D0594554F0A09F2047F4948D2E7B061B29B0C1*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 9)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 9));
+		PropertySerializer_1_Write_m57B519D8AE55A0473C4F3F8C3C77E7FC7C9E1357(L_2, (&___0_stream), L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 9));
+		((  void (*) (ReliableProperty_1_t19D0594554F0A09F2047F4948D2E7B061B29B0C1*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 10)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 10));
 		StreamContext_tB6F602239FAE27C560565D545DC928557584E72F L_4 = ___1_context;
 		bool L_5 = (bool)L_4.___fullModel_2;
 		if (!L_5)
@@ -18517,9 +18713,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ReliableProperty_1_Read_m186DB5B1356C5A7
 		V_0 = L_0;
 		PropertySerializer_1_tB0DBCE1CE4E9C3A10BD0DFEC3E78DB5C2C38174A* L_1 = (PropertySerializer_1_tB0DBCE1CE4E9C3A10BD0DFEC3E78DB5C2C38174A*)(&__this->___serializer_0);
 		float* L_2 = (float*)(&__this->____confirmed_2);
-		PropertySerializer_1_Read_mEB54E9CF1F6C2D4619A844D767A2309978A073E5(L_1, (&___0_stream), L_2, il2cpp_rgctx_method(method->klass->rgctx_data, 10));
+		PropertySerializer_1_Read_mEB54E9CF1F6C2D4619A844D767A2309978A073E5(L_1, (&___0_stream), L_2, il2cpp_rgctx_method(method->klass->rgctx_data, 11));
 		bool L_3;
-		L_3 = ((  bool (*) (ReliableProperty_1_t19D0594554F0A09F2047F4948D2E7B061B29B0C1*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
+		L_3 = ((  bool (*) (ReliableProperty_1_t19D0594554F0A09F2047F4948D2E7B061B29B0C1*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
 		if (L_3)
 		{
 			goto IL_002f;
@@ -18549,7 +18745,7 @@ IL_0031:
 		float L_9 = (float)__this->____value_3;
 		NullCheck(L_7);
 		bool L_10;
-		L_10 = InterfaceFuncInvoker2< bool, float, float >::Invoke(0 /* System.Boolean System.Collections.Generic.IEqualityComparer`1<System.Single>::Equals(T,T) */, il2cpp_rgctx_data(method->klass->rgctx_data, 11), L_7, L_8, L_9);
+		L_10 = InterfaceFuncInvoker2< bool, float, float >::Invoke(0 /* System.Boolean System.Collections.Generic.IEqualityComparer`1<System.Single>::Equals(T,T) */, il2cpp_rgctx_data(method->klass->rgctx_data, 12), L_7, L_8, L_9);
 		return (bool)((((int32_t)L_10) == ((int32_t)0))? 1 : 0);
 	}
 }
@@ -18693,7 +18889,7 @@ IL_007b:
 IL_008b:
 	{
 		bool L_25;
-		L_25 = ((  bool (*) (ReliableProperty_1_t19D0594554F0A09F2047F4948D2E7B061B29B0C1*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
+		L_25 = ((  bool (*) (ReliableProperty_1_t19D0594554F0A09F2047F4948D2E7B061B29B0C1*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
 		if (L_25)
 		{
 			goto IL_009f;
@@ -18802,8 +18998,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReliableProperty_1_set_value_m192EA7F4AA
 {
 	{
 		uint32_t L_0 = ___0_value;
-		__this->____value_3 = L_0;
-		((  void (*) (ReliableProperty_1_tF8E21D64E11686A71B432305FBED98F1BEB10CF0*, bool, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 4)))(__this, (bool)1, il2cpp_rgctx_method(method->klass->rgctx_data, 4));
+		((  void (*) (ReliableProperty_1_tF8E21D64E11686A71B432305FBED98F1BEB10CF0*, uint32_t, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
 		return;
 	}
 }
@@ -18821,6 +19016,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReliableProperty_1_set_dirty_mE455575875
 	{
 		bool L_0 = ___0_value;
 		__this->___U3CdirtyU3Ek__BackingField_5 = L_0;
+		return;
+	}
+}
+// System.Void Normal.Realtime.ReliableProperty`1<System.UInt32>::UpdateValue(T)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReliableProperty_1_UpdateValue_m520AE2776B82576ADD8C042A483BADC028EE443E_gshared (ReliableProperty_1_tF8E21D64E11686A71B432305FBED98F1BEB10CF0* __this, uint32_t ___0_value, const RuntimeMethod* method) 
+{
+	{
+		uint32_t L_0 = ___0_value;
+		__this->____value_3 = L_0;
+		((  void (*) (ReliableProperty_1_tF8E21D64E11686A71B432305FBED98F1BEB10CF0*, bool, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 4)))(__this, (bool)1, il2cpp_rgctx_method(method->klass->rgctx_data, 4));
 		return;
 	}
 }
@@ -18845,7 +19050,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ReliableProperty_1_ShouldWrite_m1868982F
 	}
 	{
 		bool L_4;
-		L_4 = ((  bool (*) (ReliableProperty_1_tF8E21D64E11686A71B432305FBED98F1BEB10CF0*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
+		L_4 = ((  bool (*) (ReliableProperty_1_tF8E21D64E11686A71B432305FBED98F1BEB10CF0*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
 		return L_4;
 	}
 
@@ -18865,7 +19070,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t ReliableProperty_1_WriteLength_m3B4EC
 	{
 		StreamContext_tB6F602239FAE27C560565D545DC928557584E72F L_0 = ___0_context;
 		bool L_1;
-		L_1 = ((  bool (*) (ReliableProperty_1_tF8E21D64E11686A71B432305FBED98F1BEB10CF0*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
+		L_1 = ((  bool (*) (ReliableProperty_1_tF8E21D64E11686A71B432305FBED98F1BEB10CF0*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 7)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 7));
 		if (L_1)
 		{
 			goto IL_000b;
@@ -18880,7 +19085,7 @@ IL_000b:
 		PropertySerializer_1_tA0C7EE45B6625A70A35A9D2FF96BC9F69E3AF83A* L_2 = (PropertySerializer_1_tA0C7EE45B6625A70A35A9D2FF96BC9F69E3AF83A*)(&__this->___serializer_0);
 		uint32_t L_3 = (uint32_t)__this->____value_3;
 		int32_t L_4;
-		L_4 = PropertySerializer_1_Length_mB6B9787CA9E8F7AC5A6ECC2A1DB8BB2354727847(L_2, L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 7));
+		L_4 = PropertySerializer_1_Length_mB6B9787CA9E8F7AC5A6ECC2A1DB8BB2354727847(L_2, L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 8));
 		return L_4;
 	}
 }
@@ -18896,7 +19101,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ReliableProperty_1_Write_m4FFAF29986AD7D
 	{
 		StreamContext_tB6F602239FAE27C560565D545DC928557584E72F L_0 = ___1_context;
 		bool L_1;
-		L_1 = ((  bool (*) (ReliableProperty_1_tF8E21D64E11686A71B432305FBED98F1BEB10CF0*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
+		L_1 = ((  bool (*) (ReliableProperty_1_tF8E21D64E11686A71B432305FBED98F1BEB10CF0*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 7)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 7));
 		if (L_1)
 		{
 			goto IL_000b;
@@ -18910,8 +19115,8 @@ IL_000b:
 	{
 		PropertySerializer_1_tA0C7EE45B6625A70A35A9D2FF96BC9F69E3AF83A* L_2 = (PropertySerializer_1_tA0C7EE45B6625A70A35A9D2FF96BC9F69E3AF83A*)(&__this->___serializer_0);
 		uint32_t L_3 = (uint32_t)__this->____value_3;
-		PropertySerializer_1_Write_m1F29B6B930AF03BFC481DA39C1BE6B94F2B550E7(L_2, (&___0_stream), L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 8));
-		((  void (*) (ReliableProperty_1_tF8E21D64E11686A71B432305FBED98F1BEB10CF0*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 9)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 9));
+		PropertySerializer_1_Write_m1F29B6B930AF03BFC481DA39C1BE6B94F2B550E7(L_2, (&___0_stream), L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 9));
+		((  void (*) (ReliableProperty_1_tF8E21D64E11686A71B432305FBED98F1BEB10CF0*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 10)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 10));
 		StreamContext_tB6F602239FAE27C560565D545DC928557584E72F L_4 = ___1_context;
 		bool L_5 = (bool)L_4.___fullModel_2;
 		if (!L_5)
@@ -18965,9 +19170,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ReliableProperty_1_Read_mE6A0E840CEABED4
 		V_0 = L_0;
 		PropertySerializer_1_tA0C7EE45B6625A70A35A9D2FF96BC9F69E3AF83A* L_1 = (PropertySerializer_1_tA0C7EE45B6625A70A35A9D2FF96BC9F69E3AF83A*)(&__this->___serializer_0);
 		uint32_t* L_2 = (uint32_t*)(&__this->____confirmed_2);
-		PropertySerializer_1_Read_m0AE9C8ADE1BFC05DB9AF04AF9CC9C2BAA7264FBA(L_1, (&___0_stream), L_2, il2cpp_rgctx_method(method->klass->rgctx_data, 10));
+		PropertySerializer_1_Read_m0AE9C8ADE1BFC05DB9AF04AF9CC9C2BAA7264FBA(L_1, (&___0_stream), L_2, il2cpp_rgctx_method(method->klass->rgctx_data, 11));
 		bool L_3;
-		L_3 = ((  bool (*) (ReliableProperty_1_tF8E21D64E11686A71B432305FBED98F1BEB10CF0*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
+		L_3 = ((  bool (*) (ReliableProperty_1_tF8E21D64E11686A71B432305FBED98F1BEB10CF0*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
 		if (L_3)
 		{
 			goto IL_002f;
@@ -18997,7 +19202,7 @@ IL_0031:
 		uint32_t L_9 = (uint32_t)__this->____value_3;
 		NullCheck(L_7);
 		bool L_10;
-		L_10 = InterfaceFuncInvoker2< bool, uint32_t, uint32_t >::Invoke(0 /* System.Boolean System.Collections.Generic.IEqualityComparer`1<System.UInt32>::Equals(T,T) */, il2cpp_rgctx_data(method->klass->rgctx_data, 11), L_7, L_8, L_9);
+		L_10 = InterfaceFuncInvoker2< bool, uint32_t, uint32_t >::Invoke(0 /* System.Boolean System.Collections.Generic.IEqualityComparer`1<System.UInt32>::Equals(T,T) */, il2cpp_rgctx_data(method->klass->rgctx_data, 12), L_7, L_8, L_9);
 		return (bool)((((int32_t)L_10) == ((int32_t)0))? 1 : 0);
 	}
 }
@@ -19141,7 +19346,7 @@ IL_007b:
 IL_008b:
 	{
 		bool L_25;
-		L_25 = ((  bool (*) (ReliableProperty_1_tF8E21D64E11686A71B432305FBED98F1BEB10CF0*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
+		L_25 = ((  bool (*) (ReliableProperty_1_tF8E21D64E11686A71B432305FBED98F1BEB10CF0*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
 		if (L_25)
 		{
 			goto IL_009f;
@@ -19250,8 +19455,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReliableProperty_1_set_value_m2C7BA092FD
 {
 	{
 		uint32_t L_0 = ___0_value;
-		__this->____value_3 = L_0;
-		((  void (*) (ReliableProperty_1_t9E379E3907240D487B96F0F71ABCFD2FAC90F35A*, bool, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 4)))(__this, (bool)1, il2cpp_rgctx_method(method->klass->rgctx_data, 4));
+		((  void (*) (ReliableProperty_1_t9E379E3907240D487B96F0F71ABCFD2FAC90F35A*, uint32_t, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
 		return;
 	}
 }
@@ -19269,6 +19473,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReliableProperty_1_set_dirty_m4DD436D931
 	{
 		bool L_0 = ___0_value;
 		__this->___U3CdirtyU3Ek__BackingField_5 = L_0;
+		return;
+	}
+}
+// System.Void Normal.Realtime.ReliableProperty`1<System.UInt32Enum>::UpdateValue(T)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReliableProperty_1_UpdateValue_m39011BBE6B59640C503DD6898097F68F997B6EDC_gshared (ReliableProperty_1_t9E379E3907240D487B96F0F71ABCFD2FAC90F35A* __this, uint32_t ___0_value, const RuntimeMethod* method) 
+{
+	{
+		uint32_t L_0 = ___0_value;
+		__this->____value_3 = L_0;
+		((  void (*) (ReliableProperty_1_t9E379E3907240D487B96F0F71ABCFD2FAC90F35A*, bool, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 4)))(__this, (bool)1, il2cpp_rgctx_method(method->klass->rgctx_data, 4));
 		return;
 	}
 }
@@ -19293,7 +19507,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ReliableProperty_1_ShouldWrite_mD0DB2744
 	}
 	{
 		bool L_4;
-		L_4 = ((  bool (*) (ReliableProperty_1_t9E379E3907240D487B96F0F71ABCFD2FAC90F35A*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
+		L_4 = ((  bool (*) (ReliableProperty_1_t9E379E3907240D487B96F0F71ABCFD2FAC90F35A*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
 		return L_4;
 	}
 
@@ -19313,7 +19527,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t ReliableProperty_1_WriteLength_m5839F
 	{
 		StreamContext_tB6F602239FAE27C560565D545DC928557584E72F L_0 = ___0_context;
 		bool L_1;
-		L_1 = ((  bool (*) (ReliableProperty_1_t9E379E3907240D487B96F0F71ABCFD2FAC90F35A*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
+		L_1 = ((  bool (*) (ReliableProperty_1_t9E379E3907240D487B96F0F71ABCFD2FAC90F35A*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 7)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 7));
 		if (L_1)
 		{
 			goto IL_000b;
@@ -19328,7 +19542,7 @@ IL_000b:
 		PropertySerializer_1_tE25E6E82428C931B25B80C3F820E86B7B6E5853F* L_2 = (PropertySerializer_1_tE25E6E82428C931B25B80C3F820E86B7B6E5853F*)(&__this->___serializer_0);
 		uint32_t L_3 = (uint32_t)__this->____value_3;
 		int32_t L_4;
-		L_4 = PropertySerializer_1_Length_mEF042395E12D868F8E968821A68CBB4CEE0754EB(L_2, L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 7));
+		L_4 = PropertySerializer_1_Length_mEF042395E12D868F8E968821A68CBB4CEE0754EB(L_2, L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 8));
 		return L_4;
 	}
 }
@@ -19344,7 +19558,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ReliableProperty_1_Write_m1C7FBF3205C2CA
 	{
 		StreamContext_tB6F602239FAE27C560565D545DC928557584E72F L_0 = ___1_context;
 		bool L_1;
-		L_1 = ((  bool (*) (ReliableProperty_1_t9E379E3907240D487B96F0F71ABCFD2FAC90F35A*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
+		L_1 = ((  bool (*) (ReliableProperty_1_t9E379E3907240D487B96F0F71ABCFD2FAC90F35A*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 7)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 7));
 		if (L_1)
 		{
 			goto IL_000b;
@@ -19358,8 +19572,8 @@ IL_000b:
 	{
 		PropertySerializer_1_tE25E6E82428C931B25B80C3F820E86B7B6E5853F* L_2 = (PropertySerializer_1_tE25E6E82428C931B25B80C3F820E86B7B6E5853F*)(&__this->___serializer_0);
 		uint32_t L_3 = (uint32_t)__this->____value_3;
-		PropertySerializer_1_Write_mAEA59C5EFC4E5B8D029F56A722E5AC4EB84B87D3(L_2, (&___0_stream), L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 8));
-		((  void (*) (ReliableProperty_1_t9E379E3907240D487B96F0F71ABCFD2FAC90F35A*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 9)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 9));
+		PropertySerializer_1_Write_mAEA59C5EFC4E5B8D029F56A722E5AC4EB84B87D3(L_2, (&___0_stream), L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 9));
+		((  void (*) (ReliableProperty_1_t9E379E3907240D487B96F0F71ABCFD2FAC90F35A*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 10)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 10));
 		StreamContext_tB6F602239FAE27C560565D545DC928557584E72F L_4 = ___1_context;
 		bool L_5 = (bool)L_4.___fullModel_2;
 		if (!L_5)
@@ -19413,9 +19627,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ReliableProperty_1_Read_m9ADCAB1A6A75E70
 		V_0 = L_0;
 		PropertySerializer_1_tE25E6E82428C931B25B80C3F820E86B7B6E5853F* L_1 = (PropertySerializer_1_tE25E6E82428C931B25B80C3F820E86B7B6E5853F*)(&__this->___serializer_0);
 		uint32_t* L_2 = (uint32_t*)(&__this->____confirmed_2);
-		PropertySerializer_1_Read_mF1E4BD56D5EA3207AF2CAF13C07D20810BDCCF11(L_1, (&___0_stream), L_2, il2cpp_rgctx_method(method->klass->rgctx_data, 10));
+		PropertySerializer_1_Read_mF1E4BD56D5EA3207AF2CAF13C07D20810BDCCF11(L_1, (&___0_stream), L_2, il2cpp_rgctx_method(method->klass->rgctx_data, 11));
 		bool L_3;
-		L_3 = ((  bool (*) (ReliableProperty_1_t9E379E3907240D487B96F0F71ABCFD2FAC90F35A*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
+		L_3 = ((  bool (*) (ReliableProperty_1_t9E379E3907240D487B96F0F71ABCFD2FAC90F35A*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
 		if (L_3)
 		{
 			goto IL_002f;
@@ -19445,7 +19659,7 @@ IL_0031:
 		uint32_t L_9 = (uint32_t)__this->____value_3;
 		NullCheck(L_7);
 		bool L_10;
-		L_10 = InterfaceFuncInvoker2< bool, uint32_t, uint32_t >::Invoke(0 /* System.Boolean System.Collections.Generic.IEqualityComparer`1<System.UInt32Enum>::Equals(T,T) */, il2cpp_rgctx_data(method->klass->rgctx_data, 11), L_7, L_8, L_9);
+		L_10 = InterfaceFuncInvoker2< bool, uint32_t, uint32_t >::Invoke(0 /* System.Boolean System.Collections.Generic.IEqualityComparer`1<System.UInt32Enum>::Equals(T,T) */, il2cpp_rgctx_data(method->klass->rgctx_data, 12), L_7, L_8, L_9);
 		return (bool)((((int32_t)L_10) == ((int32_t)0))? 1 : 0);
 	}
 }
@@ -19589,7 +19803,7 @@ IL_007b:
 IL_008b:
 	{
 		bool L_25;
-		L_25 = ((  bool (*) (ReliableProperty_1_t9E379E3907240D487B96F0F71ABCFD2FAC90F35A*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
+		L_25 = ((  bool (*) (ReliableProperty_1_t9E379E3907240D487B96F0F71ABCFD2FAC90F35A*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
 		if (L_25)
 		{
 			goto IL_009f;
@@ -19698,8 +19912,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReliableProperty_1_set_value_m1D5A0E6309
 {
 	{
 		OwnerID_tCCF90714397790EFF3AD052CAD709E5564E57E20 L_0 = ___0_value;
-		__this->____value_3 = L_0;
-		((  void (*) (ReliableProperty_1_tB75847443A4C854D458017FB470648EE111D5473*, bool, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 4)))(__this, (bool)1, il2cpp_rgctx_method(method->klass->rgctx_data, 4));
+		((  void (*) (ReliableProperty_1_tB75847443A4C854D458017FB470648EE111D5473*, OwnerID_tCCF90714397790EFF3AD052CAD709E5564E57E20, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
 		return;
 	}
 }
@@ -19717,6 +19930,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReliableProperty_1_set_dirty_m65971FC974
 	{
 		bool L_0 = ___0_value;
 		__this->___U3CdirtyU3Ek__BackingField_5 = L_0;
+		return;
+	}
+}
+// System.Void Normal.Realtime.ReliableProperty`1<Normal.Realtime.Serialization.MetaModel/OwnerID>::UpdateValue(T)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ReliableProperty_1_UpdateValue_m162417AE3643DF812781626310095E4B643A2145_gshared (ReliableProperty_1_tB75847443A4C854D458017FB470648EE111D5473* __this, OwnerID_tCCF90714397790EFF3AD052CAD709E5564E57E20 ___0_value, const RuntimeMethod* method) 
+{
+	{
+		OwnerID_tCCF90714397790EFF3AD052CAD709E5564E57E20 L_0 = ___0_value;
+		__this->____value_3 = L_0;
+		((  void (*) (ReliableProperty_1_tB75847443A4C854D458017FB470648EE111D5473*, bool, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 4)))(__this, (bool)1, il2cpp_rgctx_method(method->klass->rgctx_data, 4));
 		return;
 	}
 }
@@ -19741,7 +19964,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ReliableProperty_1_ShouldWrite_mA006D3D2
 	}
 	{
 		bool L_4;
-		L_4 = ((  bool (*) (ReliableProperty_1_tB75847443A4C854D458017FB470648EE111D5473*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
+		L_4 = ((  bool (*) (ReliableProperty_1_tB75847443A4C854D458017FB470648EE111D5473*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
 		return L_4;
 	}
 
@@ -19761,7 +19984,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t ReliableProperty_1_WriteLength_mFC0FF
 	{
 		StreamContext_tB6F602239FAE27C560565D545DC928557584E72F L_0 = ___0_context;
 		bool L_1;
-		L_1 = ((  bool (*) (ReliableProperty_1_tB75847443A4C854D458017FB470648EE111D5473*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
+		L_1 = ((  bool (*) (ReliableProperty_1_tB75847443A4C854D458017FB470648EE111D5473*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 7)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 7));
 		if (L_1)
 		{
 			goto IL_000b;
@@ -19776,7 +19999,7 @@ IL_000b:
 		PropertySerializer_1_tA9AFD12F8B3DF5629FE5EE88D682B714F0965F5C* L_2 = (PropertySerializer_1_tA9AFD12F8B3DF5629FE5EE88D682B714F0965F5C*)(&__this->___serializer_0);
 		OwnerID_tCCF90714397790EFF3AD052CAD709E5564E57E20 L_3 = (OwnerID_tCCF90714397790EFF3AD052CAD709E5564E57E20)__this->____value_3;
 		int32_t L_4;
-		L_4 = PropertySerializer_1_Length_m15684F8BCFDF081593B3F8B6559E1313976EBD28(L_2, L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 7));
+		L_4 = PropertySerializer_1_Length_m15684F8BCFDF081593B3F8B6559E1313976EBD28(L_2, L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 8));
 		return L_4;
 	}
 }
@@ -19792,7 +20015,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ReliableProperty_1_Write_m71570AE6AE0FFE
 	{
 		StreamContext_tB6F602239FAE27C560565D545DC928557584E72F L_0 = ___1_context;
 		bool L_1;
-		L_1 = ((  bool (*) (ReliableProperty_1_tB75847443A4C854D458017FB470648EE111D5473*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
+		L_1 = ((  bool (*) (ReliableProperty_1_tB75847443A4C854D458017FB470648EE111D5473*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 7)))(__this, L_0, il2cpp_rgctx_method(method->klass->rgctx_data, 7));
 		if (L_1)
 		{
 			goto IL_000b;
@@ -19806,8 +20029,8 @@ IL_000b:
 	{
 		PropertySerializer_1_tA9AFD12F8B3DF5629FE5EE88D682B714F0965F5C* L_2 = (PropertySerializer_1_tA9AFD12F8B3DF5629FE5EE88D682B714F0965F5C*)(&__this->___serializer_0);
 		OwnerID_tCCF90714397790EFF3AD052CAD709E5564E57E20 L_3 = (OwnerID_tCCF90714397790EFF3AD052CAD709E5564E57E20)__this->____value_3;
-		PropertySerializer_1_Write_mF82713C0142FF22BE07384C643DE688D7DA13825(L_2, (&___0_stream), L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 8));
-		((  void (*) (ReliableProperty_1_tB75847443A4C854D458017FB470648EE111D5473*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 9)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 9));
+		PropertySerializer_1_Write_mF82713C0142FF22BE07384C643DE688D7DA13825(L_2, (&___0_stream), L_3, il2cpp_rgctx_method(method->klass->rgctx_data, 9));
+		((  void (*) (ReliableProperty_1_tB75847443A4C854D458017FB470648EE111D5473*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 10)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 10));
 		StreamContext_tB6F602239FAE27C560565D545DC928557584E72F L_4 = ___1_context;
 		bool L_5 = (bool)L_4.___fullModel_2;
 		if (!L_5)
@@ -19862,9 +20085,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ReliableProperty_1_Read_m7A190ED04AF0FDB
 		V_0 = L_0;
 		PropertySerializer_1_tA9AFD12F8B3DF5629FE5EE88D682B714F0965F5C* L_1 = (PropertySerializer_1_tA9AFD12F8B3DF5629FE5EE88D682B714F0965F5C*)(&__this->___serializer_0);
 		OwnerID_tCCF90714397790EFF3AD052CAD709E5564E57E20* L_2 = (OwnerID_tCCF90714397790EFF3AD052CAD709E5564E57E20*)(&__this->____confirmed_2);
-		PropertySerializer_1_Read_m80171D6CBAD9F31206E30A36DB451F57C59D0EDD(L_1, (&___0_stream), L_2, il2cpp_rgctx_method(method->klass->rgctx_data, 10));
+		PropertySerializer_1_Read_m80171D6CBAD9F31206E30A36DB451F57C59D0EDD(L_1, (&___0_stream), L_2, il2cpp_rgctx_method(method->klass->rgctx_data, 11));
 		bool L_3;
-		L_3 = ((  bool (*) (ReliableProperty_1_tB75847443A4C854D458017FB470648EE111D5473*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
+		L_3 = ((  bool (*) (ReliableProperty_1_tB75847443A4C854D458017FB470648EE111D5473*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
 		if (L_3)
 		{
 			goto IL_002f;
@@ -19894,7 +20117,7 @@ IL_0031:
 		OwnerID_tCCF90714397790EFF3AD052CAD709E5564E57E20 L_9 = (OwnerID_tCCF90714397790EFF3AD052CAD709E5564E57E20)__this->____value_3;
 		NullCheck(L_7);
 		bool L_10;
-		L_10 = InterfaceFuncInvoker2< bool, OwnerID_tCCF90714397790EFF3AD052CAD709E5564E57E20, OwnerID_tCCF90714397790EFF3AD052CAD709E5564E57E20 >::Invoke(0 /* System.Boolean System.Collections.Generic.IEqualityComparer`1<Normal.Realtime.Serialization.MetaModel/OwnerID>::Equals(T,T) */, il2cpp_rgctx_data(method->klass->rgctx_data, 11), L_7, L_8, L_9);
+		L_10 = InterfaceFuncInvoker2< bool, OwnerID_tCCF90714397790EFF3AD052CAD709E5564E57E20, OwnerID_tCCF90714397790EFF3AD052CAD709E5564E57E20 >::Invoke(0 /* System.Boolean System.Collections.Generic.IEqualityComparer`1<Normal.Realtime.Serialization.MetaModel/OwnerID>::Equals(T,T) */, il2cpp_rgctx_data(method->klass->rgctx_data, 12), L_7, L_8, L_9);
 		return (bool)((((int32_t)L_10) == ((int32_t)0))? 1 : 0);
 	}
 }
@@ -20038,7 +20261,7 @@ IL_007b:
 IL_008b:
 	{
 		bool L_25;
-		L_25 = ((  bool (*) (ReliableProperty_1_tB75847443A4C854D458017FB470648EE111D5473*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 5)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 5));
+		L_25 = ((  bool (*) (ReliableProperty_1_tB75847443A4C854D458017FB470648EE111D5473*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 6)))(__this, il2cpp_rgctx_method(method->klass->rgctx_data, 6));
 		if (L_25)
 		{
 			goto IL_009f;

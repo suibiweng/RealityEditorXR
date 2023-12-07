@@ -685,6 +685,8 @@ struct RayInteractorCursorVisual_tB844F83B0787FE936D9762DDFBB1E7F4BD677FC5;
 struct RayInteractorDebugGizmos_tB7572D7094213ABC46848FABAEAC5DF182549D8A;
 // Oculus.Interaction.RayInteractorPinchVisual
 struct RayInteractorPinchVisual_t4A34AD7E4CA7A5BDC2CB839F4A89124AE39E47BE;
+// Normal.Realtime.RealtimeTransform
+struct RealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E;
 // UnityEngine.Renderer
 struct Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF;
 // UnityEngine.Rigidbody
@@ -3942,6 +3944,8 @@ struct PhysicsGrabbable_tD148E9FA4004FE544C31B83B6435EDAE852C61BF  : public Mono
 	bool ____started_13;
 	// System.Action`2<UnityEngine.Vector3,UnityEngine.Vector3> Oculus.Interaction.PhysicsGrabbable::WhenVelocitiesApplied
 	Action_2_tFA12D1ED57DFFBB4A246CECC16F8F9387FE254AA* ___WhenVelocitiesApplied_14;
+	// Normal.Realtime.RealtimeTransform Oculus.Interaction.PhysicsGrabbable::_realtimeTransform
+	RealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E* ____realtimeTransform_15;
 };
 
 // Oculus.Interaction.PinchPointerVisual

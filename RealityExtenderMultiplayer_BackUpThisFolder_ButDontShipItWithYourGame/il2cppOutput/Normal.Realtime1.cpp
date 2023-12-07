@@ -1144,6 +1144,14 @@ IL2CPP_EXTERN_C const RuntimeMethod* ReadStream_StartLengthDelimitedStruct_m473F
 IL2CPP_EXTERN_C const RuntimeMethod* RealtimeView_InstantiateViewPrefab_m397E3B5E3D5A0FF97ABE05E03DB120D8C5D5BDEC_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* RealtimeView_OnModelOwnerIDDidChange_m016AF2D94732DD2C983AC4C7A85981D4C970A8C7_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* RealtimeView_ThrowIfModelMissing_mB3BE28D98AFFC4715CC1655E8DF876CEF84CE858_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* RealtimeView_get_isOwnedLocallyInHierarchy_m2CA8BABBE2F3FD695A1E4374C743D416224760CC_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* RealtimeView_get_isOwnedLocallySelf_mF9A0BA39D8DB30173DA614C5E276F807EF089DD1_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* RealtimeView_get_isOwnedRemotelyInHierarchy_mD4366084137196DD98B150425A91FB1469282C4A_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* RealtimeView_get_isOwnedRemotelySelf_mDE7577C92004C28E052DE177E5DBC7D8A990C9FC_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* RealtimeView_get_isUnownedInHierarchy_m934A78C7CED9D19627A444151FCFA6B59BEA16F3_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* RealtimeView_get_isUnownedSelf_mAE82A05CCFDB5037A63267696CDAF8C14CD6F622_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* RealtimeView_get_ownerIDInHierarchy_m897E70F493175105EB79DCAA7643FBF2FD53B1AF_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* RealtimeView_get_ownerIDSelf_m4048696F8A3EC0B0553AB3C5DC69FF68A3177E38_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* ReliableProperty_1_Read_m4A5D776090D804E5ED11577FE1382982B07FF7EC_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* ReliableProperty_1_Read_m7A190ED04AF0FDB4074776A4E267E63B2CABC0C0_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* ReliableProperty_1_WriteLength_mF904A485AD69566D44F1F515BEC2267366CD8F32_RuntimeMethod_var;
@@ -5403,8 +5411,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool RealtimeModel_get_isUnownedSelf_mC5DDE2F
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool RealtimeView_get_isOwnedLocallySelf_mF9A0BA39D8DB30173DA614C5E276F807EF089DD1 (RealtimeView_t92CAA838413E6AB800B2BC8980AFCE156FC642E5* __this, const RuntimeMethod* method) ;
 // System.Boolean Normal.Realtime.RealtimeView::get_isOwnedRemotelySelf()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool RealtimeView_get_isOwnedRemotelySelf_mDE7577C92004C28E052DE177E5DBC7D8A990C9FC (RealtimeView_t92CAA838413E6AB800B2BC8980AFCE156FC642E5* __this, const RuntimeMethod* method) ;
-// System.Void Normal.Realtime.RealtimeView::ThrowIfModelMissing()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealtimeView_ThrowIfModelMissing_mB3BE28D98AFFC4715CC1655E8DF876CEF84CE858 (RealtimeView_t92CAA838413E6AB800B2BC8980AFCE156FC642E5* __this, const RuntimeMethod* method) ;
+// System.Exception Normal.Realtime.RealtimeView::ModelMissingException()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Exception_t* RealtimeView_ModelMissingException_mA67932FF680C9607F6A9A96645F50FB25BDD5573 (const RuntimeMethod* method) ;
 // System.Int32 Normal.Realtime.RealtimeModel::get_ownerIDSelf()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t RealtimeModel_get_ownerIDSelf_m3737278BB200C4944BCE99A7AF7DA1DAD802FA2D (RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931* __this, const RuntimeMethod* method) ;
 // System.Int32 Normal.Realtime.RealtimeModel::get_ownerIDInHierarchy()
@@ -5419,6 +5427,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool RealtimeModel_get_isOwnedLocallyInHierar
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool RealtimeModel_get_isOwnedRemotelySelf_mBE2E2174F6E3303746C5F9632BF8706F1633BF1B (RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931* __this, const RuntimeMethod* method) ;
 // System.Boolean Normal.Realtime.RealtimeModel::get_isOwnedRemotelyInHierarchy()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool RealtimeModel_get_isOwnedRemotelyInHierarchy_m8698E5D6DB5B14AEAE5F6774CA91A932E7CFDF12 (RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931* __this, const RuntimeMethod* method) ;
+// System.Void Normal.Realtime.RealtimeView::ThrowIfModelMissing()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealtimeView_ThrowIfModelMissing_mB3BE28D98AFFC4715CC1655E8DF876CEF84CE858 (RealtimeView_t92CAA838413E6AB800B2BC8980AFCE156FC642E5* __this, const RuntimeMethod* method) ;
 // System.Void Normal.Realtime.RealtimeModel::RequestOwnership(System.Boolean)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealtimeModel_RequestOwnership_m3E3EEEEEE6F3507714E52954F8A349782C980E6F (RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931* __this, bool ___0_sendRedundantUpdates, const RuntimeMethod* method) ;
 // System.Void Normal.Realtime.RealtimeModel::SetOwnership(System.Int32,System.Boolean)
@@ -11444,97 +11454,233 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool RealtimeView_get_isOwnedRemotely_m61A776
 // System.Int32 Normal.Realtime.RealtimeView::get_ownerIDSelf()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t RealtimeView_get_ownerIDSelf_m4048696F8A3EC0B0553AB3C5DC69FF68A3177E38 (RealtimeView_t92CAA838413E6AB800B2BC8980AFCE156FC642E5* __this, const RuntimeMethod* method) 
 {
+	RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* G_B2_0 = NULL;
+	RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* G_B1_0 = NULL;
 	{
-		RealtimeView_ThrowIfModelMissing_mB3BE28D98AFFC4715CC1655E8DF876CEF84CE858(__this, NULL);
 		RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* L_0 = __this->___model_17;
-		NullCheck(L_0);
-		int32_t L_1;
-		L_1 = RealtimeModel_get_ownerIDSelf_m3737278BB200C4944BCE99A7AF7DA1DAD802FA2D(L_0, NULL);
-		return L_1;
+		RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* L_1 = L_0;
+		G_B1_0 = L_1;
+		if (L_1)
+		{
+			G_B2_0 = L_1;
+			goto IL_0010;
+		}
+	}
+	{
+		Exception_t* L_2;
+		L_2 = RealtimeView_ModelMissingException_mA67932FF680C9607F6A9A96645F50FB25BDD5573(NULL);
+		IL2CPP_RAISE_MANAGED_EXCEPTION(L_2, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&RealtimeView_get_ownerIDSelf_m4048696F8A3EC0B0553AB3C5DC69FF68A3177E38_RuntimeMethod_var)));
+	}
+
+IL_0010:
+	{
+		NullCheck(G_B2_0);
+		int32_t L_3;
+		L_3 = RealtimeModel_get_ownerIDSelf_m3737278BB200C4944BCE99A7AF7DA1DAD802FA2D(G_B2_0, NULL);
+		return L_3;
 	}
 }
 // System.Int32 Normal.Realtime.RealtimeView::get_ownerIDInHierarchy()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t RealtimeView_get_ownerIDInHierarchy_m897E70F493175105EB79DCAA7643FBF2FD53B1AF (RealtimeView_t92CAA838413E6AB800B2BC8980AFCE156FC642E5* __this, const RuntimeMethod* method) 
 {
+	RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* G_B2_0 = NULL;
+	RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* G_B1_0 = NULL;
 	{
-		RealtimeView_ThrowIfModelMissing_mB3BE28D98AFFC4715CC1655E8DF876CEF84CE858(__this, NULL);
 		RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* L_0 = __this->___model_17;
-		NullCheck(L_0);
-		int32_t L_1;
-		L_1 = RealtimeModel_get_ownerIDInHierarchy_m112D43A5ABBD619DC32FBB1BEC2938C21120BAF0(L_0, NULL);
-		return L_1;
+		RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* L_1 = L_0;
+		G_B1_0 = L_1;
+		if (L_1)
+		{
+			G_B2_0 = L_1;
+			goto IL_0010;
+		}
+	}
+	{
+		Exception_t* L_2;
+		L_2 = RealtimeView_ModelMissingException_mA67932FF680C9607F6A9A96645F50FB25BDD5573(NULL);
+		IL2CPP_RAISE_MANAGED_EXCEPTION(L_2, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&RealtimeView_get_ownerIDInHierarchy_m897E70F493175105EB79DCAA7643FBF2FD53B1AF_RuntimeMethod_var)));
+	}
+
+IL_0010:
+	{
+		NullCheck(G_B2_0);
+		int32_t L_3;
+		L_3 = RealtimeModel_get_ownerIDInHierarchy_m112D43A5ABBD619DC32FBB1BEC2938C21120BAF0(G_B2_0, NULL);
+		return L_3;
 	}
 }
 // System.Boolean Normal.Realtime.RealtimeView::get_isUnownedSelf()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool RealtimeView_get_isUnownedSelf_mAE82A05CCFDB5037A63267696CDAF8C14CD6F622 (RealtimeView_t92CAA838413E6AB800B2BC8980AFCE156FC642E5* __this, const RuntimeMethod* method) 
 {
+	RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* G_B2_0 = NULL;
+	RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* G_B1_0 = NULL;
 	{
-		RealtimeView_ThrowIfModelMissing_mB3BE28D98AFFC4715CC1655E8DF876CEF84CE858(__this, NULL);
 		RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* L_0 = __this->___model_17;
-		NullCheck(L_0);
-		bool L_1;
-		L_1 = RealtimeModel_get_isUnownedSelf_mC5DDE2FB1FA9BEEB118F647527B057C9FCA7B019(L_0, NULL);
-		return L_1;
+		RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* L_1 = L_0;
+		G_B1_0 = L_1;
+		if (L_1)
+		{
+			G_B2_0 = L_1;
+			goto IL_0010;
+		}
+	}
+	{
+		Exception_t* L_2;
+		L_2 = RealtimeView_ModelMissingException_mA67932FF680C9607F6A9A96645F50FB25BDD5573(NULL);
+		IL2CPP_RAISE_MANAGED_EXCEPTION(L_2, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&RealtimeView_get_isUnownedSelf_mAE82A05CCFDB5037A63267696CDAF8C14CD6F622_RuntimeMethod_var)));
+	}
+
+IL_0010:
+	{
+		NullCheck(G_B2_0);
+		bool L_3;
+		L_3 = RealtimeModel_get_isUnownedSelf_mC5DDE2FB1FA9BEEB118F647527B057C9FCA7B019(G_B2_0, NULL);
+		return L_3;
 	}
 }
 // System.Boolean Normal.Realtime.RealtimeView::get_isUnownedInHierarchy()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool RealtimeView_get_isUnownedInHierarchy_m934A78C7CED9D19627A444151FCFA6B59BEA16F3 (RealtimeView_t92CAA838413E6AB800B2BC8980AFCE156FC642E5* __this, const RuntimeMethod* method) 
 {
+	RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* G_B2_0 = NULL;
+	RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* G_B1_0 = NULL;
 	{
-		RealtimeView_ThrowIfModelMissing_mB3BE28D98AFFC4715CC1655E8DF876CEF84CE858(__this, NULL);
 		RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* L_0 = __this->___model_17;
-		NullCheck(L_0);
-		bool L_1;
-		L_1 = RealtimeModel_get_isUnownedInHierarchy_m40C5841686BD3CDA18441E21A128BE59221B68D0(L_0, NULL);
-		return L_1;
+		RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* L_1 = L_0;
+		G_B1_0 = L_1;
+		if (L_1)
+		{
+			G_B2_0 = L_1;
+			goto IL_0010;
+		}
+	}
+	{
+		Exception_t* L_2;
+		L_2 = RealtimeView_ModelMissingException_mA67932FF680C9607F6A9A96645F50FB25BDD5573(NULL);
+		IL2CPP_RAISE_MANAGED_EXCEPTION(L_2, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&RealtimeView_get_isUnownedInHierarchy_m934A78C7CED9D19627A444151FCFA6B59BEA16F3_RuntimeMethod_var)));
+	}
+
+IL_0010:
+	{
+		NullCheck(G_B2_0);
+		bool L_3;
+		L_3 = RealtimeModel_get_isUnownedInHierarchy_m40C5841686BD3CDA18441E21A128BE59221B68D0(G_B2_0, NULL);
+		return L_3;
 	}
 }
 // System.Boolean Normal.Realtime.RealtimeView::get_isOwnedLocallySelf()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool RealtimeView_get_isOwnedLocallySelf_mF9A0BA39D8DB30173DA614C5E276F807EF089DD1 (RealtimeView_t92CAA838413E6AB800B2BC8980AFCE156FC642E5* __this, const RuntimeMethod* method) 
 {
+	RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* G_B2_0 = NULL;
+	RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* G_B1_0 = NULL;
 	{
-		RealtimeView_ThrowIfModelMissing_mB3BE28D98AFFC4715CC1655E8DF876CEF84CE858(__this, NULL);
 		RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* L_0 = __this->___model_17;
-		NullCheck(L_0);
-		bool L_1;
-		L_1 = RealtimeModel_get_isOwnedLocallySelf_m1E85DA3147F22531E5B85948007C1EC362900825(L_0, NULL);
-		return L_1;
+		RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* L_1 = L_0;
+		G_B1_0 = L_1;
+		if (L_1)
+		{
+			G_B2_0 = L_1;
+			goto IL_0010;
+		}
+	}
+	{
+		Exception_t* L_2;
+		L_2 = RealtimeView_ModelMissingException_mA67932FF680C9607F6A9A96645F50FB25BDD5573(NULL);
+		IL2CPP_RAISE_MANAGED_EXCEPTION(L_2, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&RealtimeView_get_isOwnedLocallySelf_mF9A0BA39D8DB30173DA614C5E276F807EF089DD1_RuntimeMethod_var)));
+	}
+
+IL_0010:
+	{
+		NullCheck(G_B2_0);
+		bool L_3;
+		L_3 = RealtimeModel_get_isOwnedLocallySelf_m1E85DA3147F22531E5B85948007C1EC362900825(G_B2_0, NULL);
+		return L_3;
 	}
 }
 // System.Boolean Normal.Realtime.RealtimeView::get_isOwnedLocallyInHierarchy()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool RealtimeView_get_isOwnedLocallyInHierarchy_m2CA8BABBE2F3FD695A1E4374C743D416224760CC (RealtimeView_t92CAA838413E6AB800B2BC8980AFCE156FC642E5* __this, const RuntimeMethod* method) 
 {
+	RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* G_B2_0 = NULL;
+	RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* G_B1_0 = NULL;
 	{
-		RealtimeView_ThrowIfModelMissing_mB3BE28D98AFFC4715CC1655E8DF876CEF84CE858(__this, NULL);
 		RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* L_0 = __this->___model_17;
-		NullCheck(L_0);
-		bool L_1;
-		L_1 = RealtimeModel_get_isOwnedLocallyInHierarchy_m03CFD286E6DD4D9BAB947760A45D0D357181D60B(L_0, NULL);
-		return L_1;
+		RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* L_1 = L_0;
+		G_B1_0 = L_1;
+		if (L_1)
+		{
+			G_B2_0 = L_1;
+			goto IL_0010;
+		}
+	}
+	{
+		Exception_t* L_2;
+		L_2 = RealtimeView_ModelMissingException_mA67932FF680C9607F6A9A96645F50FB25BDD5573(NULL);
+		IL2CPP_RAISE_MANAGED_EXCEPTION(L_2, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&RealtimeView_get_isOwnedLocallyInHierarchy_m2CA8BABBE2F3FD695A1E4374C743D416224760CC_RuntimeMethod_var)));
+	}
+
+IL_0010:
+	{
+		NullCheck(G_B2_0);
+		bool L_3;
+		L_3 = RealtimeModel_get_isOwnedLocallyInHierarchy_m03CFD286E6DD4D9BAB947760A45D0D357181D60B(G_B2_0, NULL);
+		return L_3;
 	}
 }
 // System.Boolean Normal.Realtime.RealtimeView::get_isOwnedRemotelySelf()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool RealtimeView_get_isOwnedRemotelySelf_mDE7577C92004C28E052DE177E5DBC7D8A990C9FC (RealtimeView_t92CAA838413E6AB800B2BC8980AFCE156FC642E5* __this, const RuntimeMethod* method) 
 {
+	RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* G_B2_0 = NULL;
+	RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* G_B1_0 = NULL;
 	{
-		RealtimeView_ThrowIfModelMissing_mB3BE28D98AFFC4715CC1655E8DF876CEF84CE858(__this, NULL);
 		RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* L_0 = __this->___model_17;
-		NullCheck(L_0);
-		bool L_1;
-		L_1 = RealtimeModel_get_isOwnedRemotelySelf_mBE2E2174F6E3303746C5F9632BF8706F1633BF1B(L_0, NULL);
-		return L_1;
+		RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* L_1 = L_0;
+		G_B1_0 = L_1;
+		if (L_1)
+		{
+			G_B2_0 = L_1;
+			goto IL_0010;
+		}
+	}
+	{
+		Exception_t* L_2;
+		L_2 = RealtimeView_ModelMissingException_mA67932FF680C9607F6A9A96645F50FB25BDD5573(NULL);
+		IL2CPP_RAISE_MANAGED_EXCEPTION(L_2, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&RealtimeView_get_isOwnedRemotelySelf_mDE7577C92004C28E052DE177E5DBC7D8A990C9FC_RuntimeMethod_var)));
+	}
+
+IL_0010:
+	{
+		NullCheck(G_B2_0);
+		bool L_3;
+		L_3 = RealtimeModel_get_isOwnedRemotelySelf_mBE2E2174F6E3303746C5F9632BF8706F1633BF1B(G_B2_0, NULL);
+		return L_3;
 	}
 }
 // System.Boolean Normal.Realtime.RealtimeView::get_isOwnedRemotelyInHierarchy()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool RealtimeView_get_isOwnedRemotelyInHierarchy_mD4366084137196DD98B150425A91FB1469282C4A (RealtimeView_t92CAA838413E6AB800B2BC8980AFCE156FC642E5* __this, const RuntimeMethod* method) 
 {
+	RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* G_B2_0 = NULL;
+	RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* G_B1_0 = NULL;
 	{
-		RealtimeView_ThrowIfModelMissing_mB3BE28D98AFFC4715CC1655E8DF876CEF84CE858(__this, NULL);
 		RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* L_0 = __this->___model_17;
-		NullCheck(L_0);
-		bool L_1;
-		L_1 = RealtimeModel_get_isOwnedRemotelyInHierarchy_m8698E5D6DB5B14AEAE5F6774CA91A932E7CFDF12(L_0, NULL);
-		return L_1;
+		RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* L_1 = L_0;
+		G_B1_0 = L_1;
+		if (L_1)
+		{
+			G_B2_0 = L_1;
+			goto IL_0010;
+		}
+	}
+	{
+		Exception_t* L_2;
+		L_2 = RealtimeView_ModelMissingException_mA67932FF680C9607F6A9A96645F50FB25BDD5573(NULL);
+		IL2CPP_RAISE_MANAGED_EXCEPTION(L_2, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&RealtimeView_get_isOwnedRemotelyInHierarchy_mD4366084137196DD98B150425A91FB1469282C4A_RuntimeMethod_var)));
+	}
+
+IL_0010:
+	{
+		NullCheck(G_B2_0);
+		bool L_3;
+		L_3 = RealtimeModel_get_isOwnedRemotelyInHierarchy_m8698E5D6DB5B14AEAE5F6774CA91A932E7CFDF12(G_B2_0, NULL);
+		return L_3;
 	}
 }
 // System.Void Normal.Realtime.RealtimeView::RequestOwnership()
@@ -11760,6 +11906,23 @@ IL_001b:
 		return;
 	}
 }
+// System.Exception Normal.Realtime.RealtimeView::ModelMissingException()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Exception_t* RealtimeView_ModelMissingException_mA67932FF680C9607F6A9A96645F50FB25BDD5573 (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Exception_t_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral8B82847C3F84AA8AC6730E084EAA88E24C9D4463);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		Exception_t* L_0 = (Exception_t*)il2cpp_codegen_object_new(Exception_t_il2cpp_TypeInfo_var);
+		NullCheck(L_0);
+		Exception__ctor_m9B2BD92CD68916245A75109105D9071C9D430E7F(L_0, _stringLiteral8B82847C3F84AA8AC6730E084EAA88E24C9D4463, NULL);
+		return L_0;
+	}
+}
 // System.Void Normal.Realtime.RealtimeView::ThrowIfModelMissing()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealtimeView_ThrowIfModelMissing_mB3BE28D98AFFC4715CC1655E8DF876CEF84CE858 (RealtimeView_t92CAA838413E6AB800B2BC8980AFCE156FC642E5* __this, const RuntimeMethod* method) 
 {
@@ -11767,17 +11930,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealtimeView_ThrowIfModelMissing_mB3BE28
 		RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* L_0 = __this->___model_17;
 		if (L_0)
 		{
-			goto IL_0013;
+			goto IL_000e;
 		}
 	}
 	{
-		Exception_t* L_1 = (Exception_t*)il2cpp_codegen_object_new(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Exception_t_il2cpp_TypeInfo_var)));
-		NullCheck(L_1);
-		Exception__ctor_m9B2BD92CD68916245A75109105D9071C9D430E7F(L_1, ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral8B82847C3F84AA8AC6730E084EAA88E24C9D4463)), NULL);
+		Exception_t* L_1;
+		L_1 = RealtimeView_ModelMissingException_mA67932FF680C9607F6A9A96645F50FB25BDD5573(NULL);
 		IL2CPP_RAISE_MANAGED_EXCEPTION(L_1, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&RealtimeView_ThrowIfModelMissing_mB3BE28D98AFFC4715CC1655E8DF876CEF84CE858_RuntimeMethod_var)));
 	}
 
-IL_0013:
+IL_000e:
 	{
 		return;
 	}

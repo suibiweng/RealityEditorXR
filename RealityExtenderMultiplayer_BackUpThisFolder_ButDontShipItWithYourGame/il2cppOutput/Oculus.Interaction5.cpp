@@ -654,6 +654,8 @@ struct ProgressCurve_t4240A915DEBE2CD7C1D414683EB5A89A06494401;
 struct Random_t79716069EDE67D1D7734F60AE402D0CA3FB6B4C8;
 // Oculus.Interaction.Input.ReadOnlyHandJointPoses
 struct ReadOnlyHandJointPoses_t6C048A8D103A3648C7BDE5EAFD651164C1A1F551;
+// Normal.Realtime.RealtimeTransform
+struct RealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E;
 // UnityEngine.Renderer
 struct Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF;
 // UnityEngine.Rigidbody
@@ -3528,6 +3530,8 @@ struct PhysicsGrabbable_tD148E9FA4004FE544C31B83B6435EDAE852C61BF  : public Mono
 	bool ____started_13;
 	// System.Action`2<UnityEngine.Vector3,UnityEngine.Vector3> Oculus.Interaction.PhysicsGrabbable::WhenVelocitiesApplied
 	Action_2_tFA12D1ED57DFFBB4A246CECC16F8F9387FE254AA* ___WhenVelocitiesApplied_14;
+	// Normal.Realtime.RealtimeTransform Oculus.Interaction.PhysicsGrabbable::_realtimeTransform
+	RealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E* ____realtimeTransform_15;
 };
 
 // Oculus.Interaction.PointableElement

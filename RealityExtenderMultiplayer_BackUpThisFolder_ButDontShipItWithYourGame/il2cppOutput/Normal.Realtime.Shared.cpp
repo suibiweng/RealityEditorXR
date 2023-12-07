@@ -3295,8 +3295,6 @@ inline bool ReliableProperty_1_Write_m990B593E785AE61A45CEC82D81002F8A15F4F21D (
 {
 	return ((  bool (*) (ReliableProperty_1_t1C09DBA0767299ADCA1BDEBD090F78AE6F9BCA34*, WriteStream_t940E5CBD3E0B281AD959A4C776915A0D56BC30BB*, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F, const RuntimeMethod*))ReliableProperty_1_Write_m990B593E785AE61A45CEC82D81002F8A15F4F21D_gshared)(__this, ___0_stream, ___1_context, method);
 }
-// System.Void Normal.Realtime.RealtimeModel::InvalidateContextLength(Normal.Realtime.Serialization.StreamContext)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealtimeModel_InvalidateContextLength_m9EEFDFC9B9C2BEE3DFEF5D1D30DE9F68185401A1 (RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931* __this, StreamContext_tB6F602239FAE27C560565D545DC928557584E72F ___0_context, const RuntimeMethod* method) ;
 // System.Boolean Normal.Realtime.Serialization.ReadStream::ReadNextPropertyID(System.UInt32&)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ReadStream_ReadNextPropertyID_m6E94CF1CA561727ADE4F6EADB15B4161CA615DA8 (ReadStream_tAF03B0E8DA365ACB53C07D175E9FCB07BBBB526E* __this, uint32_t* ___0_propertyID, const RuntimeMethod* method) ;
 // System.Boolean Normal.Realtime.ReliableProperty`1<Normal.Realtime.RealtimeAvatar/DeviceType>::Read(Normal.Realtime.Serialization.ReadStream,Normal.Realtime.Serialization.StreamContext)
@@ -3960,7 +3958,7 @@ IL_00b4:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool AudioOutput_get_mute_m43273090297FA8A8F349BEC2EF381DAF0404E216 (AudioOutput_t1D87F1D09AFE6442D463C703C89B702B85CF4ABD* __this, const RuntimeMethod* method) 
 {
 	{
-		// public           bool   mute    { get { return _mute; } set { _mute = value; } }
+		// get => _mute;
 		bool L_0 = __this->____mute_4;
 		il2cpp_codegen_memory_barrier();
 		return L_0;
@@ -3970,11 +3968,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool AudioOutput_get_mute_m43273090297FA8A8F3
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AudioOutput_set_mute_m403169EADFC364687BB4344DE7F25F538B38B405 (AudioOutput_t1D87F1D09AFE6442D463C703C89B702B85CF4ABD* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		// public           bool   mute    { get { return _mute; } set { _mute = value; } }
+		// set => _mute = value;
 		bool L_0 = ___0_value;
 		il2cpp_codegen_memory_barrier();
 		__this->____mute_4 = L_0;
-		// public           bool   mute    { get { return _mute; } set { _mute = value; } }
 		return;
 	}
 }
@@ -3982,7 +3979,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AudioOutput_set_mute_m403169EADFC364687B
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float AudioOutput_get_dbLevel_mD8F357788050F82A510187785844753DF6126E7E (AudioOutput_t1D87F1D09AFE6442D463C703C89B702B85CF4ABD* __this, const RuntimeMethod* method) 
 {
 	{
-		// public           float  dbLevel { get { return _dbLevel; } }
+		// public           float  dbLevel => _dbLevel;
 		float L_0 = __this->____dbLevel_5;
 		il2cpp_codegen_memory_barrier();
 		return L_0;
@@ -4165,7 +4162,9 @@ IL_004d:
 		}
 	}
 	{
-		// _audioClip = AudioClip.Create("Normcore Audio Stream", 48000, 1, 48000, true, (float[] data) => { for (int i = 0; i < data.Length; i++) data[i] = 1.0f; });
+		// _audioClip = AudioClip.Create("Normcore Audio Stream", 48000, 1, 48000, true, (float[] data) => {
+		//     for (int i = 0; i < data.Length; i++) data[i] = 1.0f;
+		// });
 		il2cpp_codegen_runtime_class_init_inline(U3CU3Ec_tA2F0E555B33570E5898BA081D2F5C8105E7C43A6_il2cpp_TypeInfo_var);
 		PCMReaderCallback_t3396D9613664F0AFF65FB91018FD0F901CC16F1E* L_12 = ((U3CU3Ec_tA2F0E555B33570E5898BA081D2F5C8105E7C43A6_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_tA2F0E555B33570E5898BA081D2F5C8105E7C43A6_il2cpp_TypeInfo_var))->___U3CU3E9__15_0_1;
 		PCMReaderCallback_t3396D9613664F0AFF65FB91018FD0F901CC16F1E* L_13 = L_12;
@@ -4521,19 +4520,19 @@ IL_00ac:
 		}
 	}
 	{
-		// cIn = incomingNumberOfChannels-1;
+		// cIn = incomingNumberOfChannels - 1;
 		int32_t L_28 = V_0;
 		V_9 = ((int32_t)il2cpp_codegen_subtract(L_28, 1));
 	}
 
 IL_00ba:
 	{
-		// int sIn  = f*incomingNumberOfChannels + cIn;
+		// int sIn  = f * incomingNumberOfChannels + cIn;
 		int32_t L_29 = V_7;
 		int32_t L_30 = V_0;
 		int32_t L_31 = V_9;
 		V_10 = ((int32_t)il2cpp_codegen_add(((int32_t)il2cpp_codegen_multiply(L_29, L_30)), L_31));
-		// int sOut = f*channels + c;
+		// int sOut = f * channels + c;
 		int32_t L_32 = V_7;
 		int32_t L_33 = ___1_channels;
 		int32_t L_34 = V_8;
@@ -4753,26 +4752,26 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec_U3CStartWithAudioOutputStreamU3E
 {
 	int32_t V_0 = 0;
 	{
-		// _audioClip = AudioClip.Create("Normcore Audio Stream", 48000, 1, 48000, true, (float[] data) => { for (int i = 0; i < data.Length; i++) data[i] = 1.0f; });
+		// for (int i = 0; i < data.Length; i++) data[i] = 1.0f;
 		V_0 = 0;
 		goto IL_0010;
 	}
 
 IL_0004:
 	{
-		// _audioClip = AudioClip.Create("Normcore Audio Stream", 48000, 1, 48000, true, (float[] data) => { for (int i = 0; i < data.Length; i++) data[i] = 1.0f; });
+		// for (int i = 0; i < data.Length; i++) data[i] = 1.0f;
 		SingleU5BU5D_t89DEFE97BCEDB5857010E79ECE0F52CF6E93B87C* L_0 = ___0_data;
 		int32_t L_1 = V_0;
 		NullCheck(L_0);
 		(L_0)->SetAt(static_cast<il2cpp_array_size_t>(L_1), (float)(1.0f));
-		// _audioClip = AudioClip.Create("Normcore Audio Stream", 48000, 1, 48000, true, (float[] data) => { for (int i = 0; i < data.Length; i++) data[i] = 1.0f; });
+		// for (int i = 0; i < data.Length; i++) data[i] = 1.0f;
 		int32_t L_2 = V_0;
 		V_0 = ((int32_t)il2cpp_codegen_add(L_2, 1));
 	}
 
 IL_0010:
 	{
-		// _audioClip = AudioClip.Create("Normcore Audio Stream", 48000, 1, 48000, true, (float[] data) => { for (int i = 0; i < data.Length; i++) data[i] = 1.0f; });
+		// for (int i = 0; i < data.Length; i++) data[i] = 1.0f;
 		int32_t L_3 = V_0;
 		SingleU5BU5D_t89DEFE97BCEDB5857010E79ECE0F52CF6E93B87C* L_4 = ___0_data;
 		NullCheck(L_4);
@@ -4782,7 +4781,7 @@ IL_0010:
 		}
 	}
 	{
-		// _audioClip = AudioClip.Create("Normcore Audio Stream", 48000, 1, 48000, true, (float[] data) => { for (int i = 0; i < data.Length; i++) data[i] = 1.0f; });
+		// });
 		return;
 	}
 }
@@ -4912,7 +4911,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MicrophoneDevice_set_sharedMicrophone_m7
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t MicrophoneDevice_get_sampleRate_mFC641C8B37F219876FF0A382ACF5B418AC54B8E1 (MicrophoneDevice_t6DE005CC3143C99597E9490A3F266C32A066F603* __this, const RuntimeMethod* method) 
 {
 	{
-		// public int sampleRate { get { return _sampleRate; } }
+		// public int sampleRate              => _sampleRate;
 		int32_t L_0 = __this->____sampleRate_3;
 		return L_0;
 	}
@@ -4921,7 +4920,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t MicrophoneDevice_get_sampleRate_mFC64
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t MicrophoneDevice_get_numberOfChannels_mE877AEE0B0DC6BE99A1C64389A0947C7D7A64CC1 (MicrophoneDevice_t6DE005CC3143C99597E9490A3F266C32A066F603* __this, const RuntimeMethod* method) 
 {
 	{
-		// public int numberOfChannels { get { return _numberOfChannels; } }
+		// public int numberOfChannels        => _numberOfChannels;
 		int32_t L_0 = __this->____numberOfChannels_4;
 		return L_0;
 	}
@@ -4930,7 +4929,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t MicrophoneDevice_get_numberOfChannels
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t MicrophoneDevice_get_deviceWriteHeadPosition_m8637FCF9728AE083D42D504D1C63DEF4E5FB3991 (MicrophoneDevice_t6DE005CC3143C99597E9490A3F266C32A066F603* __this, const RuntimeMethod* method) 
 {
 	{
-		// public int deviceWriteHeadPosition { get { return Microphone.GetPosition(_deviceName); } }
+		// public int deviceWriteHeadPosition => Microphone.GetPosition(_deviceName);
 		String_t* L_0 = __this->____deviceName_2;
 		int32_t L_1;
 		L_1 = Microphone_GetPosition_m13F4C8EBE8536893D9AD8388B0E5B46D62E6A459(L_0, NULL);
@@ -4941,7 +4940,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t MicrophoneDevice_get_deviceWriteHeadP
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t MicrophoneDevice_get_deviceBufferSampleCount_m1BCD29D459277CECFCC5090B7932F74345C32339 (MicrophoneDevice_t6DE005CC3143C99597E9490A3F266C32A066F603* __this, const RuntimeMethod* method) 
 {
 	{
-		// public int deviceBufferSampleCount { get { return _sampleCount; } }
+		// public int deviceBufferSampleCount => _sampleCount;
 		int32_t L_0 = __this->____sampleCount_5;
 		return L_0;
 	}
@@ -5974,7 +5973,7 @@ IL_0095:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR LocalPlayer_t93E4B89D693A5BFE8F4394BF441B0436E67B6E08* RealtimeAvatar_get_localPlayer_mF1E880D1DF3F11B04FBA0F978505081933AF9469 (RealtimeAvatar_tCE70DCE6B53863D8AF7D540FBF50BB2738E3DF3B* __this, const RuntimeMethod* method) 
 {
 	{
-		// public  LocalPlayer  localPlayer { get { return _localPlayer; } set { SetLocalPlayer(value); } }
+		// get => _localPlayer;
 		LocalPlayer_t93E4B89D693A5BFE8F4394BF441B0436E67B6E08* L_0 = __this->____localPlayer_8;
 		return L_0;
 	}
@@ -5983,10 +5982,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR LocalPlayer_t93E4B89D693A5BFE8F4394BF441B0436
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealtimeAvatar_set_localPlayer_m425AA1CB7C058D0199B22A563D8D43C52D50DC7C (RealtimeAvatar_tCE70DCE6B53863D8AF7D540FBF50BB2738E3DF3B* __this, LocalPlayer_t93E4B89D693A5BFE8F4394BF441B0436E67B6E08* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		// public  LocalPlayer  localPlayer { get { return _localPlayer; } set { SetLocalPlayer(value); } }
+		// set => SetLocalPlayer(value);
 		LocalPlayer_t93E4B89D693A5BFE8F4394BF441B0436E67B6E08* L_0 = ___0_value;
 		RealtimeAvatar_SetLocalPlayer_mA1001D91121A06FD3714521B6953FE84C07CAD42(__this, L_0, NULL);
-		// public  LocalPlayer  localPlayer { get { return _localPlayer; } set { SetLocalPlayer(value); } }
 		return;
 	}
 }
@@ -6070,7 +6068,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealtimeAvatar_set_deviceModel_m873A5FAD
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* RealtimeAvatar_get_head_m758391C8EEFA13360B630CE4158021549D997EE7 (RealtimeAvatar_tCE70DCE6B53863D8AF7D540FBF50BB2738E3DF3B* __this, const RuntimeMethod* method) 
 {
 	{
-		// public Transform head      { get { return _head;      } }
+		// public Transform head      => _head;
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->____head_9;
 		return L_0;
 	}
@@ -6079,7 +6077,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* RealtimeAvatar_get_leftHand_mD41A329F05D3A6007B110DD90CDFBF951F222FC6 (RealtimeAvatar_tCE70DCE6B53863D8AF7D540FBF50BB2738E3DF3B* __this, const RuntimeMethod* method) 
 {
 	{
-		// public Transform leftHand  { get { return _leftHand;  } }
+		// public Transform leftHand  => _leftHand;
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->____leftHand_10;
 		return L_0;
 	}
@@ -6088,7 +6086,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* RealtimeAvatar_get_rightHand_m94DB3B197166079E741FCBF8FF4FF6B80B636224 (RealtimeAvatar_tCE70DCE6B53863D8AF7D540FBF50BB2738E3DF3B* __this, const RuntimeMethod* method) 
 {
 	{
-		// public Transform rightHand { get { return _rightHand; } }
+		// public Transform rightHand => _rightHand;
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->____rightHand_11;
 		return L_0;
 	}
@@ -6429,7 +6427,7 @@ IL_006e:
 IL_0079:
 	{
 		V_3 = G_B12_0;
-		// if (     rootRealtimeTransform != null)      rootRealtimeTransform.RequestOwnership();
+		// if (rootRealtimeTransform != null)           rootRealtimeTransform.RequestOwnership();
 		RealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E* L_17 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_18;
@@ -6440,7 +6438,7 @@ IL_0079:
 		}
 	}
 	{
-		// if (     rootRealtimeTransform != null)      rootRealtimeTransform.RequestOwnership();
+		// if (rootRealtimeTransform != null)           rootRealtimeTransform.RequestOwnership();
 		RealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E* L_19 = V_0;
 		NullCheck(L_19);
 		RealtimeComponent_1_RequestOwnership_m9A3EA642943D74939F1D7CDC03728B13B61994EB(L_19, RealtimeComponent_1_RequestOwnership_m9A3EA642943D74939F1D7CDC03728B13B61994EB_RuntimeMethod_var);
@@ -6448,7 +6446,7 @@ IL_0079:
 
 IL_0089:
 	{
-		// if (     headRealtimeTransform != null)      headRealtimeTransform.RequestOwnership();
+		// if (headRealtimeTransform != null)           headRealtimeTransform.RequestOwnership();
 		RealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E* L_20 = V_1;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_21;
@@ -6459,7 +6457,7 @@ IL_0089:
 		}
 	}
 	{
-		// if (     headRealtimeTransform != null)      headRealtimeTransform.RequestOwnership();
+		// if (headRealtimeTransform != null)           headRealtimeTransform.RequestOwnership();
 		RealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E* L_22 = V_1;
 		NullCheck(L_22);
 		RealtimeComponent_1_RequestOwnership_m9A3EA642943D74939F1D7CDC03728B13B61994EB(L_22, RealtimeComponent_1_RequestOwnership_m9A3EA642943D74939F1D7CDC03728B13B61994EB_RuntimeMethod_var);
@@ -6467,7 +6465,7 @@ IL_0089:
 
 IL_0098:
 	{
-		// if ( leftHandRealtimeTransform != null)  leftHandRealtimeTransform.RequestOwnership();
+		// if (leftHandRealtimeTransform != null)   leftHandRealtimeTransform.RequestOwnership();
 		RealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E* L_23 = V_2;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_24;
@@ -6478,7 +6476,7 @@ IL_0098:
 		}
 	}
 	{
-		// if ( leftHandRealtimeTransform != null)  leftHandRealtimeTransform.RequestOwnership();
+		// if (leftHandRealtimeTransform != null)   leftHandRealtimeTransform.RequestOwnership();
 		RealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E* L_25 = V_2;
 		NullCheck(L_25);
 		RealtimeComponent_1_RequestOwnership_m9A3EA642943D74939F1D7CDC03728B13B61994EB(L_25, RealtimeComponent_1_RequestOwnership_m9A3EA642943D74939F1D7CDC03728B13B61994EB_RuntimeMethod_var);
@@ -7007,7 +7005,7 @@ IL_0278_1:
 
 IL_0294:
 	{
-		// if (     updateHeadWithXRNode) model.headActive      =      headActive;
+		// if (updateHeadWithXRNode)      model.headActive      =      headActive;
 		bool L_91 = V_0;
 		if (!L_91)
 		{
@@ -7015,7 +7013,7 @@ IL_0294:
 		}
 	}
 	{
-		// if (     updateHeadWithXRNode) model.headActive      =      headActive;
+		// if (updateHeadWithXRNode)      model.headActive      =      headActive;
 		RealtimeAvatarModel_tF9AD0A95D5A02D14F92D99E70A3F155971BA01F2* L_92;
 		L_92 = RealtimeComponent_1_get_model_m38A954C297A96AAA574D45E6247347DFCFA1BB09_inline(__this, RealtimeComponent_1_get_model_m38A954C297A96AAA574D45E6247347DFCFA1BB09_RuntimeMethod_var);
 		bool L_93 = V_3;
@@ -7025,7 +7023,7 @@ IL_0294:
 
 IL_02a3:
 	{
-		// if ( updateLeftHandWithXRNode) model.leftHandActive  =  leftHandActive;
+		// if (updateLeftHandWithXRNode)  model.leftHandActive  =  leftHandActive;
 		bool L_94 = V_1;
 		if (!L_94)
 		{
@@ -7033,7 +7031,7 @@ IL_02a3:
 		}
 	}
 	{
-		// if ( updateLeftHandWithXRNode) model.leftHandActive  =  leftHandActive;
+		// if (updateLeftHandWithXRNode)  model.leftHandActive  =  leftHandActive;
 		RealtimeAvatarModel_tF9AD0A95D5A02D14F92D99E70A3F155971BA01F2* L_95;
 		L_95 = RealtimeComponent_1_get_model_m38A954C297A96AAA574D45E6247347DFCFA1BB09_inline(__this, RealtimeComponent_1_get_model_m38A954C297A96AAA574D45E6247347DFCFA1BB09_RuntimeMethod_var);
 		bool L_96 = V_4;
@@ -7176,7 +7174,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LocalPlayer__ctor_m1B4950C848F8CCF869A6F
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* RealtimeAvatarManager_get_localAvatarPrefab_mD0DE506EDFA8DDF6FFD3376EFF93CDD3AE39279F (RealtimeAvatarManager_t1F6EF40B807DE50215032B5F6144B58CC85EF6D1* __this, const RuntimeMethod* method) 
 {
 	{
-		// public GameObject localAvatarPrefab { get { return _localAvatarPrefab; } set { SetLocalAvatarPrefab(value); } }
+		// get => _localAvatarPrefab;
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = __this->____localAvatarPrefab_4;
 		return L_0;
 	}
@@ -7185,10 +7183,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealtimeAvatarManager_set_localAvatarPrefab_mCC51819A387690ADAFC4FE55052C6264F63F80E9 (RealtimeAvatarManager_t1F6EF40B807DE50215032B5F6144B58CC85EF6D1* __this, GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		// public GameObject localAvatarPrefab { get { return _localAvatarPrefab; } set { SetLocalAvatarPrefab(value); } }
+		// set => SetLocalAvatarPrefab(value);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = ___0_value;
 		RealtimeAvatarManager_SetLocalAvatarPrefab_m57F4AAEB3B2A939395D0966CFFD336FB4DF1F727(__this, L_0, NULL);
-		// public GameObject localAvatarPrefab { get { return _localAvatarPrefab; } set { SetLocalAvatarPrefab(value); } }
 		return;
 	}
 }
@@ -9244,18 +9241,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealtimeAvatarModel_Write_mF0BF842F3CAE4
 		NullCheck(L_16);
 		bool L_19;
 		L_19 = ReliableProperty_1_Write_m990B593E785AE61A45CEC82D81002F8A15F4F21D(L_16, L_17, L_18, ReliableProperty_1_Write_m990B593E785AE61A45CEC82D81002F8A15F4F21D_RuntimeMethod_var);
-		if (!((int32_t)(((int32_t)(((int32_t)(((int32_t)(((int32_t)(0|(int32_t)L_3))|(int32_t)L_7))|(int32_t)L_11))|(int32_t)L_15))|(int32_t)L_19)))
-		{
-			goto IL_0050;
-		}
-	}
-	{
-		StreamContext_tB6F602239FAE27C560565D545DC928557584E72F L_20 = ___1_context;
-		RealtimeModel_InvalidateContextLength_m9EEFDFC9B9C2BEE3DFEF5D1D30DE9F68185401A1(__this, L_20, NULL);
-	}
-
-IL_0050:
-	{
 		return;
 	}
 }
@@ -9495,7 +9480,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealtimeAvatarVoice_set_voiceVolume_mA22
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool RealtimeAvatarVoice_get_mute_m8F4D5EC5B8B9B42BA43B4A0D477C62F584CBDD52 (RealtimeAvatarVoice_t89AF88ACCB508592D2758F9F19C68C174467D31D* __this, const RuntimeMethod* method) 
 {
 	{
-		// public  bool  mute { get { return _mute; } set { SetMute(value); } }
+		// get => _mute;
 		bool L_0 = __this->____mute_8;
 		return L_0;
 	}
@@ -9504,10 +9489,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool RealtimeAvatarVoice_get_mute_m8F4D5EC5B8
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealtimeAvatarVoice_set_mute_m17E7CD8BAAB3C5ECB2B6DB355819491FDAE9FA33 (RealtimeAvatarVoice_t89AF88ACCB508592D2758F9F19C68C174467D31D* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		// public  bool  mute { get { return _mute; } set { SetMute(value); } }
+		// set => SetMute(value);
 		bool L_0 = ___0_value;
 		RealtimeAvatarVoice_SetMute_m482BDADA2FEED8FC689D01D2A65490A382D34354(__this, L_0, NULL);
-		// public  bool  mute { get { return _mute; } set { SetMute(value); } }
 		return;
 	}
 }
@@ -9515,7 +9499,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealtimeAvatarVoice_set_mute_m17E7CD8BAA
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool RealtimeAvatarVoice_get__hasMicrophone_m1881AA4AB2636AA15AC2118C9D280AD21E15DF90 (RealtimeAvatarVoice_t89AF88ACCB508592D2758F9F19C68C174467D31D* __this, const RuntimeMethod* method) 
 {
 	{
-		// private bool                   _hasMicrophone { get { return (_oculusMicrophoneDevice != null || _nativeMicrophoneDevice != null || _unityMicrophoneDevice != null); } }
+		// private bool _hasMicrophone => _oculusMicrophoneDevice != null || _nativeMicrophoneDevice != null || _unityMicrophoneDevice != null;
 		OculusMicrophoneDevice_tFAA7BB98C015A62B298AF67A5C40EFDE096D135C* L_0 = __this->____oculusMicrophoneDevice_9;
 		if (L_0)
 		{
@@ -10284,11 +10268,11 @@ IL_01bc:
 IL_01bd:
 	{
 		V_3 = (bool)G_B24_0;
-		// _audioPreprocessor = new AudioPreprocessor(_microphoneSampleRate,_microphoneFrameSize,                  // Input stream
-		//                                            true,                                                        // Automatic gain control
-		//                                            true,                                                        // Noise suppression
-		//                                            true,                                                        // Reverb suppression
-		//                                            echoCancellation, AudioSettings.outputSampleRate, 2, 0.28f); // Echo cancellation
+		// _audioPreprocessor = new AudioPreprocessor(_microphoneSampleRate, _microphoneFrameSize,                  // Input stream
+		//     true,                                                        // Automatic gain control
+		//     true,                                                        // Noise suppression
+		//     true,                                                        // Reverb suppression
+		//     echoCancellation, AudioSettings.outputSampleRate, 2, 0.28f); // Echo cancellation
 		int32_t L_43 = __this->____microphoneSampleRate_13;
 		int32_t L_44 = __this->____microphoneFrameSize_15;
 		bool L_45 = V_3;
@@ -11671,18 +11655,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealtimeAvatarVoiceModel_Write_m2C46A4BA
 		NullCheck(L_4);
 		bool L_7;
 		L_7 = ReliableProperty_1_Write_m1EFD808E2F4C64FE3676CB7CB4F70F498EF6EC73(L_4, L_5, L_6, ReliableProperty_1_Write_m1EFD808E2F4C64FE3676CB7CB4F70F498EF6EC73_RuntimeMethod_var);
-		if (!((int32_t)(((int32_t)(0|(int32_t)L_3))|(int32_t)L_7)))
-		{
-			goto IL_0026;
-		}
-	}
-	{
-		StreamContext_tB6F602239FAE27C560565D545DC928557584E72F L_8 = ___1_context;
-		RealtimeModel_InvalidateContextLength_m9EEFDFC9B9C2BEE3DFEF5D1D30DE9F68185401A1(__this, L_8, NULL);
-	}
-
-IL_0026:
-	{
 		return;
 	}
 }
@@ -11860,7 +11832,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealtimeAvatarVoiceScale_Update_mDAFF8B8
 		float L_1;
 		L_1 = RealtimeAvatarVoice_get_voiceVolume_m894350BF1A8B09929A2F07869A8DFED2BA4D902C_inline(L_0, NULL);
 		V_0 = L_1;
-		// float scale = 1.0f + voiceVolume*3.0f;
+		// float scale = 1.0f + voiceVolume * 3.0f;
 		float L_2 = V_0;
 		V_1 = ((float)il2cpp_codegen_add((1.0f), ((float)il2cpp_codegen_multiply(L_2, (3.0f)))));
 		// transform.localScale = new Vector3(scale, scale, scale);
@@ -11910,7 +11882,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR MicrophoneDevice_t6DE005CC3143C99
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t MicrophoneDevice_get_deviceBufferSampleCount_m1BCD29D459277CECFCC5090B7932F74345C32339_inline (MicrophoneDevice_t6DE005CC3143C99597E9490A3F266C32A066F603* __this, const RuntimeMethod* method) 
 {
 	{
-		// public int deviceBufferSampleCount { get { return _sampleCount; } }
+		// public int deviceBufferSampleCount => _sampleCount;
 		int32_t L_0 = __this->____sampleCount_5;
 		return L_0;
 	}
@@ -11918,7 +11890,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t MicrophoneDevice_get_devi
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t MicrophoneDevice_get_numberOfChannels_mE877AEE0B0DC6BE99A1C64389A0947C7D7A64CC1_inline (MicrophoneDevice_t6DE005CC3143C99597E9490A3F266C32A066F603* __this, const RuntimeMethod* method) 
 {
 	{
-		// public int numberOfChannels { get { return _numberOfChannels; } }
+		// public int numberOfChannels        => _numberOfChannels;
 		int32_t L_0 = __this->____numberOfChannels_4;
 		return L_0;
 	}
@@ -12006,7 +11978,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void RealtimeAvatarVoice_set_voic
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t MicrophoneDevice_get_sampleRate_mFC641C8B37F219876FF0A382ACF5B418AC54B8E1_inline (MicrophoneDevice_t6DE005CC3143C99597E9490A3F266C32A066F603* __this, const RuntimeMethod* method) 
 {
 	{
-		// public int sampleRate { get { return _sampleRate; } }
+		// public int sampleRate              => _sampleRate;
 		int32_t L_0 = __this->____sampleRate_3;
 		return L_0;
 	}
@@ -12014,7 +11986,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t MicrophoneDevice_get_samp
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool RealtimeAvatarVoice_get_mute_m8F4D5EC5B8B9B42BA43B4A0D477C62F584CBDD52_inline (RealtimeAvatarVoice_t89AF88ACCB508592D2758F9F19C68C174467D31D* __this, const RuntimeMethod* method) 
 {
 	{
-		// public  bool  mute { get { return _mute; } set { SetMute(value); } }
+		// get => _mute;
 		bool L_0 = __this->____mute_8;
 		return L_0;
 	}
