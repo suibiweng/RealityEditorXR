@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RealityEditor;
+using Normal.Realtime; 
 
 using TriLibCore.Dae.Schema;
 
@@ -36,8 +37,8 @@ public class RealityEditorManager : MonoBehaviour
         osc.SetAllMessageHandler(ReciveFromOSC);
 
         IDs=GenCubes.Count;
-
-    
+        // InvokeRepeating("removeOwnership", 2.0f, 1.0f);
+        
     }
 
 
@@ -46,31 +47,20 @@ public class RealityEditorManager : MonoBehaviour
         GenCubes[id].GetComponent<GenerateSpot>().isselsected=true;
 
         selectedID=id;
-
-
-
-
-
     }
 
 
     // Update is called once per frame
     void Update()
     {
-
         //OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
         if(OVRInput.GetUp(OVRInput.RawButton.A)){
             createSpot(OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch));
         }
-
-
         if(OVRInput.GetUp(OVRInput.RawButton.X)){
             createSpot(OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch));
         }
-
-
-
-
+    }
 
 
         
@@ -80,12 +70,13 @@ public class RealityEditorManager : MonoBehaviour
     
     
     void createSpot(Vector3 pos){
-        GameObject gcube= Instantiate(generateSpotPreFab,pos,Quaternion.identity);
+        GameObject gcube= Realtime.Instantiate("GenrateSpot",pos,Quaternion.identity);
         GenCubes.Add(gcube);
         gcube.GetComponent<GenerateSpot>().id=IDs;
-       
 
         IDs++;
+        RealtimeTransform _realtimeTransform = gcube.GetComponent<RealtimeTransform>();
+        // _realtimeTransform.RequestOwnership();
 
     }
 
