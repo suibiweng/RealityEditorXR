@@ -70,6 +70,9 @@ public class RealityEditorManager : MonoBehaviour
 
 
 
+
+
+
         
         
     }
@@ -80,6 +83,7 @@ public class RealityEditorManager : MonoBehaviour
         GameObject gcube= Instantiate(generateSpotPreFab,pos,Quaternion.identity);
         GenCubes.Add(gcube);
         gcube.GetComponent<GenerateSpot>().id=IDs;
+       
 
         IDs++;
 

@@ -8,9 +8,6 @@ using  DimBoxes;
 
 public class GenerateSpot : MonoBehaviour
 {
-   
-
-  
 
     public int id;
 

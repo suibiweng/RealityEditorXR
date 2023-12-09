@@ -4967,6 +4967,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 645918602023707657, guid: 1182d3065d6fb8f4bb7611cbfef1c981, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 645918602023707657, guid: 1182d3065d6fb8f4bb7611cbfef1c981, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 645918602023707657, guid: 1182d3065d6fb8f4bb7611cbfef1c981, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1683885090753417592, guid: 1182d3065d6fb8f4bb7611cbfef1c981, type: 3}
       propertyPath: m_Name
       value: GenrateSpot
@@ -5063,6 +5075,22 @@ PrefabInstance:
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1750937534}
+    - target: {fileID: 6148612482003261860, guid: 1182d3065d6fb8f4bb7611cbfef1c981, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148612482003261860, guid: 1182d3065d6fb8f4bb7611cbfef1c981, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148612482003261860, guid: 1182d3065d6fb8f4bb7611cbfef1c981, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148612482003261860, guid: 1182d3065d6fb8f4bb7611cbfef1c981, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6148612482293468447, guid: 1182d3065d6fb8f4bb7611cbfef1c981, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
