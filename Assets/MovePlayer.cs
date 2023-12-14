@@ -23,7 +23,7 @@ public class MovePlayer : MonoBehaviour
         float fixedy = Player.transform.position.y;
 
         Player.transform.position += (transform.right * joystick.x + transform.forward * joystick.y) * Time.deltaTime * speed;
-        Player.transform.Rotate(new Vector3(0f,Rightjoystick.y * rotateSpeed, 0f));
+        Player.transform.Rotate(new Vector3(0f,Rightjoystick.x * rotateSpeed, 0f));
         // Player.transform.position = new Vector3()
 
     }

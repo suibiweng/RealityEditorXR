@@ -9668,13 +9668,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MovePlayer_Update_mB2024089C129F95C3A8C7
 		L_24 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_8, L_23, NULL);
 		NullCheck(L_7);
 		Transform_set_position_mA1A817124BB41B685043DED2A9BA48CDF37C4156(L_7, L_24, NULL);
-		// Player.transform.Rotate(new Vector3(0f,Rightjoystick.y * rotateSpeed, 0f));
+		// Player.transform.Rotate(new Vector3(0f,Rightjoystick.x * rotateSpeed, 0f));
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_25 = __this->___Player_4;
 		NullCheck(L_25);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_26;
 		L_26 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_25, NULL);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_27 = V_1;
-		float L_28 = L_27.___y_1;
+		float L_28 = L_27.___x_0;
 		float L_29 = __this->___rotateSpeed_6;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_30;
 		memset((&L_30), 0, sizeof(L_30));

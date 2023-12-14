@@ -71,15 +71,22 @@ public class RealityEditorManager : MonoBehaviour
     //     }
     // }
     void createSpot(Vector3 pos){
-        GameObject gcube= Realtime.Instantiate("GenrateSpot",pos,Quaternion.identity);
-        GenCubes.Add(gcube);
+        GameObject gcube = Realtime.Instantiate("GenrateSpot",pos,Quaternion.identity);
+        // GenCubes.Add(gcube);
         gcube.GetComponent<GenerateSpot>().id=IDs;
         IDs++;
         RealtimeTransform _realtimeTransform = gcube.GetComponent<RealtimeTransform>();
-        // _realtimeTransform.RequestOwnership();
-
+        _realtimeTransform.ClearOwnership();
+        RealtimeView _realtimeView = gcube.GetComponent<RealtimeView>();
+        _realtimeView.ClearOwnership();
+        StartCoroutine(AddCubeToListCoroutine(gcube));
     }
 
+    IEnumerator AddCubeToListCoroutine(GameObject gcube)
+    {
+        yield return new WaitForSeconds(0.5f);
+        GenCubes.Add(gcube);
+    }
    public void RemoveSpot(int id){
 
 
