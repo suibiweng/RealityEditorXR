@@ -145,7 +145,10 @@ namespace TriLibCore.Samples
             simpleExternalDataMapper.Setup(customDataReceivingCallback, customFilenameReceivingCallback);
             var simpleTextureMapper = ScriptableObject.CreateInstance<SimpleTextureMapper>();
             simpleTextureMapper.Setup(customTextureReceivingCallback);
-            assetLoaderOptions = assetLoaderOptions ?? AssetLoader.CreateDefaultLoaderOptions();
+            if (assetLoaderOptions == null)
+            {
+                assetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions();
+            }
             assetLoaderOptions.ExternalDataMapper = simpleExternalDataMapper;
             assetLoaderOptions.TextureMappers = new TextureMapper[] { simpleTextureMapper};
             return AssetLoader.LoadModelFromStream(stream, modelFilename, modelExtension, null, onModelFullyLoad, onProgress, onError, wrapperGameObject, assetLoaderOptions, customData);

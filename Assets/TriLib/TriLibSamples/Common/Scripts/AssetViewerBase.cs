@@ -233,12 +233,8 @@ namespace TriLibCore.Samples
                 var button = selectables[i];
                 button.interactable = !value;
             }
-            //#if (UNITY_WEBGL && !TRILIB_ENABLE_WEBGL_THREADS) || (UNITY_WSA && !TRILIB_ENABLE_UWP_THREADS) || TRILIB_FORCE_SYNC
-            //           
-            //#else
             _loadingWrapper.gameObject.SetActive(value);
             _loadingBar.gameObject.SetActive(value);
-            //#endif
             _loading = value;
         }
 

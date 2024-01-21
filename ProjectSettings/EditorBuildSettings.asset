@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/USBcamNDITesting.unity
+    guid: d431140e11a811f458db0f6de5af2de3
+  - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: f2fea7ace86997841a554a80efb78d0c
   - enabled: 0

@@ -36,11 +36,6 @@ namespace Meta.Voice.Samples.LiveUnderstanding
         // On validate callback
         public void OnValidatePartialResponse(VoiceSession sessionData)
         {
-              print(sessionData.response.GetTranscription());
-            
-
-         //   print(sessionData.response.AsStringArray[0]);
-
             string intentName = sessionData.response.GetIntentName();
             if (string.Equals(intentName, COLOR_SET_INTENT_ID))
             {

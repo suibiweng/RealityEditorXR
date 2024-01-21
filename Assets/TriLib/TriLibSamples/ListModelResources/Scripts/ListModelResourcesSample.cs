@@ -48,6 +48,11 @@ namespace TriLibCore.Samples
         private GameObject _loadedGameObject;
 
         /// <summary>
+        /// Cached Asset Loader Options instance.
+        /// </summary>
+        private AssetLoaderOptions _assetLoaderOptions;
+
+        /// <summary>
         /// Creates the AssetLoaderOptions instance and displays the Model file-picker.
         /// </summary>
         /// <remarks>
@@ -55,9 +60,12 @@ namespace TriLibCore.Samples
         /// </remarks>
         public void LoadModel()
         {
-            var assetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions();
+            if (_assetLoaderOptions == null)
+            {
+                _assetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions(false, true);
+            }
             var assetLoaderFilePicker = AssetLoaderFilePicker.Create();
-            assetLoaderFilePicker.LoadModelFromFilePickerAsync("Select a Model file", OnLoad, OnMaterialsLoad, OnProgress, OnBeginLoad, OnError, null, assetLoaderOptions);
+            assetLoaderFilePicker.LoadModelFromFilePickerAsync("Select a Model file", OnLoad, OnMaterialsLoad, OnProgress, OnBeginLoad, OnError, null, _assetLoaderOptions);
         }
 
         /// <summary>
@@ -68,8 +76,11 @@ namespace TriLibCore.Samples
         /// </remarks>
         private void Start()
         {
-            var assetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions();
-            AssetLoader.LoadModelFromFile(ModelPath, OnLoad, OnMaterialsLoad, OnProgress, OnError, null, assetLoaderOptions);
+            if (_assetLoaderOptions == null)
+            {
+                _assetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions(false, true);
+            }
+            AssetLoader.LoadModelFromFile(ModelPath, OnLoad, OnMaterialsLoad, OnProgress, OnError, null, _assetLoaderOptions);
         }
         /// <summary>
         /// Called when the the Model begins to load, configuring the scene.

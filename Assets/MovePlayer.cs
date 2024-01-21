@@ -18,13 +18,13 @@ public class MovePlayer : MonoBehaviour
     }
     void Update()
     {
-        var joystick = OVRInput.Get(OVRInput.RawAxis2D.LThumbstick, OVRInput.Controller.LTouch);
-        var Rightjoystick = OVRInput.Get(OVRInput.RawAxis2D.RThumbstick, OVRInput.Controller.RTouch);
-        float fixedy = Player.transform.position.y;
+        // var joystick = OVRInput.Get(OVRInput.RawAxis2D.LThumbstick, OVRInput.Controller.LTouch);
+        // var Rightjoystick = OVRInput.Get(OVRInput.RawAxis2D.RThumbstick, OVRInput.Controller.RTouch);
+        // float fixedy = Player.transform.position.y;
 
-        Player.transform.position += (transform.right * joystick.x + transform.forward * joystick.y) * Time.deltaTime * speed;
-        Player.transform.Rotate(new Vector3(0f,Rightjoystick.x * rotateSpeed, 0f));
-        // Player.transform.position = new Vector3()
+        // Player.transform.position += (transform.right * joystick.x + transform.forward * joystick.y) * Time.deltaTime * speed;
+        // Player.transform.Rotate(new Vector3(0f,Rightjoystick.y * rotateSpeed, 0f));
+        // // Player.transform.position = new Vector3()
 
     }
 }

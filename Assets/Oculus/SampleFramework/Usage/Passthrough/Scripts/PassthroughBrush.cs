@@ -61,7 +61,6 @@ public class PassthroughBrush : MonoBehaviour
                     brushStatus = BrushState.Idle;
                 }
 
-
                 break;
         }
     }

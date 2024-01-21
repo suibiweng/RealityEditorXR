@@ -709,6 +709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd4ff7916cbc1db4dae0b06d829ff79f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startMicrophoneProducerOnStart: 1
 --- !u!114 &114547564779284118
 MonoBehaviour:
   m_ObjectHideFlags: 0

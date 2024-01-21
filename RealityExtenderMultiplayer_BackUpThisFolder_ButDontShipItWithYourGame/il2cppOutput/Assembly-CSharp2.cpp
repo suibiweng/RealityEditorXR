@@ -219,8 +219,6 @@ struct Action_1_t40CEC43BA9E8C8853B1609C0A93804C1488AA6A7;
 struct Action_1_t84E0474180BE74DC186BB652F051419C72E75519;
 // System.Action`1<System.Object>
 struct Action_1_t6F9EB113EB3F16226AEF811A2744F4111C116C87;
-// System.Action`1<Normal.Realtime.RealtimeView>
-struct Action_1_t2F24040E8AF59521FDDE3382168E80778F79F7EA;
 // System.Action`1<TMPro.TMP_TextInfo>
 struct Action_1_tB93AB717F9D419A1BEC832FF76E74EAA32184CC1;
 // System.Action`1<TriLibCore.TextureLoadingContext>
@@ -233,8 +231,6 @@ struct Action_2_t0DC864C1EAC2A0833074ED1D8D51BF4A8727816A;
 struct Action_2_t5A98318AA2335D7048A849A249280B64AD125DCD;
 // System.Action`2<System.Object,System.Single>
 struct Action_2_t4A5313D1C1FEF099C0E5969104BDE957CD82CF22;
-// System.Action`2<Normal.Realtime.RealtimeView,System.Int32>
-struct Action_2_t13DC89BD95B64836DBDDCFBFF527E707735DE74E;
 // System.Action`2<OVRSpatialAnchor/UnboundAnchor,System.Boolean>
 struct Action_2_t979AFF408DA299E0AA292FEEB3C2633BBD5B4EBD;
 // System.Action`4<System.String,System.String,System.TimeSpan,System.Int64>
@@ -451,10 +447,6 @@ struct Queue_1_t1FF73914A1CB7D2DFC1BFD8FAA96C8701452A85B;
 struct Queue_1_t64CA9F9A18DB743C0281B8C8F81AA53C18D44982;
 // System.Collections.Generic.Queue`1<System.Object>
 struct Queue_1_tE9EF546915795972C3BFD68FBB8FA859D3BAF3B5;
-// Normal.Realtime.RealtimeComponent`1<System.Object>
-struct RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77;
-// Normal.Realtime.RealtimeComponent`1<Normal.Realtime.RealtimeTransformModel>
-struct RealtimeComponent_1_t2EEBF8143F45E3E28BC948B231BE66DFB5EA890C;
 // System.Threading.Tasks.Task`1<System.Int32>
 struct Task_1_t4C228DE57804012969575431CFF12D57C875552D;
 // UnityEngine.UI.CoroutineTween.TweenRunner`1<UnityEngine.UI.CoroutineTween.ColorTween>
@@ -607,8 +599,6 @@ struct RendererU5BU5D_t32FDD782F67917B2291EA4FF242719877440A02A;
 struct RichTextTagAttributeU5BU5D_t5816316EFD8F59DBC30B9F88E15828C564E47B6D;
 // UnityEngine.UI.Selectable[]
 struct SelectableU5BU5D_t4160E135F02A40F75A63F787D36F31FEC6FE91A9;
-// Normal.Realtime.SerializableComponentIDPair[]
-struct SerializableComponentIDPairU5BU5D_tCAB129530B042F7488A2A82A9551F9FA24740587;
 // System.Single[]
 struct SingleU5BU5D_t89DEFE97BCEDB5857010E79ECE0F52CF6E93B87C;
 // UnityEngine.SkeletonBone[]
@@ -937,18 +927,12 @@ struct ReaderBase_tF4CA317DE26742ECCE011521FF46AC6E30980449;
 struct RealityEditorManager_tB9A2A32AAF8B08ADCE0C91D3C701570B0E64F5E7;
 // Normal.Realtime.Realtime
 struct Realtime_tCAD6AEE825118705C9F20591846AA624D890AD3D;
-// Normal.Realtime.RealtimeComponentMap
-struct RealtimeComponentMap_t12C488011C3B499155ADC9F7642DFFC55B13A057;
 // Normal.Realtime.RealtimeTransform
 struct RealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E;
 // Normal.Realtime.RealtimeTransformModel
 struct RealtimeTransformModel_t20FBE0D9D4B39F930DB1E805F21066856EDC2B59;
 // Normal.Realtime.RealtimeView
 struct RealtimeView_t92CAA838413E6AB800B2BC8980AFCE156FC642E5;
-// Normal.Realtime.RealtimeViewHierarchy
-struct RealtimeViewHierarchy_t8B03F90C512D2A954433AE1887768559EC5104EC;
-// Normal.Realtime.RealtimeViewModel
-struct RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8;
 // ReceiveAll
 struct ReceiveAll_t58E2D66E0860574723C6F2B4F039606810612DC4;
 // ReceiveFFT
@@ -1227,12 +1211,8 @@ struct ReleasedObject_t03C81AEEB8828CDCAD8F6B13F9816FEA331DBAF3;
 struct SetCursorPosition_t35BF3398EC27487041A0DDD942509659DCEAD15C;
 // UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
 struct CullStateChangedEvent_t6073CD0D951EC1256BF74B8F9107D68FC89B99B8;
-// RealityEditorManager/<AddCubeToListCoroutine>d__11
-struct U3CAddCubeToListCoroutineU3Ed__11_t5E19B3140329BE2E3AFE3715E69E111C87122D4F;
 // Normal.Realtime.Realtime/RealtimeEvent
 struct RealtimeEvent_tE95577403AA50888AB605DA9F608C18855CEBA70;
-// Normal.Realtime.RealtimeView/SceneViewWillRegisterDelegate
-struct SceneViewWillRegisterDelegate_tBEE8CC81AD248CF581CC090A983509D755665CCD;
 // UnityEngine.RectTransform/ReapplyDrivenProperties
 struct ReapplyDrivenProperties_t3482EA130A01FF7EE2EEFE37F66A5215D08CFE24;
 // UnityEngine.UI.Slider/SliderEvent
@@ -1384,7 +1364,6 @@ IL2CPP_EXTERN_C RuntimeClass* ThreadStart_t7662D98F1793EDE90192D7304D1C3C4411932
 IL2CPP_EXTERN_C RuntimeClass* Thread_t0A773B9DE873D2DCAA7D229EAB36757B500E207F_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* TransformU5BU5D_tBB9C5F5686CAE82E3D97D43DF0F3D68ABF75EC24_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Type_t_il2cpp_TypeInfo_var;
-IL2CPP_EXTERN_C RuntimeClass* U3CAddCubeToListCoroutineU3Ed__11_t5E19B3140329BE2E3AFE3715E69E111C87122D4F_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* U3CBuildGameObjectsPaths_CoroutineU3Ed__38_t1330249874B45FB909FAFF7815C80781BC562C15_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* U3CDownloadAndRefreshTextureU3Ed__4_tB3289CBD028EB03B9FAD0243E018C4A38C17471C_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* U3CDownloadAssetU3Ed__3_tC82BBE6AD332BBF7E00D2F87132DC161E82A9CAC_il2cpp_TypeInfo_var;
@@ -1643,7 +1622,6 @@ IL2CPP_EXTERN_C const RuntimeMethod* GameObject_GetComponent_TisGenerateSpot_t0E
 IL2CPP_EXTERN_C const RuntimeMethod* GameObject_GetComponent_TisLineRenderer_tEFEF960672DB69CB14B6D181FAE6292F0CF8B63D_mE703918F1B04E115CCE78A5FF891A12648B04D75_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* GameObject_GetComponent_TisMeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE_m7FF948365C38BC39333D82B235A7C4EAD219960D_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* GameObject_GetComponent_TisRealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E_m1B7B6D23D06B14176AB099A50360DE6D8E3CD17A_RuntimeMethod_var;
-IL2CPP_EXTERN_C const RuntimeMethod* GameObject_GetComponent_TisRealtimeView_t92CAA838413E6AB800B2BC8980AFCE156FC642E5_mBAD297A12FBD0D2166B7BD41361FCA1FBF3648BC_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* GameObject_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_m026EB44DB6238F13E2AFBECF1FBBE924CB1B040A_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* GameObject_GetComponent_TisSkinnedMeshRenderer_t020C4E8648EA1C4C6BA5C41502919B387E7E1C2E_m65A61C4E0226FA3550C4CB0A04C390C452042BBC_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* GameObject_GetComponentsInChildren_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_mA2746088DB45856FD76C725AB403CEF5A8997734_RuntimeMethod_var;
@@ -1720,7 +1698,6 @@ IL2CPP_EXTERN_C const RuntimeMethod* Queue_1_Enqueue_mDEDCB733C589510F70933504C6
 IL2CPP_EXTERN_C const RuntimeMethod* Queue_1__ctor_m5A0B13A622E769217C13F99774EBF46D16655B53_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Queue_1_get_Count_m63754F416F785237B7B167B2A37E79CEB622576E_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* RealityEditorManager_ReciveFromOSC_mD2D481F5979B31E438BE9271EB88444643D8220E_RuntimeMethod_var;
-IL2CPP_EXTERN_C const RuntimeMethod* RealtimeComponent_1_ClearOwnership_m59C90BCB9186787DD7DABB6F6CC26A0D4E139F10_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* ReceiveAll_OnReceive_m25219DB1F52AE0FD25113E9953D6B967E5520E34_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* ReceiveFFT_OnReceive_m73019465DB04F92B1585F2486027F4E181EFE35F_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* ReceiveLevel_OnReceive_m630F07895A56641642ACF74A33BC2F8A2C6BB2A2_RuntimeMethod_var;
@@ -1742,7 +1719,6 @@ IL2CPP_EXTERN_C const RuntimeMethod* TextureUtils_FixNormalMap_m30751B854C020DA1
 IL2CPP_EXTERN_C const RuntimeMethod* ThreadUtils_RequestNewThreadFor_TisAssetLoaderContext_t94854AA4BCC0F8C2A92047DD2CC6BF830001DD2C_mB1049F284ED6EDA41E258FAE1907A0A9C0BDB267_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* ThreadUtils_RequestNewThreadWithCoroutinesFor_TisAssetLoaderContext_t94854AA4BCC0F8C2A92047DD2CC6BF830001DD2C_m7C2BF7BCED2ACFA5CA93AB5008FC1B942BBA8A4B_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Type_GetType_m71A077E0B5DA3BD1DC0AB9AE387056CFCF56F93F_RuntimeMethod_var;
-IL2CPP_EXTERN_C const RuntimeMethod* U3CAddCubeToListCoroutineU3Ed__11_System_Collections_IEnumerator_Reset_m097AEA5EC6746CB9C4DCD1604839A214FB593524_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* U3CDownloadAndRefreshTextureU3Ed__4_System_Collections_IEnumerator_Reset_m324FC37BA77C2E63F8659A0E21C93CA8F681A9CF_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* U3CDownloadAssetU3Ed__3_MoveNext_m3BDAE63FBB2B950FB53A11449DB09FCE5791FEC8_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* U3CDownloadAssetU3Ed__3_System_Collections_IEnumerator_Reset_m59B0FACCBF65CA425391451724967B2DF875E813_RuntimeMethod_var;
@@ -2959,19 +2935,6 @@ struct U3CSetupRig_CoroutineU3Ed__39_t2E711CB3945E9C38B5A85B7174A50D20110C65BF  
 	AnimationClipMapperU5BU5D_t8E00A18562A07FD65A6E731D8BA6FF48D80BBFD8* ___U3CU3E7__wrap2_4;
 	// System.Int32 TriLibCore.AssetLoader/<SetupRig_Coroutine>d__39::<>7__wrap3
 	int32_t ___U3CU3E7__wrap3_5;
-};
-
-// RealityEditorManager/<AddCubeToListCoroutine>d__11
-struct U3CAddCubeToListCoroutineU3Ed__11_t5E19B3140329BE2E3AFE3715E69E111C87122D4F  : public RuntimeObject
-{
-	// System.Int32 RealityEditorManager/<AddCubeToListCoroutine>d__11::<>1__state
-	int32_t ___U3CU3E1__state_0;
-	// System.Object RealityEditorManager/<AddCubeToListCoroutine>d__11::<>2__current
-	RuntimeObject* ___U3CU3E2__current_1;
-	// RealityEditorManager RealityEditorManager/<AddCubeToListCoroutine>d__11::<>4__this
-	RealityEditorManager_tB9A2A32AAF8B08ADCE0C91D3C701570B0E64F5E7* ___U3CU3E4__this_2;
-	// UnityEngine.GameObject RealityEditorManager/<AddCubeToListCoroutine>d__11::gcube
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___gcube_3;
 };
 
 // StartMenu/<>c__DisplayClass3_0
@@ -6710,45 +6673,6 @@ struct Realtime_tCAD6AEE825118705C9F20591846AA624D890AD3D  : public MonoBehaviou
 	Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* ____connectSceneViewsTimeoutRoutine_18;
 };
 
-// Normal.Realtime.RealtimeView
-struct RealtimeView_t92CAA838413E6AB800B2BC8980AFCE156FC642E5  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
-{
-	// Normal.Realtime.Realtime Normal.Realtime.RealtimeView::_realtime
-	Realtime_tCAD6AEE825118705C9F20591846AA624D890AD3D* ____realtime_5;
-	// System.Byte[] Normal.Realtime.RealtimeView::_sceneViewUUID
-	ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* ____sceneViewUUID_6;
-	// System.String Normal.Realtime.RealtimeView::_viewUUID
-	String_t* ____viewUUID_7;
-	// System.Boolean Normal.Realtime.RealtimeView::_sceneViewPreventOwnershipTakeover
-	bool ____sceneViewPreventOwnershipTakeover_8;
-	// System.Boolean Normal.Realtime.RealtimeView::_sceneViewDestroyWhenOwnerOrLastClientLeaves
-	bool ____sceneViewDestroyWhenOwnerOrLastClientLeaves_9;
-	// System.Boolean Normal.Realtime.RealtimeView::_sceneViewDestroyWhenOwnerOrLastClientLeavesMigrated
-	bool ____sceneViewDestroyWhenOwnerOrLastClientLeavesMigrated_10;
-	// System.Boolean Normal.Realtime.RealtimeView::_sceneViewDestroyWhenLastClientLeaves
-	bool ____sceneViewDestroyWhenLastClientLeaves_11;
-	// Normal.Realtime.SerializableComponentIDPair[] Normal.Realtime.RealtimeView::_components
-	SerializableComponentIDPairU5BU5D_tCAB129530B042F7488A2A82A9551F9FA24740587* ____components_12;
-	// Normal.Realtime.SerializableComponentIDPair[] Normal.Realtime.RealtimeView::_childViews
-	SerializableComponentIDPairU5BU5D_tCAB129530B042F7488A2A82A9551F9FA24740587* ____childViews_13;
-	// Normal.Realtime.RealtimeViewHierarchy Normal.Realtime.RealtimeView::_hierarchy
-	RealtimeViewHierarchy_t8B03F90C512D2A954433AE1887768559EC5104EC* ____hierarchy_14;
-	// Normal.Realtime.RealtimeComponentMap Normal.Realtime.RealtimeView::_componentMap
-	RealtimeComponentMap_t12C488011C3B499155ADC9F7642DFFC55B13A057* ____componentMap_15;
-	// Normal.Realtime.RealtimeComponentMap Normal.Realtime.RealtimeView::_childViewMap
-	RealtimeComponentMap_t12C488011C3B499155ADC9F7642DFFC55B13A057* ____childViewMap_16;
-	// Normal.Realtime.RealtimeViewModel Normal.Realtime.RealtimeView::model
-	RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* ___model_17;
-	// System.Action`2<Normal.Realtime.RealtimeView,System.Int32> Normal.Realtime.RealtimeView::ownerIDSelfDidChange
-	Action_2_t13DC89BD95B64836DBDDCFBFF527E707735DE74E* ___ownerIDSelfDidChange_18;
-	// System.Action`1<Normal.Realtime.RealtimeView> Normal.Realtime.RealtimeView::didReplaceAllComponentModels
-	Action_1_t2F24040E8AF59521FDDE3382168E80778F79F7EA* ___didReplaceAllComponentModels_19;
-	// Normal.Realtime.RealtimeView/SceneViewWillRegisterDelegate Normal.Realtime.RealtimeView::sceneViewWillRegisterWithRealtime
-	SceneViewWillRegisterDelegate_tBEE8CC81AD248CF581CC090A983509D755665CCD* ___sceneViewWillRegisterWithRealtime_20;
-	// System.Boolean Normal.Realtime.RealtimeView::_isViewSetOnComponents
-	bool ____isViewSetOnComponents_21;
-};
-
 // ReceiveAll
 struct ReceiveAll_t58E2D66E0860574723C6F2B4F039606810612DC4  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
 {
@@ -8438,10 +8362,6 @@ struct U3CU3Ec_t34DFA621555FE215161DAB1AC844C018FE155316_StaticFields
 
 // TriLibCore.AssetLoader/<SetupRig_Coroutine>d__39
 
-// RealityEditorManager/<AddCubeToListCoroutine>d__11
-
-// RealityEditorManager/<AddCubeToListCoroutine>d__11
-
 // StartMenu/<>c__DisplayClass3_0
 
 // StartMenu/<>c__DisplayClass3_0
@@ -9639,10 +9559,6 @@ struct Realtime_tCAD6AEE825118705C9F20591846AA624D890AD3D_StaticFields
 };
 
 // Normal.Realtime.Realtime
-
-// Normal.Realtime.RealtimeView
-
-// Normal.Realtime.RealtimeView
 
 // ReceiveAll
 
@@ -11235,12 +11151,10 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t Queue_1_get_Count_m1768AD
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* Queue_1_Dequeue_m86B243DF9EC238316EC3D27DF3E0AB8DB0987E84_gshared (Queue_1_tE9EF546915795972C3BFD68FBB8FA859D3BAF3B5* __this, const RuntimeMethod* method) ;
 // System.Void System.Action`2<System.Object,System.Single>::.ctor(System.Object,System.IntPtr)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Action_2__ctor_m600728814D64949FB42DEE273E5E146A5E015BE1_gshared (Action_2_t4A5313D1C1FEF099C0E5969104BDE957CD82CF22* __this, RuntimeObject* ___0_object, intptr_t ___1_method, const RuntimeMethod* method) ;
-// System.Void Normal.Realtime.RealtimeComponent`1<System.Object>::ClearOwnership()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealtimeComponent_1_ClearOwnership_m0994964A400C8D288419468980C5846B628EB7B4_gshared (RealtimeComponent_1_t01620417A8A289DC39086F5EE29DCFB3D92A8A77* __this, const RuntimeMethod* method) ;
-// System.Void System.Collections.Generic.List`1<System.Object>::RemoveAt(System.Int32)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void List_1_RemoveAt_m54F62297ADEE4D4FDA697F49ED807BF901201B54_gshared (List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D* __this, int32_t ___0_index, const RuntimeMethod* method) ;
 // System.Void System.Collections.Generic.List`1<System.Object>::Add(T)
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void List_1_Add_mEBCF994CC3814631017F46A387B1A192ED6C85C7_gshared_inline (List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D* __this, RuntimeObject* ___0_item, const RuntimeMethod* method) ;
+// System.Void System.Collections.Generic.List`1<System.Object>::RemoveAt(System.Int32)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void List_1_RemoveAt_m54F62297ADEE4D4FDA697F49ED807BF901201B54_gshared (List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D* __this, int32_t ___0_index, const RuntimeMethod* method) ;
 // System.Void UnityEngine.Events.UnityAction`1<System.Object>::.ctor(System.Object,System.IntPtr)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnityAction_1__ctor_m0C2FC6B483B474AE9596A43EBA7FF6E85503A92A_gshared (UnityAction_1_t9C30BCD020745BF400CBACF22C6F34ADBA2DDA6A* __this, RuntimeObject* ___0_object, intptr_t ___1_method, const RuntimeMethod* method) ;
 // System.Void UnityEngine.Events.UnityEvent`1<System.Object>::AddListener(UnityEngine.Events.UnityAction`1<T0>)
@@ -11928,29 +11842,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealityEditorManager_createSpot_m4EBD767
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 Quaternion_get_identity_m7E701AE095ED10FD5EA0B50ABCFDE2EEFF2173A5_inline (const RuntimeMethod* method) ;
 // UnityEngine.GameObject Normal.Realtime.Realtime::Instantiate(System.String,UnityEngine.Vector3,UnityEngine.Quaternion,System.Boolean,System.Boolean,System.Boolean,Normal.Realtime.Realtime)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* Realtime_Instantiate_mEB5A90084932AB69E206D09F5935A4DE13EBD7C6 (String_t* ___0_prefabName, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___1_position, Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___2_rotation, bool ___3_ownedByClient, bool ___4_preventOwnershipTakeover, bool ___5_destroyWhenOwnerOrLastClientLeaves, Realtime_tCAD6AEE825118705C9F20591846AA624D890AD3D* ___6_useInstance, const RuntimeMethod* method) ;
+// System.Void System.Collections.Generic.List`1<UnityEngine.GameObject>::Add(T)
+inline void List_1_Add_m43FBF207375C6E06B8C45ECE614F9B8008FB686E_inline (List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* __this, GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___0_item, const RuntimeMethod* method)
+{
+	((  void (*) (List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B*, GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*, const RuntimeMethod*))List_1_Add_mEBCF994CC3814631017F46A387B1A192ED6C85C7_gshared_inline)(__this, ___0_item, method);
+}
 // T UnityEngine.GameObject::GetComponent<Normal.Realtime.RealtimeTransform>()
 inline RealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E* GameObject_GetComponent_TisRealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E_m1B7B6D23D06B14176AB099A50360DE6D8E3CD17A (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* __this, const RuntimeMethod* method)
 {
 	return ((  RealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E* (*) (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*, const RuntimeMethod*))GameObject_GetComponent_TisRuntimeObject_m6EAED4AA356F0F48288F67899E5958792395563B_gshared)(__this, method);
 }
-// System.Void Normal.Realtime.RealtimeComponent`1<Normal.Realtime.RealtimeTransformModel>::ClearOwnership()
-inline void RealtimeComponent_1_ClearOwnership_m59C90BCB9186787DD7DABB6F6CC26A0D4E139F10 (RealtimeComponent_1_t2EEBF8143F45E3E28BC948B231BE66DFB5EA890C* __this, const RuntimeMethod* method)
-{
-	((  void (*) (RealtimeComponent_1_t2EEBF8143F45E3E28BC948B231BE66DFB5EA890C*, const RuntimeMethod*))RealtimeComponent_1_ClearOwnership_m0994964A400C8D288419468980C5846B628EB7B4_gshared)(__this, method);
-}
-// T UnityEngine.GameObject::GetComponent<Normal.Realtime.RealtimeView>()
-inline RealtimeView_t92CAA838413E6AB800B2BC8980AFCE156FC642E5* GameObject_GetComponent_TisRealtimeView_t92CAA838413E6AB800B2BC8980AFCE156FC642E5_mBAD297A12FBD0D2166B7BD41361FCA1FBF3648BC (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* __this, const RuntimeMethod* method)
-{
-	return ((  RealtimeView_t92CAA838413E6AB800B2BC8980AFCE156FC642E5* (*) (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*, const RuntimeMethod*))GameObject_GetComponent_TisRuntimeObject_m6EAED4AA356F0F48288F67899E5958792395563B_gshared)(__this, method);
-}
-// System.Void Normal.Realtime.RealtimeView::ClearOwnership()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealtimeView_ClearOwnership_m150E0ED28CA6AA3340616EEF8CB899C1873D8295 (RealtimeView_t92CAA838413E6AB800B2BC8980AFCE156FC642E5* __this, const RuntimeMethod* method) ;
-// System.Collections.IEnumerator RealityEditorManager::AddCubeToListCoroutine(UnityEngine.GameObject)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* RealityEditorManager_AddCubeToListCoroutine_m274A0CD65B6F80E878E7D7E5D6E0C687CB9D226B (RealityEditorManager_tB9A2A32AAF8B08ADCE0C91D3C701570B0E64F5E7* __this, GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___0_gcube, const RuntimeMethod* method) ;
-// UnityEngine.Coroutine UnityEngine.MonoBehaviour::StartCoroutine(System.Collections.IEnumerator)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* MonoBehaviour_StartCoroutine_m4CAFF732AA28CD3BDC5363B44A863575530EC812 (MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71* __this, RuntimeObject* ___0_routine, const RuntimeMethod* method) ;
-// System.Void RealityEditorManager/<AddCubeToListCoroutine>d__11::.ctor(System.Int32)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CAddCubeToListCoroutineU3Ed__11__ctor_m4D2B6E5D09F99B154ADC913FE33F78D9CBF2963E (U3CAddCubeToListCoroutineU3Ed__11_t5E19B3140329BE2E3AFE3715E69E111C87122D4F* __this, int32_t ___0_U3CU3E1__state, const RuntimeMethod* method) ;
 // UnityEngine.GameObject UnityEngine.GameObject::get_gameObject()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* GameObject_get_gameObject_m0878015B8CF7F5D432B583C187725810D27B57DC (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* __this, const RuntimeMethod* method) ;
 // System.Void UnityEngine.Object::Destroy(UnityEngine.Object,System.Single)
@@ -11976,15 +11877,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ModelDownloader_startDownload_m6699AA88C
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WebSocketmessage__ctor_m1CC167FC5B3F8A970E977F09D1718CB16619D04B (WebSocketmessage_tE13067C72E9E96E0C46CB5EC4F991CE06DEFDD47* __this, const RuntimeMethod* method) ;
 // System.Void WsClient::sendMessageToServer(RealityEditor.WebSocketmessage)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WsClient_sendMessageToServer_m46CDECD9E93208AFFC11BA57BAC7001CAB85209E (WsClient_tB6E3EED680B6EBD2993194FBD3025759EC54EC45* __this, WebSocketmessage_tE13067C72E9E96E0C46CB5EC4F991CE06DEFDD47* ___0_msg, const RuntimeMethod* method) ;
-// System.Void UnityEngine.WaitForSeconds::.ctor(System.Single)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WaitForSeconds__ctor_m579F95BADEDBAB4B3A7E302C6EE3995926EF2EFC (WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3* __this, float ___0_seconds, const RuntimeMethod* method) ;
-// System.Void System.Collections.Generic.List`1<UnityEngine.GameObject>::Add(T)
-inline void List_1_Add_m43FBF207375C6E06B8C45ECE614F9B8008FB686E_inline (List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* __this, GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___0_item, const RuntimeMethod* method)
-{
-	((  void (*) (List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B*, GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*, const RuntimeMethod*))List_1_Add_mEBCF994CC3814631017F46A387B1A192ED6C85C7_gshared_inline)(__this, ___0_item, method);
-}
-// System.Void System.NotSupportedException::.ctor()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NotSupportedException__ctor_m1398D0CDE19B36AA3DE9392879738C1EA2439CDF (NotSupportedException_t1429765983D409BD2986508963C98D214E4EBF4A* __this, const RuntimeMethod* method) ;
 // System.Void UnityEngine.Application/LogCallback::.ctor(System.Object,System.IntPtr)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LogCallback__ctor_m327A4C69691F8A4B01D405858E48B8A7D9D2A79D (LogCallback_tCFFF3C009186124A6A83A1E6BB7E360C5674C413* __this, RuntimeObject* ___0_object, intptr_t ___1_method, const RuntimeMethod* method) ;
 // System.Void UnityEngine.Application::add_logMessageReceived(UnityEngine.Application/LogCallback)
@@ -12038,6 +11930,8 @@ inline Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* Component_GetComponen
 }
 // System.Collections.IEnumerator TextureDownloader::DownloadAndRefreshTexture()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* TextureDownloader_DownloadAndRefreshTexture_m430E8B190AD0383F90FD365955B347331F39395C (TextureDownloader_tDF525C1A9B43A82E0B328F765D049204A70EE46A* __this, const RuntimeMethod* method) ;
+// UnityEngine.Coroutine UnityEngine.MonoBehaviour::StartCoroutine(System.Collections.IEnumerator)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* MonoBehaviour_StartCoroutine_m4CAFF732AA28CD3BDC5363B44A863575530EC812 (MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71* __this, RuntimeObject* ___0_routine, const RuntimeMethod* method) ;
 // System.Void TextureDownloader/<DownloadAndRefreshTexture>d__4::.ctor(System.Int32)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CDownloadAndRefreshTextureU3Ed__4__ctor_m404476C4EC51959069EB17E01B6D46CE96575C2F (U3CDownloadAndRefreshTextureU3Ed__4_tB3289CBD028EB03B9FAD0243E018C4A38C17471C* __this, int32_t ___0_U3CU3E1__state, const RuntimeMethod* method) ;
 // System.Void TextureDownloader/<DownloadAndRefreshTexture>d__4::<>m__Finally1()
@@ -12054,6 +11948,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool String_IsNullOrEmpty_mEA9E3FB005AC28FE02
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* WWW_get_texture_mB38F7FC4220AC09935423B84FD4EB852CF172AAE (WWW_tEADA9A43B98FC277E498F8E3206A3B8C4E5AF3FB* __this, const RuntimeMethod* method) ;
 // System.Void UnityEngine.Material::set_mainTexture(UnityEngine.Texture)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Material_set_mainTexture_m389E048BA9C81B603EBF36BD792212B296317AC0 (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* __this, Texture_t791CBB51219779964E0E8A2ED7C1AA5F92A4A700* ___0_value, const RuntimeMethod* method) ;
+// System.Void UnityEngine.WaitForSeconds::.ctor(System.Single)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WaitForSeconds__ctor_m579F95BADEDBAB4B3A7E302C6EE3995926EF2EFC (WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3* __this, float ___0_seconds, const RuntimeMethod* method) ;
+// System.Void System.NotSupportedException::.ctor()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NotSupportedException__ctor_m1398D0CDE19B36AA3DE9392879738C1EA2439CDF (NotSupportedException_t1429765983D409BD2986508963C98D214E4EBF4A* __this, const RuntimeMethod* method) ;
 // T UnityEngine.Object::FindObjectOfType<Meta.WitAi.VoiceService>()
 inline VoiceService_t601CB0E6879961EC1F8179A8E20EB9DD7AF6A82E* Object_FindObjectOfType_TisVoiceService_t601CB0E6879961EC1F8179A8E20EB9DD7AF6A82E_mDA8F5B3610935B66B1EC441F14D138F7C47411EC (const RuntimeMethod* method)
 {
@@ -18069,15 +17967,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealityEditorManager_createSpot_m4EBD767
 	{
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GameObject_GetComponent_TisGenerateSpot_t0E9A4B7A1CA1F7F52A3F0FF2D579BCC64F76F01F_m2EA77CD9ABC6BA75AEDC575AF11243D107C46EE9_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GameObject_GetComponent_TisRealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E_m1B7B6D23D06B14176AB099A50360DE6D8E3CD17A_RuntimeMethod_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GameObject_GetComponent_TisRealtimeView_t92CAA838413E6AB800B2BC8980AFCE156FC642E5_mBAD297A12FBD0D2166B7BD41361FCA1FBF3648BC_RuntimeMethod_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&RealtimeComponent_1_ClearOwnership_m59C90BCB9186787DD7DABB6F6CC26A0D4E139F10_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&List_1_Add_m43FBF207375C6E06B8C45ECE614F9B8008FB686E_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Realtime_tCAD6AEE825118705C9F20591846AA624D890AD3D_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral56AF57CAA4B4B765C800B2A81608A7BFC34F6045);
 		s_Il2CppMethodInitialized = true;
 	}
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* V_0 = NULL;
 	{
-		// GameObject gcube = Realtime.Instantiate("GenrateSpot",pos,Quaternion.identity);
+		// GameObject gcube= Realtime.Instantiate("GenrateSpot",pos,Quaternion.identity);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_0 = ___0_pos;
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_1;
 		L_1 = Quaternion_get_identity_m7E701AE095ED10FD5EA0B50ABCFDE2EEFF2173A5_inline(NULL);
@@ -18085,66 +17982,29 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealityEditorManager_createSpot_m4EBD767
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_2;
 		L_2 = Realtime_Instantiate_mEB5A90084932AB69E206D09F5935A4DE13EBD7C6(_stringLiteral56AF57CAA4B4B765C800B2A81608A7BFC34F6045, L_0, L_1, (bool)1, (bool)0, (bool)1, (Realtime_tCAD6AEE825118705C9F20591846AA624D890AD3D*)NULL, NULL);
 		V_0 = L_2;
-		// gcube.GetComponent<GenerateSpot>().id=IDs;
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_3 = V_0;
+		// GenCubes.Add(gcube);
+		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_3 = __this->___GenCubes_4;
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4 = V_0;
 		NullCheck(L_3);
-		GenerateSpot_t0E9A4B7A1CA1F7F52A3F0FF2D579BCC64F76F01F* L_4;
-		L_4 = GameObject_GetComponent_TisGenerateSpot_t0E9A4B7A1CA1F7F52A3F0FF2D579BCC64F76F01F_m2EA77CD9ABC6BA75AEDC575AF11243D107C46EE9(L_3, GameObject_GetComponent_TisGenerateSpot_t0E9A4B7A1CA1F7F52A3F0FF2D579BCC64F76F01F_m2EA77CD9ABC6BA75AEDC575AF11243D107C46EE9_RuntimeMethod_var);
-		int32_t L_5 = __this->___IDs_9;
-		NullCheck(L_4);
-		L_4->___id_4 = L_5;
+		List_1_Add_m43FBF207375C6E06B8C45ECE614F9B8008FB686E_inline(L_3, L_4, List_1_Add_m43FBF207375C6E06B8C45ECE614F9B8008FB686E_RuntimeMethod_var);
+		// gcube.GetComponent<GenerateSpot>().id=IDs;
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5 = V_0;
+		NullCheck(L_5);
+		GenerateSpot_t0E9A4B7A1CA1F7F52A3F0FF2D579BCC64F76F01F* L_6;
+		L_6 = GameObject_GetComponent_TisGenerateSpot_t0E9A4B7A1CA1F7F52A3F0FF2D579BCC64F76F01F_m2EA77CD9ABC6BA75AEDC575AF11243D107C46EE9(L_5, GameObject_GetComponent_TisGenerateSpot_t0E9A4B7A1CA1F7F52A3F0FF2D579BCC64F76F01F_m2EA77CD9ABC6BA75AEDC575AF11243D107C46EE9_RuntimeMethod_var);
+		int32_t L_7 = __this->___IDs_9;
+		NullCheck(L_6);
+		L_6->___id_4 = L_7;
 		// IDs++;
-		int32_t L_6 = __this->___IDs_9;
-		__this->___IDs_9 = ((int32_t)il2cpp_codegen_add(L_6, 1));
+		int32_t L_8 = __this->___IDs_9;
+		__this->___IDs_9 = ((int32_t)il2cpp_codegen_add(L_8, 1));
 		// RealtimeTransform _realtimeTransform = gcube.GetComponent<RealtimeTransform>();
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_7 = V_0;
-		NullCheck(L_7);
-		RealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E* L_8;
-		L_8 = GameObject_GetComponent_TisRealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E_m1B7B6D23D06B14176AB099A50360DE6D8E3CD17A(L_7, GameObject_GetComponent_TisRealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E_m1B7B6D23D06B14176AB099A50360DE6D8E3CD17A_RuntimeMethod_var);
-		// _realtimeTransform.ClearOwnership();
-		NullCheck(L_8);
-		RealtimeComponent_1_ClearOwnership_m59C90BCB9186787DD7DABB6F6CC26A0D4E139F10(L_8, RealtimeComponent_1_ClearOwnership_m59C90BCB9186787DD7DABB6F6CC26A0D4E139F10_RuntimeMethod_var);
-		// RealtimeView _realtimeView = gcube.GetComponent<RealtimeView>();
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_9 = V_0;
 		NullCheck(L_9);
-		RealtimeView_t92CAA838413E6AB800B2BC8980AFCE156FC642E5* L_10;
-		L_10 = GameObject_GetComponent_TisRealtimeView_t92CAA838413E6AB800B2BC8980AFCE156FC642E5_mBAD297A12FBD0D2166B7BD41361FCA1FBF3648BC(L_9, GameObject_GetComponent_TisRealtimeView_t92CAA838413E6AB800B2BC8980AFCE156FC642E5_mBAD297A12FBD0D2166B7BD41361FCA1FBF3648BC_RuntimeMethod_var);
-		// _realtimeView.ClearOwnership();
-		NullCheck(L_10);
-		RealtimeView_ClearOwnership_m150E0ED28CA6AA3340616EEF8CB899C1873D8295(L_10, NULL);
-		// StartCoroutine(AddCubeToListCoroutine(gcube));
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_11 = V_0;
-		RuntimeObject* L_12;
-		L_12 = RealityEditorManager_AddCubeToListCoroutine_m274A0CD65B6F80E878E7D7E5D6E0C687CB9D226B(__this, L_11, NULL);
-		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_13;
-		L_13 = MonoBehaviour_StartCoroutine_m4CAFF732AA28CD3BDC5363B44A863575530EC812(__this, L_12, NULL);
+		RealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E* L_10;
+		L_10 = GameObject_GetComponent_TisRealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E_m1B7B6D23D06B14176AB099A50360DE6D8E3CD17A(L_9, GameObject_GetComponent_TisRealtimeTransform_t367C909F8A8B6F9CC3D56AE2885226F0E5807A3E_m1B7B6D23D06B14176AB099A50360DE6D8E3CD17A_RuntimeMethod_var);
 		// }
 		return;
-	}
-}
-// System.Collections.IEnumerator RealityEditorManager::AddCubeToListCoroutine(UnityEngine.GameObject)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* RealityEditorManager_AddCubeToListCoroutine_m274A0CD65B6F80E878E7D7E5D6E0C687CB9D226B (RealityEditorManager_tB9A2A32AAF8B08ADCE0C91D3C701570B0E64F5E7* __this, GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___0_gcube, const RuntimeMethod* method) 
-{
-	static bool s_Il2CppMethodInitialized;
-	if (!s_Il2CppMethodInitialized)
-	{
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CAddCubeToListCoroutineU3Ed__11_t5E19B3140329BE2E3AFE3715E69E111C87122D4F_il2cpp_TypeInfo_var);
-		s_Il2CppMethodInitialized = true;
-	}
-	{
-		U3CAddCubeToListCoroutineU3Ed__11_t5E19B3140329BE2E3AFE3715E69E111C87122D4F* L_0 = (U3CAddCubeToListCoroutineU3Ed__11_t5E19B3140329BE2E3AFE3715E69E111C87122D4F*)il2cpp_codegen_object_new(U3CAddCubeToListCoroutineU3Ed__11_t5E19B3140329BE2E3AFE3715E69E111C87122D4F_il2cpp_TypeInfo_var);
-		NullCheck(L_0);
-		U3CAddCubeToListCoroutineU3Ed__11__ctor_m4D2B6E5D09F99B154ADC913FE33F78D9CBF2963E(L_0, 0, NULL);
-		U3CAddCubeToListCoroutineU3Ed__11_t5E19B3140329BE2E3AFE3715E69E111C87122D4F* L_1 = L_0;
-		NullCheck(L_1);
-		L_1->___U3CU3E4__this_2 = __this;
-		Il2CppCodeGenWriteBarrier((void**)(&L_1->___U3CU3E4__this_2), (void*)__this);
-		U3CAddCubeToListCoroutineU3Ed__11_t5E19B3140329BE2E3AFE3715E69E111C87122D4F* L_2 = L_1;
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_3 = ___0_gcube;
-		NullCheck(L_2);
-		L_2->___gcube_3 = L_3;
-		Il2CppCodeGenWriteBarrier((void**)(&L_2->___gcube_3), (void*)L_3);
-		return L_2;
 	}
 }
 // System.Void RealityEditorManager::RemoveSpot(System.Int32)
@@ -18677,118 +18537,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealityEditorManager__ctor_mFEAB66E76BEA
 	{
 		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
 		return;
-	}
-}
-#ifdef __clang__
-#pragma clang diagnostic pop
-#endif
-#ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Winvalid-offsetof"
-#pragma clang diagnostic ignored "-Wunused-variable"
-#endif
-// System.Void RealityEditorManager/<AddCubeToListCoroutine>d__11::.ctor(System.Int32)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CAddCubeToListCoroutineU3Ed__11__ctor_m4D2B6E5D09F99B154ADC913FE33F78D9CBF2963E (U3CAddCubeToListCoroutineU3Ed__11_t5E19B3140329BE2E3AFE3715E69E111C87122D4F* __this, int32_t ___0_U3CU3E1__state, const RuntimeMethod* method) 
-{
-	{
-		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
-		int32_t L_0 = ___0_U3CU3E1__state;
-		__this->___U3CU3E1__state_0 = L_0;
-		return;
-	}
-}
-// System.Void RealityEditorManager/<AddCubeToListCoroutine>d__11::System.IDisposable.Dispose()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CAddCubeToListCoroutineU3Ed__11_System_IDisposable_Dispose_mB8270675077D8E25C1FAF6D541D61E490304A58C (U3CAddCubeToListCoroutineU3Ed__11_t5E19B3140329BE2E3AFE3715E69E111C87122D4F* __this, const RuntimeMethod* method) 
-{
-	{
-		return;
-	}
-}
-// System.Boolean RealityEditorManager/<AddCubeToListCoroutine>d__11::MoveNext()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CAddCubeToListCoroutineU3Ed__11_MoveNext_mC8DC5F530F46234657B9B440AB585AE570C153FF (U3CAddCubeToListCoroutineU3Ed__11_t5E19B3140329BE2E3AFE3715E69E111C87122D4F* __this, const RuntimeMethod* method) 
-{
-	static bool s_Il2CppMethodInitialized;
-	if (!s_Il2CppMethodInitialized)
-	{
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&List_1_Add_m43FBF207375C6E06B8C45ECE614F9B8008FB686E_RuntimeMethod_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3_il2cpp_TypeInfo_var);
-		s_Il2CppMethodInitialized = true;
-	}
-	int32_t V_0 = 0;
-	RealityEditorManager_tB9A2A32AAF8B08ADCE0C91D3C701570B0E64F5E7* V_1 = NULL;
-	{
-		int32_t L_0 = __this->___U3CU3E1__state_0;
-		V_0 = L_0;
-		RealityEditorManager_tB9A2A32AAF8B08ADCE0C91D3C701570B0E64F5E7* L_1 = __this->___U3CU3E4__this_2;
-		V_1 = L_1;
-		int32_t L_2 = V_0;
-		if (!L_2)
-		{
-			goto IL_0017;
-		}
-	}
-	{
-		int32_t L_3 = V_0;
-		if ((((int32_t)L_3) == ((int32_t)1)))
-		{
-			goto IL_0037;
-		}
-	}
-	{
-		return (bool)0;
-	}
-
-IL_0017:
-	{
-		__this->___U3CU3E1__state_0 = (-1);
-		// yield return new WaitForSeconds(0.5f);
-		WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3* L_4 = (WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3*)il2cpp_codegen_object_new(WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3_il2cpp_TypeInfo_var);
-		NullCheck(L_4);
-		WaitForSeconds__ctor_m579F95BADEDBAB4B3A7E302C6EE3995926EF2EFC(L_4, (0.5f), NULL);
-		__this->___U3CU3E2__current_1 = L_4;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E2__current_1), (void*)L_4);
-		__this->___U3CU3E1__state_0 = 1;
-		return (bool)1;
-	}
-
-IL_0037:
-	{
-		__this->___U3CU3E1__state_0 = (-1);
-		// GenCubes.Add(gcube);
-		RealityEditorManager_tB9A2A32AAF8B08ADCE0C91D3C701570B0E64F5E7* L_5 = V_1;
-		NullCheck(L_5);
-		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_6 = L_5->___GenCubes_4;
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_7 = __this->___gcube_3;
-		NullCheck(L_6);
-		List_1_Add_m43FBF207375C6E06B8C45ECE614F9B8008FB686E_inline(L_6, L_7, List_1_Add_m43FBF207375C6E06B8C45ECE614F9B8008FB686E_RuntimeMethod_var);
-		// }
-		return (bool)0;
-	}
-}
-// System.Object RealityEditorManager/<AddCubeToListCoroutine>d__11::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* U3CAddCubeToListCoroutineU3Ed__11_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m557AA4990E7B05082841D1688790534D00C2D399 (U3CAddCubeToListCoroutineU3Ed__11_t5E19B3140329BE2E3AFE3715E69E111C87122D4F* __this, const RuntimeMethod* method) 
-{
-	{
-		RuntimeObject* L_0 = __this->___U3CU3E2__current_1;
-		return L_0;
-	}
-}
-// System.Void RealityEditorManager/<AddCubeToListCoroutine>d__11::System.Collections.IEnumerator.Reset()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CAddCubeToListCoroutineU3Ed__11_System_Collections_IEnumerator_Reset_m097AEA5EC6746CB9C4DCD1604839A214FB593524 (U3CAddCubeToListCoroutineU3Ed__11_t5E19B3140329BE2E3AFE3715E69E111C87122D4F* __this, const RuntimeMethod* method) 
-{
-	{
-		NotSupportedException_t1429765983D409BD2986508963C98D214E4EBF4A* L_0 = (NotSupportedException_t1429765983D409BD2986508963C98D214E4EBF4A*)il2cpp_codegen_object_new(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&NotSupportedException_t1429765983D409BD2986508963C98D214E4EBF4A_il2cpp_TypeInfo_var)));
-		NullCheck(L_0);
-		NotSupportedException__ctor_m1398D0CDE19B36AA3DE9392879738C1EA2439CDF(L_0, NULL);
-		IL2CPP_RAISE_MANAGED_EXCEPTION(L_0, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&U3CAddCubeToListCoroutineU3Ed__11_System_Collections_IEnumerator_Reset_m097AEA5EC6746CB9C4DCD1604839A214FB593524_RuntimeMethod_var)));
-	}
-}
-// System.Object RealityEditorManager/<AddCubeToListCoroutine>d__11::System.Collections.IEnumerator.get_Current()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* U3CAddCubeToListCoroutineU3Ed__11_System_Collections_IEnumerator_get_Current_mA235ED4BAB96CB0C92FBE02C55B6BB2266D88BAF (U3CAddCubeToListCoroutineU3Ed__11_t5E19B3140329BE2E3AFE3715E69E111C87122D4F* __this, const RuntimeMethod* method) 
-{
-	{
-		RuntimeObject* L_0 = __this->___U3CU3E2__current_1;
-		return L_0;
 	}
 }
 #ifdef __clang__
