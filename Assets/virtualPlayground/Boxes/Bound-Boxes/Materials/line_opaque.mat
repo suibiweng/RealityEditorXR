@@ -15,14 +15,18 @@ MonoBehaviour:
   version: 1
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: line_opaque
   m_Shader: {fileID: 4800000, guid: 602a5d97c4d76234fb2d052863f807de, type: 3}
-  m_ShaderKeywords: _EMISSION _GLOSSINESS_FROM_BASE_ALPHA _SPECULAR_COLOR
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _EMISSION
+  - _GLOSSINESS_FROM_BASE_ALPHA
+  - _SPECULAR_COLOR
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -84,6 +88,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _AlphaClip: 0
     - _Blend: 0
@@ -122,8 +127,9 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 0.6777429, b: 0, a: 0.74}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 0}
     - _Emission: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
     - _TintColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_BuildTextureStacks: []

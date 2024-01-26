@@ -3305,6 +3305,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -23604,6 +23605,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -24531,6 +24533,7 @@ MonoBehaviour:
   Prompt: 
   PromtText: {fileID: 1167092362498039368}
   LitseningText: {fileID: 486049557934943661}
+  UiMenu: {fileID: 0}
   controlPanels:
   - {fileID: 486049558009923320}
   - {fileID: 486049557382531222}

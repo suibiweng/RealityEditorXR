@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.normalvr.normcore": {
-      "version": "3.0.0-webgl-alpha.1",
+      "version": "2.7.2",
       "depth": 0,
       "source": "registry",
       "dependencies": {

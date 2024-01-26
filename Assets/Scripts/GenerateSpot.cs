@@ -34,6 +34,11 @@ public class GenerateSpot : MonoBehaviour
   public string Prompt;
 
 
+  public TMP_Text previewText;
+
+  
+
+
 
  GrabObject externalController = null;
 
@@ -91,7 +96,7 @@ public GameObject VoicePanel;
 
     public void OnSelect(){
 
-        manager.updateSelected(id);
+        manager.updateSelected(id,URLID);
         isselsected=true;
 
 
@@ -102,7 +107,7 @@ public GameObject VoicePanel;
 
     public void Grab(OVRInput.Controller grabHand)
     {
-        manager.updateSelected(id);
+        manager.updateSelected(id,URLID);
         isselsected=true;
 
       //  Outlinebox.line_renderer=true;
@@ -178,14 +183,14 @@ public void onLitsenClick(){
 
 
 
-        // //Prompt 
+        //Prompt 
 
 
-        // if(URLChecker.CheckURLConnection(downloadURL+URLID+".zip") && !promptGenrated) {
-        //     promptGenrated=true;
-        //     downloadModel(downloadURL+URLID+".zip");
+        if(URLChecker.CheckURLConnection(downloadURL+URLID+".zip") && !promptGenrated) {
+            promptGenrated=true;
+            downloadModel(downloadURL+URLID+".zip");
 
-        // }
+        }
   
 
 

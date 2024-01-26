@@ -10,13 +10,17 @@ using TriLibCore.Dae.Schema;
 public class RealityEditorManager : MonoBehaviour
 {
 
+    public Dictionary<string,GameObject> GenCubesDic;
+
     public List<GameObject> GenCubes;
+    
 
     public GameObject generateSpotPreFab;
 
     public ModelDownloader modelDownloader;
 
     public int selectedID;
+    public string selectedIDUrl;
     public OSC osc;
 
     int IDs=0;
@@ -37,6 +41,8 @@ public class RealityEditorManager : MonoBehaviour
         modelDownloader=FindObjectOfType<ModelDownloader>();
        // websocket=FindObjectOfType<WsClient>();
         GenCubes= new List<GameObject>();
+        GenCubesDic=new Dictionary<string,GameObject>();
+
 
         osc.SetAllMessageHandler(ReciveFromOSC);
 
@@ -46,11 +52,19 @@ public class RealityEditorManager : MonoBehaviour
     }
 
 
-    public void updateSelected(int id){
+    public void updateSelected(int id,string IDurl){
         GenCubes[selectedID].GetComponent<GenerateSpot>().isselsected=false;
         GenCubes[id].GetComponent<GenerateSpot>().isselsected=true;
 
+
+        GenCubesDic[selectedIDUrl].GetComponent<GenerateSpot>().isselsected=false;
+        GenCubesDic[IDurl].GetComponent<GenerateSpot>().isselsected=true;
+
+
+
+
         selectedID=id;
+        selectedIDUrl=IDurl;
     }
 
 
@@ -76,9 +90,10 @@ public class RealityEditorManager : MonoBehaviour
     void createSpot(Vector3 pos){
         GameObject gcube= Realtime.Instantiate("GenrateSpot",pos,Quaternion.identity);
         GenCubes.Add(gcube);
+       
         gcube.GetComponent<GenerateSpot>().id=IDs;
         gcube.GetComponent<GenerateSpot>().URLID=TimestampGenerator.GetTimestamp();
-
+        GenCubesDic.Add( gcube.GetComponent<GenerateSpot>().URLID,gcube);
         IDs++;
         RealtimeTransform _realtimeTransform = gcube.GetComponent<RealtimeTransform>();
         // _realtimeTransform.RequestOwnership();
