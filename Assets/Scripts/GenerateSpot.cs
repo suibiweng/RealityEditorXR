@@ -35,6 +35,7 @@ public class GenerateSpot : MonoBehaviour
 
 
   public TMP_Text previewText;
+  public TMP_Text URLIDText;
 
   
 
@@ -161,11 +162,6 @@ public void onLitsenClick(){
     void Update()
     {
 
-        
-
-    
-
-
         updateTheTransform();
         
         if(isselsected)  PromtText.text=Prompt;
@@ -186,12 +182,12 @@ public void onLitsenClick(){
         //Prompt 
 
 
-        if(URLChecker.CheckURLConnection(downloadURL+URLID+".zip") && !promptGenrated) {
-            promptGenrated=true;
-            downloadModel(downloadURL+URLID+".zip");
-
-        }
-  
+        // if(URLChecker.CheckURLConnection(downloadURL+URLID+".zip") && !promptGenrated) {
+        //     promptGenrated=true;
+        //     downloadModel(downloadURL+URLID+".zip");
+        //
+        // }
+        //
 
 
     
@@ -224,6 +220,7 @@ public void onLitsenClick(){
 
     public void GenrateModel(){
         manager.promtGenerateModel(id,Prompt,URLID);
+        URLIDText.text = URLID;
         PreViewQuad.SetActive(true);
         loadingIcon.SetActive(true);
         UiMenu.SetActive(false);

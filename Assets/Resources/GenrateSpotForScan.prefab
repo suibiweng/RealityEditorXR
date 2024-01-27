@@ -24531,6 +24531,8 @@ MonoBehaviour:
   isselsected: 0
   loadingIcon: {fileID: 2511395185691597132}
   Prompt: 
+  previewText: {fileID: 0}
+  URLIDText: {fileID: 0}
   PromtText: {fileID: 1167092362498039368}
   LitseningText: {fileID: 486049557934943661}
   UiMenu: {fileID: 0}
