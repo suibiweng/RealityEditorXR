@@ -277,8 +277,8 @@ public class RealityEditorManager : MonoBehaviour
 
     public void setPrompt(string txt)
     {
-
-        GenCubes[selectedID].GetComponent<GenerateSpot>().Prompt=txt;
+        GenCubesDic[selectedIDUrl].GetComponent<GenerateSpot>().Prompt=txt;
+        // GenCubes[selectedID].GetComponent<GenerateSpot>().Prompt=txt;
 
 
     }

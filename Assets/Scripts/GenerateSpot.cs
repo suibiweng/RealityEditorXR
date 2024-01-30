@@ -169,6 +169,7 @@ public void onLitsenClick(){
         if(Input.GetKeyDown(KeyCode.Space)){
 
             DebugLoadModel();
+            
 
         }
 
