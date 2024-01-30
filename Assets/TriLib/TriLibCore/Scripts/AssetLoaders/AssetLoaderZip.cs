@@ -1,6 +1,4 @@
-﻿#pragma warning disable 184
-
-using System;
+﻿using System;
 using System.IO;
 using ICSharpCode.SharpZipLib.Zip;
 using TriLibCore.General;
@@ -28,8 +26,7 @@ namespace TriLibCore
             var zipLoadCustomContextData = CustomDataHelper.GetCustomData<ZipLoadCustomContextData>(assetLoaderContext.CustomData);
             if (zipLoadCustomContextData != null)
             {
-                if (zipLoadCustomContextData.Stream != null)
-                {
+                if (zipLoadCustomContextData.Stream != null) {
                     zipLoadCustomContextData.Stream.Close();
                 }
                 if (zipLoadCustomContextData.OnMaterialsLoad != null)
@@ -110,7 +107,7 @@ namespace TriLibCore
                 OnError,
                 wrapperGameObject,
                 assetLoaderOptions,
-                customDataDic,
+                customDataDic, 
                 haltTask,
                 onPreLoad,
                 true);
@@ -165,9 +162,9 @@ namespace TriLibCore
                 OnError,
                 wrapperGameObject,
                 assetLoaderOptions,
-                customDataDic,
+                customDataDic, 
                 haltTask,
-                onPreLoad,
+                onPreLoad, 
                 true);
         }
 
@@ -265,14 +262,8 @@ namespace TriLibCore
             {
                 assetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions();
             }
-            if (!ArrayUtils.ContainsType<ZipFileTextureMapper>(assetLoaderOptions.TextureMappers))
-            {
-                assetLoaderOptions.TextureMappers = new TextureMapper[] { ScriptableObject.CreateInstance<ZipFileTextureMapper>() };
-            }
-            if (!assetLoaderOptions.ExternalDataMapper is ZipFileExternalDataMapper)
-            {
-                assetLoaderOptions.ExternalDataMapper = ScriptableObject.CreateInstance<ZipFileExternalDataMapper>();
-            }
+            assetLoaderOptions.TextureMappers = new TextureMapper[]{ScriptableObject.CreateInstance<ZipFileTextureMapper>()};
+            assetLoaderOptions.ExternalDataMapper = ScriptableObject.CreateInstance<ZipFileExternalDataMapper>();
             if (stream == null)
             {
                 stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);

@@ -15,7 +15,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
-using UnityEngine.Profiling;
 
 namespace TriLibCore.Samples
 {
@@ -143,12 +142,6 @@ namespace TriLibCore.Samples
         /// </summary>
         [SerializeField]
         private Dropdown _debugOptionsDropdown;
-
-        /// <summary>
-        /// Text used to display the used memory per object type.
-        /// </summary>
-        [SerializeField]
-        private Text _usedMemoryText;
 
         /// <summary>
         /// Current camera distance.
@@ -416,8 +409,7 @@ namespace TriLibCore.Samples
         /// <param name="isOn">Is the toggle on?</param>
         public void OnUseCoroutinesToggleChanged(bool isOn)
         {
-            //todo: will be enabled on a future release
-            //AssetLoaderOptions.UseCoroutines = isOn;
+            AssetLoaderOptions.UseCoroutines = isOn;
         }
 
         /// <summary>
@@ -503,7 +495,7 @@ namespace TriLibCore.Samples
             _reflectionProbe.RenderProbe();
         }
 
-        /// <summary>Initializes the viewer.</summary>
+        /// <summary>Initializes the base-class and clears the skybox Texture.</summary>
         protected override void Start()
         {
             base.Start();
@@ -511,14 +503,12 @@ namespace TriLibCore.Samples
             {
                 CanvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             }
-            if (AssetLoaderOptions == null)
-            {
-                AssetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions(false, true);
-                AssetLoaderOptions.Timeout = 160;
-                AssetLoaderOptions.ShowLoadingWarnings = true;
-                AssetLoaderOptions.UseUnityNativeTextureLoader = true; // Commenting/removing this line makes TriLib accept more texture file formats, but it will use more memory to load textures.
-                AssetLoaderOptions.AlphaMaterialMode = AlphaMaterialMode.Cutout;
-            }
+            AssetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions();
+            AssetLoaderOptions.Timeout = 180;
+            AssetLoaderOptions.ShowLoadingWarnings = true;
+            AssetLoaderOptions.AlphaMaterialMode = AlphaMaterialMode.Cutout;
+            AssetLoaderOptions.UseCoroutines = _useCoroutinesToggle.isOn;
+            AssetLoaderOptions.UseUnityNativeTextureLoader = true;
             _showNormalsShader = Shader.Find("Hidden/ShowNormals");
             _showMetallicShader = Shader.Find("Hidden/ShowMetallic");
             _showSmoothShader = Shader.Find("Hidden/ShowSmooth");
@@ -528,6 +518,7 @@ namespace TriLibCore.Samples
             ClearSkybox();
             InvokeRepeating("ShowMemoryUsage", 0f, 1f);
         }
+
 
         /// <summary>
         /// Updates the memory usage text.
@@ -784,40 +775,6 @@ namespace TriLibCore.Samples
                 {
                     HandlePointClouds(assetLoaderContext);
                 }
-                var meshAllocation = 0;
-                var textureAllocation = 0;
-                var materialAllocation = 0;
-                var animationClipAllocation = 0;
-                var miscAllocation = 0;
-                foreach (var allocation in assetLoaderContext.Allocations)
-                {
-                    var runtimeMemorySize = Profiler.GetRuntimeMemorySize(allocation);
-                    if (allocation is Mesh)
-                    {
-                        meshAllocation += runtimeMemorySize;
-                    }
-                    else if (allocation is Texture)
-                    {
-                        textureAllocation += runtimeMemorySize;
-                    }
-                    else if (allocation is Material)
-                    {
-                        materialAllocation += runtimeMemorySize;
-                    }
-                    else if (allocation is AnimationClip)
-                    {
-                        animationClipAllocation += runtimeMemorySize;
-                    }
-                    else
-                    {
-                        miscAllocation += runtimeMemorySize;
-                    }
-                }
-                _usedMemoryText.text = UnityEngine.Debug.isDebugBuild ? $"Used Memory:\nMeshes: {ProcessUtils.SizeSuffix(meshAllocation)}\nTextures: {ProcessUtils.SizeSuffix(textureAllocation)}\nMaterials: {ProcessUtils.SizeSuffix(materialAllocation)}\nAnimation Clips: {ProcessUtils.SizeSuffix(animationClipAllocation)}\nMisc.: {ProcessUtils.SizeSuffix(miscAllocation)}" : string.Empty;
-            }
-            else
-            {
-                _usedMemoryText.text = string.Empty;
             }
             OnDebugOptionsDropdownChanged(_debugOptionsDropdown.value);
         }
@@ -873,7 +830,6 @@ namespace TriLibCore.Samples
                         pointCloudRenderer.sourceData = data;
                         pointCloudRenderer.destroyData = true;
                         pointCloudRenderer.pointSize = 0.01f;
-                        assetLoaderContext.Allocations.Add(data);
                     }
                 }
             }

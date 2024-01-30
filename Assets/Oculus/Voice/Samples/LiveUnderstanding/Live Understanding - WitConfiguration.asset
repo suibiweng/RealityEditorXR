@@ -108,13 +108,63 @@ MonoBehaviour:
         - ball
         - sphere
     traits: []
+    versionTags: []
     voices:
+    - name: Skully
+      locale: en_US
+      gender: male
+      styles: []
+    - name: Cael
+      locale: en_US
+      gender: male
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: Cam
+      locale: en_US
+      gender: male
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: Carl
+      locale: en_US
+      gender: male
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
     - name: Charlie
       locale: en_US
       gender: male
       styles:
       - default
       - soft
+      - fast
+      - projected
+    - name: Cody
+      locale: en_US
+      gender: male
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: Connor
+      locale: en_US
+      gender: male
+      styles:
+      - default
+      - soft
+      - formal
       - fast
       - projected
     - name: Cooper
@@ -131,7 +181,34 @@ MonoBehaviour:
       gender: male
       styles:
       - default
+    - name: Railey
+      locale: en_US
+      gender: female
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
     - name: Rebecca
+      locale: en_US
+      gender: female
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: Remi
+      locale: en_US
+      gender: female
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: Rubie
       locale: en_US
       gender: female
       styles:
@@ -149,8 +226,31 @@ MonoBehaviour:
       - formal
       - fast
       - projected
+    - name: Maria
+      locale: es_ES
+      gender: female
+      styles: []
+    - name: Colin
+      locale: en_CA
+      gender: male
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: Rosie
+      locale: en_CA
+      gender: female
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
     composer:
       canvases: []
+    characters: []
   _configurationId: 4e21a24e472ab684e84db753427d5687
   timeoutMS: 10000
   endpointConfiguration:

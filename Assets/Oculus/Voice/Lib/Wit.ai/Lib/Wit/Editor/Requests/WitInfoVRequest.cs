@@ -16,7 +16,7 @@ using Meta.WitAi.Data.Info;
 
 namespace Meta.WitAi.Requests
 {
-    public class WitInfoVRequest : WitVRequest, IWitInfoVRequest
+    internal class WitInfoVRequest : WitVRequest, IWitInfoVRequest
     {
         /// <summary>
         /// Constructor for wit based info VRequests
@@ -84,11 +84,9 @@ namespace Meta.WitAi.Requests
             return RequestWitGet<WitExportInfo>(WitEditorConstants.ENDPOINT_EXPORT, null,
                 onComplete);
         }
-
-        public delegate void RequestCompleteDelegateByAppId<TResult>(string appId, TResult result, string error);
         // Download the export zip from provided url
-        public bool RequestAppExportZip(string downloadUri, string appId,
-            RequestCompleteDelegateByAppId<ZipArchive> onComplete)
+        public bool RequestAppExportZip(string downloadUri,
+            RequestCompleteDelegate<ZipArchive> onComplete)
         {
             var uri = new Uri(downloadUri);
             var request = new VRequest();
@@ -97,16 +95,16 @@ namespace Meta.WitAi.Requests
                 try
                 {
                     var zip = new ZipArchive(new MemoryStream(result));
-                    onComplete(appId, zip, null);
+                    onComplete(zip, null);
                 }
                 catch (Exception e)
                 {
-                    onComplete(appId, null, e.ToString());
+                    onComplete(null, e.ToString());
                 }
             });
             return true;
         }
-        // Retrieve the version tags for the app
+        // Retrieve the version tags for the composer app
         public bool RequestAppVersionTags(string applicationId,
             RequestCompleteDelegate<WitVersionTagInfo[][]> onComplete)
         {

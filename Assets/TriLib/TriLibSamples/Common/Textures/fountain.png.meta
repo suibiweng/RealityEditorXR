@@ -475,19 +475,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      fountain_0: 7772053563467876060
-      fountain_1: 6017166387113642881
-      fountain_10: -2491455825086601521
-      fountain_11: 7611300543990857162
-      fountain_12: 7501209102900455622
-      fountain_2: -5071872562740070876
       fountain_3: -4383350608448915041
       fountain_4: 2634342455120194285
       fountain_5: -4886976709754540747
-      fountain_6: -358793270051623357
       fountain_7: -50040848573205984
+      fountain_11: 7611300543990857162
+      fountain_12: 7501209102900455622
       fountain_8: 5949854845560439217
+      fountain_0: 7772053563467876060
+      fountain_6: -358793270051623357
+      fountain_1: 6017166387113642881
       fountain_9: 4991410084122895198
+      fountain_10: -2491455825086601521
+      fountain_2: -5071872562740070876
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -105,7 +105,7 @@ namespace Oculus.Interaction
 
         static ActiveStateToggle()
         {
-            ActiveStateDebugTree.RegisterModel<ActiveStateToggle>(new DebugModel());
+            ActiveStateDebugTree.RegisterModel<ActiveStateToggle, DebugModel>();
         }
 
         private class DebugModel : ActiveStateModel<ActiveStateToggle>

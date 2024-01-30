@@ -2,7 +2,7 @@
 
 TriLib uses:
 
-A. SafeStbImageSharp
+A. StbImageSharp
 Public Domain
 Roman Shapiro
 

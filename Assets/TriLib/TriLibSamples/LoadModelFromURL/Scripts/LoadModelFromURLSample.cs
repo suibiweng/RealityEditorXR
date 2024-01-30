@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 namespace TriLibCore.Samples
 {
     /// <summary>
@@ -9,12 +10,9 @@ namespace TriLibCore.Samples
         /// <summary>
         /// The Model URL.
         /// </summary>
+        /// 
+        public GameObject wrap;
         public string ModelURL = "https://ricardoreis.net/trilib/demos/sample/TriLibSampleModel.zip";
-
-        /// <summary>
-        /// Cached Asset Loader Options instance.
-        /// </summary>
-        private AssetLoaderOptions _assetLoaderOptions;
 
         /// <summary>
         /// Creates the AssetLoaderOptions instance, configures the Web Request, and downloads the Model.
@@ -24,12 +22,12 @@ namespace TriLibCore.Samples
         /// </remarks>
         private void Start()
         {
-            if (_assetLoaderOptions == null)
-            {
-                var assetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions(false, true);
-            }
+            var assetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions();
             var webRequest = AssetDownloader.CreateWebRequest(ModelURL);
-            AssetDownloader.LoadModelFromUri(webRequest, OnLoad, OnMaterialsLoad, OnProgress, OnError, null, _assetLoaderOptions);
+
+
+            assetLoaderOptions.name="obj123";
+            AssetDownloader.LoadModelFromUri(webRequest, OnLoad, OnMaterialsLoad, OnProgress, OnError, wrap, assetLoaderOptions);
         }
 
         /// <summary>
@@ -59,6 +57,7 @@ namespace TriLibCore.Samples
         private void OnMaterialsLoad(AssetLoaderContext assetLoaderContext)
         {
             Debug.Log("Materials loaded. Model fully loaded.");
+           // Destroy(gameObject,1);
         }
 
         /// <summary>

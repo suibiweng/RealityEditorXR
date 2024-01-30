@@ -266,13 +266,6 @@ namespace Meta.WitAi
             // Stop recording
             StopRecording();
 
-            // Setup options
-            if (requestOptions == null)
-            {
-                requestOptions = new WitRequestOptions();
-            }
-            VoiceEvents.OnRequestOptionSetup?.Invoke(requestOptions);
-
             // Now active
             _isActive = true;
             _lastSampleMarker = AudioBuffer.Instance.CreateMarker(ConfigurationProvider.RuntimeConfiguration.preferredActivationOffset);
@@ -373,6 +366,7 @@ namespace Meta.WitAi
             _recordingRequest.Events.OnComplete.AddListener(HandleComplete);
 
             // Call service events
+            VoiceEvents.OnRequestOptionSetup?.Invoke(_recordingRequest.Options);
             VoiceEvents.OnRequestInitialized?.Invoke(_recordingRequest);
         }
         /// <summary>
@@ -413,11 +407,6 @@ namespace Meta.WitAi
             }
 
             // Handle option setup
-            if (requestOptions == null)
-            {
-                requestOptions = new WitRequestOptions();
-            }
-            requestOptions.Text = text;
             VoiceEvents.OnRequestOptionSetup?.Invoke(requestOptions);
 
             // Generate request
@@ -435,7 +424,7 @@ namespace Meta.WitAi
             VoiceEvents?.OnSend?.Invoke(request);
 
             // Send & return
-            request.Send();
+            request.Send(text);
             return request;
         }
         #endregion TEXT REQUESTS
@@ -686,7 +675,8 @@ namespace Meta.WitAi
             // Transmit recording request
             else if (previousRequest != null && previousRequest.IsActive && _minKeepAliveWasHit)
             {
-                _transmitRequests.Add(previousRequest);
+                _transmitRequests.Add(_recordingRequest);
+                _recordingRequest = null;
                 VoiceEvents?.OnMicDataSent?.Invoke();
             }
             // Disable below event
@@ -751,14 +741,14 @@ namespace Meta.WitAi
             // Handle Success
             if (request.State == VoiceRequestState.Successful)
             {
-                VLog.I("Request Success");
+                VLog.D("Request Success");
                 VoiceEvents?.OnResponse?.Invoke(request.Results.ResponseData);
                 VoiceEvents?.OnRequestCompleted?.Invoke();
             }
             // Handle Cancellation
             else if (request.State == VoiceRequestState.Canceled)
             {
-                VLog.I($"Request Canceled\nReason: {request.Results.Message}");
+                VLog.D($"Request Canceled\nReason: {request.Results.Message}");
                 VoiceEvents?.OnCanceled?.Invoke(request.Results.Message);
                 if (!string.Equals(request.Results.Message, WitConstants.CANCEL_MESSAGE_PRE_SEND))
                 {

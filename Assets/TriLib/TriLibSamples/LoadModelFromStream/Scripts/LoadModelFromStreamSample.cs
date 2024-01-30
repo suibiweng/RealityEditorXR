@@ -15,11 +15,6 @@ namespace TriLibCore.Samples
     public class LoadModelFromStreamSample : MonoBehaviour
     {
         /// <summary>
-        /// Cached Asset Loader Options instance.
-        /// </summary>
-        private AssetLoaderOptions _assetLoaderOptions;
-
-        /// <summary>
         /// Returns the path to the "TriLibSample.obj" Model.
         /// </summary>
         private string ModelPath
@@ -44,13 +39,10 @@ namespace TriLibCore.Samples
         /// </remarks>
         private void Start()
         {
-            if (_assetLoaderOptions == null)
-            {
-                _assetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions(false, true);
-                _assetLoaderOptions.ExternalDataMapper = ScriptableObject.CreateInstance<ExternalDataMapperSample>();
-                _assetLoaderOptions.TextureMappers = new TextureMapper[] { ScriptableObject.CreateInstance<TextureMapperSample>() };
-            }
-            AssetLoader.LoadModelFromStream(File.OpenRead(ModelPath), ModelPath, null, OnLoad, OnMaterialsLoad, OnProgress, OnError, null, _assetLoaderOptions);
+            var assetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions();
+            assetLoaderOptions.ExternalDataMapper = ScriptableObject.CreateInstance<ExternalDataMapperSample>();
+            assetLoaderOptions.TextureMappers = new TextureMapper[] { ScriptableObject.CreateInstance<TextureMapperSample>()};
+            AssetLoader.LoadModelFromStream(File.OpenRead(ModelPath), ModelPath, null, OnLoad, OnMaterialsLoad, OnProgress, OnError, null, assetLoaderOptions);
         }
 
         /// <summary>

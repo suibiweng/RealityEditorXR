@@ -105,6 +105,10 @@ namespace TriLibCore.Editor
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("GenerateTangents"), new GUIContent("Generate Tangents", "Turn off this field to disable Mesh tangents generation."));
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("SwapUVs"), new GUIContent("Swap UVs", "Turn on this field to swap Mesh UVs. (uv1 into uv2)"));
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("LODScreenRelativeTransitionHeightBase"), new GUIContent("LOD Screen Relative Transition Height Base", "Defines the initial screen relative transition height when creating LOD Groups."));
+                        //todo: deprecated
+                        //EditorGUILayout.PropertyField(serializedObject.FindProperty("CreateVerticesAsNativeLists"), new GUIContent("Create Vertices as Native Lists", "Turn on this field to load Mesh vertices using Native Lists (Experimental)."));
+                        //todo: future update
+                        //EditorGUILayout.PropertyField(serializedObject.FindProperty("CompressMeshes"), new GUIContent("Compress Meshes", "Turn on this field to compress meshes \"normal\", \"tangent\", \"uv0\", \"uv1\", \"uv2\", \"uv4\" and \"color\" values to 16 bits."));
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("ReadEnabled"), new GUIContent("Read Enabled", "Turn on this field to make mesh CPU data readable."));
                     }
                     var loadPointCloudsProperty = serializedObject.FindProperty("LoadPointClouds");
@@ -155,16 +159,14 @@ namespace TriLibCore.Editor
                 case 2:
                     animationTypeProperty = serializedObject.FindProperty("AnimationType");
                     animationType = (AnimationType)animationTypeProperty.intValue;
-                    //todo: add constraints
+                    //todo: constraints
                     if (animationType != AnimationType.None)
                     {
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("EnsureQuaternionContinuity"), new GUIContent("Ensure Quaternion Continuity", "Turn on this field to realign quaternion keys to ensure shortest interpolation paths."));
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("ResampleFrequency"), new GUIContent("Resample Frequency", "Defines the FBX Rotation Animation Curve resampling frequency. (1 = every frame, 2 = every 2 frames, 3 = every 3 frames and so on)"));
-                        //todo: add keyframe reduction
+                        //todo: keyframe reduction
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("AnimationWrapMode"), new GUIContent("Wrap Mode", "Default wrap-mode to apply to Animations."));
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("AnimationClipMappers"), new GUIContent("Animation Clip Mappers", "Mappers used to process Animation Clips."));
-                        EditorGUILayout.PropertyField(serializedObject.FindProperty("AddAllBonesToSkinnedMeshRenderers"), new GUIContent("Add all Bones to Skinned Mesh Renderers", "Turn on this field to add all available bones to every created SkinnedMeshRenderer."));
-
                     }
                     break;
                 case 3:

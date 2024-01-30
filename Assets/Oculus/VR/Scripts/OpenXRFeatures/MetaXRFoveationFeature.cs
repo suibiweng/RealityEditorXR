@@ -75,7 +75,6 @@ namespace Meta.XR
                 FBGetFoveationLevel(out level);
                 return (OVRManager.FoveatedRenderingLevel)level;
 #else
-                Debug.LogWarning("Unable to set foveation level. Meta XR Foveation is not supported on this version of the OpenXR Provider. Please use 1.5.3 and above");
                 return OVRManager.FoveatedRenderingLevel.Off;
 #endif
             }
@@ -88,7 +87,6 @@ namespace Meta.XR
                     _foveatedRenderingLevel = (UInt32)value;
                 FBSetFoveationLevel(_xrSession, _foveatedRenderingLevel, 0.0f, _useDynamicFoveation);
 #else
-                Debug.LogWarning("Unable to get foveation level. Meta XR Foveation is not supported on this version of the OpenXR Provider. Please use 1.5.3 and above");
                 return;
 #endif
             }
@@ -103,7 +101,6 @@ namespace Meta.XR
                 FBGetFoveationLevel(out dynamic);
                 return dynamic != 0;
 #else
-                Debug.LogWarning("Unable to set dynamic foveation. Meta XR Foveation is not supported on this version of the OpenXR Provider. Please use 1.5.3 and above");
                 return false;
 #endif
             }
@@ -116,7 +113,6 @@ namespace Meta.XR
                     _useDynamicFoveation = 0;
                 FBSetFoveationLevel(_xrSession, _foveatedRenderingLevel, 0.0f, _useDynamicFoveation);
 #else
-                Debug.LogWarning("Unable to get dynamic foveation. Meta XR Foveation is not supported on this version of the OpenXR Provider. Please use 1.5.3 and above");
                 return;
 #endif
             }

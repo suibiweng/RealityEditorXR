@@ -162,8 +162,6 @@ namespace Oculus.Interaction.Locomotion
         private const float _enterPoseThreshold = 0.5f;
         private const float _wristLimit = -70f;
 
-        private bool _cancelled = false;
-
         protected virtual void Awake()
         {
             Hand = _hand as IHand;
@@ -197,29 +195,6 @@ namespace Oculus.Interaction.Locomotion
             {
                 Hand.WhenHandUpdated -= HandleHandupdated;
                 Disable();
-            }
-        }
-
-        /// <summary>
-        /// Disables the Gate, forcing the user to perform the enable shape
-        /// </summary>
-        public void Disable()
-        {
-            ActiveMode = LocomotionMode.None;
-            _currentGateIndex = -1;
-            _cancelled = false;
-        }
-
-        /// <summary>
-        /// Disables the Gate, forcing the user to perform the disable shape
-        /// and then the enable shape
-        /// </summary>
-        public void Cancel()
-        {
-            ActiveMode = LocomotionMode.None;
-            if (_currentGateIndex >= 0)
-            {
-                _cancelled = true;
             }
         }
 
@@ -276,17 +251,19 @@ namespace Oculus.Interaction.Locomotion
                 return;
             }
 
-            if (_currentGateIndex >= 0
-                && DisableShape.Active)
+            if (_currentGateIndex < 0)
             {
-                Disable();
                 return;
             }
 
-            if (_currentGateIndex < 0 || _cancelled)
+            if (_currentGateIndex >= 0
+                && DisableShape.Active)
             {
+                _currentGateIndex = -1;
+                ActiveMode = LocomotionMode.None;
                 return;
             }
+
 
             GateSection currentGate = _gateSections[_currentGateIndex];
 
@@ -300,6 +277,7 @@ namespace Oculus.Interaction.Locomotion
                 _currentGateIndex = Mathf.Min(_gateSections.Length - 1, _currentGateIndex + 1);
                 ActiveMode = _gateSections[_currentGateIndex].locomotionMode;
             }
+
         }
 
         private GateSection GetBestGateSection(float angle, out int index)
@@ -322,6 +300,11 @@ namespace Oculus.Interaction.Locomotion
                 return DefaultSection;
             }
             return _gateSections[index];
+        }
+
+        private void Disable()
+        {
+            ActiveMode = LocomotionMode.None;
         }
 
         #region Inject

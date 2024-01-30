@@ -44,7 +44,7 @@ namespace TriLibCore.Editor
             ShowConditionalToggle("Disable runtime STL importing", "TRILIB_DISABLE_STL_IMPORT");
             ShowConditionalToggle("Disable runtime PLY importing", "TRILIB_DISABLE_PLY_IMPORT");
             ShowConditionalToggle("Disable runtime 3MF importing", "TRILIB_DISABLE_3MF_IMPORT");
-            ShowConditionalToggle("Disable runtime DAE importing", "TRILIB_DISABLE_DAE_IMPORT");
+            ShowConditionalToggle("Enable runtime DAE importing (Experimental)", "TRILIB_ENABLE_DAE_IMPORT");
             EditorGUILayout.Space();
             EditorGUILayout.Space();
             GUILayout.Label("Editor Importing", EditorStyles.boldLabel);
@@ -74,9 +74,11 @@ namespace TriLibCore.Editor
             GUILayout.Label("Misc Options", EditorStyles.boldLabel);
             GUILayout.Label("Advanced and experimental options");
             EditorGUILayout.Space();
-            //todo: fbx sdk will be included in a future update
-            //ShowConditionalToggle("Use FBX SDK (Experimental)", "TRILIB_USE_FBXSDK");
+            //todo: future update
+            //ShowConditionalToggle("Use FBX SDK (Experimental)", "TRILIB_USE_FBXSDK", ShowFBXSDKDisclaimer);
+            //ShowConditionalToggle("Load Meshes on parallel Threads (Unity 2020.2 onwards)", "TRILIB_LOAD_MESHES_ON_PARALLEL_THREAD");
             ShowConditionalToggle("Enable UWP threaded loading (Experimental)", "TRILIB_ENABLE_UWP_THREADS");
+            //ShowConditionalToggle("Enable WebGL threaded loading (Experimental)", "TRILIB_ENABLE_WEBGL_THREADS");
             ShowConditionalToggle("Enable gLTF2 Draco decompression (Experimental)", "TRILIB_DRACO");
             ShowConditionalToggle("Force synchronous loading", "TRILIB_FORCE_SYNC");
             ShowConditionalToggle("Change thread names (Debug purposes only)", "TRILIB_USE_THREAD_NAMES");

@@ -42,7 +42,6 @@ using Debug = UnityEngine.Debug;
 /// <see cref="LoadUnboundAnchors"/>.
 /// </remarks>
 [DisallowMultipleComponent]
-[HelpURL("https://developer.oculus.com/reference/unity/latest/class_o_v_r_spatial_anchor")]
 public class OVRSpatialAnchor : MonoBehaviour
 {
     private bool _startCalled;

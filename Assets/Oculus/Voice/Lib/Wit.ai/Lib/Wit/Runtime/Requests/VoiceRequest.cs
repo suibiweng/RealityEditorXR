@@ -9,7 +9,6 @@
 using System;
 using System.Text;
 using Meta.WitAi;
-using Meta.WitAi.Data;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -29,10 +28,6 @@ namespace Meta.Voice
         where TEvents : VoiceRequestEvents<TUnityEvent>
         where TResults : IVoiceRequestResults
     {
-        #region SIMULATION
-        public static SimulatedResponse simulatedResponse;
-        #endregion
-        
         /// <summary>
         /// The states of a voice request
         /// </summary>
@@ -118,10 +113,7 @@ namespace Meta.Voice
                     break;
                 case VoiceRequestState.Transmitting:
                     OnSend();
-                    if (!OnSimulateResponse())
-                    {
-                        HandleSend();
-                    }
+                    HandleSend();
                     break;
                 case VoiceRequestState.Canceled:
                     HandleCancel();
@@ -271,21 +263,12 @@ namespace Meta.Voice
             Log($"Request Transmitting");
             RaiseEvent(Events?.OnSend);
         }
-        
+
         /// <summary>
         /// Child class send implementation
         /// Call HandleFailure, HandleCancel from this class
         /// </summary>
         protected abstract void HandleSend();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns>True if the response was simulated</returns>
-        protected virtual bool OnSimulateResponse()
-        {
-            return false;
-        }
         #endregion TRANSMISSION
 
         #region RESULTS
@@ -298,13 +281,7 @@ namespace Meta.Voice
         /// Method for handling failure with only an error string
         /// </summary>
         /// <param name="error">The error to be returned</param>
-        protected virtual void HandleFailure(string error)
-        {
-            if (!string.IsNullOrEmpty(error)) error += "\n\n";
-            error += $"[Request id: {Options.RequestId}]";
-            HandleFailure(GetResultsWithMessage(error));
-        }
-
+        protected virtual void HandleFailure(string error) => HandleFailure(GetResultsWithMessage(error));
         /// <summary>
         /// Method for handling failure with a full result object
         /// </summary>

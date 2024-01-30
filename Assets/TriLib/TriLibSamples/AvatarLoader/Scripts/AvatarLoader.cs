@@ -56,12 +56,9 @@ namespace TriLibCore.Samples
         protected override void Start()
         {
             base.Start();
-            if (AssetLoaderOptions == null)
-            {
-                AssetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions(false, true);
-                AssetLoaderOptions.AnimationType = AnimationType.Humanoid;
-                AssetLoaderOptions.HumanoidAvatarMapper = _humanoidAvatarMapper;
-            }
+            AssetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions();
+            AssetLoaderOptions.AnimationType = AnimationType.Humanoid;
+            AssetLoaderOptions.HumanoidAvatarMapper = _humanoidAvatarMapper;
             var bounds = AvatarController.Instance.InnerAvatar.CalculateBounds();
             var factor = AvatarController.Instance.CharacterController.height / bounds.size.y;
             AvatarController.Instance.InnerAvatar.transform.localScale = factor * Vector3.one;

@@ -518,7 +518,7 @@ namespace Meta.Voice.Hub
 
             if (_selectedPage is ScriptableObjectPage soPage)
             {
-                if(soPage.Editor is IOverrideSize size && Event.current.type == EventType.Layout) {
+                if(soPage.Editor is IOverrideSize size) {
                     size.OverrideWidth = EditorGUIUtility.currentViewWidth - _leftPanelWidth;
                 }
             }

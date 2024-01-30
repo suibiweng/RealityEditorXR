@@ -26,33 +26,18 @@ public class recordData : MonoBehaviour
     void Start()
     {
 
-        osc=FindObjectOfType<OSC>();
-
     }
 
     public void StartRecording()
     {
         recording = true;
-        imgCount=0;
         startRecordingTime = Time.time;
-        OscMessage message;
-        message = new OscMessage();
-        message.address = "/start";
-        osc.Send(message);
-
 
     }
 
     public void StopRecording()
     {
         recording = false;
-       
-        OscMessage message;
-        message = new OscMessage();
-        message.address = "/end";
-        osc.Send(message);
-        
-
     }
 
 
@@ -60,7 +45,7 @@ public class recordData : MonoBehaviour
     void Update()
     {
         // for debugging on desktop
-        if (Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown("space"))
         {
             OscMessage message;
 
@@ -69,8 +54,6 @@ public class recordData : MonoBehaviour
             message.values.Add(imgCount.ToString("D5") +".jpg");
             message.values.Add(this.transform.localToWorldMatrix.ToString());
             osc.Send(message);
-
-            print("SendOSC");
         }
 
         if (recording)

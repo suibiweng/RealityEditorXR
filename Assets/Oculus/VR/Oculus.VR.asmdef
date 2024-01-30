@@ -4,8 +4,7 @@
     "references": [
         "Unity.RenderPipelines.Universal.Runtime",
         "Unity.XR.OpenXR",
-        "Unity.XR.OpenXR.Editor",
-        "Unity.XR.Management"
+        "Unity.XR.OpenXR.Editor"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

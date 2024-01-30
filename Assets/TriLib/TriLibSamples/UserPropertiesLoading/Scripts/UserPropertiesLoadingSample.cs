@@ -51,11 +51,6 @@ namespace TriLibCore.Samples
         private Text _propertiesText;
 
         /// <summary>
-        /// Cached Asset Loader Options instance.
-        /// </summary>
-        private AssetLoaderOptions _assetLoaderOptions;
-
-        /// <summary>
         /// Returns the path to the "TriLibSample.obj" Model.
         /// </summary>
         private string ModelPath
@@ -152,14 +147,11 @@ namespace TriLibCore.Samples
         /// <returns>The created AssetLoaderOptions.</returns>
         private AssetLoaderOptions CreateAssetLoaderOptions()
         {
-            if (_assetLoaderOptions == null)
-            {
-                _assetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions(false, true);
-                var userPropertiesMapper = ScriptableObject.CreateInstance<SampleUserPropertiesMapper>();
-                userPropertiesMapper.OnUserDataProcessed += OnUserDataProcessed;
-                _assetLoaderOptions.UserPropertiesMapper = userPropertiesMapper;
-            }
-            return _assetLoaderOptions;
+            var assetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions();
+            var userPropertiesMapper = ScriptableObject.CreateInstance<SampleUserPropertiesMapper>();
+            userPropertiesMapper.OnUserDataProcessed += OnUserDataProcessed;
+            assetLoaderOptions.UserPropertiesMapper = userPropertiesMapper;
+            return assetLoaderOptions;
         }
 
         /// <summary>

@@ -8,7 +8,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Meta.Voice.TelemetryUtilities;
 using UnityEditor;
 using UnityEngine;
@@ -26,7 +25,7 @@ namespace Meta.WitAi.Windows
         // VLog log level
         private static int _logLevel = -1;
         private static string[] _logLevelNames;
-        private static readonly VLogLevel[] _logLevels = (Enum.GetValues(typeof(VLogLevel)) as VLogLevel[])?.Reverse().ToArray();
+        private static readonly LogType[] _logLevels = new LogType[] { LogType.Log, LogType.Warning, LogType.Error };
 
 #if VSDK_TELEMETRY_AVAILABLE
         private static int _telemetryLogLevel = -1;
@@ -114,7 +113,7 @@ namespace Meta.WitAi.Windows
             }
 #endif
         }
-
+        
         private void DrawWitConfigurations()
         {
             // Server access token
@@ -191,13 +190,12 @@ namespace Meta.WitAi.Windows
                 logLevelOptions.Add(level.ToString());
             }
             _logLevelNames = logLevelOptions.ToArray();
-            VLog.Init();
             _logLevel = logLevelOptions.IndexOf(VLog.EditorLogLevel.ToString());
         }
         private void SetLogLevel(int newLevel)
         {
-            _logLevel = Mathf.Clamp(0, newLevel, _logLevels.Length);
-            VLog.EditorLogLevel = _logLevels[_logLevel];
+            _logLevel = Mathf.Max(0, newLevel);
+            VLog.EditorLogLevel = _logLevel < _logLevels.Length ? _logLevels[_logLevel] : LogType.Log;
         }
 
         private static void InitializeTelemetryLevelOptions()

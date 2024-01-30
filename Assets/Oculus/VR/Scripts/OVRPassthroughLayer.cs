@@ -27,7 +27,6 @@ using ColorMapType = OVRPlugin.InsightPassthroughColorMapType;
 /// <summary>
 /// A layer used for passthrough.
 /// </summary>
-[HelpURL("https://developer.oculus.com/reference/unity/latest/class_o_v_r_passthrough_layer")]
 public class OVRPassthroughLayer : MonoBehaviour
 {
     #region Public Interface
@@ -163,14 +162,12 @@ public class OVRPassthroughLayer : MonoBehaviour
 
     /// <summary>
     /// Float that defines the passthrough texture opacity.
-    /// Value range from 0f to 1f.
     /// </summary>
     public float textureOpacity
     {
         get { return textureOpacity_; }
         set
         {
-            value = Mathf.Clamp01(value);
             if (value != textureOpacity_)
             {
                 textureOpacity_ = value;
@@ -241,7 +238,7 @@ public class OVRPassthroughLayer : MonoBehaviour
     /// </param>
     public void SetColorLut(OVRPassthroughColorLut lut, float weight = 1)
     {
-        if (lut != null && lut.IsValid)
+        if (lut != null && lut.IsInitialized)
         {
             weight = ClampWeight(weight);
             colorMapType = ColorMapType.ColorLut;
@@ -251,7 +248,7 @@ public class OVRPassthroughLayer : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Trying to set an invalid Color LUT for Passthrough");
+            Debug.LogError("Trying to set an uninitialized Color LUT for Passthrough");
         }
     }
 
@@ -266,8 +263,8 @@ public class OVRPassthroughLayer : MonoBehaviour
     /// </param>
     public void SetColorLut(OVRPassthroughColorLut lutSource, OVRPassthroughColorLut lutTarget, float weight)
     {
-        if (lutSource != null && lutSource.IsValid
-                              && lutTarget != null && lutTarget.IsValid)
+        if (lutSource != null && lutSource.IsInitialized
+                              && lutTarget != null && lutTarget.IsInitialized)
         {
             weight = ClampWeight(weight);
             colorMapType = ColorMapType.InterpolatedColorLut;
@@ -277,7 +274,7 @@ public class OVRPassthroughLayer : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Trying to set an invalid Color LUT for Passthrough");
+            Debug.LogError("Trying to set an uninitialized Color LUT for Passthrough");
         }
     }
 
@@ -763,7 +760,7 @@ public class OVRPassthroughLayer : MonoBehaviour
 
         passthroughOverlay.currentOverlayType = overlayType;
         passthroughOverlay.compositionDepth = compositionDepth;
-        passthroughOverlay.hidden = hidden || IsUserDefinedAndDoesNotContainSurfaceGeometry();
+        passthroughOverlay.hidden = hidden;
         passthroughOverlay.overridePerLayerColorScaleAndOffset = overridePerLayerColorScaleAndOffset;
         passthroughOverlay.colorScale = colorScale;
         passthroughOverlay.colorOffset = colorOffset;
@@ -786,8 +783,6 @@ public class OVRPassthroughLayer : MonoBehaviour
             passthroughOverlay.currentOverlayShape = overlayShape;
         }
 
-        var wasPassthroughOverlayEnabled = passthroughOverlay.enabled;
-
         // Disable the overlay when passthrough is disabled as a whole so the layer doesn't get submitted.
         // Both the desired (`isInsightPassthroughEnabled`) and the actual (IsInsightPassthroughInitialized()) PT
         // initialization state are taken into account s.t. the overlay gets disabled as soon as PT is flagged to be
@@ -795,25 +790,6 @@ public class OVRPassthroughLayer : MonoBehaviour
         passthroughOverlay.enabled = OVRManager.instance != null &&
                                      OVRManager.instance.isInsightPassthroughEnabled &&
                                      OVRManager.IsInsightPassthroughInitialized();
-
-        if (wasPassthroughOverlayEnabled != passthroughOverlay.enabled)
-        {
-            if (passthroughOverlay.enabled)
-            {
-                styleDirty = true;
-            }
-            else
-            {
-                DestroySurfaceGeometries(true);
-            }
-        }
-    }
-
-    private bool IsUserDefinedAndDoesNotContainSurfaceGeometry()
-    {
-        return projectionSurfaceType == ProjectionSurfaceType.UserDefined
-            && deferredSurfaceGameObjects.Count == 0
-            && surfaceGameObjects.Count == 0;
     }
 
     private static float ClampWeight(float weight)
@@ -873,7 +849,6 @@ public class OVRPassthroughLayer : MonoBehaviour
         new List<SerializedSurfaceGeometry>();
 
     [SerializeField]
-    [Range(0, 1)]
     internal float textureOpacity_ = 1;
 
     [SerializeField]
@@ -1012,11 +987,7 @@ public class OVRPassthroughLayer : MonoBehaviour
         // Surface geometries have been moved to the deferred additions queue in OnDisable() and will be re-added
         // in LateUpdate().
 
-        if (colorMapEditorType != ColorMapEditorType.Custom)
-        {
-            _stylesHandler.SetStyleHandler(_editorToColorMapType[colorMapEditorType]);
-        }
-
+        _stylesHandler.SetStyleHandler(_editorToColorMapType[colorMapEditorType]);
         if (HasControlsBasedColorMap())
         {
             // Compute initial color map from controls

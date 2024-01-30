@@ -16,7 +16,7 @@ namespace TriLibCore.Editor
         {
             get
             {
-                var assetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions(true, true);
+                var assetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions(true);
                 if (userData != null && userData != "null")
                 {
                     EditorJsonUtility.FromJsonOverwrite(userData, assetLoaderOptions);

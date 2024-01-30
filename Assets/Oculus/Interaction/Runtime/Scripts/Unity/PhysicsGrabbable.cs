@@ -22,6 +22,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Serialization;
+using Normal.Realtime; 
 
 namespace Oculus.Interaction
 {
@@ -48,6 +49,8 @@ namespace Oculus.Interaction
 
         public event Action<Vector3, Vector3> WhenVelocitiesApplied = delegate { };
 
+        private RealtimeTransform _realtimeTransform; 
+
         private void Reset()
         {
             _grabbable = this.GetComponent<Grabbable>();
@@ -59,6 +62,8 @@ namespace Oculus.Interaction
             this.BeginStart(ref _started);
             this.AssertField(_grabbable, nameof(_grabbable));
             this.AssertField(_rigidbody, nameof(_rigidbody));
+            _realtimeTransform = GetComponent<RealtimeTransform>();
+
             this.EndStart(ref _started);
         }
 
@@ -86,6 +91,7 @@ namespace Oculus.Interaction
                     if (_grabbable.SelectingPointsCount == 1 && !_isBeingTransformed)
                     {
                         DisablePhysics();
+                        _realtimeTransform.RequestOwnership();
                     }
 
                     break;
@@ -93,12 +99,17 @@ namespace Oculus.Interaction
                     if (_grabbable.SelectingPointsCount == 0)
                     {
                         ReenablePhysics();
+                        Invoke("removeOwnership", 0.2f);
                     }
 
                     break;
             }
         }
 
+        void removeOwnership()
+        {
+            _realtimeTransform.ClearOwnership();
+        }
         private void DisablePhysics()
         {
             _isBeingTransformed = true;

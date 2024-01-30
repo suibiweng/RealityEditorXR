@@ -25,7 +25,7 @@ using TriLibCore.Ply.Reader;
 #if !TRILIB_DISABLE_3MF_IMPORT
 using TriLibCore.ThreeMf.Reader;
 #endif
-#if !TRILIB_DISABLE_DAE_IMPORT
+#if TRILIB_ENABLE_DAE_IMPORT
 #if !TRILIB_USE_FBXSDK
 using TriLibCore.Dae.Reader;
 #endif
@@ -66,9 +66,9 @@ namespace TriLibCore
 #if !TRILIB_DISABLE_3MF_IMPORT
                 extensions.AddRange(ThreeMfReader.GetExtensions());
 #endif
-#if !TRILIB_DISABLE_DAE_IMPORT
+#if TRILIB_ENABLE_DAE_IMPORT
 #if !TRILIB_USE_FBXSDK
-                extensions.AddRange(DaeReader.GetExtensions());
+				extensions.AddRange(DaeReader.GetExtensions());
 #endif
 #endif
                 return extensions;
@@ -119,7 +119,7 @@ namespace TriLibCore
                 return new ThreeMfReader();
             }
 #endif
-#if !TRILIB_DISABLE_DAE_IMPORT
+#if TRILIB_ENABLE_DAE_IMPORT
 #if !TRILIB_USE_FBXSDK
             if (((IList)DaeReader.GetExtensions()).Contains(extension))
             {

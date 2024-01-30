@@ -165,15 +165,6 @@ namespace Oculus.Interaction
             InjectGlowType(glowType);
         }
 
-        public void InjectAllHandPokeOvershootGlow(IHand hand, PokeInteractor pokeInteractor, HandVisual handVisual, SkinnedMeshRenderer handRenderer, MaterialPropertyBlockEditor materialEditor)
-        {
-            InjectHand(hand);
-            InjectPokeInteractor(pokeInteractor);
-            InjectHandVisual(handVisual);
-            InjectHandRenderer(handRenderer);
-            InjectMaterialPropertyBlockEditor(materialEditor);
-        }
-
         public void InjectHand(IHand hand)
         {
             _hand = hand as UnityEngine.Object;
@@ -183,16 +174,6 @@ namespace Oculus.Interaction
         public void InjectPokeInteractor(PokeInteractor pokeInteractor)
         {
             _pokeInteractor = pokeInteractor;
-        }
-
-        public void InjectHandRenderer(SkinnedMeshRenderer handRenderer)
-        {
-            _handRenderer = handRenderer;
-        }
-
-        public void InjectHandVisual(HandVisual handVisual)
-        {
-            _handVisual = handVisual;
         }
 
         public void InjectMaterialPropertyBlockEditor(MaterialPropertyBlockEditor materialEditor)

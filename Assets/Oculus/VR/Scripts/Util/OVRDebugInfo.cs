@@ -26,7 +26,6 @@ using UnityEngine.UI;
 /// <summary>
 /// Shows debug information on a heads-up display.
 /// </summary>
-[HelpURL("https://developer.oculus.com/reference/unity/latest/class_o_v_r_debug_info")]
 public class OVRDebugInfo : MonoBehaviour
 {
     #region GameObjects for Debug Information UIs

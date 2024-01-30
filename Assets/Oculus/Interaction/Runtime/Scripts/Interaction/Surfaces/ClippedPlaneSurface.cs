@@ -38,34 +38,24 @@ namespace Oculus.Interaction.Surfaces
 
         [Tooltip("The clippers that will be used to clip the Plane Surface.")]
         [SerializeField, Interface(typeof(IBoundsClipper))]
-        private List<UnityEngine.Object> _clippers = new List<UnityEngine.Object>();
-        private List<IBoundsClipper> Clippers { get; set; }
+        private List<UnityEngine.Object> _clippers;
 
         public ISurface BackingSurface => _planeSurface;
 
         public Transform Transform => _planeSurface.Transform;
 
-        public IReadOnlyList<IBoundsClipper> GetClippers()
+        public IEnumerable<IBoundsClipper> GetClippers()
         {
-            if (Clippers != null)
+            foreach (var clipper in _clippers)
             {
-                return Clippers;
+                yield return clipper as IBoundsClipper;
             }
-            else
-            {
-                return _clippers.ConvertAll(clipper => clipper as IBoundsClipper);
-            }
-        }
-
-        protected virtual void Awake()
-        {
-            Clippers = _clippers.ConvertAll(clipper => clipper as IBoundsClipper);
         }
 
         protected virtual void Start()
         {
             this.AssertField(_planeSurface, nameof(_planeSurface));
-            this.AssertCollectionItems(Clippers, nameof(Clippers));
+            this.AssertCollectionItems(_clippers, nameof(_clippers));
         }
 
         /// <summary>
@@ -80,10 +70,9 @@ namespace Oculus.Interaction.Surfaces
         {
             clipped = bounds;
 
-            IReadOnlyList<IBoundsClipper> clippers = GetClippers();
-            for (int i = 0; i < clippers.Count; i++)
+            foreach (var clipperMono in _clippers)
             {
-                IBoundsClipper clipper = clippers[i];
+                IBoundsClipper clipper = clipperMono as IBoundsClipper;
                 if (clipper == null ||
                     !clipper.GetLocalBounds(Transform, out Bounds clipTo))
                 {
@@ -152,7 +141,6 @@ namespace Oculus.Interaction.Surfaces
         {
             _clippers = new List<UnityEngine.Object>(
                 clippers.Select(c => c as UnityEngine.Object));
-            Clippers = clippers.ToList();
         }
 
         #endregion

@@ -31,16 +31,6 @@ namespace Meta.WitAi
         /// </summary>
         private bool UseConduit => WitConfiguration && WitConfiguration.useConduit;
 
-
-        /// <summary>
-        /// When set to true, the service will use platform integration.
-        /// </summary>
-        public virtual bool UsePlatformIntegrations
-        {
-            get => false;
-            set => throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Wit configuration accessor via IWitConfigurationProvider
         /// </summary>
@@ -341,7 +331,7 @@ namespace Meta.WitAi
             // Deactivate & abort immediately but use the response data as results
             if (validationData.validResponse)
             {
-                VLog.I("Validated Early");
+                VLog.D("Validated Early");
                 audioRequest.CompleteEarly();
             }
         }
@@ -514,12 +504,6 @@ namespace Meta.WitAi
         /// Returns true if voice service is currently active or request is transmitting
         /// </summary>
         bool IsRequestActive { get; }
-
-        /// <summary>
-        /// When set to true, the service will use platform integration.
-        /// </summary>
-        bool UsePlatformIntegrations { get; set; }
-
         /// <summary>
         /// The current running voice requests
         /// </summary>

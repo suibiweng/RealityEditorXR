@@ -143,7 +143,7 @@ namespace Meta.WitAi.Requests
         {
             var jsonNode = new WitResponseClass()
             {
-                { "text", manifestData ?? string.Empty },
+                { "text", manifestData },
                 { "config_type", "1" },
                 { "config_value", "" }
             };

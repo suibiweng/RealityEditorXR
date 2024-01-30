@@ -92,7 +92,7 @@ namespace Oculus.Voice
 
         public bool EnableConsoleLogging => enableConsoleLogging;
 
-        public override bool UsePlatformIntegrations
+        public bool UsePlatformIntegrations
         {
             get => usePlatformServices;
             set

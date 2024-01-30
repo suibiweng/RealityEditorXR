@@ -80,10 +80,6 @@ namespace Oculus.Interaction
                 {
                     _postProcessInteractor.WhenPostprocessed -= _postProcessHandler;
                     _postProcessInteractor = null;
-
-                    // The button is being disabled during an interaction. Update its position so
-                    // that if it's later enabled, it will be at the max offset.
-                    UpdateComponentPosition();
                 }
             }
         }

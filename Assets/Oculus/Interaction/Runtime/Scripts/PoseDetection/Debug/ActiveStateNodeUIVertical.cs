@@ -22,11 +22,10 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Assertions;
-using Oculus.Interaction.DebugTree;
 
 namespace Oculus.Interaction.PoseDetection.Debug
 {
-    public class ActiveStateNodeUIVertical : MonoBehaviour, INodeUI<IActiveState>
+    public class ActiveStateNodeUIVertical : MonoBehaviour, IActiveStateNodeUI
     {
         [SerializeField]
         private RectTransform _childArea;
@@ -50,11 +49,11 @@ namespace Oculus.Interaction.PoseDetection.Debug
 
         public RectTransform ChildArea => _childArea;
 
-        private ITreeNode<IActiveState> _boundNode;
+        private IActiveStateTreeNode _boundNode;
         private bool _isRoot = false;
         private bool _isDuplicate = false;
 
-        public void Bind(ITreeNode<IActiveState> node, bool isRoot, bool isDuplicate)
+        public void Bind(IActiveStateTreeNode node, bool isRoot, bool isDuplicate)
         {
             Assert.IsNotNull(node);
 
@@ -74,19 +73,19 @@ namespace Oculus.Interaction.PoseDetection.Debug
 
         protected virtual void Update()
         {
-            _activeImage.color = _boundNode.Value.Active ? _activeColor : _inactiveColor;
+            _activeImage.color = _boundNode.ActiveState.Active ? _activeColor : _inactiveColor;
             _childArea.gameObject.SetActive(_childArea.childCount > 0);
             _connectingLine.gameObject.SetActive(!_isRoot);
         }
 
-        private string GetLabelText(ITreeNode<IActiveState> node)
+        private string GetLabelText(IActiveStateTreeNode node)
         {
             string label = _isDuplicate ? "<i>" : "";
-            if (node.Value is UnityEngine.Object obj)
+            if (node.ActiveState is UnityEngine.Object obj)
             {
                 label += obj.name + " - ";
             }
-            label += string.Format(OBJNAME_FORMAT, node.Value.GetType().Name);
+            label += string.Format(OBJNAME_FORMAT, node.ActiveState.GetType().Name);
             return label;
         }
     }

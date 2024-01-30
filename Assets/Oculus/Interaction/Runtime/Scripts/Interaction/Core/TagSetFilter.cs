@@ -29,17 +29,11 @@ namespace Oculus.Interaction
     /// </summary>
     public class TagSetFilter : MonoBehaviour, IGameObjectFilter
     {
-        /// <summary>
-        /// A GameObject must meet all required tags.
-        /// </summary>
-        [Tooltip("A GameObject must meet all required tags.")]
+        /// An GameObject must meet all required tags
         [SerializeField, Optional]
         private string[] _requireTags;
 
-        /// <summary>
-        /// A GameObject must not meet any exclude tags.
-        /// </summary>
-        [Tooltip("A GameObject must not meet any exclude tags.")]
+        /// A GameObject must not meet any exclude tags
         [SerializeField, Optional]
         [FormerlySerializedAs("_avoidTags")]
         private string[] _excludeTags;

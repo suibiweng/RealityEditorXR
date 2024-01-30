@@ -23,7 +23,6 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(OVRVirtualKeyboardSampleInputHandler))]
-[HelpURL("https://developer.oculus.com/reference/unity/latest/class_o_v_r_virtual_keyboard_sample_controls")]
 public class OVRVirtualKeyboardSampleControls : MonoBehaviour
 {
     private struct OVRVirtualKeyboardBackup
@@ -124,13 +123,9 @@ public class OVRVirtualKeyboardSampleControls : MonoBehaviour
     {
         inputHandler = GetComponent<OVRVirtualKeyboardSampleInputHandler>();
 
-        // If System Keyboard is enabled at the same time as Virtual Keyboard
-        // prevent the system keyboard from opening with input field focus
-        keyboard.TextCommitField.keyboardType = (TouchScreenKeyboardType)(-1);
-
         ShowKeyboard();
 
-        keyboard.KeyboardHiddenEvent.AddListener(OnHideKeyboard);
+        keyboard.KeyboardHidden += OnHideKeyboard;
 
         MoveNearButton.onClick.AddListener(MoveKeyboardNear);
         MoveFarButton.onClick.AddListener(MoveKeyboardFar);
@@ -144,7 +139,7 @@ public class OVRVirtualKeyboardSampleControls : MonoBehaviour
             return;
         }
 
-        keyboard.KeyboardHiddenEvent.RemoveListener(OnHideKeyboard);
+        keyboard.KeyboardHidden -= OnHideKeyboard;
         MoveNearButton.onClick.RemoveListener(MoveKeyboardNear);
         MoveFarButton.onClick.RemoveListener(MoveKeyboardFar);
         DestroyKeyboardButton.onClick.RemoveListener(DestroyKeyboard);

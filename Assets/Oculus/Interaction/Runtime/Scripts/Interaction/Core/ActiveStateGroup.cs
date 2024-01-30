@@ -97,7 +97,7 @@ namespace Oculus.Interaction
 
         static ActiveStateGroup()
         {
-            ActiveStateDebugTree.RegisterModel<ActiveStateGroup>(new DebugModel());
+            ActiveStateDebugTree.RegisterModel<ActiveStateGroup, DebugModel>();
         }
 
         private class DebugModel : ActiveStateModel<ActiveStateGroup>

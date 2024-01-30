@@ -1,6 +1,4 @@
-﻿#pragma warning disable 184
-
-using System;
+﻿using System;
 using System.IO;
 using ICSharpCode.SharpZipLib.Zip;
 using TriLibCore.Mappers;
@@ -89,14 +87,8 @@ namespace TriLibCore
             {
                 assetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions();
             }
-            if (!ArrayUtils.ContainsType<ZipFileTextureMapper>(assetLoaderOptions.TextureMappers))
-            {
-                assetLoaderOptions.TextureMappers = new TextureMapper[] { ScriptableObject.CreateInstance<ZipFileTextureMapper>() };
-            }
-            if (!assetLoaderOptions.ExternalDataMapper is ZipFileExternalDataMapper)
-            {
-                assetLoaderOptions.ExternalDataMapper = ScriptableObject.CreateInstance<ZipFileExternalDataMapper>();
-            }
+            assetLoaderOptions.TextureMappers = new TextureMapper[] { ScriptableObject.CreateInstance<ZipFileTextureMapper>()};
+            assetLoaderOptions.ExternalDataMapper = ScriptableObject.CreateInstance<ZipFileExternalDataMapper>();
         }
 
         private static void LoadModelsInternal(Action<AssetLoaderContext> onLoad,

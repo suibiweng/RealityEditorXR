@@ -20,8 +20,8 @@ using Meta.WitAi.Data;
 using Meta.WitAi.Data.Configuration;
 using Meta.WitAi.Json;
 using Meta.WitAi.Requests;
-using Meta.WitAi.Utilities;
 using UnityEngine;
+using UnityEngine.Networking;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -45,7 +45,7 @@ namespace Meta.WitAi
         /// <summary>
         /// The request timeout in ms
         /// </summary>
-        public int TimeoutMs { get; private set; } = 1000;
+        public int Timeout { get; private set; } = 1000;
         /// <summary>
         /// Encoding settings for audio based requests
         /// </summary>
@@ -237,7 +237,7 @@ namespace Meta.WitAi
         protected override void OnInit()
         {
             // Determine configuration setting
-            TimeoutMs = Configuration == null ? TimeoutMs : Configuration.timeoutMS;
+            Timeout = Configuration == null ? Timeout : Configuration.timeoutMS;
 
             // Set request settings
             Command = Path.Split('/').First();
@@ -415,7 +415,7 @@ namespace Meta.WitAi
             }
 
             // Apply timeout
-            _request.Timeout = TimeoutMs;
+            _request.Timeout = Timeout;
 
             // Begin calling on main thread if needed
             WatchMainThreadCallbacks();
@@ -425,7 +425,7 @@ namespace Meta.WitAi
             {
                 var getRequestTask = _request.BeginGetRequestStream(HandleWriteStream, _request);
                 ThreadPool.RegisterWaitForSingleObject(getRequestTask.AsyncWaitHandle,
-                    HandleTimeoutMsTimer, _request, TimeoutMs, true);
+                    HandleTimeoutTimer, _request, Timeout, true);
             }
             // Move right to response
             else
@@ -448,11 +448,11 @@ namespace Meta.WitAi
                 return;
             }
             var asyncResult = _request.BeginGetResponse(HandleResponse, _request);
-            ThreadPool.RegisterWaitForSingleObject(asyncResult.AsyncWaitHandle, HandleTimeoutMsTimer, _request, TimeoutMs, true);
+            ThreadPool.RegisterWaitForSingleObject(asyncResult.AsyncWaitHandle, HandleTimeoutTimer, _request, Timeout, true);
         }
 
         // Handle timeout callback
-        private void HandleTimeoutMsTimer(object state, bool timeout)
+        private void HandleTimeoutTimer(object state, bool timeout)
         {
             // Ignore false or too late
             if (!timeout)
@@ -479,18 +479,15 @@ namespace Meta.WitAi
                 if (null != _request?.RequestUri?.PathAndQuery)
                 {
                     var uriSections = _request.RequestUri.PathAndQuery.Split(new char[] { '?' });
-                    path = uriSections[0].Substring(1);
+                    path = uriSections[0];
                 }
 
-                // This was a cancellation due to actual timeout.
-                var elapsed = (DateTime.UtcNow - _requestStartTime).TotalMilliseconds;
-                if (elapsed >= TimeoutMs)
+                // TODO: T153403776 There are still problems with this logic. We're not properly propigating down if
+                // this was a cancellation due to user request or actual timeout.
+                var time = (DateTime.UtcNow - _requestStartTime);
+                if (time.Seconds > Timeout)
                 {
-                    StatusDescription = $"Request [{path}] timed out after {elapsed:0.00} ms";
-                }
-                else
-                {
-                    VLog.W($"Timeout called early {elapsed:0.00} ms");
+                    StatusDescription = $"Request [{path}] timed out after {time.Seconds:0.00} seconds";
                 }
 
                 HandleFinalNlpResponse(null, StatusDescription);
@@ -536,9 +533,7 @@ namespace Meta.WitAi
             catch (WebException e)
             {
                 // Ignore cancelation errors & if error already occured
-                if (e.Status == WebExceptionStatus.RequestCanceled
-                    || e.Status == WebExceptionStatus.Timeout
-                    || StatusCode != 0)
+                if (e.Status == WebExceptionStatus.RequestCanceled || StatusCode != 0)
                 {
                     return;
                 }
@@ -663,8 +658,7 @@ namespace Meta.WitAi
             }
             catch (WebException e)
             {
-                if (e.Status != WebExceptionStatus.RequestCanceled
-                    && e.Status != WebExceptionStatus.Timeout)
+                if (e.Status != WebExceptionStatus.RequestCanceled)
                 {
                     // Apply status & error
                     _stackTrace = e.StackTrace;
@@ -774,7 +768,7 @@ namespace Meta.WitAi
         // Check status
         private void CheckStatus()
         {
-            if (StatusCode == 0 || StatusCode == WitConstants.ERROR_CODE_TIMEOUT) return;
+            if (StatusCode == 0) return;
 
             switch (StatusCode)
             {
@@ -983,5 +977,64 @@ namespace Meta.WitAi
             onResponse = null;
         }
         #endregion HTTP REQUEST
+
+        #region CALLBACKS
+        // Check performing
+        private CoroutineUtility.CoroutinePerformer _performer = null;
+        // All actions
+        private ConcurrentQueue<Action> _mainThreadCallbacks = new ConcurrentQueue<Action>();
+
+        // Called from background thread
+        private void MainThreadCallback(Action action)
+        {
+            if (action == null)
+            {
+                return;
+            }
+            _mainThreadCallbacks.Enqueue(action);
+        }
+        // While active, perform any sent callbacks
+        private void WatchMainThreadCallbacks()
+        {
+            // Ignore if already performing
+            if (_performer != null)
+            {
+                return;
+            }
+
+            // Check callbacks every frame (editor or runtime)
+            _performer = CoroutineUtility.StartCoroutine(PerformMainThreadCallbacks());
+        }
+        // Every frame check for callbacks & perform any found
+        private System.Collections.IEnumerator PerformMainThreadCallbacks()
+        {
+            // While checking, continue
+            while (HasMainThreadCallbacks())
+            {
+                // Wait for frame
+                if (Application.isPlaying && !Application.isBatchMode)
+                {
+                    yield return new WaitForEndOfFrame();
+                }
+                // Wait for a tick
+                else
+                {
+                    yield return null;
+                }
+
+                // Perform if possible
+                while (_mainThreadCallbacks.Count > 0 && _mainThreadCallbacks.TryDequeue(out var result))
+                {
+                    result();
+                }
+            }
+            _performer = null;
+        }
+        // If active or performing callbacks
+        private bool HasMainThreadCallbacks()
+        {
+            return IsActive || _mainThreadCallbacks.Count > 0;
+        }
+        #endregion
     }
 }

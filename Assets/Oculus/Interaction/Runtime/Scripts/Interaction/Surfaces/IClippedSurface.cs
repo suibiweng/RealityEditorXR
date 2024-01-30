@@ -28,6 +28,6 @@ namespace Oculus.Interaction.Surfaces
         /// The clippers by which <see cref="BackingSurface"/>
         /// will be clipped.
         /// </summary>
-        IReadOnlyList<TClipper> GetClippers();
+        IEnumerable<TClipper> GetClippers();
     }
 }

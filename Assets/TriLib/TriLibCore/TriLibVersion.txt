@@ -1,21 +1,3 @@
-2.2.2
-Changelog:
--Fixed glTF embedded textures issue.
--Fixed vertex merging slowdown.
-
-2.2.1
-Changelog:
--Added debug library versions.
--Refactored mesh loading system to decrease memory usage.
--Vertices are added on creation time now, decreasing memory usage.
--Fixed OBJ naming issues.
--Removed forced texture creation to simulate metallic/smooth color textures.
--Removed all NativeArray usage from internal loaders to prevent native memory leaks.
--Changed StbImageSharp to SafeStbImageSharp to prevent native memory leaks.
--Removed RenderTexture creation when the original material has no metallic/roughness textures.
--Temporarily removed DoubleSidedMaterials asset loader option. It is recommended to create custom shaders to support double-sided materials instead.
--Misc fixes.
-
 2.2.0
 Changelog:
 -Fixed geometry index assignment bug.
@@ -23,24 +5,19 @@ Changelog:
 -Fixed gLTF2 albedo color mixing with texture bug.
 -Fixed FBX missing bone assignment bug.
 -Fixed FBX negative geometric scale bug.
--Fixed FBX importing bug when the model has blend shapes, but user disabled blend shape importing.
--Fixed Blender FBX texture emission values importing.
--Fixed Fbx.Reader.FbxReader.Pivot processing.
+-Fixed Fbx.Reader.FbxReader.Pivot field processing.
 -Fixed DAE material assignment bug.
 -Fixed avatar mapping issues.
--Fixed ScanForAlphaPixels option bug.
 -Refactored FBX ASCII parser.
--Re-enabled MarkTexturesNoLongerReadable Asset Loader Option.
--Added TriLib debug libraries.
 -Added support for diffuse textures inside zip files with the same short filename as the model file (Eg: model.png is assigned to the diffuse texture of model.fbx when the original texture isn't inside the zip file).
 -Added Blender FBX roughness/metallic material values support.
--Added the ConversionPrecision static field to the readers.
+-Added ConversionPrecision static field to the readers (Eg: Fbx.Reader.FbxReader.ConversionPrecision).
 -Added glTF2 double-sided materials support.
 -Added glTF2 mask alpha mode support.
 -Added glTF2 KHR_materials_emissive_strength extension support.
--Added AddAllBonesToSkinnedMeshRenderers Asset Loader Option. Turn on this field to add all available bones to every created SkinnedMeshRenderer.
--Deprecated the TextureMapper Asset Loader Option. Please fill the TextureMappers array field now with your custom TextureMappers. Sample code has been updated.
--Replaced the old "Map" method call from all TextureMappers with the new "Map" methodo verride.
+-Deprecated the TextureMapper Asset Loader Option. Please fill the TextureMappers array field with your custom TextureMappers next time you have to use it.
+-Replaced the old "Map" method call from all TextureMappers with the new "Map" method override.
+-Misc. fixes.
 
 2.1.9
 Changelog:

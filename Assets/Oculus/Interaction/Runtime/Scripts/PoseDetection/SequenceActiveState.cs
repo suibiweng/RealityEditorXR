@@ -56,7 +56,7 @@ namespace Oculus.Interaction.PoseDetection
 
         static SequenceActiveState()
         {
-            ActiveStateDebugTree.RegisterModel<SequenceActiveState>(new DebugModel());
+            ActiveStateDebugTree.RegisterModel<SequenceActiveState, DebugModel>();
         }
 
         private class DebugModel : ActiveStateModel<SequenceActiveState>

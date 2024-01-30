@@ -1,14 +1,10 @@
+using System;
 using UnityEngine;
 
-/// <summary>
-/// A MonoBehavior that provides the ability for a mesh to
-/// be rescaled using 9-slice scaling (27-slicing in 3D).
-/// For more details, see <seealso cref="SimpleResizer"/>>.
-/// </summary>
 [ExecuteInEditMode]
 public class SimpleResizable : MonoBehaviour
 {
-    public Vector3 PivotPosition => _pivotTransform.position;
+    public Vector3 PivotPosition => _pivotTransform.position; //Vector3.zero;
 
     [Space(15)] public Method ScalingX;
     [Range(0, 0.5f)] public float PaddingX;
@@ -33,56 +29,32 @@ public class SimpleResizable : MonoBehaviour
         None
     }
 
+    public Vector3 NewSize { get; set; }
     public Vector3 DefaultSize { get; private set; }
-    public Mesh OriginalMesh { get; private set; }
+    public Mesh Mesh { get; private set; }
 
-    private Vector3 _oldSize;
-    private MeshFilter _meshFilter;
+    private Bounds _bounds;
 
-    [SerializeField] private Vector3 _newSize;
-    [SerializeField] private bool _updateInPlayMode;
     [SerializeField] private Transform _pivotTransform;
-
-    public void SetNewSize(Vector3 newSize) => _newSize = newSize;
 
     private void Awake()
     {
-        _meshFilter = GetComponent<MeshFilter>();
-        OriginalMesh = GetComponent<MeshFilter>().sharedMesh;
-        DefaultSize = OriginalMesh.bounds.size;
-        _newSize = DefaultSize;
-        _oldSize = _newSize;
-
+        Mesh = GetComponent<MeshFilter>().sharedMesh;
+        DefaultSize = Mesh.bounds.size;
         if (!_pivotTransform)
             _pivotTransform = transform.Find("Pivot");
     }
 
+#if UNITY_EDITOR
     private void OnEnable()
     {
-        DefaultSize = OriginalMesh.bounds.size;
-        if (_newSize == Vector3.zero)
-            _newSize = DefaultSize;
-    }
-
-    private void Update()
-    {
-        if (Application.isPlaying && !_updateInPlayMode)
-            return;
-
-        if (_newSize != _oldSize)
-        {
-            _oldSize = _newSize;
-
-            var resizedMesh = SimpleResizer.ProcessVertices(this, _newSize, true);
-            _meshFilter.sharedMesh = resizedMesh;
-            _meshFilter.sharedMesh.RecalculateBounds();
-        }
+        DefaultSize = Mesh.bounds.size;
+        NewSize = DefaultSize;
     }
 
     private void OnDrawGizmos()
     {
-        if (!_pivotTransform)
-            return;
+        if (!_pivotTransform) return;
 
         Gizmos.color = Color.red;
         float lineSize = 0.1f;
@@ -96,29 +68,34 @@ public class SimpleResizable : MonoBehaviour
         Gizmos.DrawRay(startZ, Vector3.forward * lineSize);
     }
 
-    private void OnDrawGizmosSelected()
+    void OnDrawGizmosSelected()
     {
-        // The furniture piece was not customized yet, nothing to do here
-        if (_meshFilter.sharedMesh == null)
-            return;
+        DefaultSize = Mesh.bounds.size;
 
+        if (GetComponent<MeshFilter>().sharedMesh == null)
+        {
+            // The furniture piece was not customized yet, nothing to do here
+            return;
+        }
+
+        _bounds = GetComponent<MeshFilter>().sharedMesh.bounds;
         Gizmos.matrix = transform.localToWorldMatrix;
-        Vector3 newCenter = _meshFilter.sharedMesh.bounds.center;
+        Vector3 newCenter = _bounds.center;
 
         Gizmos.color = new Color(1, 0, 0, 0.5f);
         switch (ScalingX)
         {
             case Method.Adapt:
-                Gizmos.DrawWireCube(newCenter, new Vector3(_newSize.x * PaddingX * 2, _newSize.y, _newSize.z));
+                Gizmos.DrawWireCube(newCenter, new Vector3(NewSize.x * PaddingX * 2, NewSize.y, NewSize.z));
                 break;
             case Method.AdaptWithAsymmetricalPadding:
                 Gizmos.DrawWireCube(newCenter + new Vector3(
-                    _newSize.x * PaddingX, 0, 0), new Vector3(0, _newSize.y, _newSize.z));
+                    NewSize.x * PaddingX, 0, 0), new Vector3(0, NewSize.y, NewSize.z));
                 Gizmos.DrawWireCube(newCenter + new Vector3(
-                    _newSize.x * PaddingXMax, 0, 0), new Vector3(0, _newSize.y, _newSize.z));
+                    NewSize.x * PaddingXMax, 0, 0), new Vector3(0, NewSize.y, NewSize.z));
                 break;
             case Method.None:
-                Gizmos.DrawWireCube(newCenter, _newSize);
+                Gizmos.DrawWireCube(newCenter, NewSize);
                 break;
         }
 
@@ -126,16 +103,16 @@ public class SimpleResizable : MonoBehaviour
         switch (ScalingY)
         {
             case Method.Adapt:
-                Gizmos.DrawWireCube(newCenter, new Vector3(_newSize.x, _newSize.y * PaddingY * 2, _newSize.z));
+                Gizmos.DrawWireCube(newCenter, new Vector3(NewSize.x, NewSize.y * PaddingY * 2, NewSize.z));
                 break;
             case Method.AdaptWithAsymmetricalPadding:
-                Gizmos.DrawWireCube(newCenter + new Vector3(0, _newSize.y * PaddingY, 0),
-                    new Vector3(_newSize.x, 0, _newSize.z));
-                Gizmos.DrawWireCube(newCenter + new Vector3(0, _newSize.y * PaddingYMax, 0),
-                    new Vector3(_newSize.x, 0, _newSize.z));
+                Gizmos.DrawWireCube(newCenter + new Vector3(0, NewSize.y * PaddingY, 0),
+                    new Vector3(NewSize.x, 0, NewSize.z));
+                Gizmos.DrawWireCube(newCenter + new Vector3(0, NewSize.y * PaddingYMax, 0),
+                    new Vector3(NewSize.x, 0, NewSize.z));
                 break;
             case Method.None:
-                Gizmos.DrawWireCube(newCenter, _newSize);
+                Gizmos.DrawWireCube(newCenter, NewSize);
                 break;
         }
 
@@ -143,20 +120,21 @@ public class SimpleResizable : MonoBehaviour
         switch (ScalingZ)
         {
             case Method.Adapt:
-                Gizmos.DrawWireCube(newCenter, new Vector3(_newSize.x, _newSize.y, _newSize.z * PaddingZ * 2));
+                Gizmos.DrawWireCube(newCenter, new Vector3(NewSize.x, NewSize.y, NewSize.z * PaddingZ * 2));
                 break;
             case Method.AdaptWithAsymmetricalPadding:
-                Gizmos.DrawWireCube(newCenter + new Vector3(0, 0, _newSize.z * PaddingZ),
-                    new Vector3(_newSize.x, _newSize.y, 0));
-                Gizmos.DrawWireCube(newCenter + new Vector3(0, 0, _newSize.z * PaddingZMax),
-                    new Vector3(_newSize.x, _newSize.y, 0));
+                Gizmos.DrawWireCube(newCenter + new Vector3(0, 0, NewSize.z * PaddingZ),
+                    new Vector3(NewSize.x, NewSize.y, 0));
+                Gizmos.DrawWireCube(newCenter + new Vector3(0, 0, NewSize.z * PaddingZMax),
+                    new Vector3(NewSize.x, NewSize.y, 0));
                 break;
             case Method.None:
-                Gizmos.DrawWireCube(newCenter, _newSize);
+                Gizmos.DrawWireCube(newCenter, NewSize);
                 break;
         }
 
         Gizmos.color = new Color(0, 1, 1, 1);
-        Gizmos.DrawWireCube(newCenter, _newSize);
+        Gizmos.DrawWireCube(newCenter, NewSize);
     }
+#endif
 }

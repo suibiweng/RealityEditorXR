@@ -22,7 +22,6 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.Serialization;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
@@ -99,9 +98,9 @@ public class OVRTrackedKeyboard : MonoBehaviour
 
         /// <summary>
         /// The keyboard and hands are rendered using a rectangular passthrough window
-        /// around the keyboard.
+        /// around the keyboard, and only the key labels are rendered in VR on top of the keyboard.
         /// </summary>
-        PreferMR,
+        PreferKeyLabels,
     }
 
     /// <summary>
@@ -237,7 +236,7 @@ public class OVRTrackedKeyboard : MonoBehaviour
 
     [SerializeField]
     [Tooltip("Opaque will render a solid model of the keyboard with passthrough hands. " +
-             "MR will render the entire keyboard and hands in a passthrough window cutout. " +
+             "Key Labels will render the entire keyboard in passthrough other than the key labels. " +
              "These are both suggestions and may not always be available.")]
     private KeyboardPresentation presentation = KeyboardPresentation.PreferOpaque;
 
@@ -252,10 +251,10 @@ public class OVRTrackedKeyboard : MonoBehaviour
     public float mipmapBias = -0.3f;
 
     /// <summary>
-    /// How large of a passthrough area to show surrounding the keyboard when using MR presentation.
+    /// How large of a passthrough area to show surrounding the keyboard when using Key Label presentation.
     /// </summary>
-    [Tooltip("How large of a passthrough area to show surrounding the keyboard when using MR presentation")]
-    public float PassthroughBorderMultiplier = 0.1f;
+    [Tooltip("How large of a passthrough area to show surrounding the keyboard when using Key Label presentation")]
+    public float PassthroughBorderMultiplier = 0.2f;
 
     /// <summary>
     /// The shader used for rendering the keyboard model in opaque mode.
@@ -275,8 +274,11 @@ public class OVRTrackedKeyboard : MonoBehaviour
     private OVROverlay projectedPassthroughOpaque_;
     private MeshRenderer[] activeKeyboardRenderers_;
     private GameObject activeKeyboardMesh_;
+    private GameObject[] keyboardMeshNodes_;
     private MeshRenderer activeKeyboardMeshRenderer_;
     private GameObject passthroughQuad_;
+
+    private Shader opaqueShader_;
 
     // This is a copy of the texture loaded from the glb. The original texture might be read-only on the GPU (impossible to modify).
     private Texture2D dynamicQualityTexture_;
@@ -285,9 +287,14 @@ public class OVRTrackedKeyboard : MonoBehaviour
     // These properties generally don't need to be modified by the user of the prefab
 
     /// <summary>
-    /// Internal only. The shader used to render the passthrough rectangle in opaque mode.
+    /// Internal only. The shader used to render the keyboard in key label mode.
     /// </summary>
     [Header("Internal")]
+    public Shader KeyLabelModeShader;
+
+    /// <summary>
+    /// Internal only. The shader used to render the passthrough rectangle in opaque mode.
+    /// </summary>
     public Shader PassthroughShader;
 
     #region MR Service Setup
@@ -298,10 +305,9 @@ public class OVRTrackedKeyboard : MonoBehaviour
     #endregion
 
     /// <summary>
-    /// Internal only. The passthrough layer used to render the passthrough rectangle in MR mode.
+    /// Internal only. The passthrough layer used to render the passthrough rectangle in key label mode.
     /// </summary>
-    [FormerlySerializedAs("ProjectedPassthroughKeyLabel")]
-    public OVRPassthroughLayer ProjectedPassthroughMR;
+    public OVRPassthroughLayer ProjectedPassthroughKeyLabel;
 
     /// <summary>
     /// Internal only. The passthrough layer used to render the passthrough rectangle in opaque mode.
@@ -392,18 +398,18 @@ public class OVRTrackedKeyboard : MonoBehaviour
         projectedPassthroughOpaque_.hidden = true;
         projectedPassthroughOpaque_.gameObject.SetActive(true);
 
-        ProjectedPassthroughMR.hidden = true;
-        ProjectedPassthroughMR.gameObject.SetActive(true);
+        ProjectedPassthroughKeyLabel.hidden = true;
+        ProjectedPassthroughKeyLabel.gameObject.SetActive(true);
     }
 
     void RegisterPassthroughMeshToSDK()
     {
-        if (ProjectedPassthroughMR.IsSurfaceGeometry(projectedPassthroughMesh.gameObject))
+        if (ProjectedPassthroughKeyLabel.IsSurfaceGeometry(projectedPassthroughMesh.gameObject))
         {
-            ProjectedPassthroughMR.RemoveSurfaceGeometry(projectedPassthroughMesh.gameObject);
+            ProjectedPassthroughKeyLabel.RemoveSurfaceGeometry(projectedPassthroughMesh.gameObject);
         }
 
-        ProjectedPassthroughMR.AddSurfaceGeometry(projectedPassthroughMesh.gameObject, true);
+        ProjectedPassthroughKeyLabel.AddSurfaceGeometry(projectedPassthroughMesh.gameObject, true);
     }
 
     #region Public API
@@ -486,8 +492,8 @@ public class OVRTrackedKeyboard : MonoBehaviour
                                 ? "Supports Opaque"
                                 : "",
                             (keyboardInfo.SupportedPresentationStyles &
-                             OVRPlugin.TrackedKeyboardPresentationStyles.MR) != 0
-                                ? "Supports MR"
+                             OVRPlugin.TrackedKeyboardPresentationStyles.KeyLabel) != 0
+                                ? "Supports Key Label"
                                 : ""));
                         if (TrackingState == TrackedKeyboardState.NoTrackableKeyboard)
                         {
@@ -607,7 +613,7 @@ public class OVRTrackedKeyboard : MonoBehaviour
         }
 
         projectedPassthroughOpaque_.hidden = true;
-        ProjectedPassthroughMR.hidden = true;
+        ProjectedPassthroughKeyLabel.hidden = true;
 
         TrackedKeyboardActiveChanged?.Invoke(new TrackedKeyboardSetActiveEvent(isEnabled: false));
 
@@ -741,6 +747,12 @@ public class OVRTrackedKeyboard : MonoBehaviour
             return;
         }
 
+        keyboardMeshNodes_ = new GameObject[activeKeyboardMesh_.transform.childCount];
+        for (int i = 0; i < activeKeyboardMesh_.transform.childCount; i++)
+        {
+            keyboardMeshNodes_[i] = activeKeyboardMesh_.transform.GetChild(i).gameObject;
+        }
+
         keyboardBoundingBox_ = activeKeyboardMesh_.AddComponent<BoxCollider>();
 
         keyboardBoundingBox_.center =
@@ -750,7 +762,7 @@ public class OVRTrackedKeyboard : MonoBehaviour
                 ActiveKeyboardInfo.Dimensions.y + boundingBoxAboveKeyboardY_,
                 ActiveKeyboardInfo.Dimensions.z);
 
-        activeKeyboardMeshRenderer_ = activeKeyboardMesh_.GetComponentInChildren<MeshRenderer>();
+        activeKeyboardMeshRenderer_ = keyboardMeshNodes_[0].GetComponentInChildren<MeshRenderer>();
         if (activeKeyboardMeshRenderer_ == null)
         {
             Debug.LogError("Failed to load activeKeyboardMeshRenderer_.");
@@ -758,9 +770,11 @@ public class OVRTrackedKeyboard : MonoBehaviour
             return;
         }
 
+        opaqueShader_ = activeKeyboardMeshRenderer_.material.shader;
+
         passthroughQuad_ = GameObject.CreatePrimitive(PrimitiveType.Quad);
         passthroughQuad_.transform.localPosition = new Vector3(0.0f, -0.01f, 0.0f);
-        passthroughQuad_.transform.parent = ActiveKeyboardTransform;
+        passthroughQuad_.transform.parent = activeKeyboardMesh_.transform;
         passthroughQuad_.transform.localRotation = Quaternion.Euler(90.0f, 0.0f, 0.0f);
         float borderSize = ActiveKeyboardInfo.Dimensions.x * PassthroughBorderMultiplier;
         passthroughQuad_.transform.localScale = new Vector3(
@@ -820,13 +834,13 @@ public class OVRTrackedKeyboard : MonoBehaviour
             if (Presentation == KeyboardPresentation.PreferOpaque &&
                 (currentKeyboardPresentationStyles & OVRPlugin.TrackedKeyboardPresentationStyles.Opaque) == 0)
             {
-                if ((currentKeyboardPresentationStyles & OVRPlugin.TrackedKeyboardPresentationStyles.MR) != 0)
+                if ((currentKeyboardPresentationStyles & OVRPlugin.TrackedKeyboardPresentationStyles.KeyLabel) != 0)
                 {
-                    presentationToUse = KeyboardPresentation.PreferMR;
+                    presentationToUse = KeyboardPresentation.PreferKeyLabels;
                 }
             }
-            else if (Presentation == KeyboardPresentation.PreferMR &&
-                     (currentKeyboardPresentationStyles & OVRPlugin.TrackedKeyboardPresentationStyles.MR) == 0)
+            else if (Presentation == KeyboardPresentation.PreferKeyLabels &&
+                     (currentKeyboardPresentationStyles & OVRPlugin.TrackedKeyboardPresentationStyles.KeyLabel) == 0)
             {
                 if ((currentKeyboardPresentationStyles & OVRPlugin.TrackedKeyboardPresentationStyles.Opaque) != 0)
                 {
@@ -838,21 +852,29 @@ public class OVRTrackedKeyboard : MonoBehaviour
         if (!isVisible)
         {
             projectedPassthroughOpaque_.hidden = true;
-            ProjectedPassthroughMR.hidden = true;
+            ProjectedPassthroughKeyLabel.hidden = true;
         }
         else if (presentationToUse == KeyboardPresentation.PreferOpaque)
         {
+            activeKeyboardMeshRenderer_.material.shader = opaqueShader_;
             passthroughQuad_.SetActive(false);
             projectedPassthroughOpaque_.hidden = !GetKeyboardVisibility() || !HandsOverKeyboard;
-            ProjectedPassthroughMR.hidden = true;
-            activeKeyboardMesh_.SetActive(true);
+            ProjectedPassthroughKeyLabel.hidden = true;
+            for (int i = 1; i < keyboardMeshNodes_.Length; i++)
+            {
+                keyboardMeshNodes_[i].SetActive(true);
+            }
         }
         else
         {
+            activeKeyboardMeshRenderer_.material.shader = KeyLabelModeShader;
             passthroughQuad_.SetActive(true);
             projectedPassthroughOpaque_.hidden = true;
-            ProjectedPassthroughMR.hidden = false; // Always shown
-            activeKeyboardMesh_.SetActive(false);
+            ProjectedPassthroughKeyLabel.hidden = false; // Always shown
+            for (int i = 1; i < keyboardMeshNodes_.Length; i++)
+            {
+                keyboardMeshNodes_[i].SetActive(false);
+            }
         }
     }
 
@@ -1033,9 +1055,9 @@ public class OVRTrackedKeyboard : MonoBehaviour
             StopKeyboardTrackingInternal();
         }
 
-        if (ProjectedPassthroughMR.IsSurfaceGeometry(projectedPassthroughMesh.gameObject))
+        if (ProjectedPassthroughKeyLabel.IsSurfaceGeometry(projectedPassthroughMesh.gameObject))
         {
-            ProjectedPassthroughMR.RemoveSurfaceGeometry(projectedPassthroughMesh.gameObject);
+            ProjectedPassthroughKeyLabel.RemoveSurfaceGeometry(projectedPassthroughMesh.gameObject);
         }
 
         if (activeKeyboardMesh_ != null)

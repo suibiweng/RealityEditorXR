@@ -39,18 +39,13 @@ namespace Oculus.Voice.Bindings.Android
         public Action OnServiceNotAvailableEvent;
         private IVoiceService _baseVoiceService;
 
+
         private bool _isActive;
 
         public VoiceSDKImpl(IVoiceService baseVoiceService) : base(
             "com.oculus.assistant.api.unity.immersivevoicecommands.UnityIVCServiceFragment")
         {
             _baseVoiceService = baseVoiceService;
-        }
-
-        public bool UsePlatformIntegrations
-        {
-            get => true;
-            set => throw new NotImplementedException();
         }
 
         public bool PlatformSupportsWit => service.PlatformSupportsWit && _isServiceAvailable;
@@ -106,14 +101,9 @@ namespace Oculus.Voice.Bindings.Android
         public VoiceServiceRequest Activate(string text, WitRequestOptions requestOptions,
             VoiceServiceRequestEvents requestEvents)
         {
-            if (requestOptions == null)
-            {
-                requestOptions = new WitRequestOptions();
-            }
-            requestOptions.Text = text;
             eventBinding.VoiceEvents.OnRequestOptionSetup?.Invoke(requestOptions);
             VoiceServiceRequest request = GetRequest(requestOptions, requestEvents, NLPRequestInputType.Text);
-            request.Send();
+            request.Send(text);
             return request;
         }
 
@@ -122,10 +112,6 @@ namespace Oculus.Voice.Bindings.Android
         {
             if (_isActive) return null;
             _isActive = true;
-            if (requestOptions == null)
-            {
-                requestOptions = new WitRequestOptions();
-            }
             eventBinding.VoiceEvents.OnRequestOptionSetup?.Invoke(requestOptions);
             VoiceServiceRequest request = GetRequest(requestOptions, requestEvents, NLPRequestInputType.Audio);
             request.ActivateAudio();
@@ -137,10 +123,6 @@ namespace Oculus.Voice.Bindings.Android
         {
             if (_isActive) return null;
             _isActive = true;
-            if (requestOptions == null)
-            {
-                requestOptions = new WitRequestOptions();
-            }
             eventBinding.VoiceEvents.OnRequestOptionSetup?.Invoke(requestOptions);
             VoiceServiceRequest request = GetRequest(requestOptions, requestEvents, NLPRequestInputType.Audio, true);
             request.ActivateAudio();

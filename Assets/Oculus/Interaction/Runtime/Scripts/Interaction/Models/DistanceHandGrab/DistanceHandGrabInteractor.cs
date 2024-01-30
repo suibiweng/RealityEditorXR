@@ -171,8 +171,6 @@ namespace Oculus.Interaction.HandGrab
                 return;
             }
 
-            UpdateTargetSliding(SelectedInteractable);
-
             Pose handGrabPose = this.GetHandGrabPose();
             Movement.UpdateTarget(handGrabPose);
             Movement.Tick();
@@ -305,20 +303,6 @@ namespace Oculus.Interaction.HandGrab
             TrySetTarget(interactable, selectingGrabTypes);
             float grabStrength = HandGrabInteraction.ComputeHandGrabScore(this, interactable, out _);
             SetGrabStrength(grabStrength);
-        }
-
-        private void UpdateTargetSliding(IHandGrabInteractable interactable)
-        {
-            if (interactable.Slippiness <= 0f)
-            {
-                return;
-            }
-            float grabStrength = HandGrabInteraction.ComputeHandGrabScore(this, interactable,
-                out GrabTypeFlags selectingGrabTypes, true);
-            if (grabStrength <= interactable.Slippiness)
-            {
-                TrySetTarget(interactable, selectingGrabTypes);
-            }
         }
 
         private bool TrySetTarget(IHandGrabInteractable interactable, GrabTypeFlags selectingGrabTypes)

@@ -19,14 +19,6 @@ namespace TriLibCore.Mappers
         public override Material TransparentComposeMaterialPreset => Resources.Load<Material>("Materials/Standard/Standard/TriLibStandardAlphaCompose");
 
         public override Material TransparentMaterialPreset => Resources.Load<Material>("Materials/Standard/Standard/TriLibStandardAlpha");
-
-        public override Material MaterialPresetNoMetallicTexture => Resources.Load<Material>("Materials/Standard/Standard/TriLibStandardNoMetallicTexture");
-
-        public override Material CutoutMaterialPresetNoMetallicTexture => Resources.Load<Material>("Materials/Standard/Standard/TriLibStandardAlphaCutoutNoMetallicTexture");
-
-        public override Material TransparentMaterialPresetNoMetallicTexture => Resources.Load<Material>("Materials/Standard/Standard/TriLibStandardAlphaNoMetallicTexture");
-
-        public override Material TransparentComposeMaterialPresetNoMetallicTexture => TransparentComposeMaterialPreset;
         #endregion
 
         public override Material LoadingMaterial => Resources.Load<Material>("Materials/Standard/TriLibStandardLoading");

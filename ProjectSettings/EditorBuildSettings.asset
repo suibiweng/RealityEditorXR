@@ -18,6 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/CANDC/InteriorDesign.unity
     guid: 96315e82ce7d1c84f9d42da8e7326274
   - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: f2fea7ace86997841a554a80efb78d0c
   - enabled: 0

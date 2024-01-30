@@ -14,7 +14,7 @@ namespace TriLibCore.Editor
         [MenuItem("Assets/Create/TriLib/Asset Loader Options/Pre-built Asset Loader Options")]
         public static void CreatePreBuiltAssetLoaderOptions()
         {
-            var assetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions(false, true);
+            var assetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions();
             AssetDatabase.CreateAsset(assetLoaderOptions, $"{FileUtils.GetFileDirectory(AssetDatabase.GetAssetPath(Selection.activeObject))}/AssetLoaderOptions.asset");
         }
         

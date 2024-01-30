@@ -28,18 +28,18 @@ namespace Oculus.Interaction.PoseDetection.Debug
         IEnumerable<IActiveState> GetChildren(IActiveState activeState);
     }
 
-    public abstract class ActiveStateModel<TActiveState> : IActiveStateModel
-        where TActiveState : class, IActiveState
+    public abstract class ActiveStateModel<T> :
+        IActiveStateModel where T : class, IActiveState
     {
         public IEnumerable<IActiveState> GetChildren(IActiveState activeState)
         {
-            if (activeState is TActiveState type)
+            if (activeState is T type)
             {
                 return GetChildren(type);
             }
             return Enumerable.Empty<IActiveState>();
         }
 
-        protected abstract IEnumerable<IActiveState> GetChildren(TActiveState activeState);
+        protected abstract IEnumerable<IActiveState> GetChildren(T activeState);
     }
 }

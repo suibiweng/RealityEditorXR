@@ -25,7 +25,6 @@ using System.Collections;
 /// <summary>
 /// A PCM buffer of data for a haptics effect.
 /// </summary>
-[HelpURL("https://developer.oculus.com/reference/unity/latest/class_o_v_r_haptics_clip")]
 public class OVRHapticsClip
 {
     /// <summary>

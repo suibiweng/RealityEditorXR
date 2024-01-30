@@ -29,7 +29,6 @@ namespace Oculus.Interaction.HandGrab
     {
         HandAlignType HandAlignment { get; }
         bool UsesHandPose { get; }
-        float Slippiness { get; }
         bool SupportsHandedness(Handedness handedness);
         IMovement GenerateMovement(in Pose from, in Pose to);
         bool CalculateBestPose(Pose userPose, float handScale, Handedness handedness,

@@ -29,11 +29,6 @@ namespace TriLibCore.Samples
         private Text _progressText;
 
         /// <summary>
-        /// Cached Asset Loader Options instance.
-        /// </summary>
-        private AssetLoaderOptions _assetLoaderOptions;
-
-        /// <summary>
         /// Creates the AssetLoaderOptions instance and displays the Model file-picker.
         /// </summary>
         /// <remarks>
@@ -41,12 +36,9 @@ namespace TriLibCore.Samples
         /// </remarks>
         public void LoadModel()
         {
-            if (_assetLoaderOptions == null)
-            {
-                _assetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions(false, true);
-            }
+            var assetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions();
             var assetLoaderFilePicker = AssetLoaderFilePicker.Create();
-            assetLoaderFilePicker.LoadModelFromFilePickerAsync("Select a Model file", OnLoad, OnMaterialsLoad, OnProgress, OnBeginLoad, OnError, null, _assetLoaderOptions);
+            assetLoaderFilePicker.LoadModelFromFilePickerAsync("Select a Model file", OnLoad, OnMaterialsLoad, OnProgress, OnBeginLoad, OnError, null, assetLoaderOptions);
         }
 
         /// <summary>

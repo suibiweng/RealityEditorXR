@@ -36,8 +36,7 @@ using UnityEditor;
 // TODO: rename to MetaXRSimulatorDownloader after UPM migration
 public class MetaXRSimulatorEnabler : MonoBehaviour
 {
-#if !USING_META_XR_SIMULATOR
-    const string kDownloadSimulator = "Oculus/Download Meta XR Simulator";
+    const string kDownloadSimulator = "Oculus/Download Meta XR Simulator (Experimental)";
 
     [MenuItem(kDownloadSimulator, false, 10000)]
     private static void DownloadSimulator()
@@ -49,6 +48,5 @@ public class MetaXRSimulatorEnabler : MonoBehaviour
             Application.OpenURL(downloadUrl);
         }
     }
-#endif
 }
 #endif // #if OVR_UNITY_ASSET_STORE

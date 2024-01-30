@@ -28,7 +28,7 @@ namespace Oculus.Interaction
     {
         [SerializeField, Interface(typeof(IInteractor))]
         protected List<UnityEngine.Object> _interactors;
-        public IReadOnlyList<IInteractor> Interactors;
+        protected List<IInteractor> Interactors;
 
         [SerializeField, Interface(typeof(IActiveState)), Optional]
         private UnityEngine.Object _activeState;
@@ -83,13 +83,6 @@ namespace Oculus.Interaction
         protected static readonly InteractorPredicate TruePredicate =
             (interactor, index) => true;
 
-        protected static readonly InteractorPredicate HasCandidatePredicate =
-            (interactor, index) => interactor.HasCandidate;
-
-        protected static readonly InteractorPredicate HasInteractablePredicate =
-            (interactor, index) => interactor.HasInteractable;
-
-
         private InteractorState _state = InteractorState.Normal;
         public InteractorState State
         {
@@ -126,10 +119,8 @@ namespace Oculus.Interaction
             this.BeginStart(ref _started);
 
             this.AssertCollectionItems(Interactors, nameof(Interactors));
-
-            for (int i = 0; i < Interactors.Count; i++)
+            foreach (IInteractor interactor in Interactors)
             {
-                IInteractor interactor = Interactors[i];
                 interactor.IsRootDriver = false;
             }
 
@@ -179,28 +170,25 @@ namespace Oculus.Interaction
             return -1;
         }
 
-        protected bool TryGetBestCandidateIndex(InteractorPredicate predicate, out int bestCandidateIndex, int betterThan = -1, int skipIndex = -1)
+        protected int InteractorIndexWithBestCandidate(InteractorPredicate predicate)
         {
-            bestCandidateIndex = betterThan;
+            int bestCandidateIndex = -1;
             for (int i = 0; i < Interactors.Count; i++)
             {
-                if (i == skipIndex)
-                {
-                    continue;
-                }
                 IInteractor interactor = Interactors[i];
                 if (!predicate(interactor, i))
                 {
                     continue;
                 }
 
-                if (CompareCandidates(bestCandidateIndex, i) > 0)
+                if (bestCandidateIndex == -1
+                    || CompareCandidates(bestCandidateIndex, i) > 0)
                 {
                     bestCandidateIndex = i;
                 }
             }
 
-            return bestCandidateIndex != betterThan;
+            return bestCandidateIndex;
         }
 
         protected bool AnyInteractor(InteractorPredicate predicate)
@@ -217,23 +205,6 @@ namespace Oculus.Interaction
 
         protected int CompareCandidates(int indexA, int indexB)
         {
-            if (indexA < 0 && indexB >= 0)
-            {
-                return 1;
-            }
-            else if (indexA >= 0 && indexB < 0)
-            {
-                return -1;
-            }
-            else if (indexA < 0 && indexB < 0)
-            {
-                return 0;
-            }
-            else if (indexA == indexB)
-            {
-                return 0;
-            }
-
             IInteractor a = Interactors[indexA];
             IInteractor b = Interactors[indexB];
 
@@ -265,9 +236,9 @@ namespace Oculus.Interaction
             }
             else
             {
-                for (int i = 0; i < Interactors.Count; i++)
+                foreach (IInteractor interactor in Interactors)
                 {
-                    Interactors[i].Preprocess();
+                    interactor.Preprocess();
                 }
             }
             WhenPreprocessed();
@@ -275,27 +246,26 @@ namespace Oculus.Interaction
 
         public virtual void Process()
         {
-            for (int i = 0; i < Interactors.Count; i++)
+            foreach (IInteractor interactor in Interactors)
             {
-                Interactors[i].Process();
+                interactor.Process();
             }
             WhenProcessed();
         }
 
         public virtual void Postprocess()
         {
-            for (int i = 0; i < Interactors.Count; i++)
+            foreach (IInteractor interactor in Interactors)
             {
-                Interactors[i].Postprocess();
+                interactor.Postprocess();
             }
             WhenPostprocessed();
         }
 
         public virtual void ProcessCandidate()
         {
-            for (int i = 0; i < Interactors.Count; i++)
+            foreach (IInteractor interactor in Interactors)
             {
-                IInteractor interactor = Interactors[i];
                 if (interactor.State == InteractorState.Hover
                     || interactor.State == InteractorState.Normal)
                 {
@@ -311,9 +281,9 @@ namespace Oculus.Interaction
                 return;
             }
 
-            for (int i = 0; i < Interactors.Count; i++)
+            foreach (IInteractor interactor in Interactors)
             {
-                Interactors[i].Enable();
+                interactor.Enable();
             }
 
             if (State == InteractorState.Disabled)
@@ -324,18 +294,17 @@ namespace Oculus.Interaction
 
         public virtual void Disable()
         {
-            for (int i = 0; i < Interactors.Count; i++)
+            foreach (IInteractor interactor in Interactors)
             {
-                Interactors[i].Disable();
+                interactor.Disable();
             }
             State = InteractorState.Disabled;
         }
 
         protected void DisableAllExcept(IInteractor mainInteractor)
         {
-            for (int i = 0; i < Interactors.Count; i++)
+            foreach (IInteractor interactor in Interactors)
             {
-                IInteractor interactor = Interactors[i];
                 if (interactor != mainInteractor)
                 {
                     interactor.Disable();
@@ -343,26 +312,13 @@ namespace Oculus.Interaction
             }
         }
 
-
-        protected void EnableAllExcept(IInteractor mainInteractor)
-        {
-            for (int i = 0; i < Interactors.Count; i++)
-            {
-                IInteractor interactor = Interactors[i];
-                if (interactor != mainInteractor)
-                {
-                    interactor.Enable();
-                }
-            }
-        }
-
         protected bool UpdateActiveState()
         {
-            if (ActiveState != null)
+            if (ActiveState == null || ActiveState.Active)
             {
-                return ActiveState.Active;
+                return true;
             }
-            return this.enabled;
+            return false;
         }
 
         protected virtual void Update()

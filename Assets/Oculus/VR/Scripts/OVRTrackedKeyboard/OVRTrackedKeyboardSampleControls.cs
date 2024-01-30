@@ -88,9 +88,9 @@ public class OVRTrackedKeyboardSampleControls : MonoBehaviour
         trackedKeyboard.Presentation = OVRTrackedKeyboard.KeyboardPresentation.PreferOpaque;
     }
 
-    public void SetPresentationMR()
+    public void SetPresentationKeyLabels()
     {
-        trackedKeyboard.Presentation = OVRTrackedKeyboard.KeyboardPresentation.PreferMR;
+        trackedKeyboard.Presentation = OVRTrackedKeyboard.KeyboardPresentation.PreferKeyLabels;
     }
 
     public void SetUnlitShader()

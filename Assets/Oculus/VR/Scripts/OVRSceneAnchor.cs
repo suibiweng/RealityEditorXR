@@ -33,7 +33,6 @@ using UnityEngine;
 /// <seealso cref="OVRSceneVolume"/>
 /// <seealso cref="OVRSemanticClassification"/>
 [DisallowMultipleComponent]
-[HelpURL("https://developer.oculus.com/reference/unity/latest/class_o_v_r_scene_anchor")]
 public sealed class OVRSceneAnchor : MonoBehaviour
 {
     /// <summary>
@@ -58,25 +57,8 @@ public sealed class OVRSceneAnchor : MonoBehaviour
 
     private static readonly Quaternion RotateY180 = Quaternion.Euler(0, 180, 0);
     private OVRPlugin.Posef? _pose = null;
-    private bool _isLocatable = false;
-
-    private readonly List<OVRPlugin.SpaceComponentType> _supportedComponents =
-        new List<OVRPlugin.SpaceComponentType>();
-
-    private bool IsComponentSupported(OVRPlugin.SpaceComponentType spaceComponentType)
-    {
-        // late initialization and caching as this doesn't
-        // change during the lifetime of a scene anchor
-        if (_supportedComponents.Count == 0)
-        {
-            if (!Anchor.GetSupportedComponents(_supportedComponents))
-                return false;
-        }
-        return _supportedComponents.Contains(spaceComponentType);
-    }
 
     internal bool IsComponentEnabled(OVRPlugin.SpaceComponentType spaceComponentType) =>
-        IsComponentSupported(spaceComponentType) &&
         OVRPlugin.GetSpaceComponentStatus(Space, spaceComponentType, out var componentEnabled, out _)
         && componentEnabled;
 
@@ -126,20 +108,14 @@ public sealed class OVRSceneAnchor : MonoBehaviour
         AnchorReferenceCountDictionary.TryGetValue(Space, out var referenceCount);
         AnchorReferenceCountDictionary[Space] = referenceCount + 1;
 
-        // certain components are not locatable, such as room.
-        _isLocatable = IsComponentSupported(OVRPlugin.SpaceComponentType.Locatable);
-
         // Generally, we want to set the transform as soon as possible, but there is a valid use case where we want to
         // disable this component as soon as its added to override the transform.
         if (enabled)
         {
-            if (!_isLocatable)
-            {
-                OVRSceneManager.Development.Log(nameof(OVRSceneAnchor),
-                    $"[{uuid}] Skiping transform set, as the entity is not locatable.",
-                    gameObject);
-            }
-            else if (TryUpdateTransform(false))
+            var updateTransformSucceeded = TryUpdateTransform(false);
+
+            // This should work; so add some development-only logs so we know if something is wrong here.
+            if (updateTransformSucceeded)
             {
                 IsTracked = true;
                 OVRSceneManager.Development.Log(nameof(OVRSceneAnchor),
@@ -188,8 +164,7 @@ public sealed class OVRSceneAnchor : MonoBehaviour
 
     internal bool TryUpdateTransform(bool useCache)
     {
-        if (!Space.Valid || !enabled || !_isLocatable)
-            return false;
+        if (!Space.Valid || !enabled) return false;
 
         if (!useCache || _pose == null)
         {

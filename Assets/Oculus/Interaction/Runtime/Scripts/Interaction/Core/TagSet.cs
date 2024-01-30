@@ -30,10 +30,6 @@ namespace Oculus.Interaction
     /// </summary>
     public class TagSet : MonoBehaviour
     {
-        /// <summary>
-        /// The tags that should apply to this GameObject.
-        /// </summary>
-        [Tooltip("The tags that should apply to this GameObject.")]
         [SerializeField]
         private List<string> _tags;
 

@@ -412,8 +412,6 @@ namespace Meta.WitAi.TTS.Utilities
             // Add prepend & appended text to each item
             for (int i = 0; i < phrases.Count; i++)
             {
-                if (string.IsNullOrEmpty(phrases[i].Trim())) continue;
-
                 string phrase = phrases[i];
                 phrase = $"{PrependedText}{phrase}{AppendedText}".Trim();
                 phrases[i] = phrase;
@@ -1409,7 +1407,7 @@ namespace Meta.WitAi.TTS.Utilities
 
             // Apply
             IsPaused = toPaused;
-            Log($"Speak Audio {(IsPaused ? "Paused" : "Resumed")}");
+            VLog.D($"Speak Audio {(IsPaused ? "Paused" : "Resumed")}");
 
             // Adjust if speaking
             if (IsSpeaking)
@@ -1493,8 +1491,8 @@ namespace Meta.WitAi.TTS.Utilities
         {
             StringBuilder log = new StringBuilder();
             log.AppendLine(comment);
-            log.AppendLine($"Voice: {VoiceSettings?.SettingsId}");
-            VLog.I(LogCategory, log);
+            log.AppendLine($"Voice: {presetVoiceID}");
+            VLog.D(LogCategory, log);
         }
         // Perform start of playback queue
         protected virtual void OnPlaybackQueueBegin()
@@ -1528,7 +1526,7 @@ namespace Meta.WitAi.TTS.Utilities
             }
             else
             {
-                VLog.I(LogCategory, log);
+                VLog.D(LogCategory, log);
             }
         }
         // Initial callback as soon as the audio clip speak request is generated

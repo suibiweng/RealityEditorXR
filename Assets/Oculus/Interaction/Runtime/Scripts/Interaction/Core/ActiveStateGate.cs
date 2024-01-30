@@ -23,9 +23,6 @@ using UnityEngine.Assertions;
 
 namespace Oculus.Interaction
 {
-    /// <summary>
-    /// Returns true when the Open Selector is true. Returns false when the Close Selector is true. Often used in pose recognition.
-    /// </summary>
     public class ActiveStateGate : MonoBehaviour, IActiveState
     {
         [SerializeField, Interface(typeof(ISelector))]

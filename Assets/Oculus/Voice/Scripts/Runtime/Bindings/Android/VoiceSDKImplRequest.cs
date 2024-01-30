@@ -51,13 +51,11 @@ namespace Oculus.Voice.Bindings.Android
             {
                 Service.Activate(Options);
             }
-            SetAudioInputState(VoiceAudioInputState.On);
         }
 
         protected override void HandleAudioDeactivation()
         {
             Service.Deactivate();
-            SetAudioInputState(VoiceAudioInputState.Off);
         }
 
         protected override void HandleSend()
@@ -80,7 +78,7 @@ namespace Oculus.Voice.Bindings.Android
         /// </summary>
         public void HandleStartListening()
         {
-            //NOT YET IMPLEMENTED
+            SetAudioInputState(VoiceAudioInputState.On);
         }
 
         /// <summary>
@@ -88,8 +86,9 @@ namespace Oculus.Voice.Bindings.Android
         /// </summary>
         public void HandleStopListening()
         {
-            //NOT YET IMPLEMENTED
+            SetAudioInputState(VoiceAudioInputState.Off);
         }
+
         /// <summary>
         /// Callback when in progress response data has been received
         /// </summary>

@@ -8,10 +8,6 @@ public class FurnitureSpawner : MonoBehaviour
     [Tooltip("Add a point at ceiling.")]
     public GameObject RoomLightPrefab;
 
-    [Tooltip("This prefab will be used if the label is " +
-        "not in the SpawnablesPrefabs")]
-    public SimpleResizable FallbackPrefab;
-
     public List<Spawnable> SpawnablePrefabs;
 
     private OVRSceneAnchor _sceneAnchor;
@@ -30,7 +26,8 @@ public class FurnitureSpawner : MonoBehaviour
 
     private void SpawnSpawnable()
     {
-        if (!FindValidSpawnable(out var currentSpawnable))
+        Spawnable currentSpawnable;
+        if (!FindValidSpawnable(out currentSpawnable))
         {
             return;
         }
@@ -81,10 +78,10 @@ public class FurnitureSpawner : MonoBehaviour
         root.transform.SetPositionAndRotation(position, rotation);
 
         SimpleResizer resizer = new SimpleResizer();
-        resizer.CreateResizedObject(dimensions, root, currentSpawnable);
+        resizer.CreateResizedObject(dimensions, root, currentSpawnable.ResizablePrefab);
     }
 
-    private bool FindValidSpawnable(out SimpleResizable currentSpawnable)
+    private bool FindValidSpawnable(out Spawnable currentSpawnable)
     {
         currentSpawnable = null;
 
@@ -97,15 +94,9 @@ public class FurnitureSpawner : MonoBehaviour
         {
             if (_classification.Contains(spawnable.ClassificationLabel))
             {
-                currentSpawnable = spawnable.ResizablePrefab;
+                currentSpawnable = spawnable;
                 return true;
             }
-        }
-
-        if (FallbackPrefab != null)
-        {
-            currentSpawnable = FallbackPrefab;
-            return true;
         }
 
         return false;

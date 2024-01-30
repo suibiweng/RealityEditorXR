@@ -119,11 +119,6 @@ namespace Meta.WitAi.Data.Configuration
             for (int sceneIndex = 0; sceneIndex < SceneManager.sceneCount; sceneIndex++)
             {
                 Scene scene = SceneManager.GetSceneAt(sceneIndex);
-                if (!scene.IsValid() || !scene.isLoaded)
-                {
-                    continue;
-                }
-
                 foreach (var rootGameObject in scene.GetRootGameObjects())
                 {
                     IWitConfigurationProvider[] providers = rootGameObject.GetComponentsInChildren<IWitConfigurationProvider>(true);
@@ -214,8 +209,6 @@ namespace Meta.WitAi.Data.Configuration
             unityPath = unityPath.Replace(Application.dataPath, "Assets");
             AssetDatabase.CreateAsset(configurationAsset, unityPath);
             AssetDatabase.SaveAssets();
-
-            configurationAsset.UpdateDataAssets(); //must be done after SaveAssets
 
             // Refresh configurations
             ReloadConfigurationData();

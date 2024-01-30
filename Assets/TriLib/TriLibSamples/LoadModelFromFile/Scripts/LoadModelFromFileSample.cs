@@ -27,11 +27,6 @@ namespace TriLibCore.Samples
         }
 
         /// <summary>
-        /// Cached Asset Loader Options instance.
-        /// </summary>
-        private AssetLoaderOptions _assetLoaderOptions;
-
-        /// <summary>
         /// Loads the "Models/TriLibSample.obj" Model using the given AssetLoaderOptions.
         /// </summary>
         /// <remarks>
@@ -39,11 +34,8 @@ namespace TriLibCore.Samples
         /// </remarks>
         private void Start()
         {
-            if (_assetLoaderOptions == null)
-            {
-                _assetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions(false, true);
-            }
-            AssetLoader.LoadModelFromFile(ModelPath, OnLoad, OnMaterialsLoad, OnProgress, OnError, null, _assetLoaderOptions);
+            var assetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions();
+            AssetLoader.LoadModelFromFile(ModelPath, OnLoad, OnMaterialsLoad, OnProgress, OnError, null, assetLoaderOptions);
         }
 
         /// <summary>

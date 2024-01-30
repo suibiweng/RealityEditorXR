@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using RealityEditor;
 
 public class DebugOSCSend : MonoBehaviour
 {
@@ -28,14 +27,10 @@ public class DebugOSCSend : MonoBehaviour
         };
         message.values.Add(1);
         message.values.Add(prompt);
-         message.values.Add(TimestampGenerator.GetTimestamp());
 
          osc.Send(message);
 
     }
-
-
-    
 
 
     public void sendStop(){

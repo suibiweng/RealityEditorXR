@@ -14,11 +14,8 @@ using UnityEngine;
 using FileMode = System.IO.FileMode;
 using HumanDescription = UnityEngine.HumanDescription;
 using Object = UnityEngine.Object;
+using System.Collections;
 using TriLibCore.Attributes;
-using TriLibCore.Collections;
-using TriLibCore.Geometries;
-using Unity.Collections;
-using Unity.Collections.LowLevel.Unsafe;
 #if TRILIB_DRACO
 using TriLibCore.Gltf.Reader;
 using TriLibCore.Gltf.Draco;
@@ -31,11 +28,6 @@ namespace TriLibCore
     /// <summary>Represents the main class containing methods to load the Models.</summary>
     public static partial class AssetLoader
     {
-        /// <summary>
-        /// Asset Loader Options validation message.
-        /// </summary>
-        private const string ValidationMessage = "You can disable these validations in the Edit->Project Settings->TriLib menu.";
-
         /// <summary>
         /// Constant that defines the namespace used by TriLib Mappers.
         /// </summary>
@@ -223,7 +215,7 @@ namespace TriLibCore
         /// <param name="assetLoaderContext">The Asset Loader Context reference. Asset Loader Context contains the Model loading data.</param>
         private static void LoadModelInternal(AssetLoaderContext assetLoaderContext)
         {
-            SetupCallbacks();
+            SetMaterialMapperCallbacks();
 #if !TRILIB_DISABLE_VALIDATIONS
             ValidateAssetLoaderOptions(assetLoaderContext.Options);
 #endif
@@ -248,27 +240,25 @@ namespace TriLibCore
                     assetLoaderContext.Options,
                     assetLoaderContext.CustomData,
                     assetLoaderContext.FileExtension,
-                    assetLoaderContext.HaltTasks,
+                    false, //todo: add as assetLoaderContext param
                     assetLoaderContext.OnPreLoad);
             }
             else
             {
-
-                //todo: coroutines will be enabled on a future release
-                //if (assetLoaderContext.Options.UseCoroutines)
-                //{
-                //    ThreadUtils.RequestNewThreadWithCoroutinesFor(
-                //        assetLoaderContext,
-                //        LoadModel_Coroutine,
-                //        ProcessRootModel_Coroutine,
-                //        HandleError,
-                //        assetLoaderContext.Options.Timeout,
-                //        threadName,
-                //        !assetLoaderContext.HaltTasks,
-                //        assetLoaderContext.OnPreLoad
-                //    );
-                //}
-                //else
+                if (assetLoaderContext.Options.UseCoroutines)
+                {
+                    ThreadUtils.RequestNewThreadWithCoroutinesFor(
+                        assetLoaderContext,
+                        LoadModel_Coroutine,
+                        ProcessRootModel_Coroutine,
+                        HandleError,
+                        assetLoaderContext.Options.Timeout,
+                        threadName,
+                        !assetLoaderContext.HaltTasks,
+                        assetLoaderContext.OnPreLoad
+                    );
+                }
+                else
                 {
                     ThreadUtils.RequestNewThreadFor(
                         assetLoaderContext,
@@ -285,9 +275,9 @@ namespace TriLibCore
         }
 
         /// <summary>
-        /// Configures callbacks.
+        /// Configures the MaterialMapper callbacks.
         /// </summary>
-        private static void SetupCallbacks()
+        private static void SetMaterialMapperCallbacks()
         {
             Texture.allowThreadedTextureCreation = true;
             MaterialMapper.CreateTextureCallback = TextureLoaders.CreateTexture;
@@ -299,6 +289,7 @@ namespace TriLibCore
             MaterialMapper.FixNormalMapCallback = TextureUtils.FixNormalMap;
         }
 
+        private const string ValidationsMessage = "You can disable these validations in the Edit->Project Settings->TriLib menu.";
 
         /// <summary>
         /// Validates the given AssetLoaderOptions.
@@ -310,13 +301,13 @@ namespace TriLibCore
             if (assetLoaderOptions.EnableProfiler) {
                 assetLoaderOptions.EnableProfiler = false;
                 Debug.LogWarning("TriLib: The built in profiler has been disabled as it does not work with IL2CPP builds.");
-                Debug.LogWarning(ValidationMessage);
+                Debug.LogWarning(ValidationsMessage);
             }
 #endif
             if (GraphicsSettingsUtils.IsUsingUniversalPipeline && assetLoaderOptions.LoadTexturesAsSRGB)
             {
                 Debug.LogWarning("TriLib: Textures must be loaded as Linear on the UniversalRP.");
-                Debug.LogWarning(ValidationMessage);
+                Debug.LogWarning(ValidationsMessage);
                 assetLoaderOptions.LoadTexturesAsSRGB = false;
             }
         }
@@ -356,14 +347,9 @@ namespace TriLibCore
 
         /// <summary>Creates an Asset Loader Options with the default settings and Mappers.</summary>
         /// <param name="generateAssets">Indicates whether created Scriptable Objects will be saved as assets.</param>
-        /// <param name="supressWarning">Pass `true `if you are caching your AssetLoaderOptions instance.</param>
         /// <returns>The Asset Loader Options containing the default settings.</returns>
-        public static AssetLoaderOptions CreateDefaultLoaderOptions(bool generateAssets = false, bool supressWarning = false)
+        public static AssetLoaderOptions CreateDefaultLoaderOptions(bool generateAssets = false)
         {
-            if (!supressWarning)
-            {
-                Debug.LogWarning("TriLib: You are creating a new AssetLoaderOptions instance. If you are caching this instance and don't want this message to be displayed again, pass `false` to the `supressWarning` parameter of `CreateDefaultLoaderOptions` call.");
-            }
             var assetLoaderOptions = ScriptableObject.CreateInstance<AssetLoaderOptions>();
             ByBonesRootBoneMapper byBonesRootBoneMapper;
 #if UNITY_EDITOR
@@ -452,7 +438,7 @@ namespace TriLibCore
         /// <returns>The created ScriptableObject, or <c>null</c>.</returns>
         private static ScriptableObject CreateScriptableObjectSafe(string typeName, string @namespace)
         {
-            var type = System.Type.GetType($"{@namespace}.{typeName}");
+            var type = Type.GetType($"{@namespace}.{typeName}");
             return type != null ? ScriptableObject.CreateInstance(typeName) : null;
         }
 
@@ -832,7 +818,6 @@ namespace TriLibCore
                 unityCamera.lensShift = camera.LensShift;
                 unityCamera.gateFit = camera.GateFitMode;
                 unityCamera.usePhysicalProperties = camera.PhysicalCamera;
-                unityCamera.enabled = true;
             }
             if (assetLoaderContext.Options.ImportLights && model is ILight light)
             {
@@ -843,7 +828,6 @@ namespace TriLibCore
                 unityLight.intensity = light.Intensity;
                 unityLight.range = light.Range;
                 unityLight.type = light.LightType;
-                unityLight.shadows = light.CastShadows ? LightShadows.Soft : LightShadows.None;
 #if UNITY_EDITOR
                 unityLight.areaSize = new Vector2(light.Width, light.Height);
 #endif
@@ -933,8 +917,7 @@ namespace TriLibCore
                     var gameObjectPath = assetLoaderContext.GameObjectPaths[gameObject];
                     var propertyName = animationCurve.Property;
                     var propertyType = animationCurve.AnimatedType;
-                    // todo: working on it for a future release
-                    // the simplification isn't working with rotation curves yet
+                    //todo: working on it for the next release
                     //if (assetLoaderContext.Options.SimplifyAnimations)
                     //{
                     //    switch (propertyName)
@@ -977,10 +960,7 @@ namespace TriLibCore
             var geometryGroup = meshModel.GeometryGroup;
             if (geometryGroup.GeometriesData != null)
             {
-                if (geometryGroup.Mesh == null)
-                {
-                    geometryGroup.GenerateMesh(assetLoaderContext, assetLoaderContext.Options.AnimationType == AnimationType.None ? null : meshModel.BindPoses, meshModel.MaterialIndices);
-                }
+                geometryGroup.GenerateMesh(assetLoaderContext, assetLoaderContext.Options.AnimationType == AnimationType.None ? null : meshModel.BindPoses, meshModel.MaterialIndices);
                 assetLoaderContext.Allocations.Add(geometryGroup.Mesh);
                 if (assetLoaderContext.Options.MarkMeshesAsDynamic)
                 {
@@ -1013,7 +993,7 @@ namespace TriLibCore
                 Renderer renderer = null;
                 if (assetLoaderContext.Options.AnimationType != AnimationType.None || assetLoaderContext.Options.ImportBlendShapes)
                 {
-                    var bones = assetLoaderContext.Options.AddAllBonesToSkinnedMeshRenderers ? GetAllBonesRecursive(assetLoaderContext) : meshModel.Bones;
+                    var bones = meshModel.Bones;
                     var geometryGroupBlendShapeGeometryBindings = geometryGroup.BlendShapeKeys;
                     if ((bones != null && bones.Count > 0 || geometryGroupBlendShapeGeometryBindings != null && geometryGroupBlendShapeGeometryBindings.Count > 0) && assetLoaderContext.Options.AnimationType != AnimationType.None)
                     {
@@ -1116,22 +1096,6 @@ namespace TriLibCore
             }
         }
 
-        /// <summary>
-        /// Creates a list with every bone in the loaded model.
-        /// </summary>
-        private static IList<IModel> GetAllBonesRecursive(AssetLoaderContext assetLoaderContext)
-        {
-            var bones = new List<IModel>();
-            foreach (var model in assetLoaderContext.RootModel.AllModels)
-            {
-                if (model.IsBone)
-                {
-                    bones.Add(model);
-                }
-            }
-            return bones;
-        }
-
         /// <summary>Loads the root Model.</summary>
         /// <param name="assetLoaderContext">The Asset Loader Context reference. Asset Loader Context contains the Model loading data.</param>
         [CoroutineMethod]
@@ -1219,19 +1183,18 @@ namespace TriLibCore
             {
                 if (assetLoaderContext.Options.MaterialMappers != null)
                 {
-                    //todo: coroutines will be enabled on a future release
-                    //if (assetLoaderContext.Options.UseCoroutines)
-                    //{
-                    //    ThreadUtils.RequestNewThreadWithCoroutinesFor(
-                    //        assetLoaderContext,
-                    //        ProcessMaterialRenderers_Coroutine,
-                    //        null,
-                    //        HandleError,
-                    //        assetLoaderContext.Options.Timeout,
-                    //        null,
-                    //        !assetLoaderContext.HaltTasks);
-                    //}
-                    //else
+                    if (assetLoaderContext.Options.UseCoroutines)
+                    {
+                        ThreadUtils.RequestNewThreadWithCoroutinesFor(
+                            assetLoaderContext,
+                            ProcessMaterialRenderers_Coroutine,
+                            null,
+                            HandleError,
+                            assetLoaderContext.Options.Timeout,
+                            null,
+                            !assetLoaderContext.HaltTasks);
+                    }
+                    else
                     {
                         ThreadUtils.RequestNewThreadFor(
                             assetLoaderContext,
@@ -1425,10 +1388,7 @@ namespace TriLibCore
             {
                 assetLoaderContext.Stream.TryToDispose();
             }
-            //Resources.UnloadUnusedAssets();
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            GC.Collect();
+            GC.Collect(GC.MaxGeneration, System.GCCollectionMode.Forced, true);
         }
 
         /// <summary>Throws the given Contextualized Error on the main Thread.</summary>

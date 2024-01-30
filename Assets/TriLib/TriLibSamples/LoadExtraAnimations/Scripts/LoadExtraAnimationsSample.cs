@@ -47,11 +47,6 @@ namespace TriLibCore.Samples
         private readonly IList<AssetLoaderContext> _loadedAnimations = new List<AssetLoaderContext>();
 
         /// <summary>
-        /// Cached Asset Loader Options instance.
-        /// </summary>
-        private AssetLoaderOptions _assetLoaderOptions;
-
-        /// <summary>
         /// Loads the "Models/BuddyBase.fbx" Model, then loads all the extra Animations in the same folder.
         /// </summary>
         private void Start()
@@ -70,14 +65,11 @@ namespace TriLibCore.Samples
         {
             var modelsDirectory = FileUtils.GetFileDirectory(BaseModelPath);
             var modelPath = FileUtils.SanitizePath($"{modelsDirectory}/{modelFilename}");
-            if (_assetLoaderOptions == null)
-            {
-                _assetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions(false, true);
-                _assetLoaderOptions.ImportMeshes = false;
-                _assetLoaderOptions.ImportTextures = false;
-                _assetLoaderOptions.ImportMaterials = false;
-            }
-            AssetLoader.LoadModelFromFile(modelPath, OnAnimationModelLoad, null, OnProgress, OnError, gameObject, _assetLoaderOptions);
+            var assetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions();
+            assetLoaderOptions.ImportMeshes = false;
+            assetLoaderOptions.ImportTextures = false;
+            assetLoaderOptions.ImportMaterials = false;
+            AssetLoader.LoadModelFromFile(modelPath, OnAnimationModelLoad, null, OnProgress, OnError, gameObject, assetLoaderOptions);
         }
 
         /// <summary>
@@ -131,11 +123,8 @@ namespace TriLibCore.Samples
         /// </summary>
         private void LoadBaseModel()
         {
-            if (_assetLoaderOptions == null)
-            {
-                _assetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions(false, true);
-            }
-            AssetLoader.LoadModelFromFile(BaseModelPath, OnBaseModelLoad, OnBaseModelMaterialsLoad, OnProgress, OnError, gameObject, _assetLoaderOptions);
+            var assetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions();
+            AssetLoader.LoadModelFromFile(BaseModelPath, OnBaseModelLoad, OnBaseModelMaterialsLoad, OnProgress, OnError, gameObject, assetLoaderOptions);
         }
 
         /// <summary>
