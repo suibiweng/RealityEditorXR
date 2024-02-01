@@ -10673,6 +10673,7 @@ MonoBehaviour:
   type: 0
   Text_Scanning_Btn: {fileID: 0}
   Text_Instruction: {fileID: 0}
+  checkInterval: 5
 --- !u!65 &1923028631
 BoxCollider:
   m_ObjectHideFlags: 0

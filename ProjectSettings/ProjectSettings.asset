@@ -141,7 +141,7 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 11400000, guid: dad91d6474269264dabbe2e239f1885a, type: 2}
+  - {fileID: 0}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -716,7 +716,7 @@ PlayerSettings:
   webGLPowerPreference: 2
   scriptingDefineSymbols:
     Android: AMPLIFY_SHADER_EDITOR;NORMCORE
-    Standalone: AMPLIFY_SHADER_EDITOR
+    Standalone: AMPLIFY_SHADER_EDITOR;NORMCORE
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:

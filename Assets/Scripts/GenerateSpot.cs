@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Networking;
+using System;
 using UnityEngine;
 using TMPro;
 using RealityEditor;
@@ -10,7 +12,7 @@ public class GenerateSpot : MonoBehaviour
 {
 
     public int id;
-    public string downloadURL="http://34.106.250.143/upload/";
+    public string downloadURL = "http://34.106.250.143/upload/";
 
     public string URLID;
 
@@ -22,55 +24,56 @@ public class GenerateSpot : MonoBehaviour
 
 
 
-   // Transform Control
-   public Vector3 pos;
-   public Vector3 size;
-   public Vector3 TransRotation;
+    // Transform Control
+    public Vector3 pos;
+    public Vector3 size;
+    public Vector3 TransRotation;
 
-   public bool isselsected=false;
+    public bool isselsected = false;
 
-   public GameObject loadingIcon;
+    public GameObject loadingIcon;
 
-  public string Prompt;
-
-
-  public TMP_Text previewText;
-  public TMP_Text URLIDText;
-
-  
+    public string Prompt;
 
 
-
- GrabObject externalController = null;
+    public TMP_Text previewText;
+    public TMP_Text URLIDText;
 
 
 
 
-//Control Interface
-public TMP_Text PromtText;
-public Text LitseningText;
- // UI panel;
 
-public GameObject UiMenu; 
-public GameObject [] controlPanels;
-public Toggle [] PanelsToggles;
-public GameObject VoicePanel;
+    GrabObject externalController = null;
 
 
 
 
-// LoadObject
-   public GameObject TargetObject; 
-   public GameObject BackGroundOnly;
-   public GameObject Contianier;
+    //Control Interface
+    public TMP_Text PromtText;
+    public Text LitseningText;
+    // UI panel;
 
-   public recordData RecordData;
+    public GameObject UiMenu;
+    public GameObject[] controlPanels;
+    public Toggle[] PanelsToggles;
+    public GameObject VoicePanel;
 
-   public GameObject PreViewQuad;
-   public BoundBox Outlinebox;
-   ModelDownloader modelDownloader;
 
-   public int CountID;
+
+
+    // LoadObject
+    public GameObject TargetObject;
+    public GameObject BackGroundOnly;
+    public GameObject Contianier;
+
+    public recordData RecordData;
+
+    public GameObject PreViewQuad;
+    public BoundBox Outlinebox;
+    ModelDownloader modelDownloader;
+
+    public int CountID;
+    bool promptGenrated = false;
 
 
 
@@ -81,24 +84,25 @@ public GameObject VoicePanel;
     // Start is called before the first frame update
     void Start()
     {
-    manager=FindObjectOfType<RealityEditorManager>();
-    externalController=GetComponent<GrabObject>();
-    modelDownloader=FindObjectOfType<ModelDownloader>();
+        manager = FindObjectOfType<RealityEditorManager>();
+        externalController = GetComponent<GrabObject>();
+        modelDownloader = FindObjectOfType<ModelDownloader>();
+        StartCoroutine(CheckURLPeriodically());
 
-        if (externalController)
-        {
+        if (externalController) {
             externalController.GrabbedObjectDelegate += Grab;
             externalController.ReleasedObjectDelegate += Release;
         }
 
-        
+
         ControlPanels();
     }
 
-    public void OnSelect(){
+    public void OnSelect()
+    {
 
-        manager.updateSelected(id,URLID);
-        isselsected=true;
+        manager.updateSelected(id, URLID);
+        isselsected = true;
 
 
 
@@ -108,17 +112,17 @@ public GameObject VoicePanel;
 
     public void Grab(OVRInput.Controller grabHand)
     {
-        manager.updateSelected(id,URLID);
-        isselsected=true;
+        manager.updateSelected(id, URLID);
+        isselsected = true;
 
-      //  Outlinebox.line_renderer=true;
+        //  Outlinebox.line_renderer=true;
     }
 
     public void Release()
     {
 
-   // Outlinebox.line_renderer=false;
-        
+        // Outlinebox.line_renderer=false;
+
     }
 
 
@@ -127,35 +131,37 @@ public GameObject VoicePanel;
 
 
 
-    public void ControlPanels(){
-        for(int i=0;i<PanelsToggles.Length;i++){
+    public void ControlPanels()
+    {
+        for (int i = 0; i < PanelsToggles.Length; i++) {
 
             controlPanels[i].SetActive(PanelsToggles[i].isOn);
-            
+
 
 
 
         }
 
-        if(controlPanels[0].activeInHierarchy==true || controlPanels[1].activeInHierarchy==true){
+        if (controlPanels[0].activeInHierarchy == true || controlPanels[1].activeInHierarchy == true) {
 
 
 
             VoicePanel.SetActive(true);
-        }else{
+        } else {
 
             VoicePanel.SetActive(false);
         }
 
     }
 
-public void onLitsenClick(){
-    Prompt=LitseningText.text;
+    public void onLitsenClick()
+    {
+        Prompt = LitseningText.text;
 
-}
+    }
 
 
- bool promptGenrated=false;
+ 
 
 
     // Update is called once per frame
@@ -163,16 +169,16 @@ public void onLitsenClick(){
     {
 
         updateTheTransform();
-        
-        if(isselsected)  PromtText.text=Prompt;
-      
-        if(Input.GetKeyDown(KeyCode.Space)){
+
+        if (isselsected) PromtText.text = Prompt;
+
+        if (Input.GetKeyDown(KeyCode.Space)) {
 
             DebugLoadModel();
 
         }
 
-        if(Input.GetKeyDown(KeyCode.S)){
+        if (Input.GetKeyDown(KeyCode.S)) {
 
             ScanObject();
         }
@@ -190,16 +196,17 @@ public void onLitsenClick(){
         //
 
 
-    
 
 
 
-        
+
+
     }
 
-    public void updateTheTransform(){
+    public void updateTheTransform()
+    {
         //192.169.0.213
-         TargetObject.transform.localScale=Contianier.transform.localScale;
+        TargetObject.transform.localScale = Contianier.transform.localScale;
         // BackGroundOnly.transform.localScale=Contianier.transform.localScale;
 
 
@@ -209,17 +216,19 @@ public void onLitsenClick(){
 
     }
 
-    public void InturuptProcess(){
+    public void InturuptProcess()
+    {
         manager.sendStop();
 
 
     }
 
-    
 
 
-    public void GenrateModel(){
-        manager.promtGenerateModel(id,Prompt,URLID);
+
+    public void GenrateModel()
+    {
+        manager.promtGenerateModel(id, Prompt, URLID);
         URLIDText.text = URLID;
         PreViewQuad.SetActive(true);
         loadingIcon.SetActive(true);
@@ -227,36 +236,35 @@ public void onLitsenClick(){
 
     }
 
-    void InstructNerf(string promt){
+    void InstructNerf(string promt)
+    {
 
 
 
     }
 
-    bool StartScanning=false;
-    
+    bool StartScanning = false;
+    public TMP_Text Text_Scanning_Btn;
+    public TMP_Text Text_Instruction;
 
+    public void ScanObject()
+    {
 
-    public TMP_Text Text_Scanning_Btn; 
-    public TMP_Text Text_Instruction; 
-
-    public void ScanObject(){
-
-        if(!StartScanning){
-            StartScanning=true;
+        if (!StartScanning) {
+            StartScanning = true;
 
             RecordData.StartRecording();
-            Text_Scanning_Btn.text="Stop to Scanning";
+            Text_Scanning_Btn.text = "Stop to Scanning";
 
 
 
-        }else{
-             StartScanning=false;
+        } else {
+            StartScanning = false;
 
 
-              Text_Scanning_Btn.text="Start to Scanning";
+            Text_Scanning_Btn.text = "Start to Scanning";
 
-              RecordData.StopRecording();
+            RecordData.StopRecording();
 
 
 
@@ -267,40 +275,110 @@ public void onLitsenClick(){
 
     }
 
-    public void DebugLoadModel(){
-    
+    public void DebugLoadModel()
+    {
 
-        modelDownloader.LoadModel(        
-            new ModelIformation(){
-            ModelURL="http://34.106.250.143/upload/model.zip",
-            gameobjectWarp=TargetObject
 
-        }  );
+        modelDownloader.LoadModel(
+            new ModelIformation() {
+                ModelURL = "http://34.106.250.143/upload/model.zip",
+                gameobjectWarp = TargetObject
+
+            });
 
 
     }
 
-    public void downloadModel(string url){
+    public void downloadModel(string url)
+    {
 
-                modelDownloader.AddTask(
-                    new ModelIformation(){
-                    ModelURL= url,
-                    gameobjectWarp=TargetObject
-                    }
-                );
-                PreViewQuad.SetActive(false);
-                loadingIcon.SetActive(false);
-                modelDownloader.startDownload();
+        modelDownloader.AddTask(
+            new ModelIformation() {
+                ModelURL = url,
+                gameobjectWarp = TargetObject
+            }
+        );
+        PreViewQuad.SetActive(false);
+        loadingIcon.SetActive(false);
+        modelDownloader.startDownload();
     }
 
 
 
-    public void Remove(){
+    public void Remove()
+    {
 
         manager.RemoveSpot(id);
 
 
     }
+
+
+  //  public string urlToCheck = "https://www.example.com";
+    public float checkInterval = 5f; // Check the URL every 5 seconds
+    public event Action<bool> OnURLResponse = delegate { };
+
+
+    IEnumerator CheckURLPeriodically()
+    {
+        while (true) {
+            yield return CheckURL();
+            yield return new WaitForSeconds(checkInterval);
+        }
+    }
+
+    IEnumerator CheckURL()
+    {
+        UnityWebRequest www = UnityWebRequest.Get(downloadURL + URLID + ".zip");
+        UnityWebRequestAsyncOperation requestAsyncOperation = www.SendWebRequest();
+
+        while (!requestAsyncOperation.isDone) {
+            yield return null;
+        }
+
+        if (www.result == UnityWebRequest.Result.Success) {
+            Debug.Log("URL is responding!");
+            OnURLResponse(true);
+        } else {
+            Debug.LogError("Error checking URL: " + www.error);
+            OnURLResponse(false);
+        }
+
+        www.Dispose();
+    }
+
+
+    private void OnEnable()
+    {
+        OnURLResponse += HandleURLResponse;
+    }
+
+    private void OnDisable()
+    {
+        OnURLResponse -= HandleURLResponse;
+    }
+
+    private void HandleURLResponse(bool isResponding)
+    {
+        if (isResponding && !promptGenrated) {
+            promptGenrated = true;
+
+            downloadModel(downloadURL + URLID + ".zip");
+            // Call your download function when the URL is responding
+            // DownloadModel();
+        } 
+        
+        else 
+        
+        {
+
+
+        }
+    }
+
+
+
+
 
 
 
