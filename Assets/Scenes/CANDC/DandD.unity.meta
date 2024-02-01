@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Scenes/CANDC/DandD.unity.meta
 guid: 35678f25790b7784e996fdd3a6eca150
-========
-guid: e6c11fa36db4a374da73c17e9e9af3f6
->>>>>>>> parent of d2eaa32 (add NDI cam and Modify for the IEEEAIVR):Assets/Packages/WebSocketSharp-netstandard.1.0.1/WebSocketSharp-netstandard.nuspec.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

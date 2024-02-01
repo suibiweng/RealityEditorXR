@@ -4387,6 +4387,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -10491,7 +10492,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4758649940178710450
 GameObject:
@@ -10640,15 +10641,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
+  downloadURL: http://34.106.250.143/upload/
+  URLID: 
   pos: {x: 0, y: 0, z: 0}
   size: {x: 0, y: 0, z: 0}
   TransRotation: {x: 0, y: 0, z: 0}
   isselsected: 0
+  loadingIcon: {fileID: 0}
   Prompt: 
   previewText: {fileID: 0}
   URLIDText: {fileID: 0}
   PromtText: {fileID: 4758649939082590205}
   LitseningText: {fileID: 2084060948}
+  UiMenu: {fileID: 0}
   controlPanels:
   - {fileID: 1738560577}
   - {fileID: 1112589606}
@@ -10661,10 +10666,13 @@ MonoBehaviour:
   TargetObject: {fileID: 1304167604034850065}
   BackGroundOnly: {fileID: 249469301917972280}
   Contianier: {fileID: 4758649939851954787}
+  RecordData: {fileID: 0}
   PreViewQuad: {fileID: 958659970}
   Outlinebox: {fileID: 0}
   CountID: 0
   type: 0
+  Text_Scanning_Btn: {fileID: 0}
+  Text_Instruction: {fileID: 0}
 --- !u!65 &1923028631
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10676,7 +10684,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.3, z: 0.3}
+  m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1923028629
 MonoBehaviour:

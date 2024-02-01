@@ -519,8 +519,6 @@ struct ClusterU5BU5D_t8238A5AAF042AAE446898EA30A5236B6997E28C7;
 struct DelegateU5BU5D_tC5AB7E8F745616680F337909D3A8E6C722CDF771;
 // Normal.Realtime.IConfigurableComponent[]
 struct IConfigurableComponentU5BU5D_tAB6964B7F123D3F5982503E0A322AB9B5FB3F576;
-// Normal.Realtime.IRealtimeComponent[]
-struct IRealtimeComponentU5BU5D_t26051CD5031DF616E1B85FF4C9CD098519A12000;
 // System.Int32[]
 struct Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C;
 // System.IntPtr[]
@@ -629,8 +627,6 @@ struct IFormatProvider_tC202922D43BFF3525109ABF3FB79625F5646AB52;
 struct IMetaModelExtension_t1F475FF2D0DD8C71E782E0DB88C088C2B4C364EE;
 // System.IO.IOException
 struct IOException_t5D599190B003D41D45D4839A9B6B9AB53A755910;
-// Normal.Realtime.IRealtimeComponent
-struct IRealtimeComponent_t4883435427395505E7D272EDCD11873CBE8FE9F8;
 // Normal.Realtime.IRealtimePrefabInstantiateDelegate
 struct IRealtimePrefabInstantiateDelegate_tA602D5AA58FFB4303D176AAEBF354F8AEC26470F;
 // Normal.Realtime.IRealtimePrefabLoadDelegate
@@ -814,7 +810,6 @@ IL2CPP_EXTERN_C RuntimeClass* IOException_t5D599190B003D41D45D4839A9B6B9AB53A755
 IL2CPP_EXTERN_C RuntimeClass* IReadOnlyCollection_1_tE24E6407D25C89BDF8A92E84429DAB187EE25E1F_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* IReadOnlyCollection_1_tE7ADE94472CFDEB2992D3C4243889CF70D58A949_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* IReadOnlyDictionary_2_t37AD954CB531AA7007CAC3E03178B052B9BC4C95_il2cpp_TypeInfo_var;
-IL2CPP_EXTERN_C RuntimeClass* IRealtimeComponent_t4883435427395505E7D272EDCD11873CBE8FE9F8_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* IRealtimePrefabInstantiateDelegate_tA602D5AA58FFB4303D176AAEBF354F8AEC26470F_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* IStreamReader_tBD3A33F75678A50522F02147DABE6FEFFF7973E1_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* IStreamWriter_tC6C63C0B148B02B319ED7D00F076203AD9539F3F_il2cpp_TypeInfo_var;
@@ -1023,7 +1018,6 @@ IL2CPP_EXTERN_C const RuntimeMethod* Client_SendRPCMessage_mB4437AE43992DDEE02AB
 IL2CPP_EXTERN_C const RuntimeMethod* Client_StartConnection_mF5122441116EBF5B6F53581956639621DE5467CB_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Client_State_mC081E3B6C0ECCEC581E64725284267B7CE1A7C8D_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Component_GetComponent_TisRealtimeView_t92CAA838413E6AB800B2BC8980AFCE156FC642E5_m0D5136517AEDE165FD4DD8DAA8EC6E56A8F11E0A_RuntimeMethod_var;
-IL2CPP_EXTERN_C const RuntimeMethod* Component_GetComponentsInChildren_TisIRealtimeComponent_t4883435427395505E7D272EDCD11873CBE8FE9F8_m98F85E5B99FC2B5699226484FC8B295C7B6DE0AC_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Component_GetComponents_TisIConfigurableComponent_t7EF07DCE7F4FFF052FE2673E5A7C4E2DE8FF8A5D_mC8046498292BAAD0B5447D04E19AB6A1F24871DD_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* CoroutineContext__StartWithCoroutineRunner_mB3727EF08008F9313012244C8AD393AE1C4B3688_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Dictionary_2_Add_mD67F1445BC42E69CB18FABBCA691675CF78BD80A_RuntimeMethod_var;
@@ -1217,7 +1211,6 @@ struct ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031;
 struct ClusterU5BU5D_t8238A5AAF042AAE446898EA30A5236B6997E28C7;
 struct DelegateU5BU5D_tC5AB7E8F745616680F337909D3A8E6C722CDF771;
 struct IConfigurableComponentU5BU5D_tAB6964B7F123D3F5982503E0A322AB9B5FB3F576;
-struct IRealtimeComponentU5BU5D_t26051CD5031DF616E1B85FF4C9CD098519A12000;
 struct ImmutableModelCollectionU5BU5D_tE08C59E676C5EF577EE1F938B260EE1CA0B2FABB;
 struct ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918;
 struct RealtimeViewU5BU5D_t46286D97F317D3A5184B7C1EB38292F0DF0FD240;
@@ -4554,41 +4547,6 @@ struct RealtimeViewU5BU5D_t46286D97F317D3A5184B7C1EB38292F0DF0FD240  : public Ru
 		Il2CppCodeGenWriteBarrier((void**)m_Items + index, (void*)value);
 	}
 };
-// Normal.Realtime.IRealtimeComponent[]
-struct IRealtimeComponentU5BU5D_t26051CD5031DF616E1B85FF4C9CD098519A12000  : public RuntimeArray
-{
-	ALIGN_FIELD (8) RuntimeObject* m_Items[1];
-
-	inline RuntimeObject* GetAt(il2cpp_array_size_t index) const
-	{
-		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
-		return m_Items[index];
-	}
-	inline RuntimeObject** GetAddressAt(il2cpp_array_size_t index)
-	{
-		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
-		return m_Items + index;
-	}
-	inline void SetAt(il2cpp_array_size_t index, RuntimeObject* value)
-	{
-		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
-		m_Items[index] = value;
-		Il2CppCodeGenWriteBarrier((void**)m_Items + index, (void*)value);
-	}
-	inline RuntimeObject* GetAtUnchecked(il2cpp_array_size_t index) const
-	{
-		return m_Items[index];
-	}
-	inline RuntimeObject** GetAddressAtUnchecked(il2cpp_array_size_t index)
-	{
-		return m_Items + index;
-	}
-	inline void SetAtUnchecked(il2cpp_array_size_t index, RuntimeObject* value)
-	{
-		m_Items[index] = value;
-		Il2CppCodeGenWriteBarrier((void**)m_Items + index, (void*)value);
-	}
-};
 // System.Delegate[]
 struct DelegateU5BU5D_tC5AB7E8F745616680F337909D3A8E6C722CDF771  : public RuntimeArray
 {
@@ -4939,8 +4897,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Dictionary_2_Add_m5124CA0DFD4B9968298DB4
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Action_2__ctor_m07C6392BB276FFCCFD4E495842992EA26FA44882_gshared (Action_2_tAC461AE4F7B507965CE2E6A32853473F8C02CD75* __this, RuntimeObject* ___0_object, intptr_t ___1_method, const RuntimeMethod* method) ;
 // System.Void System.Action`1<System.Object>::Invoke(T)
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Action_1_Invoke_mF2422B2DD29F74CE66F791C3F68E288EC7C3DB9E_gshared_inline (Action_1_t6F9EB113EB3F16226AEF811A2744F4111C116C87* __this, RuntimeObject* ___0_obj, const RuntimeMethod* method) ;
-// T[] UnityEngine.Component::GetComponentsInChildren<System.Object>(System.Boolean)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* Component_GetComponentsInChildren_TisRuntimeObject_m90734C3A39A158985239CB90DE2F0792F1D99926_gshared (Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3* __this, bool ___0_includeInactive, const RuntimeMethod* method) ;
 // T UnityEngine.GameObject::GetComponent<System.Object>()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* GameObject_GetComponent_TisRuntimeObject_m6EAED4AA356F0F48288F67899E5958792395563B_gshared (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* __this, const RuntimeMethod* method) ;
 // T Normal.Utility.Extensions::GetComponentInParent<System.Object>(UnityEngine.Component,System.Boolean)
@@ -5499,11 +5455,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealtimeModel_set_destroyWhenLastClientL
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool RealtimeModel_get_destroyWhenOwnerLeaves_m3C4C97D729AEE2F7A64AFDAB2602C6370AD51228 (RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931* __this, const RuntimeMethod* method) ;
 // System.Void Normal.Realtime.RealtimeModel::set_destroyWhenOwnerLeaves(System.Boolean)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealtimeModel_set_destroyWhenOwnerLeaves_m782D86147A101CC7F4C67C153C7D040FCA39288A (RealtimeModel_tC9D96AF44F9E08F60A647962298D0CB8419B1931* __this, bool ___0_value, const RuntimeMethod* method) ;
-// T[] UnityEngine.Component::GetComponentsInChildren<Normal.Realtime.IRealtimeComponent>(System.Boolean)
-inline IRealtimeComponentU5BU5D_t26051CD5031DF616E1B85FF4C9CD098519A12000* Component_GetComponentsInChildren_TisIRealtimeComponent_t4883435427395505E7D272EDCD11873CBE8FE9F8_m98F85E5B99FC2B5699226484FC8B295C7B6DE0AC (Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3* __this, bool ___0_includeInactive, const RuntimeMethod* method)
-{
-	return ((  IRealtimeComponentU5BU5D_t26051CD5031DF616E1B85FF4C9CD098519A12000* (*) (Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3*, bool, const RuntimeMethod*))Component_GetComponentsInChildren_TisRuntimeObject_m90734C3A39A158985239CB90DE2F0792F1D99926_gshared)(__this, ___0_includeInactive, method);
-}
 // System.String Normal.Realtime.RealtimeViewModel::get_prefabName()
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR String_t* RealtimeViewModel_get_prefabName_m1AE222A14D845C870D47D41962C6B6E5BA1ACC14_inline (RealtimeViewModel_t2BBB1F7E5880FB33FB6C87B51A587CB0784E5CD8* __this, const RuntimeMethod* method) ;
 // Normal.Realtime.IRealtimePrefabLoadDelegate Normal.Realtime.Room::get_prefabLoadDelegate()
@@ -11952,53 +11903,6 @@ IL_001b:
 		bool L_3 = ___0_value;
 		NullCheck(L_2);
 		RealtimeModel_set_destroyWhenOwnerLeaves_m782D86147A101CC7F4C67C153C7D040FCA39288A(L_2, L_3, NULL);
-		return;
-	}
-}
-// System.Void Normal.Realtime.RealtimeView::RequestOwnershipOfSelfAndChildren()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RealtimeView_RequestOwnershipOfSelfAndChildren_mFBF437D406341C20E15794BD2E9D488AD621382C (RealtimeView_t92CAA838413E6AB800B2BC8980AFCE156FC642E5* __this, const RuntimeMethod* method) 
-{
-	static bool s_Il2CppMethodInitialized;
-	if (!s_Il2CppMethodInitialized)
-	{
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Component_GetComponentsInChildren_TisIRealtimeComponent_t4883435427395505E7D272EDCD11873CBE8FE9F8_m98F85E5B99FC2B5699226484FC8B295C7B6DE0AC_RuntimeMethod_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IRealtimeComponent_t4883435427395505E7D272EDCD11873CBE8FE9F8_il2cpp_TypeInfo_var);
-		s_Il2CppMethodInitialized = true;
-	}
-	IRealtimeComponentU5BU5D_t26051CD5031DF616E1B85FF4C9CD098519A12000* V_0 = NULL;
-	int32_t V_1 = 0;
-	{
-		IRealtimeComponentU5BU5D_t26051CD5031DF616E1B85FF4C9CD098519A12000* L_0;
-		L_0 = Component_GetComponentsInChildren_TisIRealtimeComponent_t4883435427395505E7D272EDCD11873CBE8FE9F8_m98F85E5B99FC2B5699226484FC8B295C7B6DE0AC(__this, (bool)1, Component_GetComponentsInChildren_TisIRealtimeComponent_t4883435427395505E7D272EDCD11873CBE8FE9F8_m98F85E5B99FC2B5699226484FC8B295C7B6DE0AC_RuntimeMethod_var);
-		V_0 = L_0;
-		V_1 = 0;
-		goto IL_0018;
-	}
-
-IL_000c:
-	{
-		IRealtimeComponentU5BU5D_t26051CD5031DF616E1B85FF4C9CD098519A12000* L_1 = V_0;
-		int32_t L_2 = V_1;
-		NullCheck(L_1);
-		int32_t L_3 = L_2;
-		RuntimeObject* L_4 = (L_1)->GetAt(static_cast<il2cpp_array_size_t>(L_3));
-		NullCheck(L_4);
-		InterfaceActionInvoker0::Invoke(11 /* System.Void Normal.Realtime.IRealtimeComponent::RequestOwnership() */, IRealtimeComponent_t4883435427395505E7D272EDCD11873CBE8FE9F8_il2cpp_TypeInfo_var, L_4);
-		int32_t L_5 = V_1;
-		V_1 = ((int32_t)il2cpp_codegen_add(L_5, 1));
-	}
-
-IL_0018:
-	{
-		int32_t L_6 = V_1;
-		IRealtimeComponentU5BU5D_t26051CD5031DF616E1B85FF4C9CD098519A12000* L_7 = V_0;
-		NullCheck(L_7);
-		if ((((int32_t)L_6) < ((int32_t)((int32_t)(((RuntimeArray*)L_7)->max_length)))))
-		{
-			goto IL_000c;
-		}
-	}
-	{
 		return;
 	}
 }

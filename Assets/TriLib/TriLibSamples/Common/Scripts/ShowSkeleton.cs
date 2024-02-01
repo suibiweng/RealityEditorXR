@@ -8,11 +8,14 @@ namespace TriLibCore.Samples
     {
         private List<Transform> _bones;
 
-        private Material _material;
+        private static Material _material;
 
         public void Setup(AssetLoaderContext assetLoaderContext, AssetViewer assetViewer)
         {
-            _material = new Material(Shader.Find("Hidden/ShowSkeleton"));
+            if (_material == null)
+            {
+                _material = new Material(Shader.Find("Hidden/ShowSkeleton"));
+            }
             _bones = new List<Transform>();
             assetLoaderContext.RootModel.GetBones(assetLoaderContext, _bones);
             if (_bones.Count > 0)

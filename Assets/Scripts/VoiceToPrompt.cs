@@ -23,8 +23,8 @@ public class VoiceToPrompt : MonoBehaviour
     // Start is called before the first frame update
      private void Awake()
     {
-          _voiceService = FindObjectOfType<VoiceService>();
-          manager= FindObjectOfType<RealityEditorManager>();
+        //  _voiceService = FindObjectOfType<VoiceService>();
+         // manager= FindObjectOfType<RealityEditorManager>();
 
 
     }

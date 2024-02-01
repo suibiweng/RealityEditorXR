@@ -8,5 +8,5 @@ public partial class DataSyncModel {
     private string _PromptData;
     [RealtimeProperty(2, true, true)]
     private string _URLID;
-} 
+}
 

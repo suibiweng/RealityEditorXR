@@ -8,7 +8,7 @@ using RealityEditor;
 
 public class ModelDownloader : MonoBehaviour
 {
-    bool isDownloading=false;
+    public bool isDownloading=false;
      private Queue<ModelIformation> Tasks; 
  /// <summary>
 

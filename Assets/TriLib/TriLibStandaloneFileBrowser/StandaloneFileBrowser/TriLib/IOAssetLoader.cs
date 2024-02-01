@@ -1,4 +1,6 @@
-﻿using System;
+﻿#pragma warning disable 184
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,10 +56,16 @@ namespace TriLibCore
             var modelStream = modelFileWithStream.OpenStream();
             if (AssetLoaderOptions == null)
             {
-                AssetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions();
+                AssetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions(false, true);
             }
-            AssetLoaderOptions.TextureMappers = new TextureMapper[] { ScriptableObject.CreateInstance<FilePickerTextureMapper>()};
-            AssetLoaderOptions.ExternalDataMapper = ScriptableObject.CreateInstance<FilePickerExternalDataMapper>();
+            if (!ArrayUtils.ContainsType<FilePickerTextureMapper>(AssetLoaderOptions.TextureMappers))
+            {
+                AssetLoaderOptions.TextureMappers = new TextureMapper[] { ScriptableObject.CreateInstance<FilePickerTextureMapper>() };
+            }
+            if (!AssetLoaderOptions.ExternalDataMapper is FilePickerExternalDataMapper)
+            {
+                AssetLoaderOptions.ExternalDataMapper = ScriptableObject.CreateInstance<FilePickerExternalDataMapper>();
+            }
             _modelExtension = modelFilename != null ? FileUtils.GetFileExtension(modelFilename, false) : null;
             if (_modelExtension == "zip")
             {
