@@ -321,7 +321,7 @@ public class GenerateSpot : MonoBehaviour
 
     IEnumerator CheckURLPeriodically()
     {
-        while (true) {
+        while (!promptGenrated) {
             yield return CheckURL();
             yield return new WaitForSeconds(checkInterval);
         }

@@ -1950,6 +1950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PromptTextMesh: {fileID: 0}
   URLIDTextMesh: {fileID: 0}
+  spot: {fileID: 0}
 --- !u!1 &1167092362498037996
 GameObject:
   m_ObjectHideFlags: 0
@@ -13478,6 +13479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PromptTextMesh: {fileID: 1167092362498039368}
   URLIDTextMesh: {fileID: 696682105605600011}
+  spot: {fileID: 4204464118960621351}
 --- !u!114 &476003111313948772
 MonoBehaviour:
   m_ObjectHideFlags: 0

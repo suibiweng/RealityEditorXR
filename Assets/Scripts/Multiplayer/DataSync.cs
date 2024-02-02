@@ -7,6 +7,7 @@ using TMPro;
 public class DataSync : RealtimeComponent<DataSyncModel> {
     
     public TextMeshPro PromptTextMesh, URLIDTextMesh;
+    public GenerateSpot spot;
     
     protected override void OnRealtimeModelReplaced(DataSyncModel previousModel, DataSyncModel currentModel) {
         if (previousModel != null) {
@@ -41,6 +42,7 @@ public class DataSync : RealtimeComponent<DataSyncModel> {
     }
     private void UpdateTextURLID() {
         URLIDTextMesh.text = model.URLID;
+        spot.URLID=model.URLID;
     }
 
     public void Setprompt(string prompt) {
