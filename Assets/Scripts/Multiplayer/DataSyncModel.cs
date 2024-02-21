@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RealtimeModel]
+[RealtimeModel(createMetaModel:true)]
 public partial class DataSyncModel {
     [RealtimeProperty(1, true, true)]
     private string _PromptData;

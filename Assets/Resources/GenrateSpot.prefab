@@ -1737,6 +1737,7 @@ GameObject:
   - component: {fileID: 1167092362498039368}
   - component: {fileID: 1167092362498039479}
   - component: {fileID: 7034200858793356536}
+  - component: {fileID: 8906983100836255715}
   m_Layer: 0
   m_Name: PromptTMP
   m_TagString: Untagged
@@ -1934,7 +1935,24 @@ MonoBehaviour:
   _components:
   - componentID: 1
     component: {fileID: 0}
+  - componentID: 2
+    component: {fileID: 8906983100836255715}
   _childViews: []
+--- !u!114 &8906983100836255715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167092362498037995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b0c0f688ca09254db0eb44ebe89cd0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PromptTextMesh: {fileID: 0}
+  URLIDTextMesh: {fileID: 0}
+  spot: {fileID: 0}
 --- !u!1 &1167092362498037996
 GameObject:
   m_ObjectHideFlags: 0
@@ -13092,6 +13110,7 @@ GameObject:
   - component: {fileID: 2911210317674589114}
   - component: {fileID: 6501566474283620153}
   - component: {fileID: 476003111313948772}
+  - component: {fileID: 6889092148364235388}
   m_Layer: 0
   m_Name: GenrateSpot
   m_TagString: Untagged
@@ -13260,9 +13279,14 @@ MonoBehaviour:
   PreViewQuad: {fileID: 6148612481997980488}
   Outlinebox: {fileID: 0}
   CountID: 0
+  _grabbable: {fileID: 0}
   type: 0
+  _realtimeTransform: {fileID: 0}
+  _realtimeView: {fileID: 0}
+  moveplayer: {fileID: 0}
   Text_Scanning_Btn: {fileID: 1167092362498039507}
   Text_Instruction: {fileID: 1167092362498039525}
+  checkInterval: 5
 --- !u!65 &6148612481019881565
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13462,6 +13486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PromptTextMesh: {fileID: 1167092362498039368}
   URLIDTextMesh: {fileID: 696682105605600011}
+  spot: {fileID: 4204464118960621351}
 --- !u!114 &476003111313948772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13476,6 +13501,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prompt: {fileID: 1167092362498039368}
   URLIDText: {fileID: 696682105605600011}
+--- !u!114 &6889092148364235388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683885090753417592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1bc992571301d4a9602ac95ef4c71a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactorFilters: []
+  _maxInteractors: -1
+  _maxSelectingInteractors: -1
+  _data: {fileID: 0}
+  _pointableElement: {fileID: 6148612482922856129}
+  _rigidbody: {fileID: 6148612482922856130}
+  _grabSource: {fileID: 0}
+  _useClosestPointAsGrabSource: 1
+  _releaseDistance: 0
+  _resetGrabOnGrabsUpdated: 1
+  _physicsGrabbable: {fileID: 6148612482922856134}
 --- !u!1 &1683885090962764969
 GameObject:
   m_ObjectHideFlags: 0
@@ -13773,7 +13821,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4886157518192706515}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a1bc992571301d4a9602ac95ef4c71a, type: 3}
   m_Name: 

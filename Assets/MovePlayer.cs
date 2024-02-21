@@ -6,6 +6,7 @@ using Normal.Realtime;
 
 public class MovePlayer : MonoBehaviour
 {
+   // public GameObject spot;
     // public RealtimeTransform MultiPlayer; 
     public GameObject Player; 
     // Transform CameraOffset; // set to parent of main Camera
@@ -25,7 +26,8 @@ public class MovePlayer : MonoBehaviour
         Player.transform.position += (transform.right * joystick.x + transform.forward * joystick.y) * Time.deltaTime * speed;
         Player.transform.Rotate(new Vector3(0f,Rightjoystick.y * rotateSpeed, 0f));
         // Player.transform.position = new Vector3()
-
+     //   spot.GetComponent<RealtimeView>().RequestOwnershipOfSelfAndChildren();
+       // spot.GetComponent<RealtimeTransform>().RequestOwnership();
     }
 }
 

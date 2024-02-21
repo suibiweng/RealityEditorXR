@@ -67,11 +67,11 @@ namespace Oculus.Interaction
         public event Action<PointerEvent> WhenPointerEventRaised = delegate { };
 
         public List<Pose> Points => _points;
+        public int SelectingPointsCount => _selectingPoints.Count;
+
         public int PointsCount => _points.Count;
 
         public List<Pose> SelectingPoints => _selectingPoints;
-        public int SelectingPointsCount => _selectingPoints.Count;
-
         protected List<Pose> _points;
         protected List<int> _pointIds;
 

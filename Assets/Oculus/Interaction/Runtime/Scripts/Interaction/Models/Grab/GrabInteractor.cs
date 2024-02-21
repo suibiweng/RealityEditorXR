@@ -23,6 +23,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using Oculus.Interaction.Throw;
 using System;
+using Normal.Realtime;
 using Oculus.Interaction.Grab;
 
 namespace Oculus.Interaction
@@ -169,7 +170,9 @@ namespace Oculus.Interaction
         {
             Pose target = _grabTarget.GetPose();
             Pose source = _interactable.GetGrabSourceForTarget(target);
-
+            // Debug.Log("Inside the hand trying requesting the cube");
+            interactable.gameObject.GetComponent<RealtimeView>().RequestOwnershipOfSelfAndChildren();
+            interactable.gameObject.GetComponent<RealtimeTransform>().RequestOwnership();
             _tween.StopAndSetPose(source);
             base.InteractableSelected(interactable);
 

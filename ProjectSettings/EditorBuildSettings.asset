@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/CANDC/InteriorDesign.unity
     guid: 96315e82ce7d1c84f9d42da8e7326274
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: f2fea7ace86997841a554a80efb78d0c
   - enabled: 0
@@ -29,7 +29,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Oculus/SampleFramework/Usage/Passthrough.unity
     guid: 58e5fc2486c774a4e88ac76261268d52
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SharedReality.unity
     guid: 8d8a17676b41933458aeec1df2f90c6d
   m_configObjects:

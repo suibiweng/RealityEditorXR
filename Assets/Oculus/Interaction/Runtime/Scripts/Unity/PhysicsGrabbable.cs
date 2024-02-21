@@ -75,6 +75,7 @@ namespace Oculus.Interaction
             if (_started)
             {
                 _grabbable.WhenPointerEventRaised -= HandlePointerEventRaised;
+                
             }
         }
 

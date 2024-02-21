@@ -12,7 +12,7 @@ public class RealityEditorManager : MonoBehaviour
 
     public Dictionary<string,GameObject> GenCubesDic;
 
-    public List<GameObject> GenCubes;
+   // public List<GameObject> GenCubes;
     
 
     public GameObject generateSpotPreFab;
@@ -40,7 +40,7 @@ public class RealityEditorManager : MonoBehaviour
         osc=FindObjectOfType<OSC>();   
         modelDownloader=FindObjectOfType<ModelDownloader>();
        // websocket=FindObjectOfType<WsClient>();
-        GenCubes= new List<GameObject>();
+     //   GenCubes= new List<GameObject>();
         GenCubesDic=new Dictionary<string,GameObject>();
 
 
@@ -53,17 +53,19 @@ public class RealityEditorManager : MonoBehaviour
 
 
     public void updateSelected(int id,string IDurl){
-        GenCubes[selectedID].GetComponent<GenerateSpot>().isselsected=false;
-        GenCubes[id].GetComponent<GenerateSpot>().isselsected=true;
+     //   GenCubes[selectedID].GetComponent<GenerateSpot>().isselsected=false;
+       // GenCubes[id].GetComponent<GenerateSpot>().isselsected=true;
 
 
         GenCubesDic[selectedIDUrl].GetComponent<GenerateSpot>().isselsected=false;
+        GenCubesDic[selectedIDUrl].GetComponent<RealtimeTransform>().ClearOwnership();
         GenCubesDic[IDurl].GetComponent<GenerateSpot>().isselsected=true;
+        GenCubesDic[IDurl].GetComponent<RealtimeView>().RequestOwnershipOfSelfAndChildren();
+        GenCubesDic[IDurl].GetComponent<RealtimeTransform>().RequestOwnership();
 
 
 
-
-        selectedID=id;
+        //selectedID=id;
         selectedIDUrl=IDurl;
     }
 
@@ -87,13 +89,19 @@ public class RealityEditorManager : MonoBehaviour
 
     
     
-    void createSpot(Vector3 pos){
-        GameObject gcube= Realtime.Instantiate("GenrateSpot",pos,Quaternion.identity);
-        GenCubes.Add(gcube);
+    void createSpot(Vector3 pos)
+    {
+        GameObject gcube = Realtime.Instantiate("GenrateSpot", pos, Quaternion.identity);
+        // GenCubes.Add(gcube);
        
         gcube.GetComponent<GenerateSpot>().id=IDs;
-        gcube.GetComponent<GenerateSpot>().URLID=TimestampGenerator.GetTimestamp();
-        GenCubesDic.Add( gcube.GetComponent<GenerateSpot>().URLID,gcube);
+
+
+        string urlid=TimestampGenerator.GetTimestamp();
+        gcube.GetComponent<GenerateSpot>().URLID=urlid;
+
+        GenCubesDic.Add(urlid,gcube);
+        selectedIDUrl=urlid;
         IDs++;
         RealtimeTransform _realtimeTransform = gcube.GetComponent<RealtimeTransform>();
         // _realtimeTransform.RequestOwnership();
@@ -102,7 +110,7 @@ public class RealityEditorManager : MonoBehaviour
 
    public void RemoveSpot(int id){
 
-
+/*
     for(int i=0;i<GenCubes.Count;i++){
 
     if(id== GenCubes[i].GetComponent<GenerateSpot>().id){
@@ -110,8 +118,10 @@ public class RealityEditorManager : MonoBehaviour
         GenCubes.RemoveAt(i);
 
     } 
+    
+    }*/
      
-    }
+    
 
 
 
@@ -149,29 +159,29 @@ public class RealityEditorManager : MonoBehaviour
 
             
 
-            modelDownloader.AddTask(
-                CreateModelInfoFromOSC(oscMessage,
-                GenCubes[oscMessage.GetInt(0)].GetComponent<GenerateSpot>().TargetObject)
-                );
+            // modelDownloader.AddTask(
+            //     CreateModelInfoFromOSC(oscMessage,
+            //     GenCubes[oscMessage.GetInt(0)].GetComponent<GenerateSpot>().TargetObject)
+            //     );
 
-                GenCubes[oscMessage.GetInt(0)].GetComponent<GenerateSpot>().PreViewQuad.SetActive(false);
-                GenCubes[oscMessage.GetInt(0)].GetComponent<GenerateSpot>().loadingIcon.SetActive(false);
-                modelDownloader.startDownload();
+            //     GenCubes[oscMessage.GetInt(0)].GetComponent<GenerateSpot>().PreViewQuad.SetActive(false);
+            //     GenCubes[oscMessage.GetInt(0)].GetComponent<GenerateSpot>().loadingIcon.SetActive(false);
+            //     modelDownloader.startDownload();
                 break;
 
             case "/GenrateBackGround":
-                modelDownloader.AddTask(
-                CreateModelInfoFromOSC(oscMessage,
-                GenCubes[oscMessage.GetInt(0)].GetComponent<GenerateSpot>().BackGroundOnly)
-                );
+                // modelDownloader.AddTask(
+                // CreateModelInfoFromOSC(oscMessage,
+                // GenCubes[oscMessage.GetInt(0)].GetComponent<GenerateSpot>().BackGroundOnly)
+                // );
             break;
 
             case "/GenratObjOnly":
 
-                modelDownloader.AddTask(
-                CreateModelInfoFromOSC(oscMessage,
-                GenCubes[oscMessage.GetInt(0)].GetComponent<GenerateSpot>().TargetObject)
-                );
+                // modelDownloader.AddTask(
+                // CreateModelInfoFromOSC(oscMessage,
+                // GenCubes[oscMessage.GetInt(0)].GetComponent<GenerateSpot>().TargetObject)
+                // );
 
                 break;
 
@@ -277,8 +287,10 @@ public class RealityEditorManager : MonoBehaviour
 
     public void setPrompt(string txt)
     {
+
+
+        //GenCubes[selectedID].GetComponent<GenerateSpot>().Prompt=txt;
         GenCubesDic[selectedIDUrl].GetComponent<GenerateSpot>().Prompt=txt;
-        // GenCubes[selectedID].GetComponent<GenerateSpot>().Prompt=txt;
 
 
     }
