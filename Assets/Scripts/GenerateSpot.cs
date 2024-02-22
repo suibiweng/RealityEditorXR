@@ -111,13 +111,14 @@ public class GenerateSpot : MonoBehaviour
         switch (evt.Type)
         {
             case PointerEventType.Select:
+                  OnSelect();
 
-                URLIDText.text = "should be requesting the transform and view in grab";
+               // URLIDText.text = "should be requesting the transform and view in grab";
                 
                 break;
             case PointerEventType.Unselect:
              
-                URLIDText.text = "REleeeeeese";
+               // URLIDText.text = "REleeeeeese";
                 break;
         }
     }
@@ -146,7 +147,7 @@ public class GenerateSpot : MonoBehaviour
         manager.updateSelected(id, URLID);
         isselsected = true;
         Debug.Log("should be requesting the transform and view in grab");
-        URLIDText.text = "should be requesting the transform and view in grab";
+     //   URLIDText.text = "should be requesting the transform and view in grab";
 
         // _realtimeTransform.RequestOwnership();
         // _realtimeView.RequestOwnershipOfSelfAndChildren();
@@ -158,7 +159,7 @@ public class GenerateSpot : MonoBehaviour
     {
         Debug.Log("should be releasing the cube");
 
-        URLIDText.text = "should be releasing the cube";
+       // URLIDText.text = "should be releasing the cube";
         // Outlinebox.line_renderer=false;
 
     }
@@ -246,7 +247,7 @@ public class GenerateSpot : MonoBehaviour
     public void updateTheTransform()
     {
         //192.169.0.213
-        TargetObject.transform.localScale = Contianier.transform.localScale;
+      //  TargetObject.transform.localScale = Contianier.transform.localScale*3f;
         // BackGroundOnly.transform.localScale=Contianier.transform.localScale;
 
 
@@ -269,7 +270,7 @@ public class GenerateSpot : MonoBehaviour
     public void GenrateModel()
     {
         manager.promtGenerateModel(id, Prompt, URLID);
-        //URLIDText.text = URLID;
+        URLIDText.text = URLID;
         PreViewQuad.SetActive(true);
         loadingIcon.SetActive(true);
         UiMenu.SetActive(false);
@@ -380,7 +381,7 @@ public class GenerateSpot : MonoBehaviour
             Debug.Log("URL is responding!");
             OnURLResponse(true);
         } else {
-            Debug.LogError("Error checking URL: " + www.error);
+          //  Debug.LogError("Error checking URL: " + www.error);
             OnURLResponse(false);
         }
 
@@ -408,12 +409,6 @@ public class GenerateSpot : MonoBehaviour
             // DownloadModel();
         } 
         
-        else 
-        
-        {
-
-
-        }
     }
 
 

@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: RealityEditorMR3-2
+  productName: RealityEditorMR3_3
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -143,8 +143,6 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 11400000, guid: dad91d6474269264dabbe2e239f1885a, type: 2}
-  - {fileID: 8587174553683183613, guid: 2ad7b311f2f55bc45b379fc5b93a9d20, type: 2}
-  - {fileID: 11400000, guid: 7dafe5f8db58eca40b1d44174dc3d078, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -164,7 +162,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.DefaultCompany.RealityEditorMR32
+    Android: com.DefaultCompany.RealityEditorMR3_3
   buildNumber:
     Standalone: 0
     VisionOS: 0
