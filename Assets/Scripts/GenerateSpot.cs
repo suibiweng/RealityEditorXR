@@ -94,6 +94,8 @@ public class GenerateSpot : MonoBehaviour
         _grabbable= GetComponent<Grabbable>();
 
                    StartCoroutine(CheckURLPeriodically());
+
+        RecordData=GetComponent<recordData>();
         _grabbable.WhenPointerEventRaised += HandlePointerEventRaised;
 
        
@@ -147,11 +149,9 @@ public class GenerateSpot : MonoBehaviour
         manager.updateSelected(id, URLID);
         isselsected = true;
         Debug.Log("should be requesting the transform and view in grab");
-     //   URLIDText.text = "should be requesting the transform and view in grab";
-
+        //URLIDText.text = "should be requesting the transform and view in grab";
         // _realtimeTransform.RequestOwnership();
         // _realtimeView.RequestOwnershipOfSelfAndChildren();
-        
         //  Outlinebox.line_renderer=true;
     }
 
@@ -226,16 +226,7 @@ public class GenerateSpot : MonoBehaviour
 
 
 
-        //Prompt 
-
-
-        // if(URLChecker.CheckURLConnection(downloadURL+URLID+".zip") && !promptGenrated) {
-        //     promptGenrated=true;
-        //     downloadModel(downloadURL+URLID+".zip");
-        //
-        // }
-        //
-
+        Text_Instruction.text=RecordData.instruction;
 
 
 
@@ -295,7 +286,7 @@ public class GenerateSpot : MonoBehaviour
             StartScanning = true;
 
             RecordData.StartRecording();
-            Text_Scanning_Btn.text = "Stop to Scanning";
+            Text_Scanning_Btn.text = "Stop Scanning";
 
 
 
@@ -303,7 +294,7 @@ public class GenerateSpot : MonoBehaviour
             StartScanning = false;
 
 
-            Text_Scanning_Btn.text = "Start to Scanning";
+            Text_Scanning_Btn.text = "Start Scanning";
 
             RecordData.StopRecording();
 

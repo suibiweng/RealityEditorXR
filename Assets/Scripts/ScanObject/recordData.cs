@@ -14,7 +14,10 @@ public class recordData : MonoBehaviour
     float startRecordingTime;
     StreamWriter sr;
     String imgName;
-    int imgCount = 0;
+    public int imgCount = 0;
+
+    GenerateSpot spot;
+    public string instruction;
 
 
 
@@ -27,6 +30,7 @@ public class recordData : MonoBehaviour
     {
 
         osc=FindObjectOfType<OSC>();
+        spot=GetComponent<GenerateSpot>();
 
     }
 
@@ -37,8 +41,10 @@ public class recordData : MonoBehaviour
         startRecordingTime = Time.time;
         OscMessage message;
         message = new OscMessage();
-        message.address = "/start";
+        message.address = "/startRecord";
+        message.values.Add(spot.URLID);
         osc.Send(message);
+        imgCount=0;
 
 
     }
@@ -49,7 +55,7 @@ public class recordData : MonoBehaviour
        
         OscMessage message;
         message = new OscMessage();
-        message.address = "/end";
+        message.address = "/endRecord";
         osc.Send(message);
         
 
@@ -66,7 +72,7 @@ public class recordData : MonoBehaviour
 
             message = new OscMessage();
             message.address = "/imagePath";
-            message.values.Add(imgCount.ToString("D5") +".jpg");
+            message.values.Add(spot.URLID+"_scan_"+imgCount+".jpg");
             message.values.Add(this.transform.localToWorldMatrix.ToString());
             osc.Send(message);
 
@@ -83,14 +89,25 @@ public class recordData : MonoBehaviour
 
                 message = new OscMessage();
                 message.address = "/imagePath";
-                message.values.Add(imgCount.ToString("D5") + ".jpg");
+                message.values.Add(spot.URLID+"_scan_"+imgCount+".jpg");
                 message.values.Add(this.transform.localToWorldMatrix.ToString());
                 osc.Send(message);
 
                 startRecordingTime = Time.time;
                 imgCount++;
+                instruction="Captured pics :"+imgCount;
+
 
             }
+        }else{
+
+            instruction="Press Start to scan";
+
+
+
+
+
+
         }
         
     }

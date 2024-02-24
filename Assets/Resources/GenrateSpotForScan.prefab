@@ -24552,7 +24552,11 @@ MonoBehaviour:
   PreViewQuad: {fileID: 486049556910927675}
   Outlinebox: {fileID: 0}
   CountID: 0
+  _grabbable: {fileID: 0}
   type: 0
+  _realtimeTransform: {fileID: 0}
+  _realtimeView: {fileID: 0}
+  moveplayer: {fileID: 0}
   Text_Scanning_Btn: {fileID: 1167092362498039507}
   Text_Instruction: {fileID: 1167092362498039525}
   checkInterval: 5

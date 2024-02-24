@@ -15,7 +15,7 @@ namespace Serenegiant.UVC
 
 	public class UVCDrawer : MonoBehaviour, IUVCDrawer
 	{
-		public NdiSender ndiSender;
+		// public NdiSender ndiSender;
 		
 
 		/**
