@@ -3737,10 +3737,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c59e034d4de00774cbec2e6dff4af9ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GenCubes: []
   generateSpotPreFab: {fileID: 1683885090753417592, guid: 1182d3065d6fb8f4bb7611cbfef1c981, type: 3}
   modelDownloader: {fileID: 1121881327}
   selectedID: 0
+  selectedIDUrl: 
   osc: {fileID: 1121881324}
 --- !u!114 &1121881327
 MonoBehaviour:
@@ -6662,7 +6662,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8484851729914132731, guid: 1182d3065d6fb8f4bb7611cbfef1c981, type: 3}
       propertyPath: _components.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1683885090753417592, guid: 1182d3065d6fb8f4bb7611cbfef1c981, type: 3}
       propertyPath: m_Name

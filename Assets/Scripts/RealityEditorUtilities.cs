@@ -8,8 +8,20 @@ using System.Net;
 namespace RealityEditor
 {
     public enum GenerateType{
-        RealObject,
-        DreamDiffusion
+        Add,
+        Scanning,
+        Erase,
+        Modify
+
+    }
+
+
+
+    public enum MeshType{
+        Generated,
+        TargetObject,
+        BackGround,
+        Modified
 
     }
 
@@ -18,6 +30,45 @@ namespace RealityEditor
     public class ModelIformation{
         public GameObject gameobjectWarp;
         public string ModelURL;
+
+        public MeshType meshType;
+
+
+        public MeshType modelType(){
+
+            if(ModelURL.Contains("scaned")){
+                if(ModelURL.Contains("target")){
+
+                       meshType=MeshType.TargetObject;
+                }
+
+                if(ModelURL.Contains("background")){
+
+
+                       meshType=MeshType.BackGround; 
+
+                }
+
+                if(ModelURL.Contains("Instruction")){
+
+                 meshType=   MeshType.Modified;
+
+                }
+
+            }else if(ModelURL.Contains("generated")){
+
+
+                meshType=MeshType.Generated;
+
+
+            } 
+
+
+            return meshType;
+        }
+
+
+        
 
 
     }

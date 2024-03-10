@@ -10663,6 +10663,7 @@ MonoBehaviour:
   - {fileID: 492761526}
   - {fileID: 2139182615}
   VoicePanel: {fileID: 1262060658}
+  AimStart: {fileID: 0}
   TargetObject: {fileID: 1304167604034850065}
   BackGroundOnly: {fileID: 249469301917972280}
   Contianier: {fileID: 4758649939851954787}

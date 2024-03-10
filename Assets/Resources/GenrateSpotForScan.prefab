@@ -24545,6 +24545,7 @@ MonoBehaviour:
   - {fileID: 486049556301374223}
   - {fileID: 486049557873673390}
   VoicePanel: {fileID: 486049557683312331}
+  AimStart: {fileID: 0}
   TargetObject: {fileID: 1488332997271445416}
   BackGroundOnly: {fileID: 416724240778519937}
   Contianier: {fileID: 4950816736992942298}
@@ -24740,6 +24741,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   osc: {fileID: 0}
+  imgCount: 0
+  instruction: 
+  campoints: {fileID: 0}
   recordingInterval: 0
 --- !u!1 &4950816736992942298
 GameObject:

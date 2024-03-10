@@ -28,11 +28,42 @@ public class DebugOSCSend : MonoBehaviour
         };
         message.values.Add(1);
         message.values.Add(prompt);
-         message.values.Add(TimestampGenerator.GetTimestamp());
+        message.values.Add(TimestampGenerator.GetTimestamp());
 
          osc.Send(message);
 
     }
+
+    public void sendTestScan(){
+
+
+         OscMessage message;
+        message = new OscMessage();
+        message.address = "/endRecord";
+        osc.Send(message);
+
+
+        
+
+
+    }
+
+
+
+        public void sendTestNerf(){
+
+
+         OscMessage message;
+        message = new OscMessage();
+        message.address = "/NerfTest";
+        osc.Send(message);
+
+
+        
+
+
+    }
+
 
 
     

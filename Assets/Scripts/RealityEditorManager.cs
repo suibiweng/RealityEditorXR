@@ -69,6 +69,16 @@ public class RealityEditorManager : MonoBehaviour
         selectedIDUrl=IDurl;
     }
 
+    public GameObject getSelectSpot(){
+
+        
+
+
+        return GenCubesDic[selectedIDUrl];
+
+
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -108,27 +118,11 @@ public class RealityEditorManager : MonoBehaviour
 
     }
 
-   public void RemoveSpot(int id){
+   public void RemoveSpot(string urlid){
 
-/*
-    for(int i=0;i<GenCubes.Count;i++){
-
-    if(id== GenCubes[i].GetComponent<GenerateSpot>().id){
-        Destroy(GenCubes[i].gameObject,2);
-        GenCubes.RemoveAt(i);
-
-    } 
-    
-    }*/
+       Destroy(GenCubesDic[urlid].gameObject);
+        GenCubesDic.Remove(urlid);
      
-    
-
-
-
-
-     
-
-
     }
 
     ModelIformation CreateModelInfoFromOSC(OscMessage oscMessage,GameObject obj){
@@ -216,6 +210,7 @@ public class RealityEditorManager : MonoBehaviour
         message.values.Add(id);
         message.values.Add(promt);
         message.values.Add(URLID);
+        message.values.Add("genrated");
 
          osc.Send(message);
 
@@ -239,13 +234,14 @@ public class RealityEditorManager : MonoBehaviour
     }
 
 
-    public void InstructNerf(int id,string promt){
+    public void InstructModify(int id,string promt,string urlid){
         OscMessage message = new OscMessage()
         {
-            address = "/InstructNerfGenerateModel"
+            address = "/InstructModify"
         };
         message.values.Add(id);
         message.values.Add(promt);
+        message.values.Add(urlid);
 
 
         osc.Send(message);

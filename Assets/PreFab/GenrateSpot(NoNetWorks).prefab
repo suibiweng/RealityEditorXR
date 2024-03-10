@@ -25067,9 +25067,11 @@ MonoBehaviour:
   PreViewQuad: {fileID: 3291079562313518294}
   Outlinebox: {fileID: 0}
   CountID: 0
+  _grabbable: {fileID: 3291079562965627231}
   type: 0
   _realtimeTransform: {fileID: 0}
   _realtimeView: {fileID: 0}
+  moveplayer: {fileID: 0}
   Text_Scanning_Btn: {fileID: 171592505786322149}
   Text_Instruction: {fileID: 171592505786322131}
   checkInterval: 5
@@ -25099,7 +25101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundSource: 1
-  interactive: 1
+  interactive: 0
   lineMaterial: {fileID: 2100000, guid: 982b0c6dd4bcd894b9576f123b17edd3, type: 2}
   wire_renderer: 0
   wireColor: {r: 0, g: 0.15948248, b: 1, a: 0}
@@ -25212,6 +25214,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   osc: {fileID: 0}
+  imgCount: 0
+  instruction: 
+  campoints: {fileID: 0}
   recordingInterval: 0
 --- !u!1 &8045220608500464439
 GameObject:

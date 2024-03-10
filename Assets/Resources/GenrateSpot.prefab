@@ -311,7 +311,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1163502487755132280
 Transform:
   m_ObjectHideFlags: 0
@@ -13247,6 +13247,7 @@ MonoBehaviour:
   - {fileID: 6148612482609500028}
   - {fileID: 6148612480968386781}
   VoicePanel: {fileID: 6148612481697692344}
+  AimStart: {fileID: 1163502487755132263}
   TargetObject: {fileID: 5137789135296656347}
   BackGroundOnly: {fileID: 6206533663996856818}
   Contianier: {fileID: 1683885090962764969}
@@ -13448,6 +13449,7 @@ MonoBehaviour:
   osc: {fileID: 0}
   imgCount: 0
   instruction: 
+  campoints: {fileID: 0}
   recordingInterval: 0
 --- !u!114 &6501566474283620153
 MonoBehaviour:
@@ -15346,7 +15348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8156244992407306143
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15356,7 +15358,7 @@ RectTransform:
   m_GameObject: {fileID: 8156244992385004863}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.0012052153, y: 0.0012052153, z: 0.0012052153}
+  m_LocalScale: {x: 0.0066913557, y: 0.0066913557, z: 0.0066913557}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8156244992407306139}
