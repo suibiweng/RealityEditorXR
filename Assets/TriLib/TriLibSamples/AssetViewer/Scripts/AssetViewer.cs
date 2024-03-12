@@ -206,12 +206,6 @@ namespace TriLibCore.Samples
         private ShowSkeleton _showSkeleton;
 
         /// <summary>
-        /// Use Coroutines Toggle.
-        /// </summary>
-        [SerializeField]
-        private Toggle _useCoroutinesToggle;
-
-        /// <summary>
         /// Reference to the shader used to display normals.
         /// </summary>
         private Shader _showNormalsShader;
@@ -411,16 +405,6 @@ namespace TriLibCore.Samples
         }
 
         /// <summary>
-        /// Event triggered when the user ticks the Use Coroutine toggle.
-        /// </summary>
-        /// <param name="isOn">Is the toggle on?</param>
-        public void OnUseCoroutinesToggleChanged(bool isOn)
-        {
-            //todo: will be enabled on a future release
-            //AssetLoaderOptions.UseCoroutines = isOn;
-        }
-
-        /// <summary>
         /// Event triggered when the user changes the debug options dropdown value.
         /// </summary>
         /// <param name="value">The dropdown value.</param>
@@ -517,7 +501,6 @@ namespace TriLibCore.Samples
                 AssetLoaderOptions.Timeout = 160;
                 AssetLoaderOptions.ShowLoadingWarnings = true;
                 AssetLoaderOptions.UseUnityNativeTextureLoader = true; // Commenting/removing this line makes TriLib accept more texture file formats, but it will use more memory to load textures.
-                AssetLoaderOptions.AlphaMaterialMode = AlphaMaterialMode.Cutout;
             }
             _showNormalsShader = Shader.Find("Hidden/ShowNormals");
             _showMetallicShader = Shader.Find("Hidden/ShowMetallic");
@@ -536,12 +519,14 @@ namespace TriLibCore.Samples
         {
 #if TRILIB_SHOW_MEMORY_USAGE
             var memory = RuntimeProcessUtils.GetProcessMemory();
+            var managedMemory = GC.GetTotalMemory(false);
             PeakMemory = Math.Max(memory, PeakMemory);
-            _memoryUsageText.text = $"{ProcessUtils.SizeSuffix(memory)} Peak: {ProcessUtils.SizeSuffix(PeakMemory)}";
+            PeakManagedMemory = Math.Max(managedMemory, PeakManagedMemory); 
+            _memoryUsageText.text = $"(Total: {ProcessUtils.SizeSuffix(memory)} Peak: {ProcessUtils.SizeSuffix(PeakMemory)}) (Managed: {ProcessUtils.SizeSuffix(managedMemory)} Peak: {ProcessUtils.SizeSuffix(PeakManagedMemory)})";
 #else
-            var memory = System.GC.GetTotalMemory(false);
+            var memory = GC.GetTotalMemory(false);
             PeakMemory = Math.Max(memory, PeakMemory);
-            _memoryUsageText.text = $"{ProcessUtils.SizeSuffix(memory)} Peak: {ProcessUtils.SizeSuffix(PeakMemory)}";
+            _memoryUsageText.text = $"Total: {ProcessUtils.SizeSuffix(memory)} Peak: {ProcessUtils.SizeSuffix(PeakMemory)}";
 #endif
         }
 

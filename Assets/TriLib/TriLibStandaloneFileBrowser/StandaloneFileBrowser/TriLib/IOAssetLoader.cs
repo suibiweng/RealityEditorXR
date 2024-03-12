@@ -62,7 +62,7 @@ namespace TriLibCore
             {
                 AssetLoaderOptions.TextureMappers = new TextureMapper[] { ScriptableObject.CreateInstance<FilePickerTextureMapper>() };
             }
-            if (!AssetLoaderOptions.ExternalDataMapper is FilePickerExternalDataMapper)
+            if (!(AssetLoaderOptions.ExternalDataMapper is FilePickerExternalDataMapper))
             {
                 AssetLoaderOptions.ExternalDataMapper = ScriptableObject.CreateInstance<FilePickerExternalDataMapper>();
             }

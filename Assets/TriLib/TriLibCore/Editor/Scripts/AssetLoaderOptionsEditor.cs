@@ -1,4 +1,5 @@
 ﻿using TriLibCore.General;
+using TriLibCore.Mappers;
 using UnityEditor;
 using UnityEngine;
 
@@ -59,7 +60,6 @@ namespace TriLibCore.Editor
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("ShowLoadingWarnings"), new GUIContent("Show Loading Warnings", "Turn on this field to display Model loading warnings on the Console."));
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("CloseStreamAutomatically"), new GUIContent("Close Stream Automatically", "Turn on this field to close the Model loading Stream automatically."));
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("DestroyOnError"), new GUIContent("Destroy on Error", "Turn on this field to destroy the loaded Game Object automatically when there is any loading error."));
-                    EditorGUILayout.PropertyField(serializedObject.FindProperty("Timeout"), new GUIContent("Timeout", "Model loading timeout in seconds (0=disabled)."));
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("PivotPosition"), new GUIContent("Pivot Position", "Use this field to realign the Model pivot based on the given value."));
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("DisableObjectsRenaming"), new GUIContent("Disable Objects Renaming", "Turn on this field to disable objects renaming."));
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("MergeSingleChild"), new GUIContent("Merge Single Child", "Turn on this field to merge single child models into a single GameObject."));
@@ -77,7 +77,8 @@ namespace TriLibCore.Editor
                         {
                             EditorGUILayout.PropertyField(serializedObject.FindProperty("ConvexColliders"), new GUIContent("Convex Colliders", "Turn on this field to generate convex Colliders when the GenerateColliders field is enabled."));
                         }
-                        EditorGUILayout.PropertyField(serializedObject.FindProperty("KeepQuads"), new GUIContent("Keep Quads", "Turn on this field to mantain Mesh quads. (Useful for DX11 tesselation)"));
+                        EditorGUILayout.PropertyField(serializedObject.FindProperty("IndexFormat"), new GUIContent("Index Format", "Mesh index format (16 or 32 bits)."));
+                        EditorGUILayout.PropertyField(serializedObject.FindProperty("KeepQuads"), new GUIContent("Keep Quads", "Turn on this field to mantain Mesh quads (Useful for DX11 tesselation)."));
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("MergeVertices"), new GUIContent("Merge Vertices", "Turn on this field to merge model duplicated vertices where possible."));
                         var importNormalsProperty = serializedObject.FindProperty("ImportNormals");
                         EditorGUILayout.PropertyField(importNormalsProperty, new GUIContent("Import Normals", "Turn on this field to import Mesh normals. If not enabled, normals will be calculated instead."));
@@ -106,6 +107,7 @@ namespace TriLibCore.Editor
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("SwapUVs"), new GUIContent("Swap UVs", "Turn on this field to swap Mesh UVs. (uv1 into uv2)"));
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("LODScreenRelativeTransitionHeightBase"), new GUIContent("LOD Screen Relative Transition Height Base", "Defines the initial screen relative transition height when creating LOD Groups."));
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("ReadEnabled"), new GUIContent("Read Enabled", "Turn on this field to make mesh CPU data readable."));
+                        EditorGUILayout.PropertyField(serializedObject.FindProperty("DisableTesselation"), new GUIContent("Disable Tesselation", "Turn on this field to disable polygon tesselation."));
                     }
                     var loadPointCloudsProperty = serializedObject.FindProperty("LoadPointClouds");
                     EditorGUILayout.PropertyField(loadPointCloudsProperty, new GUIContent("Load Point Clouds", "TTurn on this field to load the model as a Point Cloud (PLY and OBJ only)"));
@@ -176,7 +178,7 @@ namespace TriLibCore.Editor
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("AlphaMaterialMode"), new GUIContent("Alpha Material Mode", "Chooses the way TriLib creates alpha materials."));
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("MaterialMappers"), new GUIContent("Material Mappers", "Mappers used to create suitable Unity Materials from original Materials."));
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("DoubleSidedMaterials"), new GUIContent("Double Sided Materials", "Turn on this field to create double-sided Materials (TriLib does that by duplicating the original Meshes)."));
-                         EditorGUILayout.PropertyField(serializedObject.FindProperty("SetUnusedTexturePropertiesToNull"), new GUIContent("Set unused Texture Properties to Null", "Turn on this field to set the unused Material Texture Properties to null."));
+                        EditorGUILayout.PropertyField(serializedObject.FindProperty("SetUnusedTexturePropertiesToNull"), new GUIContent("Set unused Texture Properties to Null", "Turn on this field to set the unused Material Texture Properties to null."));
                     }
                     break;
                 case 4:
@@ -184,11 +186,11 @@ namespace TriLibCore.Editor
                     EditorGUILayout.PropertyField(importTexturesProperty, new GUIContent("Import Textures", "Turn on this field to import Textures."));
                     if (importTexturesProperty.boolValue)
                     {
-                        EditorGUILayout.PropertyField(serializedObject.FindProperty("TextureMapper"), new GUIContent("Deprecated: Texture Mapper", "Mapper used to find native Texture Streams from custom sources."));
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("TextureMappers"), new GUIContent("Texture Mappers", "Mappers used to find native Texture Streams from custom sources."));
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("TextureCompressionQuality"), new GUIContent("Texture Compression Quality", "Texture compression to apply on loaded Textures."));
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("GenerateMipmaps"), new GUIContent("Generate Mipmaps", "Turn on this field to enable Textures mip-map generation."));
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("FixNormalMaps"), new GUIContent("Fix Normal Maps", "Turn on this field to change normal map channels order to ABBR instead of RGBA."));
+                        EditorGUILayout.PropertyField(serializedObject.FindProperty("EnforceAlphaChannelTextures"), new GUIContent("Enforce Alpha Channel Textures", "Turn on this field to enforce alpha channel on textures creation."));
                         var alphaMaterialModeProperty = serializedObject.FindProperty("AlphaMaterialMode");
                         if (alphaMaterialModeProperty.enumValueIndex > 0)
                         {
@@ -210,6 +212,7 @@ namespace TriLibCore.Editor
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("ExternalDataMapper"), new GUIContent("External Data Mapper", "Mapper used to find data Streams on external sources."));
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("UserPropertiesMapper"), new GUIContent("User Properties Mapper", " Mapper used to process User Properties from Models."));
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("LipSyncMappers"), new GUIContent("Lip Sync Mappers", "Mappers used to configure Lip-Sync Blend Shapes."));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("NameMapper"), new GUIContent("Name Mapper", "This class can be inherited and used to generate Game Object naming based on file-format model specific data."));
                     break;
             }
             EditorGUILayout.EndVertical();

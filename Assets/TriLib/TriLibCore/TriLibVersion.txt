@@ -1,3 +1,48 @@
+2.2.8
+Changelog:
+-Removed deprecated asset loader options.
+-Fixed OBJ/STL meshes reading.
+-Fixed normals calculation.
+-Added missing asset loader options configuration in editor importing.
+-Added ObjReader.ParseVertexColor static field. Turn off this field to disable OBJ vertex color loading.
+-Added NameMapper class. A NameMapper can rename GameObjects upon loading based on original model attributes. 
+You can inherit the NameMapper class and assign it to your AssetLoaderOptions.NameMapper field.
+-Re-enabled IndexFormat asset loader option. Use this option to set the mesh index format (16 or 32 bits).
+
+2.2.7
+Changelog:
+-Fixed normals calculation regression issue.
+-Removed deprecated coroutine methods.
+-Fixed normal debug shader.
+
+2.2.6
+Changelog:
+-Added EnforceAlphaChannelTextures asset loader option. This option is enabled by default and fixes texture creation on WebGL when the UseUnityNativeTextureLoader option is disabled. 
+
+2.2.5
+Changelog:
+-Removed experimental coroutines support.
+
+2.2.4
+Changelog:
+-Fixed texture format assignment regression issue.
+-Added 3DS Max alternative diffuse texture support.
+-Mesh system changes. Using simpler Unity mesh API to reduce memory usage.
+
+2.2.3
+Changelog:
+-Fixed FBX ASCII embedded data reading.
+-Fixed OBJ files texture naming.
+-Fixed multiple parallel files loading bug.
+-Fixed built-in ExternalDataMapper regression issue preventing ZIP files from loading.
+-Fixed glTF2 empty arrays parsing.
+-Fixed normal map textures creation.
+-Fixed STL binary parsing issue.
+-Added lights CastShadow property parsing.
+-Added FBX physical camera properties parsing.
+-Added option in the TriLib settings menu to change in-editor loading timeout.
+-Misc. fixes.
+
 2.2.2
 Changelog:
 -Fixed glTF embedded textures issue.

@@ -58,8 +58,10 @@ namespace TriLibCore.HDRP.Mappers
             CheckMetallicGlossMapTexture(materialMapperContext);
             CheckMetallicValue(materialMapperContext);
 
-            materialMapperContext.AddPostProcessingActionToMainThread(BuildMaterial, materialMapperContext);
-            materialMapperContext.AddPostProcessingActionToMainThread(BuildHDRPMask, materialMapperContext);
+            BuildMaterial(materialMapperContext);
+            BuildMaterial(materialMapperContext);
+            //materialMapperContext.AddPostProcessingActionToMainThread(BuildMaterial, materialMapperContext);
+            //materialMapperContext.AddPostProcessingActionToMainThread(BuildHDRPMask, materialMapperContext);
         }
 
         private void CheckDiffuseMapTexture(MaterialMapperContext materialMapperContext)

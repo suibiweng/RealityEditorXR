@@ -48,6 +48,7 @@ namespace TriLibCore.Editor
             EditorGUILayout.Space();
             EditorGUILayout.Space();
             GUILayout.Label("Editor Importing", EditorStyles.boldLabel);
+            EditorPrefs.SetInt("TriLibTimeout", EditorGUILayout.IntField("Loading timeout", EditorPrefs.GetInt("TriLibTimeout", 180)));
             GUILayout.Label("You can disable in editor file-formats importing to avoid conflicts with other editor importers");
             EditorGUILayout.Space();
             ShowConditionalToggle("Disable in editor gLTF2 importing", "TRILIB_DISABLE_EDITOR_GLTF_IMPORT");
@@ -95,7 +96,7 @@ namespace TriLibCore.Editor
             }
             if (GUILayout.Button("Wiki"))
             {
-                Application.OpenURL("https://ricardoreis.net/trilibwiki");
+                Application.OpenURL("https://web.archive.org/web/20221123174306/https://ricardoreis.net/trilibwiki/index.php/Main_Page");
             }
             if (GUILayout.Button("Support"))
             {

@@ -253,24 +253,7 @@ namespace TriLibCore
             }
             else
             {
-
-                //todo: coroutines will be enabled on a future release
-                //if (assetLoaderContext.Options.UseCoroutines)
-                //{
-                //    ThreadUtils.RequestNewThreadWithCoroutinesFor(
-                //        assetLoaderContext,
-                //        LoadModel_Coroutine,
-                //        ProcessRootModel_Coroutine,
-                //        HandleError,
-                //        assetLoaderContext.Options.Timeout,
-                //        threadName,
-                //        !assetLoaderContext.HaltTasks,
-                //        assetLoaderContext.OnPreLoad
-                //    );
-                //}
-                //else
-                {
-                    ThreadUtils.RequestNewThreadFor(
+                ThreadUtils.RequestNewThreadFor(
                         assetLoaderContext,
                         LoadModel,
                         ProcessRootModel,
@@ -280,7 +263,6 @@ namespace TriLibCore
                         !assetLoaderContext.HaltTasks,
                         assetLoaderContext.OnPreLoad
                     );
-                }
             }
         }
 
@@ -458,33 +440,33 @@ namespace TriLibCore
 
         /// <summary>Processes the Model from the given context and begin to build the Game Objects.</summary>
         /// <param name="assetLoaderContext">The Asset Loader Context reference. Asset Loader Context contains the Model loading data.</param>
-        [CoroutineMethod]
+        
         private static void ProcessModel(AssetLoaderContext assetLoaderContext)
         {
             if (assetLoaderContext.RootModel != null)
             {
-                ParseModel(assetLoaderContext, assetLoaderContext.WrapperGameObject != null ? assetLoaderContext.WrapperGameObject.transform : null, assetLoaderContext.RootModel, assetLoaderContext.RootModel, true);
+                CreateModel(assetLoaderContext, assetLoaderContext.WrapperGameObject != null ? assetLoaderContext.WrapperGameObject.transform : null, assetLoaderContext.RootModel, assetLoaderContext.RootModel, true);
                 if (assetLoaderContext.RootGameObject.transform.localScale.sqrMagnitude == 0f)
                 {
                     assetLoaderContext.RootGameObject.transform.localScale = Vector3.one;
                 }
+                SetupModelLod(assetLoaderContext, assetLoaderContext.RootModel);
                 if (assetLoaderContext.Options.AnimationType != AnimationType.None || assetLoaderContext.Options.ImportBlendShapes)
                 {
                     SetupModelBones(assetLoaderContext, assetLoaderContext.RootModel);
-                    SetupModelLod(assetLoaderContext, assetLoaderContext.RootModel);
                     BuildGameObjectsPaths(assetLoaderContext);
                     SetupRig(assetLoaderContext);
                 }
                 assetLoaderContext.RootGameObject.isStatic = assetLoaderContext.Options.Static;
             }
             assetLoaderContext.OnLoad?.Invoke(assetLoaderContext);
-            //[MainThreadStallCheck]
+            
         }
 
         /// <summary>Configures the context Model LODs (levels-of-detail) if there are any.</summary>
         /// <param name="assetLoaderContext">The Asset Loader Context reference. Asset Loader Context contains the Model loading data.</param>
         /// <param name="model">The Model containing the LOD data.</param>
-        [CoroutineMethod]
+        
         private static void SetupModelLod(AssetLoaderContext assetLoaderContext, IModel model)
         {
             if (model.Children != null && model.Children.Count > 0)
@@ -508,7 +490,7 @@ namespace TriLibCore
                         }
                         renderers.AddRange(assetLoaderContext.GameObjects[child].GetComponentsInChildren<Renderer>());
                     }
-                    //[MainThreadStallCheck]
+                    
                 }
                 if (lodModels.Count > 1)
                 {
@@ -536,19 +518,19 @@ namespace TriLibCore
 
         /// <summary>Builds the Game Object Converts hierarchy paths.</summary>
         /// <param name="assetLoaderContext">The Asset Loader Context reference. Asset Loader Context contains the Model loading data.</param>
-        [CoroutineMethod]
+        
         private static void BuildGameObjectsPaths(AssetLoaderContext assetLoaderContext)
         {
             foreach (var value in assetLoaderContext.GameObjects.Values)
             {
                 assetLoaderContext.GameObjectPaths.Add(value, value.transform.BuildPath(assetLoaderContext.RootGameObject.transform));
-                //[MainThreadStallCheck]
+                
             }
         }
 
         /// <summary>Configures the context Model rigging if there is any.</summary>
         /// <param name="assetLoaderContext">The Asset Loader Context reference. Asset Loader Context contains the Model loading data.</param>
-        [CoroutineMethod]
+        
         private static void SetupRig(AssetLoaderContext assetLoaderContext)
         {
             var animations = assetLoaderContext.RootModel.AllAnimations;
@@ -589,7 +571,7 @@ namespace TriLibCore
                             break;
                         }
                 }
-                //[MainThreadStallCheck]
+                
                 if (animationClips != null)
                 {
                     if (assetLoaderContext.Options.AnimationClipMappers != null)
@@ -598,7 +580,7 @@ namespace TriLibCore
                         foreach (var animationClipMapper in assetLoaderContext.Options.AnimationClipMappers)
                         {
                             animationClips = animationClipMapper.MapArray(assetLoaderContext, animationClips);
-                            //[MainThreadStallCheck]
+                            
                             if (animationClips != null && animationClips.Length > 0)
                             {
                                 break;
@@ -641,7 +623,7 @@ namespace TriLibCore
                 for (var i = 0; i < animations.Count; i++)
                 {
                     var triLibAnimation = animations[i];
-                    var animationClip = ParseAnimation(assetLoaderContext, triLibAnimation);
+                    var animationClip = CreateAnimation(assetLoaderContext, triLibAnimation);
                     unityAnimation.AddClip(animationClip, animationClip.name);
                     animationClips[i] = animationClip;
                     assetLoaderContext.Reader.UpdateLoadingPercentage(i, assetLoaderContext.Reader.LoadingStepsCount + (int)ReaderBase.PostLoadingSteps.PostProcessAnimationClips, animations.Count);
@@ -745,9 +727,8 @@ namespace TriLibCore
                 }
                 if (hipsTransform != null)
                 {
-                    var hipsRotation = hipsTransform.rotation;
                     var skeletonBones = new Dictionary<Transform, SkeletonBone>();
-                    var bounds = assetLoaderContext.RootGameObject.CalculatePreciseBounds();
+                    var bounds = assetLoaderContext.RootGameObject.CalculateBounds();
                     var toBottom = bounds.min.y;
                     if (toBottom < 0f)
                     {
@@ -804,8 +785,8 @@ namespace TriLibCore
         /// <param name="rootModel">The root Model.</param>
         /// <param name="model">The Model to convert.</param>
         /// <param name="isRootGameObject">Is this the first node in the Model hierarchy?</param>
-        [CoroutineMethod]
-        private static void ParseModel(AssetLoaderContext assetLoaderContext, Transform parentTransform, IRootModel rootModel, IModel model, bool isRootGameObject)
+        
+        private static void CreateModel(AssetLoaderContext assetLoaderContext, Transform parentTransform, IRootModel rootModel, IModel model, bool isRootGameObject)
         {
             var newGameObject = new GameObject(model.Name);
             assetLoaderContext.GameObjects.Add(model, newGameObject);
@@ -816,44 +797,22 @@ namespace TriLibCore
             newGameObject.transform.localScale = model.LocalScale;
             if (model.GeometryGroup != null)
             {
-                ParseGeometry(assetLoaderContext, newGameObject, rootModel, model);
+                CreateGeometry(assetLoaderContext, newGameObject, rootModel, model);
             }
             if (assetLoaderContext.Options.ImportCameras && model is ICamera camera)
             {
-                var unityCamera = newGameObject.AddComponent<Camera>();
-                unityCamera.aspect = camera.AspectRatio;
-                unityCamera.orthographic = camera.Ortographic;
-                unityCamera.orthographicSize = camera.OrtographicSize;
-                unityCamera.fieldOfView = camera.FieldOfView;
-                unityCamera.nearClipPlane = camera.NearClipPlane;
-                unityCamera.farClipPlane = camera.FarClipPlane;
-                unityCamera.focalLength = camera.FocalLength;
-                unityCamera.sensorSize = camera.SensorSize;
-                unityCamera.lensShift = camera.LensShift;
-                unityCamera.gateFit = camera.GateFitMode;
-                unityCamera.usePhysicalProperties = camera.PhysicalCamera;
-                unityCamera.enabled = true;
+                CreateCamera(assetLoaderContext, camera, newGameObject);
             }
             if (assetLoaderContext.Options.ImportLights && model is ILight light)
             {
-                var unityLight = newGameObject.AddComponent<Light>();
-                unityLight.color = light.Color;
-                unityLight.innerSpotAngle = light.InnerSpotAngle;
-                unityLight.spotAngle = light.OuterSpotAngle;
-                unityLight.intensity = light.Intensity;
-                unityLight.range = light.Range;
-                unityLight.type = light.LightType;
-                unityLight.shadows = light.CastShadows ? LightShadows.Soft : LightShadows.None;
-#if UNITY_EDITOR
-                unityLight.areaSize = new Vector2(light.Width, light.Height);
-#endif
+                CreateLight(assetLoaderContext, light, newGameObject);
             }
             if (model.Children != null && model.Children.Count > 0)
             {
                 for (var i = 0; i < model.Children.Count; i++)
                 {
                     var child = model.Children[i];
-                    ParseModel(assetLoaderContext, newGameObject.transform, rootModel, child, false);
+                    CreateModel(assetLoaderContext, newGameObject.transform, rootModel, child, false);
                 }
             }
             if (assetLoaderContext.Options.UserPropertiesMapper != null && model.UserProperties != null)
@@ -861,7 +820,7 @@ namespace TriLibCore
                 foreach (var userProperty in model.UserProperties)
                 {
                     assetLoaderContext.Options.UserPropertiesMapper.OnProcessUserData(assetLoaderContext, newGameObject, userProperty.Key, userProperty.Value);
-                    //[MainThreadStallCheck]
+                    
                 }
             }
             if (isRootGameObject)
@@ -870,10 +829,50 @@ namespace TriLibCore
             }
         }
 
+        /// <summary>Converts the given model light, if present into a Light.</summary>
+        /// <param name="assetLoaderContext">The Asset Loader Context reference. Asset Loader Context contains the Model loading data.</param>
+        /// <param name="light">The Model.</param>
+        /// <param name="newGameObject">The Model Game Object.</param>
+        private static void CreateLight(AssetLoaderContext assetLoaderContext, ILight light, GameObject newGameObject)
+        {
+            var unityLight = newGameObject.AddComponent<Light>();
+            unityLight.color = light.Color;
+            unityLight.innerSpotAngle = light.InnerSpotAngle;
+            unityLight.spotAngle = light.OuterSpotAngle;
+            unityLight.intensity = light.Intensity;
+            unityLight.range = light.Range;
+            unityLight.type = light.LightType;
+            unityLight.shadows = light.CastShadows ? LightShadows.Soft : LightShadows.None;
+#if UNITY_EDITOR
+            unityLight.areaSize = new Vector2(light.Width, light.Height);
+#endif
+        }
+
+        /// <summary>Converts the given model camera, if present into a Camera.</summary>
+        /// <param name="assetLoaderContext">The Asset Loader Context reference. Asset Loader Context contains the Model loading data.</param>
+        /// <param name="camera">The Model.</param>
+        /// <param name="newGameObject">The Model Game Object.</param>
+        private static void CreateCamera(AssetLoaderContext assetLoaderContext, ICamera camera, GameObject newGameObject)
+        {
+            var unityCamera = newGameObject.AddComponent<Camera>();
+            unityCamera.aspect = camera.AspectRatio;
+            unityCamera.orthographic = camera.Ortographic;
+            unityCamera.orthographicSize = camera.OrtographicSize;
+            unityCamera.fieldOfView = camera.FieldOfView;
+            unityCamera.nearClipPlane = camera.NearClipPlane;
+            unityCamera.farClipPlane = camera.FarClipPlane;
+            unityCamera.focalLength = camera.FocalLength;
+            unityCamera.sensorSize = camera.SensorSize;
+            unityCamera.lensShift = camera.LensShift;
+            unityCamera.gateFit = camera.GateFitMode;
+            unityCamera.usePhysicalProperties = camera.PhysicalCamera;
+            unityCamera.enabled = true;
+        }
+
         /// <summary>Configures the given Model skinning if there is any.</summary>
         /// <param name="assetLoaderContext">The Asset Loader Context reference. Asset Loader Context contains the Model loading data.</param>
         /// <param name="model">The Model containing the bones.</param>
-        [CoroutineMethod]
+        
         private static void SetupModelBones(AssetLoaderContext assetLoaderContext, IModel model)
         {
             var loadedGameObject = assetLoaderContext.GameObjects[model];
@@ -893,7 +892,7 @@ namespace TriLibCore
                     skinnedMeshRenderer.bones = gameObjectBones;
                     skinnedMeshRenderer.rootBone = assetLoaderContext.Options.RootBoneMapper.Map(assetLoaderContext, gameObjectBones);
                 }
-                //[MainThreadStallCheck]
+                
             }
             if (model.Children != null && model.Children.Count > 0)
             {
@@ -909,7 +908,7 @@ namespace TriLibCore
         /// <param name="assetLoaderContext">The Asset Loader Context reference. Asset Loader Context contains the Model loading data.</param>
         /// <param name="animation">The Animation to convert.</param>
         /// <returns>The converted Animation Clip.</returns>
-        private static AnimationClip ParseAnimation(AssetLoaderContext assetLoaderContext, IAnimation animation)
+        private static AnimationClip CreateAnimation(AssetLoaderContext assetLoaderContext, IAnimation animation)
         {
             var animationClip = new AnimationClip { name = animation.Name, legacy = true, frameRate = animation.FrameRate };
             var animationCurveBindings = animation.AnimationCurveBindings;
@@ -972,7 +971,7 @@ namespace TriLibCore
         /// <param name="meshGameObject">The Game Object where the Mesh belongs.</param>
         /// <param name="rootModel">The root Model.</param>
         /// <param name="meshModel">The Model used to generate the Game Object.</param>
-        private static void ParseGeometry(AssetLoaderContext assetLoaderContext, GameObject meshGameObject, IRootModel rootModel, IModel meshModel)
+        private static void CreateGeometry(AssetLoaderContext assetLoaderContext, GameObject meshGameObject, IRootModel rootModel, IModel meshModel)
         {
             var geometryGroup = meshModel.GeometryGroup;
             if (geometryGroup.GeometriesData != null)
@@ -995,7 +994,7 @@ namespace TriLibCore
                         {
                             var lipSyncMapping = meshGameObject.AddComponent<LipSyncMapping>();
                             lipSyncMapping.VisemeToBlendTargets = visemeToBlendTargets;
-                            //[MainThreadStallCheck]
+                            
                             break;
                         }
                     }
@@ -1134,15 +1133,14 @@ namespace TriLibCore
 
         /// <summary>Loads the root Model.</summary>
         /// <param name="assetLoaderContext">The Asset Loader Context reference. Asset Loader Context contains the Model loading data.</param>
-        [CoroutineMethod]
+        
         private static void LoadModel(AssetLoaderContext assetLoaderContext)
         {
             SetupModelLoading(assetLoaderContext);
-            //[MainThreadStallCheck]
+            
         }
 
-        [CoroutineMethod]
-        [ConvertCallToCoroutine("ReadStream", "IRootModel")]
+        
         private static void SetupModelLoading(AssetLoaderContext assetLoaderContext)
         {
             if (assetLoaderContext.Stream == null && string.IsNullOrWhiteSpace(assetLoaderContext.Filename))
@@ -1202,7 +1200,7 @@ namespace TriLibCore
 
         /// <summary>Processes the root Model.</summary>
         /// <param name="assetLoaderContext">The Asset Loader Context reference. Asset Loader Context contains the Model loading data.</param>
-        [CoroutineMethod]
+        
         private static void ProcessRootModel(AssetLoaderContext assetLoaderContext)
         {
             ProcessModel(assetLoaderContext);
@@ -1219,29 +1217,7 @@ namespace TriLibCore
             {
                 if (assetLoaderContext.Options.MaterialMappers != null)
                 {
-                    //todo: coroutines will be enabled on a future release
-                    //if (assetLoaderContext.Options.UseCoroutines)
-                    //{
-                    //    ThreadUtils.RequestNewThreadWithCoroutinesFor(
-                    //        assetLoaderContext,
-                    //        ProcessMaterialRenderers_Coroutine,
-                    //        null,
-                    //        HandleError,
-                    //        assetLoaderContext.Options.Timeout,
-                    //        null,
-                    //        !assetLoaderContext.HaltTasks);
-                    //}
-                    //else
-                    {
-                        ThreadUtils.RequestNewThreadFor(
-                            assetLoaderContext,
-                            ProcessMaterialRenderers,
-                            null,
-                            HandleError,
-                            assetLoaderContext.Options.Timeout,
-                            null,
-                            !assetLoaderContext.HaltTasks);
-                    }
+                    ProcessMaterialRenderers(assetLoaderContext);
                 }
                 else if (assetLoaderContext.Options.ShowLoadingWarnings)
                 {
@@ -1323,7 +1299,7 @@ namespace TriLibCore
         /// Processes Model Renderers.
         /// </summary>
         /// <param name="assetLoaderContext">The Asset Loader Context reference. Asset Loader Context contains the Model loading data.</param>
-        [CoroutineMethod]
+        
         private static void ProcessMaterialRenderers(AssetLoaderContext assetLoaderContext)
         {
             var materialMapperContexts = new MaterialMapperContext[assetLoaderContext.RootModel.AllMaterials.Count];
@@ -1343,8 +1319,9 @@ namespace TriLibCore
                     {
                         materialMapperContext.MaterialMapper = materialMapper;
                         materialMapper.Map(materialMapperContext);
-                        //[MainThreadStallCheck]
-                        materialMapperContext.AddPostProcessingActionToMainThread(ApplyMaterialToRenderers, materialMapperContext);
+                        ApplyMaterialToRenderers(materialMapperContext);
+                        
+                        //materialMapperContext.AddPostProcessingActionToMainThread(ApplyMaterialToRenderers, materialMapperContext);
                         break;
                     }
                 }
@@ -1352,11 +1329,13 @@ namespace TriLibCore
             }
             if (assetLoaderContext.Options.DiscardUnusedTextures)
             {
-                assetLoaderContext.ExecuteActionsQueue(FinishLoading);
+                FinishLoading(assetLoaderContext);
+                //assetLoaderContext.ExecuteActionsQueue(FinishLoading);
             }
             else
             {
-                assetLoaderContext.ExecuteActionsQueue(LoadUnusedTextures);
+                LoadUnusedTextures(assetLoaderContext);
+                //assetLoaderContext.ExecuteActionsQueue(LoadUnusedTextures);
             }
         }
 

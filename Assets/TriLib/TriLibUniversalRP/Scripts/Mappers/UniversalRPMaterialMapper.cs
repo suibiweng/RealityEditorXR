@@ -59,7 +59,8 @@ namespace TriLibCore.URP.Mappers
             CheckMetallicGlossMapTexture(materialMapperContext);
             CheckMetallicValue(materialMapperContext);
 
-            materialMapperContext.AddPostProcessingActionToMainThread(BuildMaterial, materialMapperContext);
+            BuildMaterial(materialMapperContext);
+            //materialMapperContext.AddPostProcessingActionToMainThread(BuildMaterial, materialMapperContext);
         }
 
         private void CheckDiffuseMapTexture(MaterialMapperContext materialMapperContext)

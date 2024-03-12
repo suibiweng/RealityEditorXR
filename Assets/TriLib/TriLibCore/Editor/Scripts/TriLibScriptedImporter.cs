@@ -29,6 +29,7 @@ namespace TriLibCore.Editor
         public override void OnImportAsset(AssetImportContext assetImportContext)
         {
             var assetLoaderOptions = AssetLoaderOptions;
+            assetLoaderOptions.Timeout = EditorPrefs.GetInt("TriLibTimeout", 180);
             var assetLoaderContext = AssetLoader.LoadModelFromFileNoThread(assetImportContext.assetPath, OnError, null, assetLoaderOptions, CustomDataHelper.CreateCustomDataDictionaryWithData(assetImportContext));
             if (assetLoaderContext.RootGameObject != null)
             {

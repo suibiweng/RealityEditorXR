@@ -93,7 +93,7 @@ namespace TriLibCore
             {
                 assetLoaderOptions.TextureMappers = new TextureMapper[] { ScriptableObject.CreateInstance<ZipFileTextureMapper>() };
             }
-            if (!assetLoaderOptions.ExternalDataMapper is ZipFileExternalDataMapper)
+            if (!(assetLoaderOptions.ExternalDataMapper is ZipFileExternalDataMapper))
             {
                 assetLoaderOptions.ExternalDataMapper = ScriptableObject.CreateInstance<ZipFileExternalDataMapper>();
             }

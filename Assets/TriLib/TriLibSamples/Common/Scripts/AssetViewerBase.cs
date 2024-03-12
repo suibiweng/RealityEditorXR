@@ -111,6 +111,12 @@ namespace TriLibCore.Samples
         /// </summary>
         protected long PeakMemory;
 
+#if TRILIB_SHOW_MEMORY_USAGE
+        /// <summary>
+        /// Holds the peak managed memory used to load the model.
+        /// </summary>
+        protected long PeakManagedMemory;
+#endif
         /// <summary>
         /// A flag representing if the model is loading or not.
         /// </summary>
@@ -276,6 +282,10 @@ namespace TriLibCore.Samples
         /// <param name="assetLoaderContext">The Asset Loader Context reference. Asset Loader Context contains the Model loading data.</param>
         protected virtual void OnLoad(AssetLoaderContext assetLoaderContext)
         {
+            PeakMemory = 0;
+#if TRILIB_SHOW_MEMORY_USAGE
+            PeakManagedMemory = 0;
+#endif
         }
 
         /// <summary>Event is triggered when the Model (including Textures and Materials) has been fully loaded.</summary>

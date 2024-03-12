@@ -1,4 +1,17 @@
-﻿2.2.2
+﻿2.2.8
+Release notes:
+A few deprecated asset loader options have been removed.
+If your code isn't compiling anymore, please update your code:
+	-ReadAndWriteEnabled: Please use the MarkMeshesAsDynamic option.
+	-AddSecondAlphaMaterial: Please use AlphaMaterialMode instead.
+	-UseAlphaMaterials: Please use AlphaMaterialMode instead.
+	-TextureMapper: Please use the new override that accepts multiple TextureMapper.
 Changelog:
--Fixed glTF embedded textures issue.
--Fixed vertex merging slowdown.
+-Removed deprecated asset loader options.
+-Fixed OBJ/STL meshes reading.
+-Fixed normals calculation.
+-Added missing asset loader options configuration in editor importing.
+-Added ObjReader.ParseVertexColor static field. Turn off this field to disable OBJ vertex color loading.
+-Added NameMapper class. A NameMapper can rename GameObjects upon loading based on original model attributes. 
+You can inherit the NameMapper class and assign it to your AssetLoaderOptions.NameMapper field.
+-Re-enabled IndexFormat asset loader option. Use this option to set the mesh index format (16 or 32 bits).
