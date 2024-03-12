@@ -87,6 +87,9 @@ public class GenerateSpot : MonoBehaviour
     
     // Start is called before the first frame update
     public MovePlayer moveplayer;
+
+    //public bool scanning=false;
+
     
     void Start()
     {

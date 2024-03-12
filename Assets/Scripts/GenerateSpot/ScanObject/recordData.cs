@@ -5,8 +5,11 @@ using System;
 using System.IO;
 using UnityEngine.UI;
 
+
 public class recordData : MonoBehaviour
 {
+
+
     public OSC osc;
 
     String fileName;
@@ -86,8 +89,25 @@ public class recordData : MonoBehaviour
         if (recording)
         {
             
-            if(Time.time - startRecordingTime > 0.5f)
-            {
+        if(OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
+                    Capture();
+            
+            // if(Time.time - startRecordingTime > 0)
+            // {
+
+            // }
+        }else{
+
+            instruction="Press Start to scan and press left Trigger to capture";
+
+
+        }
+        
+    }
+
+
+    void Capture(){
+
 
                 OscMessage message;
 
@@ -99,25 +119,11 @@ public class recordData : MonoBehaviour
              
              if(campoints.cameraType==CameraType.Stereo)   message.values.Add("left:"+campoints.rLeftAim.ToString()+" "+"right"+campoints.rRightAim.ToString());
              if(campoints.cameraType==CameraType.Mono)   message.values.Add(campoints.rCenterAim.ToString());
-
                 osc.Send(message);
-
                 startRecordingTime = Time.time;
                 imgCount++;
                 instruction="Captured pics :"+imgCount;
 
 
-            }
-        }else{
-
-            instruction="Press Start to scan";
-
-
-
-
-
-
-        }
-        
     }
 }
