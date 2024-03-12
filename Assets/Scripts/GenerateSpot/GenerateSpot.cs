@@ -10,7 +10,7 @@ using  DimBoxes;
 using Normal.Realtime;
 using Oculus.Interaction;
 using Unity.VisualScripting;
-using UnityEngine.SocialPlatforms.GameCenter;
+
 
 public class GenerateSpot : MonoBehaviour
 {

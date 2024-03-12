@@ -13225,7 +13225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  downloadURL: http://34.106.250.143/upload/
+  downloadURL: http://192.168.0.139:8000/
   URLID: 
   pos: {x: 0, y: 0, z: 0}
   size: {x: 0, y: 0, z: 0}
