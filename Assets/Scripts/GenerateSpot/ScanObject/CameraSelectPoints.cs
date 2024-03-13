@@ -16,6 +16,8 @@ public enum CameraType{
 
 public class CameraSelectPoints : MonoBehaviour
 {
+    public GameObject indicator;
+
 
     public TMP_Text coordinate;
     public CameraType cameraType;
@@ -39,6 +41,7 @@ public class CameraSelectPoints : MonoBehaviour
     void Start()
     {
         Manager=FindObjectOfType<RealityEditorManager>();
+        
     }
 
     // Update is called once per frame
@@ -91,6 +94,7 @@ public class CameraSelectPoints : MonoBehaviour
                 centerAim=new Vector2((screenPos.x+centerOffest.x),screenPos.y+centerOffest.y);
 
                 CenterPoint.localPosition=new Vector2(centerAim.x,centerAim.y);
+          
 
                 
 

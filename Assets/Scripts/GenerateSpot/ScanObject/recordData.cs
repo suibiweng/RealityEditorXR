@@ -8,6 +8,10 @@ using UnityEngine.UI;
 
 public class recordData : MonoBehaviour
 {
+    
+    public GameObject indicator;
+
+    public ArrayList cameraPoses;
 
 
     public OSC osc;
@@ -31,10 +35,11 @@ public class recordData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        cameraPoses=new ArrayList();
         osc=FindObjectOfType<OSC>();
         spot=GetComponent<GenerateSpot>();
         campoints=FindObjectOfType<CameraSelectPoints>();
+        indicator=campoints.indicator;
 
     }
 
@@ -61,9 +66,17 @@ public class recordData : MonoBehaviour
         message = new OscMessage();
         message.address = "/endRecord";
         osc.Send(message);
+
+        foreach(var c in cameraPoses){
+            Destroy((GameObject)c);
+
+
+        }
         
 
     }
+
+    bool capturing=false;
 
 
     // Update is called once per frame
@@ -89,8 +102,17 @@ public class recordData : MonoBehaviour
         if (recording)
         {
             
-        if(OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
-                    Capture();
+        if(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger)){
+            
+            if(!capturing){
+
+                StartCoroutine( DelayCapture(0.5f));
+            }
+
+
+        }
+            
+            
             
             // if(Time.time - startRecordingTime > 0)
             // {
@@ -106,7 +128,36 @@ public class recordData : MonoBehaviour
     }
 
 
+    IEnumerator DelayCapture(float delaysecod){
+        capturing=true;
+
+        Capture();
+
+         yield return new WaitForSeconds(delaysecod);
+         
+        capturing=false;
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
     void Capture(){
+
+                
+                if(indicator!=null) {
+                        GameObject c =Instantiate(indicator,indicator.transform.position,indicator.transform.rotation) as GameObject;
+                        cameraPoses.Add(c);
+
+                }
 
 
                 OscMessage message;
@@ -120,9 +171,18 @@ public class recordData : MonoBehaviour
              if(campoints.cameraType==CameraType.Stereo)   message.values.Add("left:"+campoints.rLeftAim.ToString()+" "+"right"+campoints.rRightAim.ToString());
              if(campoints.cameraType==CameraType.Mono)   message.values.Add(campoints.rCenterAim.ToString());
                 osc.Send(message);
+                
+                
+        
+                
+                
                 startRecordingTime = Time.time;
                 imgCount++;
                 instruction="Captured pics :"+imgCount;
+
+
+
+
 
 
     }
