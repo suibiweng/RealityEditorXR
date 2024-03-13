@@ -168,8 +168,10 @@ public class GenerateSpot : MonoBehaviour
         StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_scaned_target.zip"));
         StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_scaned_Instruction.zip"));
 
-
         //openTheScanningPanel
+
+
+
         
 
 
@@ -369,17 +371,19 @@ public class GenerateSpot : MonoBehaviour
     {
         manager.promtGenerateModel(id, Prompt, URLID);
         URLIDText.text = URLID;
-        PreViewQuad.SetActive(true);
+        // PreViewQuad.SetActive(true);
         loadingIcon.SetActive(true);
         UiMenu.SetActive(false);
         //StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "genrated.zip"));
 
     }
 
-    void ModifyModelinstruction(string promt)
+    void ModifyModelinstruction(string Prompt)
     {
-
-
+        manager.InstructModify(id,Prompt,URLID);
+        URLIDText.text = URLID;
+        loadingIcon.SetActive(true);
+        UiMenu.SetActive(false);
 
     }
 
@@ -392,29 +396,13 @@ public class GenerateSpot : MonoBehaviour
 
         if (!StartScanning) {
             StartScanning = true;
-
             RecordData.StartRecording();
             Text_Scanning_Btn.text = "Stop Scanning";
 
-
-
         } else {
             StartScanning = false;
-
-
             Text_Scanning_Btn.text = "Start Scanning";
-
             RecordData.StopRecording();
-
-                // check the Target and Backgroung;
-
-              //StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "genrated.zip"));
-
-
-
-
-
-
 
         }
 
@@ -427,24 +415,17 @@ public class GenerateSpot : MonoBehaviour
 
     public void DebugLoadModel()
     {
-
-
         modelDownloader.LoadModel(
             new ModelIformation() {
                 ModelURL = "http://127.0.0.1:8000/20240308003439_generated.zip",
                 gameobjectWarp = TargetObject
 
             });
-
-
         modelDownloader.startDownload();
-
-
     }
 
     public void downloadModel(string url,GameObject warp)
     {
-
         modelDownloader.AddTask(
             new ModelIformation() {
                 ModelURL = url,
@@ -454,16 +435,6 @@ public class GenerateSpot : MonoBehaviour
         PreViewQuad.SetActive(false);
         loadingIcon.SetActive(false);
         modelDownloader.startDownload();
-    }
-
-
-
-    public void Remove()
-    {
-
-        manager.RemoveSpot(URLID);
-
-
     }
 
 

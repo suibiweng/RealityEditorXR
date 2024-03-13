@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 using OVR;
 using UnityEditor;
@@ -36,13 +37,39 @@ public class CameraSelectPoints : MonoBehaviour
     public GameObject testTarget;
     public float speed =0.001f;
 
+    public bool isActive;
+    public CanvasGroup canvasGroup;
+
     
     // Start is called before the first frame update
     void Start()
     {
         Manager=FindObjectOfType<RealityEditorManager>();
+        canvasGroup=GetComponent<CanvasGroup>();
+        canvasGroup.alpha=0;
+
         
     }
+
+    public void SetActive(bool active){
+
+        if(active){
+
+             canvasGroup.alpha=1;
+
+
+        }else{
+
+              canvasGroup.alpha=0;
+
+
+        }
+
+
+
+    }
+
+
 
     // Update is called once per frame
     void Update()
