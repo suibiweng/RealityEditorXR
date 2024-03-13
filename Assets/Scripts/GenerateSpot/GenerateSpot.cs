@@ -80,7 +80,7 @@ public class GenerateSpot : MonoBehaviour
     public Grabbable _grabbable;
 
     
-    public GenerateType type;
+    public GenerateType SpotType;
 
     public RealtimeTransform _realtimeTransform;
     public RealtimeView _realtimeView; 
@@ -89,6 +89,9 @@ public class GenerateSpot : MonoBehaviour
     public MovePlayer moveplayer;
 
     //public bool scanning=false;
+
+
+    public Shader VertexColor;
 
     
     void Start()
@@ -119,6 +122,62 @@ public class GenerateSpot : MonoBehaviour
 
 
         ControlPanels();
+
+
+
+    }
+
+
+    public void setTheType(int select){
+
+        switch(select)
+        {
+            case 0:
+                SpotType=GenerateType.Add;
+
+                initAdd();
+
+            break;
+
+            case 1:
+                 SpotType=GenerateType.Reconstruction;
+                 initReconstruction();
+            break;
+
+        }
+        
+
+    }
+
+
+    void initAdd(){
+
+        StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_generated.zip"));
+
+
+
+
+
+
+
+    }
+
+    void initReconstruction(){
+
+        StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_scaned_background.zip"));
+        StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_scaned_target.zip"));
+        StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_scaned_Instruction.zip"));
+
+
+        //openTheScanningPanel
+        
+
+
+
+
+
+
+
     }
     
     
@@ -183,6 +242,37 @@ public class GenerateSpot : MonoBehaviour
 
     }
 
+    public bool setMaterialforGenrated(Transform obj){
+
+        if(obj.childCount==0){
+
+             return false;
+
+        }else{
+            Renderer renderer;
+
+            renderer=obj.gameObject.GetComponentInChildren<Renderer>();
+
+            renderer.materials[0].shader=VertexColor;
+
+
+
+
+
+
+
+
+
+        return true;
+
+
+        }
+           
+        
+
+        
+    }
+
 
 
 
@@ -231,17 +321,16 @@ public class GenerateSpot : MonoBehaviour
 
         updateTheTransform();
 
+
+       if( SpotType==GenerateType.Add)
+        setMaterialforGenrated(TargetObject.transform);
+
         if (isselsected) PromtText.text = Prompt;
 
         if (Input.GetKeyDown(KeyCode.Space)) {
 
             DebugLoadModel();
             
-        }
-
-        if (Input.GetKeyDown(KeyCode.S)) {
-
-            ScanObject();
         }
 
 
@@ -342,10 +431,13 @@ public class GenerateSpot : MonoBehaviour
 
         modelDownloader.LoadModel(
             new ModelIformation() {
-                ModelURL = "http://34.106.250.143/upload/model.zip",
+                ModelURL = "http://127.0.0.1:8000/20240308003439_generated.zip",
                 gameobjectWarp = TargetObject
 
             });
+
+
+        modelDownloader.startDownload();
 
 
     }
@@ -469,14 +561,14 @@ public class GenerateSpot : MonoBehaviour
 
         if (isResponding && !BakgrondGen) { //for shape E
             BakgrondGen = true;
-            downloadModel(BackGroundURL,TargetObject);
+            downloadModel(TargetURL,TargetObject);
         } 
 
 
         
         if (isResponding && !TargetGen) { //for shape E
             TargetGen = true;
-            downloadModel(BackGroundURL,TargetObject);
+            downloadModel(BackGroundURL,BackGroundOnly);
         } 
 
         

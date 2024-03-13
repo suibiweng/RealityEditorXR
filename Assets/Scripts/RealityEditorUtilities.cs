@@ -9,9 +9,8 @@ namespace RealityEditor
 {
     public enum GenerateType{
         Add,
-        Scanning,
-        Erase,
-        Modify
+        Reconstruction,
+        None
 
     }
 
