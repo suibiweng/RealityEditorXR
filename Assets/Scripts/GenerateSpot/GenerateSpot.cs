@@ -294,13 +294,15 @@ public class GenerateSpot : MonoBehaviour
 
         if (controlPanels[0].activeInHierarchy == true || controlPanels[1].activeInHierarchy == true) {
 
-            AimStart.GetComponent<MeshRenderer>().enabled=false;
-
+            //AimStart.GetComponent<MeshRenderer>().enabled=false;
             VoicePanel.SetActive(true);
         } else {
 
+            RecordData.campoints.Seton(true);
             VoicePanel.SetActive(false);
-            AimStart.GetComponent<MeshRenderer>().enabled=true;
+            //AimStart.GetComponent<MeshRenderer>().enabled=true;
+           
+
         }
 
     }

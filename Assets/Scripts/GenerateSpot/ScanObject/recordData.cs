@@ -70,7 +70,7 @@ public class recordData : MonoBehaviour
             Destroy((GameObject)c);
         }
 
-        campoints.SetActive(false);
+        campoints.Seton(false);
 
 
     }

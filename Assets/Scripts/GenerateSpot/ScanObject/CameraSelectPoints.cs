@@ -46,21 +46,20 @@ public class CameraSelectPoints : MonoBehaviour
     {
         Manager=FindObjectOfType<RealityEditorManager>();
         canvasGroup=GetComponent<CanvasGroup>();
-        canvasGroup.alpha=0;
-
+        
         
     }
 
-    public void SetActive(bool active){
+    public void Seton(bool active){
 
         if(active){
 
-             canvasGroup.alpha=1;
+             canvasGroup.alpha=1f;
 
 
         }else{
 
-              canvasGroup.alpha=0;
+              canvasGroup.alpha=0f;
 
 
         }
