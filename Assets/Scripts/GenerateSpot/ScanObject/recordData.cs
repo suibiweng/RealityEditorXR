@@ -89,7 +89,7 @@ public class recordData : MonoBehaviour
             
             if(!capturing){
 
-                StartCoroutine( DelayCapture(0.5f));
+                StartCoroutine( DelayCapture(0.2f));
             }
 
 

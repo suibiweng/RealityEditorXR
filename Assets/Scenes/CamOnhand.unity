@@ -6844,6 +6844,18 @@ PrefabInstance:
       propertyPath: testTarget
       value: 
       objectReference: {fileID: 102492633}
+    - target: {fileID: 7737787641741966560, guid: 7f4d6a95ecf031146b332aa127ab57e8, type: 3}
+      propertyPath: canvasGroup
+      value: 
+      objectReference: {fileID: 898263258}
+    - target: {fileID: 7737787641741966560, guid: 7f4d6a95ecf031146b332aa127ab57e8, type: 3}
+      propertyPath: centerOffest.x
+      value: -472
+      objectReference: {fileID: 0}
+    - target: {fileID: 7737787641741966560, guid: 7f4d6a95ecf031146b332aa127ab57e8, type: 3}
+      propertyPath: centerOffest.y
+      value: 252
+      objectReference: {fileID: 0}
     - target: {fileID: 7737787641741966572, guid: 7f4d6a95ecf031146b332aa127ab57e8, type: 3}
       propertyPath: m_Name
       value: ScanPanel
