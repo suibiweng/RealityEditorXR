@@ -52,10 +52,15 @@ public class GenerateSpot : MonoBehaviour
     public Text LitseningText;
     // UI panel;
 
+    
+
     public GameObject UiMenu;
     public GameObject[] controlPanels;
     public Toggle[] PanelsToggles;
     public GameObject VoicePanel;
+    public GameObject EditMenu;
+    public GameObject ScanningPanel;
+    public GameObject selectMenu;
 
     public GameObject AimStart;
 
@@ -69,7 +74,7 @@ public class GenerateSpot : MonoBehaviour
 
     public recordData RecordData;
 
-    public GameObject PreViewQuad;
+   // public GameObject PreViewQuad;
     public BoundBox Outlinebox;
     ModelDownloader modelDownloader;
 
@@ -104,24 +109,29 @@ public class GenerateSpot : MonoBehaviour
         moveplayer = FindObjectOfType<MovePlayer>();
         _grabbable= GetComponent<Grabbable>();
 
-        StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_generated.zip"));
-        StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_scaned_background.zip"));
-        StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_scaned_target.zip"));
-        StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_scaned_Instruction.zip"));
+        // StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_generated.zip"));
+        // StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_scaned_background.zip"));
+        // StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_scaned_target.zip"));
+        // StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_scaned_Instruction.zip"));
 
 
         RecordData=GetComponent<recordData>();
+        
+        
         _grabbable.WhenPointerEventRaised += HandlePointerEventRaised; 
 
        
          // //   externalController.GrabbedObjectDelegate += Grab;
          //    externalController.ReleasedObjectDelegate += Release;
 
+        
+        
+        
         loadingIcon.SetActive(false);
         
 
-
-        ControlPanels();
+        if(selectMenu!=null)selectMenu.SetActive(true);
+      //  ControlPanels();
 
 
 
@@ -134,7 +144,6 @@ public class GenerateSpot : MonoBehaviour
         {
             case 0:
                 SpotType=GenerateType.Add;
-
                 initAdd();
 
             break;
@@ -153,8 +162,8 @@ public class GenerateSpot : MonoBehaviour
     void initAdd(){
 
         StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_generated.zip"));
-
-
+        isMaterialChanging=false;
+        VoicePanel.SetActive(true);
 
 
 
@@ -169,6 +178,7 @@ public class GenerateSpot : MonoBehaviour
         StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_scaned_Instruction.zip"));
 
         //openTheScanningPanel
+        ScanningPanel.SetActive(true);
 
 
 
@@ -181,6 +191,18 @@ public class GenerateSpot : MonoBehaviour
 
 
     }
+
+
+    void OpenEditMenu(){
+        EditMenu.SetActive(true);
+
+
+    }
+
+    void CloseEditMenu(){
+        EditMenu.SetActive(false);
+    }
+
     
     
     private void HandlePointerEventRaised(PointerEvent evt)
@@ -189,6 +211,8 @@ public class GenerateSpot : MonoBehaviour
         {
             case PointerEventType.Select:
                   OnSelect();
+                    
+                  
 
                // URLIDText.text = "should be requesting the transform and view in grab";
                 
@@ -209,7 +233,14 @@ public class GenerateSpot : MonoBehaviour
 
         manager.updateSelected(id, URLID);
         isselsected = true;
-        Debug.Log("should be requesting the transform and view in Select");
+        //Debug.Log("should be requesting the transform and view in Select");
+
+        if(SpotType!=GenerateType.None){
+
+            OpenEditMenu();
+
+        }
+
      //   moveplayer.spot = this.gameObject;
         
         // _realtimeTransform.RequestOwnership();
@@ -325,13 +356,45 @@ public class GenerateSpot : MonoBehaviour
 
         updateTheTransform();
 
+        switch(SpotType){
 
-       if( SpotType==GenerateType.Add)
-        setMaterialforGenrated(TargetObject.transform);
+            case  GenerateType.Add :
+             setMaterialforGenrated(TargetObject.transform);
+            
+            
+            break;
+
+            case GenerateType.Reconstruction:
+
+            break;
+
+            case GenerateType.None :
+
+                CloseEditMenu();
+            break;
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
 
         if (isselsected) PromtText.text = Prompt;
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.D)) {
 
             DebugLoadModel();
             
@@ -353,18 +416,51 @@ public class GenerateSpot : MonoBehaviour
  
 
 
-
-
-
-
     }
 
     public void InturuptProcess()
     {
         manager.sendStop();
 
+    }
+
+    public void materialModify(){
+        isMaterialChanging=true;
+        VoicePanel.SetActive(true);
+
+
+
 
     }
+
+
+
+
+
+
+
+    
+    bool isMaterialChanging;
+
+
+
+
+    
+
+    public void ConfirmGeneration(){
+
+        if(isMaterialChanging){
+            ModifyModelinstruction();
+        
+        }else{
+            GenrateModel();
+
+        }
+         OpenEditMenu();
+
+    }
+
+
 
 
 
@@ -375,17 +471,17 @@ public class GenerateSpot : MonoBehaviour
         URLIDText.text = URLID;
         // PreViewQuad.SetActive(true);
         loadingIcon.SetActive(true);
-        UiMenu.SetActive(false);
+       // UiMenu.SetActive(false);
         //StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "genrated.zip"));
 
     }
 
-    void ModifyModelinstruction(string Prompt)
+    void ModifyModelinstruction()
     {
         manager.InstructModify(id,Prompt,URLID);
         URLIDText.text = URLID;
         loadingIcon.SetActive(true);
-        UiMenu.SetActive(false);
+      //  UiMenu.SetActive(false);
 
     }
 
@@ -419,7 +515,7 @@ public class GenerateSpot : MonoBehaviour
     {
         modelDownloader.LoadModel(
             new ModelIformation() {
-                ModelURL = "http://127.0.0.1:8000/20240308003439_generated.zip",
+                ModelURL = "http://127.0.0.1:8000/20240318170259_generated.zip",
                 gameobjectWarp = TargetObject
 
             });
@@ -434,7 +530,7 @@ public class GenerateSpot : MonoBehaviour
                 gameobjectWarp = warp
             }
         );
-        PreViewQuad.SetActive(false);
+  
         loadingIcon.SetActive(false);
         modelDownloader.startDownload();
     }
@@ -549,6 +645,13 @@ public class GenerateSpot : MonoBehaviour
             InstructGen = true;
             downloadModel(instructionURL,TargetObject);
         } 
+
+
+    }
+
+    public void Remove(){
+
+            manager.RemoveSpot(URLID);
 
 
     }

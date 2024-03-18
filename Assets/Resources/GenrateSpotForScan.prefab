@@ -24545,19 +24545,22 @@ MonoBehaviour:
   - {fileID: 486049556301374223}
   - {fileID: 486049557873673390}
   VoicePanel: {fileID: 486049557683312331}
+  EditMenu: {fileID: 0}
+  ScanningPanel: {fileID: 0}
+  selectMenu: {fileID: 0}
   AimStart: {fileID: 0}
   TargetObject: {fileID: 1488332997271445416}
   BackGroundOnly: {fileID: 416724240778519937}
   Contianier: {fileID: 4950816736992942298}
   RecordData: {fileID: 0}
-  PreViewQuad: {fileID: 486049556910927675}
   Outlinebox: {fileID: 0}
   CountID: 0
   _grabbable: {fileID: 0}
-  type: 0
+  SpotType: 0
   _realtimeTransform: {fileID: 0}
   _realtimeView: {fileID: 0}
   moveplayer: {fileID: 0}
+  VertexColor: {fileID: 0}
   Text_Scanning_Btn: {fileID: 1167092362498039507}
   Text_Instruction: {fileID: 1167092362498039525}
   checkInterval: 5
@@ -24740,6 +24743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16cdae9601d12b342b69ff265c63f730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  indicator: {fileID: 0}
   osc: {fileID: 0}
   imgCount: 0
   instruction: 
