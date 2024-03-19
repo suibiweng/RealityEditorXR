@@ -65,6 +65,21 @@ public class DebugOSCSend : MonoBehaviour
     }
 
 
+    public void sendTextrue(){
+        
+        OscMessage message = new OscMessage()
+        {
+            address = "/InstructModify"
+        };
+        message.values.Add(1);
+        message.values.Add("a golden cup");
+        message.values.Add("20240318161937");
+
+         osc.Send(message);
+
+    }
+
+
 
     
 

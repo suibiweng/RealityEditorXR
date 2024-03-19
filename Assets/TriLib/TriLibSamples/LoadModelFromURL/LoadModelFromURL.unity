@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfd6c5680a0f6f344b7fcfab03a64697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ModelURL: http://192.168.0.139:8000/20240318161937_generated.zip
+  ModelURL: http://192.168.0.139:8000/mesh3.zip
 --- !u!4 &153877216
 Transform:
   m_ObjectHideFlags: 0
