@@ -175,7 +175,7 @@ public class GenerateSpot : MonoBehaviour
 
         StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_scaned_background.zip"));
         StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_scaned_target.zip"));
-        StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_scaned_Instruction.zip"));
+        
 
         //openTheScanningPanel
         ScanningPanel.SetActive(true);
@@ -366,6 +366,8 @@ public class GenerateSpot : MonoBehaviour
 
             case GenerateType.Reconstruction:
 
+
+
             break;
 
             case GenerateType.None :
@@ -471,6 +473,7 @@ public class GenerateSpot : MonoBehaviour
         URLIDText.text = URLID;
         // PreViewQuad.SetActive(true);
         loadingIcon.SetActive(true);
+        Prompt="";
        // UiMenu.SetActive(false);
         //StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "genrated.zip"));
 
@@ -481,7 +484,31 @@ public class GenerateSpot : MonoBehaviour
         manager.InstructModify(id,Prompt,URLID);
         URLIDText.text = URLID;
         loadingIcon.SetActive(true);
+        Prompt="";
+        InstructGen=false;
+        StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_Instruction.zip"));
+        StartCoroutine( CleartheObjinTarget());
       //  UiMenu.SetActive(false);
+
+    }
+
+
+    IEnumerator CleartheObjinTarget(){
+        yield return new WaitForSeconds(120f);
+
+
+        
+
+        foreach (GameObject child in TargetObject.transform.GetComponentsInChildren<GameObject>())
+        {
+            Destroy(child);
+        }
+        
+
+
+
+
+
 
     }
 
@@ -544,7 +571,7 @@ public class GenerateSpot : MonoBehaviour
 
 
     IEnumerator CheckURLPeriodically(string urltocheck)
-    {
+    {     yield return new WaitForSeconds(10f);
         while (true) {
             yield return CheckURL(urltocheck);
             yield return new WaitForSeconds(checkInterval);
