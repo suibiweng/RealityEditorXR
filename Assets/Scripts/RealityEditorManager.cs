@@ -23,11 +23,16 @@ public class RealityEditorManager : MonoBehaviour
     public string selectedIDUrl;
     public OSC osc;
 
+    
+
     int IDs=0;
 
     //public WsClient websocket;
 
     TextMeshPro debugText;
+
+
+    public GameObject Cursor;
 
     
 

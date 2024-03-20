@@ -2,8 +2,11 @@ using System.Collections;
 using Meta.WitAi;
 using UnityEngine;
 using UnityEngine.UI;
+using RealityEditor;
 public class    ColorStyler : MonoBehaviour
 {
+
+    public RealityEditorManager manager;
 
 
     public Image Colorplate;
@@ -53,10 +56,16 @@ public class    ColorStyler : MonoBehaviour
         {
             grabOject.GrabbedObjectDelegate += Grab;
             grabOject.ReleasedObjectDelegate += Release;
+
             // grabOject.CursorPositionDelegate += Cursor;
         }
 
-        cursor=GameObject.FindGameObjectWithTag("UIcursor").transform;
+        manager=FindAnyObjectByType<RealityEditorManager>();
+
+        cursor=manager.Cursor.transform;
+
+       // cursor=GameObject.FindGameObjectWithTag("UIcursor").transform;
+       // cursor=GameObject.FindGameObjectWithTag("UIcursor").transform;
 
 
 
@@ -80,9 +89,11 @@ public class    ColorStyler : MonoBehaviour
 
     private void Update()
     {
+        
 
          if(cursor!=null)
             Cursor(cursor.transform.position);
+        
         // if (_controllerHand == OVRInput.Controller.None)
         // {
         //     return;

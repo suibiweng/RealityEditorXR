@@ -1,9 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PassthroughStyler : MonoBehaviour
 {
     private const float FadeDuration = 0.2f;
+
+    public Image colorplate;
 
     [SerializeField]
     private OVRInput.Controller _controllerHand = OVRInput.Controller.None;

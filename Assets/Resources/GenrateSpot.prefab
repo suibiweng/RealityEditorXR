@@ -7840,6 +7840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1af7838c3e80fb84086a4b41eeacfedc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 0}
   Colorplate: {fileID: 4341019684798003735}
   _controllerHand: 0
   _colorWheel: {fileID: 8467530963876913920}
