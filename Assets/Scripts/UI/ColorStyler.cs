@@ -40,6 +40,8 @@ public class    ColorStyler : MonoBehaviour
     private float _savedContrast = 0.0f;
     private float _savedSaturation = 0.0f;
 
+    public Transform cursor;
+
 
     private float _savedBlend = 1;
 
@@ -51,8 +53,13 @@ public class    ColorStyler : MonoBehaviour
         {
             grabOject.GrabbedObjectDelegate += Grab;
             grabOject.ReleasedObjectDelegate += Release;
-            grabOject.CursorPositionDelegate += Cursor;
+            // grabOject.CursorPositionDelegate += Cursor;
         }
+
+        cursor=GameObject.FindGameObjectWithTag("UIcursor").transform;
+
+
+
 
         _savedColor = new Color(1, 1, 1, 0);
         ShowFullMenu(false);
@@ -73,12 +80,15 @@ public class    ColorStyler : MonoBehaviour
 
     private void Update()
     {
-        if (_controllerHand == OVRInput.Controller.None)
-        {
-            return;
-        }
 
-        if (_settingColor)
+         if(cursor!=null)
+            Cursor(cursor.transform.position);
+        // if (_controllerHand == OVRInput.Controller.None)
+        // {
+        //     return;
+        // }
+
+        if (true)
         {
             GetColorFromWheel();
         }

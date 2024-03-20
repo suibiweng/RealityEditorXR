@@ -100,9 +100,23 @@ public class DownloadReconstruction : MonoBehaviour
 
            string DownLoadURL=GetUrlByFileName(selectedFileName);
 
-           spot.downloadModel( DownLoadURL,spot.TargetObject);
+           print(DownLoadURL);
+
+           spot.downloadModel( url+DownLoadURL,spot.TargetObject);
 
 
+
+    }
+
+    void Update(){
+
+        if(Input.GetKeyDown(KeyCode.W)){
+
+            startToDownload();
+
+
+
+        }
 
     }
 }

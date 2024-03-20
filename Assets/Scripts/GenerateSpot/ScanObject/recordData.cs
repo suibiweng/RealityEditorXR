@@ -39,6 +39,7 @@ public class recordData : MonoBehaviour
         osc=FindObjectOfType<OSC>();
         spot=GetComponent<GenerateSpot>();
         campoints=FindObjectOfType<CameraSelectPoints>();
+       
         indicator=campoints.indicator;
 
     }
