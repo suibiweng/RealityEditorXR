@@ -3486,6 +3486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dcb6804a1b3c9d489cecdeb11023159, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAcopy: 0
   id: 0
   downloadURL: http://192.168.0.139:8000/
   URLID: 
@@ -3521,8 +3522,8 @@ MonoBehaviour:
   CountID: 0
   _grabbable: {fileID: 0}
   SpotType: 2
-  _realtimeTransform: {fileID: 0}
-  _realtimeView: {fileID: 0}
+  _realtimeTransform: {fileID: -4772333348440836202}
+  _realtimeView: {fileID: -8484851729914132731}
   moveplayer: {fileID: 0}
   VertexColor: {fileID: 4800000, guid: 8ec827264c825604e885456c3e895654, type: 3}
   Text_Scanning_Btn: {fileID: 5272751271889505664}
@@ -6636,7 +6637,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2469872661309140646}
+      - m_Target: {fileID: 4752197591190969865}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -7261,7 +7262,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2469872661309140646}
+      - m_Target: {fileID: 4752197591190969865}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -7847,6 +7848,7 @@ MonoBehaviour:
   _compactObjects: []
   _objectsToHideForColorPassthrough: []
   _savedColor: {r: 1, g: 1, b: 1, a: 1}
+  cursor: {fileID: 0}
 --- !u!1 &4872908398793980062
 GameObject:
   m_ObjectHideFlags: 0
@@ -27483,7 +27485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spot: {fileID: 4204464118960621351}
   dropdown: {fileID: 1557097163}
-  url: http://127.0.0.1:8000/FromIPAD/
+  url: http://192.168.0.139:8000/FromIPAD/
 --- !u!1 &6148612481601527800
 GameObject:
   m_ObjectHideFlags: 0

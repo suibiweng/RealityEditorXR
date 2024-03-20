@@ -1023,10 +1023,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIHelpers
       objectReference: {fileID: 0}
-    - target: {fileID: 1732808951507650, guid: a9d2de84afb308a4796cc671d3432b4d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4897607310870066, guid: a9d2de84afb308a4796cc671d3432b4d, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1071,9 +1067,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114043904411177872, guid: a9d2de84afb308a4796cc671d3432b4d, type: 3}
-      propertyPath: joyPadClickButton
-      value: 2105345
+    - target: {fileID: 120006741097097638, guid: a9d2de84afb308a4796cc671d3432b4d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9d2de84afb308a4796cc671d3432b4d, type: 3}
@@ -3291,6 +3287,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GenrateSpot
       objectReference: {fileID: 0}
+    - target: {fileID: 1683885090753417592, guid: 1182d3065d6fb8f4bb7611cbfef1c981, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1683885090753417599, guid: 1182d3065d6fb8f4bb7611cbfef1c981, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -3339,8 +3339,27 @@ PrefabInstance:
       propertyPath: SpotType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4204464118960621351, guid: 1182d3065d6fb8f4bb7611cbfef1c981, type: 3}
+      propertyPath: _realtimeTransform
+      value: 
+      objectReference: {fileID: 1581173298}
+    - target: {fileID: 6148612481526342885, guid: 1182d3065d6fb8f4bb7611cbfef1c981, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1182d3065d6fb8f4bb7611cbfef1c981, type: 3}
+--- !u!114 &1581173298 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -4772333348440836202, guid: 1182d3065d6fb8f4bb7611cbfef1c981, type: 3}
+  m_PrefabInstance: {fileID: 1581173297}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1029778088, guid: c424820a8880b8845bda10ec0b41507e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1710238850
 GameObject:
   m_ObjectHideFlags: 0

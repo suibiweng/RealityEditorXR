@@ -15,6 +15,8 @@ using Unity.VisualScripting;
 public class GenerateSpot : MonoBehaviour
 {
 
+    public bool isAcopy=false;
+
     public int id;
     public string downloadURL = "http://34.106.250.143/upload/";
 
@@ -109,10 +111,11 @@ public class GenerateSpot : MonoBehaviour
         moveplayer = FindObjectOfType<MovePlayer>();
         _grabbable= GetComponent<Grabbable>();
 
-        // StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_generated.zip"));
-        // StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_scaned_background.zip"));
-        // StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_scaned_target.zip"));
-        // StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_scaned_Instruction.zip"));
+        StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_generated.zip"));
+        // StartCoroutine(CheckURLPeriodically(downloadURL + "20240319141435" + "_Instruction.zip"));
+        // // StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_scaned_background.zip"));
+        // // StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_scaned_target.zip"));
+         StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_Instruction.zip"));
 
 
         RecordData=GetComponent<recordData>();
@@ -132,6 +135,14 @@ public class GenerateSpot : MonoBehaviour
 
         if(selectMenu!=null)selectMenu.SetActive(true);
       //  ControlPanels();
+
+        if(isAcopy){
+            selectMenu.SetActive(false);
+
+        _realtimeTransform.enabled=false;
+        _realtimeView.enabled=false; 
+
+        }
 
 
 
@@ -173,8 +184,8 @@ public class GenerateSpot : MonoBehaviour
 
     void initReconstruction(){
 
-        StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_scaned_background.zip"));
-        StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_scaned_target.zip"));
+        // StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_scaned_background.zip"));
+        // StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_scaned_target.zip"));
         
 
         //openTheScanningPanel
@@ -237,7 +248,7 @@ public class GenerateSpot : MonoBehaviour
 
         if(SpotType!=GenerateType.None){
 
-            OpenEditMenu();
+          if(TargetObject.transform.childCount!=0)  OpenEditMenu();
 
         }
 
@@ -271,6 +282,8 @@ public class GenerateSpot : MonoBehaviour
     }
     public void Copy(){
         GameObject ACopy=Instantiate(this.gameObject);
+        ACopy.GetComponent<GenerateSpot>().isAcopy=true;
+        
     
 
     }
@@ -351,6 +364,11 @@ public class GenerateSpot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isAcopy){
+            UiMenu.SetActive(false);
+            return;
+
+        }
         
         
 
@@ -385,20 +403,23 @@ public class GenerateSpot : MonoBehaviour
 
 
 
-
-
-
-
-
-
-
-
-
         if (isselsected) PromtText.text = Prompt;
 
         if (Input.GetKeyDown(KeyCode.D)) {
 
             DebugLoadModel();
+            
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.S)) {
+
+               InstructGen=false;
+
+        
+        StartCoroutine(CleartheObjinTarget());
+
+            
             
         }
 
@@ -446,9 +467,6 @@ public class GenerateSpot : MonoBehaviour
 
 
 
-
-    
-
     public void ConfirmGeneration(){
 
         if(isMaterialChanging){
@@ -487,23 +505,27 @@ public class GenerateSpot : MonoBehaviour
         Prompt="";
         InstructGen=false;
         StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_Instruction.zip"));
-        StartCoroutine( CleartheObjinTarget());
+        StartCoroutine(CleartheObjinTarget());
       //  UiMenu.SetActive(false);
 
     }
 
 
     IEnumerator CleartheObjinTarget(){
-        yield return new WaitForSeconds(120f);
+        yield return new WaitForSeconds(1f);
 
 
         
+                    int childCount=TargetObject.transform.childCount;
 
-        foreach (GameObject child in TargetObject.transform.GetComponentsInChildren<GameObject>())
-        {
-            Destroy(child);
-        }
-        
+                    for(int i=0;i<childCount;i++){
+
+                        Destroy( TargetObject.transform.GetChild(0).gameObject);
+
+
+
+                    }
+
 
 
 
@@ -592,6 +614,13 @@ public class GenerateSpot : MonoBehaviour
             Debug.Log("URL is responding!");
 
 
+            if(url.Contains("Instruction")){
+                    print("Hey");
+                    instructionURL=url;
+
+                }
+
+
              if(url.Contains("scaned")){
                 if(url.Contains("target")){
                     TargetURL=url;
@@ -603,11 +632,7 @@ public class GenerateSpot : MonoBehaviour
                        BackGroundURL=url;
                 }
 
-                if(url.Contains("Instruction")){
 
-                    instructionURL=url;
-
-                }
 
             }else if(url.Contains("generated")){
 
