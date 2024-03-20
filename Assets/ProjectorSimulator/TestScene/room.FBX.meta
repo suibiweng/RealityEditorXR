@@ -1,0 +1,109 @@
+fileFormatVersion: 2
+guid: 5c678224a97f14c4288f9d9f73529a3a
+timeCreated: 1486143306
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Layer0_001
+    100002: Panasonic AE8000 Projector_001
+    100004: Panasonic AE8000 Projector_002
+    100006: Projector Mount PHA110S_001
+    100008: //RootNode
+    100010: table_001
+    100012: table_002
+    100014: Teapot001
+    400000: Layer0_001
+    400002: Panasonic AE8000 Projector_001
+    400004: Panasonic AE8000 Projector_002
+    400006: Projector Mount PHA110S_001
+    400008: //RootNode
+    400010: table_001
+    400012: table_002
+    400014: Teapot001
+    2300000: Layer0_001
+    2300002: Panasonic AE8000 Projector_001
+    2300004: Panasonic AE8000 Projector_002
+    2300006: Projector Mount PHA110S_001
+    2300008: table_001
+    2300010: table_002
+    2300012: Teapot001
+    3300000: Layer0_001
+    3300002: Panasonic AE8000 Projector_001
+    3300004: Panasonic AE8000 Projector_002
+    3300006: Projector Mount PHA110S_001
+    3300008: table_001
+    3300010: table_002
+    3300012: Teapot001
+    4300000: Layer0_001
+    4300002: Panasonic AE8000 Projector_001
+    4300004: Panasonic AE8000 Projector_002
+    4300006: Projector Mount PHA110S_001
+    4300008: table_001
+    4300010: table_002
+    4300012: Teapot001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
