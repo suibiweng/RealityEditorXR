@@ -617,6 +617,14 @@ public class GenerateSpot : MonoBehaviour
             if(url.Contains("Instruction")){
                     print("Hey");
                     instructionURL=url;
+                            if ( !InstructGen) { //for shape E
+            InstructGen = true;
+            downloadModel(url,TargetObject);
+        } 
+
+
+
+
 
                 }
 
@@ -637,8 +645,10 @@ public class GenerateSpot : MonoBehaviour
             }else if(url.Contains("generated")){
 
 
-               ShapeEDownloadURL=url;
-
+            if (!promptGenrated) { //for shape E
+            promptGenrated = true;
+            downloadModel(url,TargetObject);
+            } 
 
             } 
         
@@ -674,29 +684,23 @@ public class GenerateSpot : MonoBehaviour
     private void HandleURLResponse(bool isResponding)
     {
 
-        if (isResponding && !promptGenrated) { //for shape E
-            promptGenrated = true;
-            downloadModel(ShapeEDownloadURL,TargetObject);
-        } 
 
 
-        if (isResponding && !BakgrondGen) { //for shape E
-            BakgrondGen = true;
-            downloadModel(TargetURL,TargetObject);
-        } 
+
+        // if (isResponding && !BakgrondGen) { //for shape E
+        //     BakgrondGen = true;
+        //     downloadModel(TargetURL,TargetObject);
+        // } 
 
 
         
-        if (isResponding && !TargetGen) { //for shape E
-            TargetGen = true;
-            downloadModel(BackGroundURL,BackGroundOnly);
-        } 
+        // if (isResponding && !TargetGen) { //for shape E
+        //     TargetGen = true;
+        //     downloadModel(BackGroundURL,BackGroundOnly);
+        // } 
 
         
-        if (isResponding && !InstructGen) { //for shape E
-            InstructGen = true;
-            downloadModel(instructionURL,TargetObject);
-        } 
+
 
 
     }
