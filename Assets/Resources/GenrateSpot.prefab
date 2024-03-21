@@ -3490,6 +3490,7 @@ MonoBehaviour:
   id: 0
   downloadURL: http://192.168.0.139:8000/
   URLID: 
+  manager: {fileID: 0}
   pos: {x: 0, y: 0, z: 0}
   size: {x: 0, y: 0, z: 0}
   TransRotation: {x: 0, y: 0, z: 0}
@@ -3526,6 +3527,9 @@ MonoBehaviour:
   _realtimeView: {fileID: -8484851729914132731}
   moveplayer: {fileID: 0}
   VertexColor: {fileID: 4800000, guid: 8ec827264c825604e885456c3e895654, type: 3}
+  UnlitShader: {fileID: 0}
+  TargetMaterial: {fileID: 0}
+  ProjectorMeterial: {fileID: 0}
   Text_Scanning_Btn: {fileID: 5272751271889505664}
   Text_Instruction: {fileID: 5272751271889505718}
   checkInterval: 5

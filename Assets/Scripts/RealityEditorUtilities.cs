@@ -10,6 +10,10 @@ namespace RealityEditor
     public enum GenerateType{
         Add,
         Reconstruction,
+        
+        Instruction,
+        
+        
         None
 
     }
