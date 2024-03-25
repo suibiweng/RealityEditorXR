@@ -4,6 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
+  - manager: {instanceID: 0}
   - loadingIcon: {instanceID: 0}
   - previewText: {instanceID: 0}
   - URLIDText: {instanceID: 0}
@@ -11,18 +12,26 @@ MonoImporter:
   - LitseningText: {instanceID: 0}
   - UiMenu: {instanceID: 0}
   - VoicePanel: {instanceID: 0}
+  - EditMenu: {instanceID: 0}
+  - ScanningPanel: {instanceID: 0}
+  - selectMenu: {instanceID: 0}
   - AimStart: {instanceID: 0}
+  - EraseBtn: {instanceID: 0}
+  - ColorBtn: {instanceID: 0}
   - TargetObject: {instanceID: 0}
   - BackGroundOnly: {instanceID: 0}
   - Contianier: {instanceID: 0}
   - RecordData: {instanceID: 0}
-  - PreViewQuad: {instanceID: 0}
+  - erasingProjector: {instanceID: 0}
   - Outlinebox: {instanceID: 0}
   - _grabbable: {instanceID: 0}
   - _realtimeTransform: {instanceID: 0}
   - _realtimeView: {instanceID: 0}
   - moveplayer: {instanceID: 0}
   - VertexColor: {fileID: 4800000, guid: 8ec827264c825604e885456c3e895654, type: 3}
+  - UnlitShader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  - TargetMaterial: {instanceID: 0}
+  - ProjectorMeterial: {instanceID: 0}
   - Text_Scanning_Btn: {instanceID: 0}
   - Text_Instruction: {instanceID: 0}
   executionOrder: 0

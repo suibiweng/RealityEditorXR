@@ -4,10 +4,11 @@ using UnityEngine;
 using System;
 using System.IO;
 using UnityEngine.UI;
-
+using UnityEngine.Networking;
 
 public class recordData : MonoBehaviour
 {
+    public RenderTexture RT;
     
     public GameObject indicator;
 
@@ -43,6 +44,19 @@ public class recordData : MonoBehaviour
         indicator=campoints.indicator;
 
     }
+    public void StartInpainting(){
+
+        Startinpanting=true;
+
+
+
+        StartCoroutine(UploadCoroutine(ConvertToTexture2D(RT), campoints.rCenterAim));
+
+
+
+    }
+
+
 
     public void StartRecording()
     {
@@ -77,16 +91,49 @@ public class recordData : MonoBehaviour
     }
 
     bool capturing=false;
+    bool Startinpanting;
+
 
 
     // Update is called once per frame
     void Update()
     {
 
+         if(Input.GetKeyDown(KeyCode.Q)){
+
+
+             StartCoroutine(UploadCoroutine(ConvertToTexture2D(RT), campoints.rCenterAim));
+
+
+
+         }
+
+
+
+
+        if(Startinpanting){
+
+            instruction="Press left Trigger to capture";
+
+            //    if(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger)){
+            //          StartCoroutine(UploadCoroutine((Texture2D)campoints.CameraTexture, campoints.centerAim));
+            //    }
+
+        
+        
+        }
+
+
+
         if (recording)
         {
             
         if(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger)){
+            
+            
+            
+           // StartCoroutine(UploadCoroutine((Texture2D)campoints.CameraTexture, campoints.centerAim));
+            
             
             if(!capturing){
 
@@ -99,12 +146,95 @@ public class recordData : MonoBehaviour
         
         }else{
 
-            instruction="Press Start to scan and press left Trigger to capture";
+           // instruction="Press Start to scan and press left Trigger to capture";
 
 
         }
         
     }
+
+
+     public static byte[] EncodeTextureToJPG(Texture2D texture, int quality = 75)
+    {
+        // Create a temporary Texture2D in a format that supports encoding
+       Texture2D tempTexture = new Texture2D(texture.width, texture.height, texture.format, texture.mipmapCount > 1);
+
+        // Copy the pixel data
+        Graphics.CopyTexture(texture, tempTexture);
+        tempTexture.Apply(true); 
+        // Encode the temporary texture
+        byte[] jpgBytes = tempTexture.EncodeToJPG(quality);
+
+        // Clean up the temporary texture
+         DestroyImmediate(tempTexture);
+
+        return jpgBytes;
+    }
+
+
+
+
+   IEnumerator UploadCoroutine(Texture2D texture, Vector2 coordinates)
+    {
+        // Convert texture to a JPG byte array
+        byte[] textureBytes =texture.EncodeToJPG();
+
+        // Create a multipart form for the request
+        WWWForm form = new WWWForm();
+        form.AddBinaryData("file", textureBytes, "texture.jpg", "image/jpeg");
+        
+        // Add 2D coordinates to the form
+        form.AddField("xCoordinate", coordinates.x.ToString());
+        form.AddField("yCoordinate", coordinates.y.ToString());
+        form.AddField("URLID",spot.URLID); 
+
+        // Create a UnityWebRequest for uploading the data
+        using (UnityWebRequest www = UnityWebRequest.Post(spot.manager.uploadURL+"/upload", form))
+        {
+            // Set a download handler to receive the server's response
+            www.downloadHandler = new DownloadHandlerBuffer();
+
+            // Send the request and wait for the response
+            yield return www.SendWebRequest();
+
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Startinpanting=false;
+
+                Debug.LogError(www.error);
+            }
+            else
+            {
+                Debug.Log("Upload complete!");
+            }
+        }
+    }
+
+
+
+        public Texture2D ConvertToTexture2D(RenderTexture renderTexture)
+    {
+        // Create a new Texture2D with the same dimensions as the RenderTexture
+        Texture2D texture2D = new Texture2D(renderTexture.width, renderTexture.height, TextureFormat.RGBA32, false);
+
+        // Save the current active RenderTexture
+        RenderTexture currentActiveRT = RenderTexture.active;
+
+        // Set the RenderTexture as active (so we can read from it)
+        RenderTexture.active = renderTexture;
+
+        // Read the pixels from the RenderTexture and apply them to the Texture2D
+        texture2D.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
+        texture2D.Apply();
+
+        // Restore the previously active RenderTexture
+        RenderTexture.active = currentActiveRT;
+
+        return texture2D;
+    }
+
+
+
 
 
     IEnumerator DelayCapture(float delaysecod){
@@ -115,6 +245,7 @@ public class recordData : MonoBehaviour
          yield return new WaitForSeconds(delaysecod);
          
         capturing=false;
+
 
 
 
@@ -142,12 +273,8 @@ public class recordData : MonoBehaviour
              
              
              if(campoints.cameraType==CameraType.Stereo)   message.values.Add("left:"+campoints.rLeftAim.ToString()+" "+"right"+campoints.rRightAim.ToString());
-             if(campoints.cameraType==CameraType.Mono)   message.values.Add(campoints.rCenterAim.ToString());
+             if(campoints.cameraType==CameraType.Mono)   message.values.Add(campoints.centerAim.ToString());
                 osc.Send(message);
-                
-                
-        
-                
                 
                 startRecordingTime = Time.time;
                 imgCount++;

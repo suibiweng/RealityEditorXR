@@ -20,6 +20,9 @@ public class CameraSelectPoints : MonoBehaviour
     public GameObject indicator;
 
 
+    public Texture CameraTexture;
+
+
     public TMP_Text coordinate;
     public CameraType cameraType;
     
@@ -46,6 +49,8 @@ public class CameraSelectPoints : MonoBehaviour
     {
         Manager=FindObjectOfType<RealityEditorManager>();
         canvasGroup=GetComponent<CanvasGroup>();
+
+        CameraTexture=GetComponent<RawImage>().texture;
         
         
     }

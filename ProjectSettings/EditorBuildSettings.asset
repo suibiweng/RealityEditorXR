@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/InpaintedTest.unity
+    guid: 83c8ab9bf4127a74ebcbeec2c38ed622
   - enabled: 0
     path: Assets/Scenes/UITest.unity
     guid: e6ae9782ad4467a46964ae9cae56e673

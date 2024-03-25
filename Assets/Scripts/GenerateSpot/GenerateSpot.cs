@@ -9,7 +9,7 @@ using UnityEngine.UI;
 using DimBoxes;
 using Normal.Realtime;
 using Oculus.Interaction;
-using Unity.VisualScripting;
+
 
 
 public class GenerateSpot : MonoBehaviour
@@ -52,19 +52,20 @@ public class GenerateSpot : MonoBehaviour
     //Control Interface
     public TMP_Text PromtText;
     public Text LitseningText;
+    
     // UI panel;
-
-
-
     public GameObject UiMenu;
     public GameObject[] controlPanels;
     public Toggle[] PanelsToggles;
     public GameObject VoicePanel;
     public GameObject EditMenu;
     public GameObject ScanningPanel;
-    public GameObject selectMenu;
 
+    public GameObject DownloadPanel;
+    public GameObject selectMenu;
     public GameObject AimStart;
+
+    public GameObject EraseBtn,ColorBtn;
 
 
 
@@ -76,13 +77,16 @@ public class GenerateSpot : MonoBehaviour
 
     public recordData RecordData;
 
-    // public GameObject PreViewQuad;
+    
+    public Projector erasingProjector;
+
+
     public BoundBox Outlinebox;
     ModelDownloader modelDownloader;
 
     public int CountID;
     bool promptGenrated = false;
-    bool BakgrondGen = false, TargetGen = false, InstructGen = false;
+    bool  InstructGen = false,Inpainted=false;
 
     public Grabbable _grabbable;
 
@@ -103,6 +107,11 @@ public class GenerateSpot : MonoBehaviour
     public Material TargetMaterial;
     public Material ProjectorMeterial;
 
+    public Texture WhiteTex,OriginTex;
+
+
+
+
 
 
     void Start()
@@ -114,9 +123,10 @@ public class GenerateSpot : MonoBehaviour
         _realtimeView = GetComponent<RealtimeView>();
         moveplayer = FindObjectOfType<MovePlayer>();
         _grabbable = GetComponent<Grabbable>();
+        downloadURL=manager.ServerURL;
 
 
-        // URLID=TimestampGenerator.GetTimestamp();
+// URLID=TimestampGenerator.GetTimestamp();
 
         StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_generated.zip"));
     
@@ -193,22 +203,8 @@ public class GenerateSpot : MonoBehaviour
     void initReconstruction()
     {
 
-        // StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_scaned_background.zip"));
-        // StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_scaned_target.zip"));
 
-
-        //openTheScanningPanel
         ScanningPanel.SetActive(true);
-
-
-
-
-
-
-
-
-
-
 
     }
 
@@ -223,6 +219,35 @@ public class GenerateSpot : MonoBehaviour
     void CloseEditMenu()
     {
         EditMenu.SetActive(false);
+    }
+
+  bool isErasing=false;
+    public void Erasing(){
+
+        isErasing=!isErasing;
+
+        erasingProjector.gameObject.SetActive(isErasing);
+
+
+        if(isErasing){
+
+             TargetMaterial.SetTexture("_MainTex", WhiteTex);
+
+
+
+        }else{
+
+        TargetMaterial.SetTexture("_MainTex", OriginTex);
+
+        }
+        
+
+        
+
+
+
+
+
     }
 
 
@@ -255,7 +280,7 @@ public class GenerateSpot : MonoBehaviour
 
         manager.updateSelected(id, URLID);
         isselsected = true;
-        //Debug.Log("should be requesting the transform and view in Select");
+       
 
         if (SpotType != GenerateType.None)
         {
@@ -319,8 +344,10 @@ public class GenerateSpot : MonoBehaviour
             renderer.materials[0].shader = shader;
 
 
-            if(SpotType== GenerateType.Add)
-                TargetMaterial=renderer.materials[0];
+           
+            TargetMaterial=renderer.materials[0];
+            if(SpotType!=GenerateType.Add)
+                OriginTex=TargetMaterial.GetTexture("_MainTex");
 
 
 
@@ -405,7 +432,8 @@ public class GenerateSpot : MonoBehaviour
 
             case GenerateType.Add:
                 setMaterialforGenrated(TargetObject.transform,VertexColor);
-
+                EraseBtn.SetActive(false);
+                ColorBtn.SetActive(true);
 
                 break;
 
@@ -414,18 +442,15 @@ public class GenerateSpot : MonoBehaviour
                 TargetObject.transform.localEulerAngles=new Vector3(0,-90,90);
                 TargetObject.transform.localScale=new Vector3(5,5,5);
 
-
-
-
-
             break;
 
             case GenerateType.Reconstruction:
                 setMaterialforGenrated(TargetObject.transform,UnlitShader);
                 TargetObject.transform.localEulerAngles=new Vector3(0,-90,90);
-
-                
                 TargetObject.transform.localScale=new Vector3(5,5,5);
+                 EraseBtn.SetActive(true);
+                 ColorBtn.SetActive(false);
+
                 
 
 
@@ -460,20 +485,22 @@ public class GenerateSpot : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.V))
-        {
+        // if (Input.GetKeyDown(KeyCode.V))
+        // {
 
 
 
-            DebugModifyModelinstruction();
-        }
+        //     DebugModifyModelinstruction();
+        // }
 
 
 
         if (Input.GetKeyDown(KeyCode.D))
         {
 
-            DebugLoadModel();
+            //_inpainting.jpg
+
+             StartCoroutine(CheckURLPeriodically(downloadURL + "20240325024513_inpainting.jpg"));
 
         }
 
@@ -482,20 +509,13 @@ public class GenerateSpot : MonoBehaviour
         {
 
             InstructGen = false;
-
-
             StartCoroutine(CleartheObjinTarget());
 
 
 
         }
 
-
-
         Text_Instruction.text = RecordData.instruction;
-
-
-
 
 
 
@@ -520,12 +540,7 @@ public class GenerateSpot : MonoBehaviour
         VoicePanel.SetActive(true);
 
 
-
-
     }
-
-
-
 
 
 
@@ -626,11 +641,6 @@ public class GenerateSpot : MonoBehaviour
         }
 
 
-
-
-
-
-
     }
 
     bool StartScanning = false;
@@ -658,7 +668,22 @@ public class GenerateSpot : MonoBehaviour
 
     }
 
+   public void StartToinpainting(){
 
+
+         RecordData.StartInpainting();
+
+        Inpainted=false;
+         StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_inpainting.jpg"));
+
+
+
+
+
+
+    }
+
+    
 
 
 
@@ -706,7 +731,7 @@ public class GenerateSpot : MonoBehaviour
         }
     }
 
-    string ShapeEDownloadURL, BackGroundURL, TargetURL, instructionURL;
+   // string ShapeEDownloadURL, BackGroundURL, TargetURL, instructionURL;
     IEnumerator CheckURL(string url)
     {
         UnityWebRequest www = UnityWebRequest.Get(url);
@@ -724,39 +749,17 @@ public class GenerateSpot : MonoBehaviour
 
             if (url.Contains("Instruction"))
             {
-                print("Hey");
-                instructionURL = url;
+          
                 if (!InstructGen)
                 { //for shape E
                     InstructGen = true;
                     downloadModel(url, TargetObject);
                 }
 
-
-
-
-
             }
 
-
-            if (url.Contains("scaned"))
-            {
-                if (url.Contains("target"))
-                {
-                    TargetURL = url;
-
-                }
-
-                if (url.Contains("background"))
-                {
-
-                    BackGroundURL = url;
-                }
-
-
-
-            }
-            else if (url.Contains("generated"))
+        
+            if (url.Contains("generated"))
             {
 
 
@@ -765,6 +768,20 @@ public class GenerateSpot : MonoBehaviour
                     promptGenrated = true;
                     downloadModel(url, TargetObject);
                 }
+
+            }
+
+            if (url.Contains("inpainting")){
+
+                if(!Inpainted)
+                {
+                    Inpainted=true;
+                    CreateMaterialAndSetTexture(url, ProjectorMeterial);
+
+                }
+
+                
+
 
             }
 
@@ -811,7 +828,53 @@ public class GenerateSpot : MonoBehaviour
 
 
 
+   public void CreateMaterialAndSetTexture(string imageUrl,Material sourceMaterial)
+    {
+        // Check if the source material is assigned
+        if(sourceMaterial == null)
+        {
+            Debug.LogError("Source material is not assigned.");
+            return;
+        }
 
+        // Create a new material with the same shader as the source material
+        Material newMaterial = new Material(sourceMaterial.shader);
 
+        // Optionally copy properties from the source material to the new material
+        // newMaterial.CopyPropertiesFromMaterial(sourceMaterial);
+
+        // Start the coroutine to download and apply the texture
+        StartCoroutine(DownloadImageCoroutine(imageUrl, newMaterial));
+    }
+    public Texture2D erasingTexture;
+    private IEnumerator DownloadImageCoroutine(string imageUrl, Material material)
+    {
+        using (UnityWebRequest webRequest = UnityWebRequestTexture.GetTexture(imageUrl))
+        {
+            // Send the request
+            yield return webRequest.SendWebRequest();
+
+            if (webRequest.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError("Error downloading image: " + webRequest.error);
+            }
+            else
+            {
+                // Get the downloaded texture
+                Texture2D downloadedTexture = DownloadHandlerTexture.GetContent(webRequest);
+                erasingTexture=downloadedTexture;
+                // Apply the texture to the provided material
+                material.SetTexture("_ShadowTex",downloadedTexture);
+                erasingProjector.gameObject.SetActive(true);
+                erasingProjector.material=material;
+                // erasingProjector.gameObject.SetActive(false);
+                Debug.Log("Image applied to new material successfully.");
+                loadingIcon.SetActive(false);
+
+                DownloadPanel.SetActive(true);
+            }
+        }
+    }
 
 }
+

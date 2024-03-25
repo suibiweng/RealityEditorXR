@@ -26,6 +26,8 @@ public class DownloadReconstruction : MonoBehaviour
         }
 
         fileNameToUrlMap = new Dictionary<string, string>();
+
+        url=spot.downloadURL+"/FromIPAD/";
        // modelDownloader=FindAnyObjectByType<ModelDownloader>();
         StartCoroutine(GetZipFileList(url));
     }

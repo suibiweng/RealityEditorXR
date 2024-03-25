@@ -10,6 +10,12 @@ using TriLibCore.Dae.Schema;
 public class RealityEditorManager : MonoBehaviour
 {
 
+    public string uploadPort,downloadPort;
+
+    public string uploadURL;
+
+    public string ServerURL;
+
     public Dictionary<string,GameObject> GenCubesDic;
 
    // public List<GameObject> GenCubes;
@@ -42,6 +48,12 @@ public class RealityEditorManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        uploadURL=ServerURL+":"+uploadPort+"/";
+        ServerURL+=":"+downloadPort+"/";
+
+
+
         osc=FindObjectOfType<OSC>();   
         modelDownloader=FindObjectOfType<ModelDownloader>();
        // websocket=FindObjectOfType<WsClient>();

@@ -16,6 +16,8 @@ namespace Serenegiant.UVC
 	public class UVCDrawer : MonoBehaviour, IUVCDrawer
 	{
 		// public NdiSender ndiSender;
+
+		// public RenderTexture rt;
 		
 
 		/**
@@ -61,7 +63,7 @@ namespace Serenegiant.UVC
 		 * UVCカメラ映像受け取り用テクスチャをセットする前に
 		 * GetComponent<Renderer>().material.mainTextureに設定されていた値
 		 */
-		private Texture[] SavedTextures;
+		public Texture[] SavedTextures;
 
 		private Quaternion[] quaternions;
 
@@ -216,6 +218,12 @@ namespace Serenegiant.UVC
 						if (material != null)
 						{
 							found = true;
+
+
+// 							Graphics.Blit(SavedTextures[i], rt);
+
+// // Reset the active RenderTexture to display
+// RenderTexture.active = null;
 						}
 #if (!NDEBUG && DEBUG && ENABLE_LOG)
 						Console.WriteLine($"{TAG}UpdateTarget:material={material}");
