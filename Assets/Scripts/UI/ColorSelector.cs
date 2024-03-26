@@ -15,6 +15,8 @@ public class ColorSelector : MonoBehaviour
 
     public Material MainMaterial , projectorMaterial;
 
+    public Image colorhint;
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +39,7 @@ public class ColorSelector : MonoBehaviour
 
 
                 MainMaterial.SetColor("_MulColor",GetColorFromValue(ColorSlider.value));
+                colorhint.color= GetColorFromValue(ColorSlider.value);
                 MainMaterial.SetFloat("_Gray",GraySlider.value);
                 MainMaterial.SetFloat("_Alpha",AlhpaSlider.value);
 
@@ -44,6 +47,7 @@ public class ColorSelector : MonoBehaviour
 
 
                 break;
+              
 
 
 
@@ -87,7 +91,7 @@ public class ColorSelector : MonoBehaviour
 
         // Define key colors for the gradient
         Color[] keyColors = new Color[] {
-            Color.black, // Start with black
+            Color.white, // End with white, // Start with black
             Color.red,
             new Color(1, 0.5f, 0), // Orange
             Color.yellow,
@@ -95,7 +99,7 @@ public class ColorSelector : MonoBehaviour
             Color.blue,
             new Color(0.29f, 0, 0.51f), // Indigo
             new Color(0.93f, 0.51f, 0.93f), // Violet
-            Color.white // End with white
+          Color.black
         };
 
         // Calculate the segment length based on the number of transitions

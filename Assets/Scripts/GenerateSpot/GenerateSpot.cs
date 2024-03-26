@@ -65,9 +65,11 @@ public class GenerateSpot : MonoBehaviour
     public GameObject selectMenu;
     public GameObject AimStart;
 
-    public GameObject EraseBtn,ColorBtn;
+    public GameObject ColorBtn;
+    public GameObject ErasingPanel;
 
-
+    public Toggle EraseBtn;
+    public Slider Britheness;
 
 
     // LoadObject
@@ -109,6 +111,11 @@ public class GenerateSpot : MonoBehaviour
 
     public Texture WhiteTex,OriginTex;
 
+    public RawImage PreviewWindow;
+
+
+    public Transform Player;
+
 
 
 
@@ -124,6 +131,8 @@ public class GenerateSpot : MonoBehaviour
         moveplayer = FindObjectOfType<MovePlayer>();
         _grabbable = GetComponent<Grabbable>();
         downloadURL=manager.ServerURL;
+
+        Player=Camera.main.transform;
 
 
 // URLID=TimestampGenerator.GetTimestamp();
@@ -160,6 +169,26 @@ public class GenerateSpot : MonoBehaviour
 
         }
 
+
+
+    }
+
+     float minDistance = 0.1f; // Minimum distance for full opacity
+    float maxDistance = 1f; // 
+
+    void BoundingBoxColorAlhpaDinstance(){
+
+
+        float distanceToPlayer = Vector3.Distance(transform.position, Player.position);
+
+        // Calculate the alpha value based on the distance
+        float alpha = Mathf.InverseLerp(maxDistance, minDistance, distanceToPlayer);
+
+        // Interpolate the alpha value of the material's color
+
+        Outlinebox.lineColor=new Color(Outlinebox.lineColor.r, Outlinebox.lineColor.g, Outlinebox.lineColor.b, alpha);
+
+        
 
 
     }
@@ -224,22 +253,12 @@ public class GenerateSpot : MonoBehaviour
   bool isErasing=false;
     public void Erasing(){
 
-        isErasing=!isErasing;
+       
 
-        erasingProjector.gameObject.SetActive(isErasing);
-
-
-        if(isErasing){
-
-             TargetMaterial.SetTexture("_MainTex", WhiteTex);
+        
+         ErasingPanel.SetActive(!isErasing);
 
 
-
-        }else{
-
-        TargetMaterial.SetTexture("_MainTex", OriginTex);
-
-        }
         
 
         
@@ -258,6 +277,7 @@ public class GenerateSpot : MonoBehaviour
         {
             case PointerEventType.Select:
                 OnSelect();
+               
 
 
 
@@ -265,6 +285,9 @@ public class GenerateSpot : MonoBehaviour
 
                 break;
             case PointerEventType.Unselect:
+
+            // PreviewWindow.gameObject.SetActive(false);
+             Release();
 
                 // URLIDText.text = "REleeeeeese";
                 break;
@@ -280,6 +303,7 @@ public class GenerateSpot : MonoBehaviour
 
         manager.updateSelected(id, URLID);
         isselsected = true;
+       
        
 
         if (SpotType != GenerateType.None)
@@ -326,6 +350,8 @@ public class GenerateSpot : MonoBehaviour
 
     }
 
+    bool originTex=false;
+
     public bool setMaterialforGenrated(Transform obj,Shader shader)
     {
 
@@ -347,7 +373,20 @@ public class GenerateSpot : MonoBehaviour
            
             TargetMaterial=renderer.materials[0];
             if(SpotType!=GenerateType.Add)
-                OriginTex=TargetMaterial.GetTexture("_MainTex");
+            {
+                if(!originTex){
+                    originTex=true;
+
+
+                     OriginTex=TargetMaterial.GetTexture("_MainTex");
+
+
+                }
+
+           
+
+            }
+               
 
 
 
@@ -425,6 +464,10 @@ public class GenerateSpot : MonoBehaviour
 
 
 
+       
+
+
+
         updateTheTransform();
 
         switch (SpotType)
@@ -432,7 +475,7 @@ public class GenerateSpot : MonoBehaviour
 
             case GenerateType.Add:
                 setMaterialforGenrated(TargetObject.transform,VertexColor);
-                EraseBtn.SetActive(false);
+                EraseBtn.gameObject.SetActive(false);
                 ColorBtn.SetActive(true);
 
                 break;
@@ -447,9 +490,26 @@ public class GenerateSpot : MonoBehaviour
             case GenerateType.Reconstruction:
                 setMaterialforGenrated(TargetObject.transform,UnlitShader);
                 TargetObject.transform.localEulerAngles=new Vector3(0,-90,90);
-                TargetObject.transform.localScale=new Vector3(5,5,5);
-                 EraseBtn.SetActive(true);
+                TargetObject.transform.localScale=new Vector3(8,8,8);
+                 //EraseBtn.SetActive(true);
                  ColorBtn.SetActive(false);
+                 EraseBtn.gameObject.SetActive(true);
+
+                 isErasing=EraseBtn.isOn;
+                 PreviewWindow.gameObject.SetActive(isselsected);
+
+
+
+                 erasingProjector.gameObject.SetActive(isErasing);
+
+                 
+             if(isErasing){
+                   TargetMaterial.SetTexture("_MainTex", WhiteTex);
+                   ProjectorMeterial.SetFloat("_Amt",Britheness.value);
+
+             }else{
+                 TargetMaterial.SetTexture("_MainTex", OriginTex);
+             }
 
                 
 
@@ -468,6 +528,10 @@ public class GenerateSpot : MonoBehaviour
 
 
         }
+
+
+         BoundingBoxColorAlhpaDinstance();
+         
 
 
 
@@ -510,8 +574,6 @@ public class GenerateSpot : MonoBehaviour
 
             InstructGen = false;
             StartCoroutine(CleartheObjinTarget());
-
-
 
         }
 
@@ -847,6 +909,8 @@ public class GenerateSpot : MonoBehaviour
         StartCoroutine(DownloadImageCoroutine(imageUrl, newMaterial));
     }
     public Texture2D erasingTexture;
+    [ColorUsage(true, true)]
+    public Color Bright,Dark;
     private IEnumerator DownloadImageCoroutine(string imageUrl, Material material)
     {
         using (UnityWebRequest webRequest = UnityWebRequestTexture.GetTexture(imageUrl))
@@ -863,11 +927,26 @@ public class GenerateSpot : MonoBehaviour
                 // Get the downloaded texture
                 Texture2D downloadedTexture = DownloadHandlerTexture.GetContent(webRequest);
                 erasingTexture=downloadedTexture;
+             
                 // Apply the texture to the provided material
                 material.SetTexture("_ShadowTex",downloadedTexture);
+
+
+        //         HDR]_Brightest("Bright", Color) = (1,1,1,0)
+		// [HDR]_Darkerness("Dark", Color) = (0,0,0,0)
+
+
+                // material.SetColor("_Brightest",Bright);
+                // material.SetColor("_Darkerness",Dark);
                 erasingProjector.gameObject.SetActive(true);
                 erasingProjector.material=material;
-                // erasingProjector.gameObject.SetActive(false);
+                // erasingProjector.GetComponent<EraseProjectorControl>().mat=material;
+                erasingProjector.gameObject.SetActive(false);
+
+                ProjectorMeterial=material;
+
+
+                
                 Debug.Log("Image applied to new material successfully.");
                 loadingIcon.SetActive(false);
 

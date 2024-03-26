@@ -16,7 +16,7 @@ public class FaceToUser : MonoBehaviour
     void Update()
     {
         transform.LookAt(
-            new Vector3(player.transform.position.x,transform.position.y,-player.transform.position.z)
+            new Vector3(player.transform.position.x,transform.position.y,player.transform.position.z)
             );
     }
 }

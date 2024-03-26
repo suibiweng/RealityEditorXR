@@ -24549,6 +24549,7 @@ MonoBehaviour:
   VoicePanel: {fileID: 486049557683312331}
   EditMenu: {fileID: 0}
   ScanningPanel: {fileID: 0}
+  DownloadPanel: {fileID: 0}
   selectMenu: {fileID: 0}
   AimStart: {fileID: 0}
   EraseBtn: {fileID: 0}
@@ -24569,6 +24570,8 @@ MonoBehaviour:
   UnlitShader: {fileID: 0}
   TargetMaterial: {fileID: 0}
   ProjectorMeterial: {fileID: 0}
+  WhiteTex: {fileID: 0}
+  OriginTex: {fileID: 0}
   Text_Scanning_Btn: {fileID: 1167092362498039507}
   Text_Instruction: {fileID: 1167092362498039525}
   checkInterval: 5

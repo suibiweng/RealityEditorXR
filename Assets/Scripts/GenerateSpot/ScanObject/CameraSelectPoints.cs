@@ -37,7 +37,7 @@ public class CameraSelectPoints : MonoBehaviour
 
     public Vector2 rLeftAim,rRightAim,rCenterAim;
 
-    public GameObject testTarget;
+   // public GameObject testTarget;
     public float speed =0.001f;
 
     public bool isActive;

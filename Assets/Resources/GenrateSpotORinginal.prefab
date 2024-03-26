@@ -32578,10 +32578,12 @@ MonoBehaviour:
   VoicePanel: {fileID: 3904916481573565010}
   EditMenu: {fileID: 3848411419340054149}
   ScanningPanel: {fileID: 3904916481379675151}
+  DownloadPanel: {fileID: 0}
   selectMenu: {fileID: 6597491865064482090}
   AimStart: {fileID: 8304877378441610637}
   EraseBtn: {fileID: 0}
   ColorBtn: {fileID: 0}
+  ErasingPanel: {fileID: 0}
   TargetObject: {fileID: 2605430649878412081}
   BackGroundOnly: {fileID: 3839116216397742360}
   Contianier: {fileID: 8375307937743404099}
@@ -32598,6 +32600,9 @@ MonoBehaviour:
   UnlitShader: {fileID: 0}
   TargetMaterial: {fileID: 0}
   ProjectorMeterial: {fileID: 0}
+  WhiteTex: {fileID: 0}
+  OriginTex: {fileID: 0}
+  PreviewWindow: {fileID: 0}
   Text_Scanning_Btn: {fileID: 5272751271889505664}
   Text_Instruction: {fileID: 5272751271889505718}
   checkInterval: 5

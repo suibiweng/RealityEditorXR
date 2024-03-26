@@ -5,6 +5,9 @@ Shader "Projector/Multiply" {
 	Properties {
 		_ShadowTex ("MainTex", 2D) = "gray" {}
 		_FalloffTex ("FallOff", 2D) = "white" {}
+		[HDR]_Brightest("Bright", Color) = (1,1,1,0)
+		[HDR]_Darkerness("Dark", Color) = (0,0,0,0)
+		_Amt("Float 0", Range( 0 , 1)) = 0
 	}
 	Subshader {
 		Tags {"Queue"="Transparent"}
@@ -42,6 +45,9 @@ Shader "Projector/Multiply" {
 			
 			sampler2D _ShadowTex;
 			sampler2D _FalloffTex;
+			fixed4 _Brightest;
+			fixed4 _Darkerness;
+			float _Amt; 
 			
 			fixed4 frag (v2f i) : SV_Target
 			{
@@ -50,6 +56,8 @@ Shader "Projector/Multiply" {
 
 				fixed4 texF = tex2Dproj (_FalloffTex, UNITY_PROJ_COORD(i.uvFalloff));
 				fixed4 res = lerp(fixed4(1,1,1,0), texS, texF.a);
+
+				res=res*lerp(_Darkerness,_Brightest,_Amt);
 
 				UNITY_APPLY_FOG_COLOR(i.fogCoord, res, fixed4(1,1,1,1));
 				return res;
