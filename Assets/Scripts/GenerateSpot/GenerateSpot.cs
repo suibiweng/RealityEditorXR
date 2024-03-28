@@ -255,7 +255,7 @@ public class GenerateSpot : MonoBehaviour
        
 
         
-         ErasingPanel.SetActive(isErasing);
+         
 
 
         
@@ -447,6 +447,8 @@ public class GenerateSpot : MonoBehaviour
 
     }
 
+    bool PanelLock;
+
 
 
 
@@ -502,10 +504,19 @@ public class GenerateSpot : MonoBehaviour
 
                  
              if(isErasing){
+
+
+                if(!PanelLock){
+                    PanelLock=true;
+                    ErasingPanel.SetActive(true);
+                }
+
                    TargetMaterial.SetTexture("_MainTex", WhiteTex);
                    ProjectorMeterial.SetFloat("_Amt",Britheness.value);
 
              }else{
+                    PanelLock=false;
+                    ErasingPanel.SetActive(false);
                  TargetMaterial.SetTexture("_MainTex", OriginTex);
              }
 
@@ -545,15 +556,6 @@ public class GenerateSpot : MonoBehaviour
 
 
         }
-
-
-        // if (Input.GetKeyDown(KeyCode.V))
-        // {
-
-
-
-        //     DebugModifyModelinstruction();
-        // }
 
 
 
@@ -928,14 +930,6 @@ public class GenerateSpot : MonoBehaviour
              
                 // Apply the texture to the provided material
                 material.SetTexture("_ShadowTex",downloadedTexture);
-
-
-        //         HDR]_Brightest("Bright", Color) = (1,1,1,0)
-		// [HDR]_Darkerness("Dark", Color) = (0,0,0,0)
-
-
-                // material.SetColor("_Brightest",Bright);
-                // material.SetColor("_Darkerness",Dark);
                 erasingProjector.gameObject.SetActive(true);
                 erasingProjector.material=material;
                 // erasingProjector.GetComponent<EraseProjectorControl>().mat=material;
