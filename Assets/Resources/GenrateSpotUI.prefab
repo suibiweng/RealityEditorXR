@@ -2379,9 +2379,10 @@ MonoBehaviour:
   DownloadPanel: {fileID: 0}
   selectMenu: {fileID: 6597491865064482090}
   AimStart: {fileID: 1704895485083455870}
-  EraseBtn: {fileID: 0}
   ColorBtn: {fileID: 0}
   ErasingPanel: {fileID: 0}
+  EraseBtn: {fileID: 0}
+  Britheness: {fileID: 0}
   TargetObject: {fileID: 4666153416841195458}
   BackGroundOnly: {fileID: 5885816911307331051}
   Contianier: {fileID: 1212254045424969904}
@@ -2401,10 +2402,13 @@ MonoBehaviour:
   WhiteTex: {fileID: 0}
   OriginTex: {fileID: 0}
   PreviewWindow: {fileID: 0}
+  Player: {fileID: 0}
   Text_Scanning_Btn: {fileID: 5272751271889505664}
   Text_Instruction: {fileID: 5272751271889505718}
   checkInterval: 5
   erasingTexture: {fileID: 0}
+  Bright: {r: 0, g: 0, b: 0, a: 0}
+  Dark: {r: 0, g: 0, b: 0, a: 0}
 --- !u!65 &5969754719076594756
 BoxCollider:
   m_ObjectHideFlags: 0
