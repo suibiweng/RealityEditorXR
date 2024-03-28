@@ -102,7 +102,8 @@ public class recordData : MonoBehaviour
          if(Input.GetKeyDown(KeyCode.Q)){
 
 
-             StartCoroutine(UploadCoroutine(ConvertToTexture2D(RT), campoints.rCenterAim));
+               StartCoroutine(UploadCoroutine(ConvertToTexture2D(RT), campoints.rCenterAim));
+
 
 
 
@@ -189,7 +190,7 @@ public class recordData : MonoBehaviour
         form.AddField("URLID",spot.URLID); 
 
         // Create a UnityWebRequest for uploading the data
-        using (UnityWebRequest www = UnityWebRequest.Post(spot.manager.uploadURL+"/upload", form))
+        using (UnityWebRequest www = UnityWebRequest.Post(spot.manager.uploadURL+"upload", form))
         {
             // Set a download handler to receive the server's response
             www.downloadHandler = new DownloadHandlerBuffer();

@@ -134,8 +134,7 @@ public class GenerateSpot : MonoBehaviour
 
         Player=Camera.main.transform;
 
-
-// URLID=TimestampGenerator.GetTimestamp();
+        // URLID=TimestampGenerator.GetTimestamp();
 
         StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_generated.zip"));
     
@@ -256,7 +255,7 @@ public class GenerateSpot : MonoBehaviour
        
 
         
-         ErasingPanel.SetActive(!isErasing);
+         ErasingPanel.SetActive(isErasing);
 
 
         
@@ -481,7 +480,7 @@ public class GenerateSpot : MonoBehaviour
                 break;
 
             case GenerateType.Instruction:
-                setMaterialforGenrated(TargetObject.transform,UnlitShader);
+                //setMaterialforGenrated(TargetObject.transform,UnlitShader);
                 TargetObject.transform.localEulerAngles=new Vector3(0,-90,90);
                 TargetObject.transform.localScale=new Vector3(5,5,5);
 
@@ -496,9 +495,8 @@ public class GenerateSpot : MonoBehaviour
                  EraseBtn.gameObject.SetActive(true);
 
                  isErasing=EraseBtn.isOn;
+
                  PreviewWindow.gameObject.SetActive(isselsected);
-
-
 
                  erasingProjector.gameObject.SetActive(isErasing);
 

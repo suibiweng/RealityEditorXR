@@ -2855,7 +2855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inPort: 1337
-  outIP: 192.168.137.1
+  outIP: 192.168.0.139
   outPort: 6161
 --- !u!114 &1121881325
 MonoBehaviour:
@@ -2887,7 +2887,7 @@ MonoBehaviour:
   uploadPort: 8080
   downloadPort: 8000
   uploadURL: 
-  ServerURL: http://192.168.137.1
+  ServerURL: http://192.168.0.139
   generateSpotPreFab: {fileID: 1683885090753417592, guid: 1182d3065d6fb8f4bb7611cbfef1c981, type: 3}
   modelDownloader: {fileID: 1121881327}
   selectedID: 0
@@ -7211,26 +7211,6 @@ PrefabInstance:
     - target: {fileID: 3848411418521141372, guid: 1182d3065d6fb8f4bb7611cbfef1c981, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -26
-      objectReference: {fileID: 0}
-    - target: {fileID: 4204464118960621351, guid: 1182d3065d6fb8f4bb7611cbfef1c981, type: 3}
-      propertyPath: Bright.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4204464118960621351, guid: 1182d3065d6fb8f4bb7611cbfef1c981, type: 3}
-      propertyPath: Bright.b
-      value: 111.43049
-      objectReference: {fileID: 0}
-    - target: {fileID: 4204464118960621351, guid: 1182d3065d6fb8f4bb7611cbfef1c981, type: 3}
-      propertyPath: Bright.g
-      value: 111.43049
-      objectReference: {fileID: 0}
-    - target: {fileID: 4204464118960621351, guid: 1182d3065d6fb8f4bb7611cbfef1c981, type: 3}
-      propertyPath: Bright.r
-      value: 111.43049
-      objectReference: {fileID: 0}
-    - target: {fileID: 6148612481019881555, guid: 1182d3065d6fb8f4bb7611cbfef1c981, type: 3}
-      propertyPath: wireColor.a
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1182d3065d6fb8f4bb7611cbfef1c981, type: 3}
