@@ -25067,8 +25067,10 @@ MonoBehaviour:
   DownloadPanel: {fileID: 0}
   selectMenu: {fileID: 0}
   AimStart: {fileID: 0}
-  EraseBtn: {fileID: 0}
   ColorBtn: {fileID: 0}
+  ErasingPanel: {fileID: 0}
+  EraseBtn: {fileID: 0}
+  Britheness: {fileID: 0}
   TargetObject: {fileID: 4590600590929493061}
   BackGroundOnly: {fileID: 3376020142783874668}
   Contianier: {fileID: 8045220608500464439}
@@ -25087,10 +25089,15 @@ MonoBehaviour:
   ProjectorMeterial: {fileID: 0}
   WhiteTex: {fileID: 0}
   OriginTex: {fileID: 0}
+  EraseQuad: {fileID: 0}
+  PreviewWindow: {fileID: 0}
+  Player: {fileID: 0}
   Text_Scanning_Btn: {fileID: 171592505786322149}
   Text_Instruction: {fileID: 171592505786322131}
   checkInterval: 5
   erasingTexture: {fileID: 0}
+  Bright: {r: 0, g: 0, b: 0, a: 0}
+  Dark: {r: 0, g: 0, b: 0, a: 0}
 --- !u!65 &3291079561059641283
 BoxCollider:
   m_ObjectHideFlags: 0

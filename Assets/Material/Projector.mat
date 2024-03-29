@@ -66,7 +66,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Amt: 0.563
+    - _Amt: 0.018
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -86,7 +86,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Brightest: {r: 15.813397, g: 15.813397, b: 15.813397, a: 0}
-    - _Color: {r: 1, g: 0, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Darkerness: {r: 0.006827848, g: 0.006827848, b: 0.006827848, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _MulColor: {r: 1, g: 1, b: 1, a: 1}

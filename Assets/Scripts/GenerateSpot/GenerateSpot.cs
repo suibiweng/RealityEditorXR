@@ -111,6 +111,8 @@ public class GenerateSpot : MonoBehaviour
 
     public Texture WhiteTex,OriginTex;
 
+    public GameObject EraseQuad;
+
     public RawImage PreviewWindow;
 
 
@@ -136,9 +138,9 @@ public class GenerateSpot : MonoBehaviour
 
         // URLID=TimestampGenerator.GetTimestamp();
 
-        StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_generated.zip"));
+        // StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_generated.zip"));
     
-        StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_Instruction.zip"));
+        // StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_Instruction.zip"));
 
 
         RecordData = GetComponent<recordData>();
@@ -170,7 +172,27 @@ public class GenerateSpot : MonoBehaviour
 
 
 
+ 
+ 
+ 
     }
+
+
+
+
+
+
+
+    public void ChangeID(string ID){
+        manager.ChangeID(URLID,ID,this.gameObject);
+
+        URLID=ID;
+
+
+    }
+    
+
+
 
      float minDistance = 0.1f; // Minimum distance for full opacity
     float maxDistance = 1f; // 
@@ -482,9 +504,9 @@ public class GenerateSpot : MonoBehaviour
                 break;
 
             case GenerateType.Instruction:
-                //setMaterialforGenrated(TargetObject.transform,UnlitShader);
-                TargetObject.transform.localEulerAngles=new Vector3(0,-90,90);
-                TargetObject.transform.localScale=new Vector3(5,5,5);
+                setMaterialforGenrated(TargetObject.transform,UnlitShader);
+                // TargetObject.transform.localEulerAngles=new Vector3(0,-90,90);
+                // TargetObject.transform.localScale=new Vector3(5,5,5);
 
             break;
 
@@ -502,7 +524,7 @@ public class GenerateSpot : MonoBehaviour
 
                  erasingProjector.gameObject.SetActive(isErasing);
 
-                 
+                EraseQuad.SetActive(isErasing); 
              if(isErasing){
 
 
@@ -551,8 +573,7 @@ public class GenerateSpot : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.X))
         {
-            DebugGenrateModel();
-            print("DebugSend");
+                DebugLoadModel();
 
 
         }
@@ -678,6 +699,7 @@ public class GenerateSpot : MonoBehaviour
         loadingIcon.SetActive(true);
         Prompt = "";
         InstructGen = false;
+        SpotType=GenerateType.Instruction;
         StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_Instruction.zip"));
         StartCoroutine(CleartheObjinTarget());
         //  UiMenu.SetActive(false);
@@ -754,7 +776,7 @@ public class GenerateSpot : MonoBehaviour
         modelDownloader.LoadModel(
             new ModelIformation()
             {
-                ModelURL = "http://127.0.0.1:8000/20240318170259_generated.zip",
+                ModelURL = "http://192.168.0.139:8000/20240328215957_Instruction.zip",
                 gameobjectWarp = TargetObject
 
             });

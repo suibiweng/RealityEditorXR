@@ -309,6 +309,24 @@ public class RealityEditorManager : MonoBehaviour
     }
 
 
+    public void ChangeID(string PreviousKey,string Modifiedkey,GameObject v){
+
+
+        
+
+        GenCubesDic.Add(Modifiedkey,v);
+       // GenCubesDic.Remove(PreviousKey);
+        
+       // GenCubesDic[Modifiedkey] = value;
+
+
+
+
+
+
+    }
+
+
 
 
 

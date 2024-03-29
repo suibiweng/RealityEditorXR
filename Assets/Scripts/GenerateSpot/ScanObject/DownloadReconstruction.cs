@@ -104,6 +104,8 @@ public class DownloadReconstruction : MonoBehaviour
 
            print(DownLoadURL);
 
+           spot.ChangeID(selectedFileName);
+
            spot.downloadModel( url+DownLoadURL,spot.TargetObject);
 
 

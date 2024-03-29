@@ -10640,9 +10640,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dcb6804a1b3c9d489cecdeb11023159, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAcopy: 0
   id: 0
   downloadURL: http://34.106.250.143/upload/
   URLID: 
+  manager: {fileID: 0}
   pos: {x: 0, y: 0, z: 0}
   size: {x: 0, y: 0, z: 0}
   TransRotation: {x: 0, y: 0, z: 0}
@@ -10665,12 +10667,18 @@ MonoBehaviour:
   VoicePanel: {fileID: 1262060658}
   EditMenu: {fileID: 0}
   ScanningPanel: {fileID: 0}
+  DownloadPanel: {fileID: 0}
   selectMenu: {fileID: 0}
   AimStart: {fileID: 0}
+  ColorBtn: {fileID: 0}
+  ErasingPanel: {fileID: 0}
+  EraseBtn: {fileID: 0}
+  Britheness: {fileID: 0}
   TargetObject: {fileID: 1304167604034850065}
   BackGroundOnly: {fileID: 249469301917972280}
   Contianier: {fileID: 4758649939851954787}
   RecordData: {fileID: 0}
+  erasingProjector: {fileID: 0}
   Outlinebox: {fileID: 0}
   CountID: 0
   _grabbable: {fileID: 0}
@@ -10679,9 +10687,19 @@ MonoBehaviour:
   _realtimeView: {fileID: 0}
   moveplayer: {fileID: 0}
   VertexColor: {fileID: 0}
+  UnlitShader: {fileID: 0}
+  TargetMaterial: {fileID: 0}
+  ProjectorMeterial: {fileID: 0}
+  WhiteTex: {fileID: 0}
+  OriginTex: {fileID: 0}
+  PreviewWindow: {fileID: 0}
+  Player: {fileID: 0}
   Text_Scanning_Btn: {fileID: 0}
   Text_Instruction: {fileID: 0}
   checkInterval: 5
+  erasingTexture: {fileID: 0}
+  Bright: {r: 0, g: 0, b: 0, a: 0}
+  Dark: {r: 0, g: 0, b: 0, a: 0}
 --- !u!65 &1923028631
 BoxCollider:
   m_ObjectHideFlags: 0
