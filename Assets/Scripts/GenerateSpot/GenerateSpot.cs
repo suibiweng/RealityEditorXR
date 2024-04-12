@@ -20,7 +20,7 @@ public class GenerateSpot : MonoBehaviour
     public int id;
     public string downloadURL = "http://34.106.250.143/upload/";
 
-    public string URLID;
+    public string URLID; 
 
 
     //Manager
@@ -135,6 +135,11 @@ public class GenerateSpot : MonoBehaviour
         downloadURL=manager.ServerURL;
 
         Player=Camera.main.transform;
+        
+        SpotType = GenerateType.Add;
+        initAdd();
+        
+        
 
         // URLID=TimestampGenerator.GetTimestamp();
 
@@ -158,7 +163,7 @@ public class GenerateSpot : MonoBehaviour
         loadingIcon.SetActive(false);
 
 
-        if (selectMenu != null) selectMenu.SetActive(true);
+       // if (selectMenu != null) selectMenu.SetActive(true);
         //  ControlPanels();
 
         if (isAcopy)

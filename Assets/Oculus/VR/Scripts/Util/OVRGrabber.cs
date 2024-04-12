@@ -19,6 +19,7 @@
  */
 
 using System.Collections.Generic;
+using Normal.Realtime;
 using UnityEngine;
 
 /// <summary>
@@ -250,7 +251,7 @@ public class OVRGrabber : MonoBehaviour
             {
                 continue;
             }
-
+            
             for (int j = 0; j < grabbable.grabPoints.Length; ++j)
             {
                 Collider grabbableCollider = grabbable.grabPoints[j];
@@ -283,6 +284,7 @@ public class OVRGrabber : MonoBehaviour
             m_lastRot = transform.rotation;
 
             // Set up offsets for grabbed object desired position relative to hand.
+            m_grabbedObj.GetComponent<RealtimeView>().RequestOwnershipOfSelfAndChildren();
             if (m_grabbedObj.snapPosition)
             {
                 m_grabbedObjectPosOff = m_gripTransform.localPosition;
