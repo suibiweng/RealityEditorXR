@@ -17,15 +17,15 @@ public class DataSync : RealtimeComponent<DataSyncModel> {
         }
         
         if (currentModel != null) {
-            // If this is a model that has no data set on it, populate it with the current mesh renderer color.
+            // If this is a model that has no data set on it, populate it with the current Text mesh pros.
             if (currentModel.isFreshModel)
                 currentModel.PromptData = "_ " + PromptTextMesh.text;
                 currentModel.URLID = "_ " + URLIDTextMesh.text;
-            // Update the mesh render to match the new model
+            // Update the UI to match the new model
             UpdateTextPrompt();
             UpdateTextURLID(); 
 
-            // Register for events so we'll know if the color changes later
+            // Register for events so we'll know if the data changes later
             currentModel.PromptDataDidChange += PromptDidChange;
             currentModel.URLIDDidChange += URLIDDidChange;
         }
@@ -37,6 +37,7 @@ public class DataSync : RealtimeComponent<DataSyncModel> {
     private void URLIDDidChange(DataSyncModel model, string URLID) {
         UpdateTextURLID();
     }
+    
     private void UpdateTextPrompt() {
         PromptTextMesh.text = model.PromptData;
     }
@@ -46,11 +47,11 @@ public class DataSync : RealtimeComponent<DataSyncModel> {
     }
 
     public void Setprompt(string prompt) {
-        // This will fire the colorChanged event on the model, which will update the renderer for both the local player and all remote players.
+        // This will fire the PromptDidChange event on the model, which will update the renderer for both the local player and all remote players.
         model.PromptData = prompt;
     }
     public void SetURLID(string URLID) {
-        // This will fire the colorChanged event on the model, which will update the renderer for both the local player and all remote players.
+        // This will fire the UpdateTextURLID event on the model
         model.URLID = URLID;
     }
 }
