@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using RealityEditor;
+using TMPro;
 
 
 public class DownloadReconstruction : MonoBehaviour
@@ -14,6 +15,11 @@ public class DownloadReconstruction : MonoBehaviour
     public GenerateSpot spot;
     private Dictionary<string, string> fileNameToUrlMap;
     public Dropdown dropdown; // Assign this in the Inspector
+
+
+    public   TMP_Text  CurrentFile;
+
+       List<string> fileNames ;
 
     public string url = "http://example.com/"; // Set your URL here
 
@@ -71,9 +77,57 @@ public class DownloadReconstruction : MonoBehaviour
     void PopulateDropdown()
     {
         dropdown.ClearOptions(); // Clear existing options
-        List<string> fileNames = new List<string>(fileNameToUrlMap.Keys);
+        fileNames = new List<string>(fileNameToUrlMap.Keys);
         dropdown.AddOptions(fileNames); // Add new options
+       if(fileNames.Count>0) CurrentFile.text=fileNames[0];
     }
+
+    int currentIndex=0;
+
+
+
+
+    public void ToNextModel(){
+
+        currentIndex++;
+
+
+
+        if(currentIndex>fileNames.Count){
+            currentIndex=0;
+
+        }
+
+
+         CurrentFile.text=fileNames[currentIndex];
+
+
+
+    }
+
+
+    public void PreviousModel(){
+
+
+                currentIndex--;
+
+
+
+        if(currentIndex<0){
+            currentIndex=fileNames.Count-1;
+
+        }
+
+
+         CurrentFile.text=fileNames[currentIndex];
+
+
+
+
+
+    }
+
+
 
     string ExtractFileNameWithoutExtension(string fileUrl)
     {
@@ -98,7 +152,8 @@ public class DownloadReconstruction : MonoBehaviour
     public void startToDownload(){
 
            int index = dropdown.value;
-           string selectedFileName = dropdown.options[index].text;
+            //dropdown.options[index].text;
+           string selectedFileName = fileNames[currentIndex];
 
            string DownLoadURL=GetUrlByFileName(selectedFileName);
 

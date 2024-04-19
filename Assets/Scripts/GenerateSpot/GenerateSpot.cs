@@ -158,7 +158,13 @@ public class GenerateSpot : MonoBehaviour
         loadingIcon.SetActive(false);
 
 
-        if (selectMenu != null) selectMenu.SetActive(true);
+
+
+            SpotType = GenerateType.Add;
+                initAdd();
+
+
+        // if (selectMenu != null) selectMenu.SetActive(true);
         //  ControlPanels();
 
         if (isAcopy)
@@ -524,7 +530,7 @@ public class GenerateSpot : MonoBehaviour
 
                  erasingProjector.gameObject.SetActive(isErasing);
 
-                EraseQuad.SetActive(isErasing); 
+                EraseQuad.SetActive(false); 
              if(isErasing){
 
 
