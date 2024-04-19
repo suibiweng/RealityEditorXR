@@ -2401,6 +2401,7 @@ MonoBehaviour:
   ProjectorMeterial: {fileID: 0}
   WhiteTex: {fileID: 0}
   OriginTex: {fileID: 0}
+  EraseQuad: {fileID: 0}
   PreviewWindow: {fileID: 0}
   Player: {fileID: 0}
   Text_Scanning_Btn: {fileID: 5272751271889505664}
