@@ -880,7 +880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inPort: 1337
-  outIP: 192.168.0.139
+  outIP: 127.0.0.1
   outPort: 6161
 --- !u!4 &621109942
 Transform:
