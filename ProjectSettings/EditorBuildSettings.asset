@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/SculptingPro/VR/OculusIntegration_Dependency/SPExampleVR_Cube.unity
+    guid: ebc7c25d2dc13e04d90aaf06efb53cfc
+  - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: f2fea7ace86997841a554a80efb78d0c
   - enabled: 0
