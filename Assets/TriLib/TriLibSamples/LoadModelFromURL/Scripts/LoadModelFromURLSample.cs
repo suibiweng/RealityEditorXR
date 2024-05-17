@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+
 namespace TriLibCore.Samples
 {
     /// <summary>
@@ -10,6 +11,8 @@ namespace TriLibCore.Samples
         /// The Model URL.
         /// </summary>
         public string ModelURL = "https://ricardoreis.net/trilib/demos/sample/TriLibSampleModel.zip";
+
+        public GameObject target;
 
         /// <summary>
         /// Cached Asset Loader Options instance.
@@ -29,7 +32,7 @@ namespace TriLibCore.Samples
                 var assetLoaderOptions = AssetLoader.CreateDefaultLoaderOptions(false, true);
             }
             var webRequest = AssetDownloader.CreateWebRequest(ModelURL);
-            AssetDownloader.LoadModelFromUri(webRequest, OnLoad, OnMaterialsLoad, OnProgress, OnError, null, _assetLoaderOptions);
+            AssetDownloader.LoadModelFromUri(webRequest, OnLoad, OnMaterialsLoad, OnProgress, OnError, target, _assetLoaderOptions);
         }
 
         /// <summary>
