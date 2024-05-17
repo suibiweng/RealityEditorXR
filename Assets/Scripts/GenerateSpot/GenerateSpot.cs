@@ -6,6 +6,8 @@ using UnityEngine;
 using TMPro;
 using RealityEditor;
 using UnityEngine.UI;
+using SculptingPro;
+
 using DimBoxes;
 using Normal.Realtime;
 using Oculus.Interaction;
@@ -118,6 +120,11 @@ public class GenerateSpot : MonoBehaviour
 
     public Transform Player;
 
+    public Toggle sculptMode;
+
+    public bool SculptingModeOn=false;
+
+
 
 
 
@@ -186,6 +193,45 @@ public class GenerateSpot : MonoBehaviour
  
  
  
+    }
+
+    bool hasMeshFilter=false;
+
+
+    public void changeSculptMode(){
+        if(sculptMode.isOn){
+             StartSculpting();
+             manager.turnSculptingMenu(sculptMode.isOn);
+
+        }else{
+            manager.turnSculptingMenu(sculptMode.isOn);
+             StopScupting();
+
+
+
+        }
+
+
+
+    }
+    void StopScupting(){
+
+        SculptingModeOn=false;
+
+
+    }
+
+
+    public void StartSculpting(){
+
+        SculptingModeOn=true;
+
+        if(!hasMeshFilter ){
+            hasMeshFilter = true;
+            TargetObject.GetComponentInChildren<MeshFilter>().gameObject.AddComponent<SculptingPro_Model>();
+        }
+            
+
     }
 
 

@@ -40,6 +40,9 @@ public class RealityEditorManager : MonoBehaviour
 
     public GameObject Cursor;
 
+
+    public GameObject sculptingMenu,scuptingBrush;
+
     
 
 
@@ -84,6 +87,17 @@ public class RealityEditorManager : MonoBehaviour
 
         //selectedID=id;
         selectedIDUrl=IDurl;
+    }
+
+    public void turnSculptingMenu(bool on){
+
+        sculptingMenu.SetActive(on);
+        scuptingBrush.SetActive(on);
+
+
+
+
+
     }
 
     public GameObject getSelectSpot(){

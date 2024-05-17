@@ -4342,6 +4342,8 @@ MonoBehaviour:
   EraseQuad: {fileID: 1848372280}
   PreviewWindow: {fileID: 2963778507989951749}
   Player: {fileID: 0}
+  sculptMode: {fileID: 0}
+  SculptingModeOn: 0
   Text_Scanning_Btn: {fileID: 5928899881653964488}
   Text_Instruction: {fileID: 5928899881653964542}
   checkInterval: 5
