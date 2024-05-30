@@ -535,19 +535,16 @@ public class GenerateSpot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        URLIDText.text = URLID; 
+        
         if (isAcopy)
         {
             UiMenu.SetActive(false);
             return;
 
         }
-
-
-
-       
-
-
-
+        
         updateTheTransform();
 
         switch (SpotType)

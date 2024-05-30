@@ -101,13 +101,9 @@ public class RealityEditorManager : MonoBehaviour
     }
 
     public GameObject getSelectSpot(){
-
         
-
-
         return GenCubesDic[selectedIDUrl];
-
-
+        
     }
 
 
