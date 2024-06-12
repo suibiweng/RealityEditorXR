@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PreviewPrompt
   - UIcursor
+  - GenerateSpot
   layers:
   - Default
   - TransparentFX

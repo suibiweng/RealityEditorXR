@@ -15,7 +15,7 @@ public class recordData : MonoBehaviour
     public ArrayList cameraPoses;
 
 
-    public OSC osc;
+    // public OSC osc;
 
     String fileName;
     bool recording = false;
@@ -37,7 +37,7 @@ public class recordData : MonoBehaviour
     void Start()
     {
         cameraPoses=new ArrayList();
-        osc=FindObjectOfType<OSC>();
+        // osc=FindObjectOfType<OSC>();
         spot=GetComponent<GenerateSpot>();
         campoints=FindObjectOfType<CameraSelectPoints>();
        
@@ -67,7 +67,7 @@ public class recordData : MonoBehaviour
         message = new OscMessage();
         message.address = "/startRecord";
         message.values.Add(spot.URLID);
-        osc.Send(message);
+        // osc.Send(message);
         imgCount=0;
 
 
@@ -79,7 +79,7 @@ public class recordData : MonoBehaviour
         OscMessage message;
         message = new OscMessage();
         message.address = "/endRecord";
-        osc.Send(message);
+        // osc.Send(message);
 
         foreach(var c in cameraPoses){
             Destroy((GameObject)c);
@@ -275,7 +275,7 @@ public class recordData : MonoBehaviour
              
              if(campoints.cameraType==CameraType.Stereo)   message.values.Add("left:"+campoints.rLeftAim.ToString()+" "+"right"+campoints.rRightAim.ToString());
              if(campoints.cameraType==CameraType.Mono)   message.values.Add(campoints.centerAim.ToString());
-                osc.Send(message);
+                // osc.Send(message);
                 
                 startRecordingTime = Time.time;
                 imgCount++;

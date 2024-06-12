@@ -4,16 +4,16 @@ using System.Linq;
 using Normal.Realtime;
 
 
-public class SceneSaver : MonoBehaviour
+public class SceneSaverTest : MonoBehaviour
 {
    public AudioSource source;
    public AudioClip savingSound, loadingSound;
-   public RealityEditorManager RealityEditorManager;
+
+   public RealityEditorManager2 RealityEditorManager2; 
    // public GameObject GenSpotPrefab;
    [System.Serializable]
    public class GenerateSpotData
    {
-       public string URLID;
        public Vector3 position;
        public Quaternion rotation;
        public Vector3 scale;
@@ -25,14 +25,7 @@ public class SceneSaver : MonoBehaviour
    {
        public List<GenerateSpotData> generateSpotDataList;
    }
-
-
-   void Start()
-   {
-      
-   }
-
-
+   
    void Update()
    {
        if(OVRInput.GetUp(OVRInput.RawButton.LThumbstick)){
@@ -48,22 +41,19 @@ public class SceneSaver : MonoBehaviour
    }
 
 
-   void SaveGenerateSpotsToPlayerPrefs()
+   public void SaveGenerateSpotsToPlayerPrefs()
    {
        // Find all objects of type GenerateSpot
-       GenerateSpot[] generateSpots = FindObjectsOfType<GenerateSpot>();
+       GameObject[] generateSpots = GameObject.FindGameObjectsWithTag("GenerateSpot");
        List<GenerateSpotData> generateSpotDataList = new List<GenerateSpotData>();
-      
+      Debug.Log("found " + generateSpots.Length + " Cubes while saving scene");
        // Extract data
        foreach (var generateSpot in generateSpots)
        {
            GenerateSpotData data = new GenerateSpotData();
-           data.URLID = generateSpot.URLID;
            data.position = generateSpot.transform.position;
            data.rotation = generateSpot.transform.rotation;
            data.scale = generateSpot.transform.localScale;
-
-
            generateSpotDataList.Add(data);
        }
 
@@ -75,36 +65,31 @@ public class SceneSaver : MonoBehaviour
 
 
        // Save to PlayerPrefs
+       // Debug.Log("Saving the JsonString: " + json);
        PlayerPrefs.SetString("GenerateSpotData", json);
        PlayerPrefs.Save();
    }
 
 
-   void LoadGenerateSpotsFromPlayerPrefs()
+   public void LoadGenerateSpotsFromPlayerPrefs()
    {
        // Check if the key exists
        if (PlayerPrefs.HasKey("GenerateSpotData"))
        {
            // Get the JSON string
            string json = PlayerPrefs.GetString("GenerateSpotData");
-
+           // Debug.Log("Loading the JSON String: " + json);
 
            // Deserialize the JSON string back to the object
            GenerateSpotDataList allData = JsonUtility.FromJson<GenerateSpotDataList>(json);
 
-
+           Debug.Log("Loading scene with " + allData.generateSpotDataList.Count + " Cubes");
            foreach (var data in allData.generateSpotDataList)
            {
-               Debug.Log("Loading scene with " + allData.generateSpotDataList.Count + " Cubes");
-               GameObject newObject = Realtime.Instantiate("GenrateSpot", data.position, data.rotation);
-               // GameObject newObject = Realtime.Instantiate("NewCube", data.position, data.rotation);
-               newObject.transform.localScale = data.scale;
-               newObject.GetComponent<GenerateSpot>().URLID = data.URLID;
-               newObject.GetComponent<DataSync>().SetURLID(data.URLID);
-               RealityEditorManager.GenCubesDic.Add(data.URLID, newObject);
-               newObject.GetComponent<GenerateSpot>().initAdd();
-
-               // RealityEditorManager.selectedIDUrl = data.URLID;
+               RealityEditorManager2.createSavedSpot(data.position, data.rotation, data.scale);
+               // GameObject newObject = Realtime.Instantiate("GenrateSpot2.0", data.position, data.rotation);
+               // newObject.transform.localScale = data.scale;
+               // RealityEditorManager.selectedIDUrl = data.URLID; 
                // RealityEditorManager.IDs++;
            }
        }

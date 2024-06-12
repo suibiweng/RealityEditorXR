@@ -12,22 +12,22 @@ public class DataSync : RealtimeComponent<DataSyncModel> {
     protected override void OnRealtimeModelReplaced(DataSyncModel previousModel, DataSyncModel currentModel) {
         if (previousModel != null) {
             // Unregister from events
-            previousModel.PromptDataDidChange -= PromptDidChange;
-            previousModel.URLIDDidChange -= URLIDDidChange;
+            // previousModel.PromptDataDidChange -= PromptDidChange;
+            // previousModel.URLIDDidChange -= URLIDDidChange;
         }
         
         if (currentModel != null) {
             // If this is a model that has no data set on it, populate it with the current Text mesh pros.
             if (currentModel.isFreshModel)
-                currentModel.PromptData = "_ " + PromptTextMesh.text;
-                currentModel.URLID = "_ " + URLIDTextMesh.text;
+                // currentModel.PromptData = "_ " + PromptTextMesh.text;
+                // currentModel.URLID = "_ " + URLIDTextMesh.text;
             // Update the UI to match the new model
             UpdateTextPrompt();
             UpdateTextURLID(); 
 
             // Register for events so we'll know if the data changes later
-            currentModel.PromptDataDidChange += PromptDidChange;
-            currentModel.URLIDDidChange += URLIDDidChange;
+            // currentModel.PromptDataDidChange += PromptDidChange;
+            // currentModel.URLIDDidChange += URLIDDidChange;
         }
     }
 
@@ -39,19 +39,19 @@ public class DataSync : RealtimeComponent<DataSyncModel> {
     }
     
     private void UpdateTextPrompt() {
-        PromptTextMesh.text = model.PromptData;
+        // PromptTextMesh.text = model.PromptData;
     }
     private void UpdateTextURLID() {
-        URLIDTextMesh.text = model.URLID;
-        spot.URLID=model.URLID;
+        // URLIDTextMesh.text = model.URLID;
+        // spot.URLID=model.URLID;
     }
 
     public void Setprompt(string prompt) {
         // This will fire the PromptDidChange event on the model, which will update the renderer for both the local player and all remote players.
-        model.PromptData = prompt;
+        // model.PromptData = prompt;
     }
     public void SetURLID(string URLID) {
         // This will fire the UpdateTextURLID event on the model
-        model.URLID = URLID;
+        // model.URLID = URLID;
     }
 }

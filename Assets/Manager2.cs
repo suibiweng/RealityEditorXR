@@ -29,6 +29,6 @@ public class Manager2 : MonoBehaviour
 
     private void createSpot(Vector3 spawnPos)
     {
-        Realtime.Instantiate("NewCube", spawnPos, Quaternion.identity);
+        Realtime.Instantiate("GenrateSpot2.0", spawnPos, Quaternion.identity);
     }
 }

@@ -2404,6 +2404,8 @@ MonoBehaviour:
   EraseQuad: {fileID: 0}
   PreviewWindow: {fileID: 0}
   Player: {fileID: 0}
+  sculptMode: {fileID: 0}
+  SculptingModeOn: 0
   Text_Scanning_Btn: {fileID: 5272751271889505664}
   Text_Instruction: {fileID: 5272751271889505718}
   checkInterval: 5
@@ -26607,6 +26609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spot: {fileID: 4455704794362452798}
   dropdown: {fileID: 1557097163}
+  CurrentFile: {fileID: 0}
   url: http://127.0.0.1:8000/FromIPAD/
 --- !u!1 &5969754718823606986
 GameObject:

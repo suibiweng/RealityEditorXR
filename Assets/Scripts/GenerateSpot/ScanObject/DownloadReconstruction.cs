@@ -66,6 +66,7 @@ public class DownloadReconstruction : MonoBehaviour
             {
                 string fileUrl = match.Groups[1].Value;
                 string fileNameWithoutExtension = ExtractFileNameWithoutExtension(fileUrl);
+                Debug.Log("Using a dictionary in Download Reconstruction SUS!!!");
                 if (!fileNameToUrlMap.ContainsKey(fileNameWithoutExtension))
                 {
                     fileNameToUrlMap.Add(fileNameWithoutExtension, fileUrl);

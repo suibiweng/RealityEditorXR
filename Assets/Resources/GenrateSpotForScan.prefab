@@ -24567,7 +24567,6 @@ MonoBehaviour:
   SpotType: 0
   _realtimeTransform: {fileID: 0}
   _realtimeView: {fileID: 0}
-  moveplayer: {fileID: 0}
   VertexColor: {fileID: 0}
   UnlitShader: {fileID: 0}
   TargetMaterial: {fileID: 0}
@@ -24766,7 +24765,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RT: {fileID: 0}
   indicator: {fileID: 0}
-  osc: {fileID: 0}
   imgCount: 0
   instruction: 
   campoints: {fileID: 0}

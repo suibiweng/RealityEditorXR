@@ -4112,7 +4112,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1683885090753417599}
-  - component: {fileID: 4204464118960621351}
+  - component: {fileID: -5027042412233038839}
   - component: {fileID: 6148612481019881565}
   - component: {fileID: 6148612481019881555}
   - component: {fileID: 6148612482922856130}
@@ -4123,13 +4123,12 @@ GameObject:
   - component: {fileID: -8484851729914132731}
   - component: {fileID: -4772333348440836202}
   - component: {fileID: 2911210317674589114}
-  - component: {fileID: 6501566474283620153}
   - component: {fileID: 476003111313948772}
   - component: {fileID: 6889092148364235388}
   - component: {fileID: 2656873361722702185}
   m_Layer: 0
-  m_Name: GenrateSpot
-  m_TagString: Untagged
+  m_Name: GenrateSpot2.0
+  m_TagString: GenerateSpot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4275,7 +4274,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4204464118960621351
+--- !u!114 &-5027042412233038839
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4284,7 +4283,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1683885090753417592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dcb6804a1b3c9d489cecdeb11023159, type: 3}
+  m_Script: {fileID: 11500000, guid: dc6f890c45c48ad438e3930847d8e733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isAcopy: 0
@@ -4292,43 +4291,29 @@ MonoBehaviour:
   downloadURL: http://192.168.0.139:8000/
   URLID: 
   manager: {fileID: 0}
-  pos: {x: 0, y: 0, z: 0}
-  size: {x: 0, y: 0, z: 0}
-  TransRotation: {x: 0, y: 0, z: 0}
   isselsected: 0
   loadingIcon: {fileID: 8156244992385004863}
   Prompt: 
-  previewText: {fileID: 0}
   URLIDText: {fileID: 696682105605600011}
   PromtText: {fileID: 1167092362498039368}
   LitseningText: {fileID: 6148612480976159198}
   UiMenu: {fileID: 6148612480887782685}
-  controlPanels:
-  - {fileID: 0}
-  - {fileID: 6148612481526342885}
-  - {fileID: 0}
-  PanelsToggles:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  controlPanels: []
+  PanelsToggles: []
   VoicePanel: {fileID: 6148612481697692344}
   EditMenu: {fileID: 3848411419340054149}
   ScanningPanel: {fileID: 6148612481526342885}
   DownloadPanel: {fileID: 6863999300241291195}
   selectMenu: {fileID: 6597491865064482090}
-  AimStart: {fileID: 1163502487755132263}
   ColorBtn: {fileID: 3848411419944183241}
   ErasingPanel: {fileID: 144490556410114673}
   EraseBtn: {fileID: 505638995841852597}
   Britheness: {fileID: 8303370352235479404}
   TargetObject: {fileID: 5137789135296656347}
-  BackGroundOnly: {fileID: 6206533663996856818}
-  Contianier: {fileID: 1683885090962764969}
   RecordData: {fileID: 0}
   erasingProjector: {fileID: 4354984841847318464}
   Outlinebox: {fileID: 6148612481019881555}
-  CountID: 0
-  _grabbable: {fileID: 0}
+  _grabbable: {fileID: 6148612482922856129}
   SpotType: 0
   _realtimeTransform: {fileID: -4772333348440836202}
   _realtimeView: {fileID: -8484851729914132731}
@@ -4343,11 +4328,11 @@ MonoBehaviour:
   Player: {fileID: 0}
   sculptMode: {fileID: 0}
   SculptingModeOn: 0
-  Text_Scanning_Btn: {fileID: 5928899881653964488}
+  Text_Scanning_Btn: {fileID: 5928899881653964542}
   Text_Instruction: {fileID: 5928899881653964542}
   checkInterval: 5
   erasingTexture: {fileID: 0}
-  Bright: {r: 111.43049, g: 111.43049, b: 111.43049, a: 1}
+  Bright: {r: 1, g: 1, b: 1, a: 0}
   Dark: {r: 0, g: 0, b: 0, a: 0}
 --- !u!65 &6148612481019881565
 BoxCollider:
@@ -4482,7 +4467,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1683885090753417592}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -363599832, guid: c424820a8880b8845bda10ec0b41507e, type: 3}
   m_Name: 
@@ -4498,7 +4483,7 @@ MonoBehaviour:
   - componentID: 1
     component: {fileID: -4772333348440836202}
   - componentID: 2
-    component: {fileID: 6501566474283620153}
+    component: {fileID: 0}
   _childViews:
   - componentID: 1
     component: {fileID: 7034200858793356536}
@@ -4509,7 +4494,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1683885090753417592}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -1029778088, guid: c424820a8880b8845bda10ec0b41507e, type: 3}
   m_Name: 
@@ -4538,21 +4523,6 @@ MonoBehaviour:
   instruction: 
   campoints: {fileID: 0}
   recordingInterval: 0
---- !u!114 &6501566474283620153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683885090753417592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b0c0f688ca09254db0eb44ebe89cd0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PromptTextMesh: {fileID: 1167092362498039368}
-  URLIDTextMesh: {fileID: 696682105605600011}
-  spot: {fileID: 4204464118960621351}
 --- !u!114 &476003111313948772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4560,13 +4530,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1683885090753417592}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c4b4b9013053ce48a774219e80c29f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prompt: {fileID: 1167092362498039368}
-  URLIDText: {fileID: 696682105605600011}
 --- !u!114 &6889092148364235388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4602,7 +4570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6acfc19fc101a384999c0a8e5a0d047b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spot: {fileID: 4204464118960621351}
+  spot: {fileID: 0}
   dropdown: {fileID: 1557097163}
   CurrentFile: {fileID: 4551482114936054898}
   url: http://192.168.0.139:8000/FromIPAD/
@@ -5903,7 +5871,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4204464118960621351}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GenerateSpot, Assembly-CSharp
         m_MethodName: Remove
         m_Mode: 1
@@ -7264,7 +7232,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4204464118960621351}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GenerateSpot, Assembly-CSharp
         m_MethodName: setTheType
         m_Mode: 3
@@ -7422,7 +7390,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4204464118960621351}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GenerateSpot, Assembly-CSharp
         m_MethodName: materialModify
         m_Mode: 1
@@ -7556,7 +7524,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4204464118960621351}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GenerateSpot, Assembly-CSharp
         m_MethodName: setTheType
         m_Mode: 3
@@ -8132,7 +8100,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4204464118960621351}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GenerateSpot, Assembly-CSharp
         m_MethodName: Copy
         m_Mode: 1
@@ -9538,7 +9506,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4204464118960621351}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GenerateSpot, Assembly-CSharp
         m_MethodName: Erasing
         m_Mode: 1
@@ -10196,7 +10164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8617898da39d8445bb660fada33fac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spot: {fileID: 4204464118960621351}
+  spot: {fileID: 0}
   ColorSlider: {fileID: 2383471273890790971}
   GraySlider: {fileID: 2469872660084436603}
   AlhpaSlider: {fileID: 6148612481056273126}
@@ -12436,7 +12404,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4204464118960621351}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GenerateSpot, Assembly-CSharp
         m_MethodName: ConfirmGeneration
         m_Mode: 1
@@ -12448,7 +12416,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4204464118960621351}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GenerateSpot, Assembly-CSharp
         m_MethodName: OnSelect
         m_Mode: 1
@@ -27215,7 +27183,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4204464118960621351}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GenerateSpot, Assembly-CSharp
         m_MethodName: OnSelect
         m_Mode: 1
@@ -27227,7 +27195,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4204464118960621351}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GenerateSpot, Assembly-CSharp
         m_MethodName: onLitsenClick
         m_Mode: 1
@@ -27544,7 +27512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6acfc19fc101a384999c0a8e5a0d047b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spot: {fileID: 4204464118960621351}
+  spot: {fileID: 0}
   dropdown: {fileID: 1557097163}
   CurrentFile: {fileID: 0}
   url: http://192.168.0.139:8000/FromIPAD/
@@ -28077,7 +28045,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4204464118960621351}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GenerateSpot, Assembly-CSharp
         m_MethodName: ScanObject
         m_Mode: 1
@@ -30145,7 +30113,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4204464118960621351}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GenerateSpot, Assembly-CSharp
         m_MethodName: StartToinpainting
         m_Mode: 1
@@ -34499,7 +34467,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4204464118960621351}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GenerateSpot, Assembly-CSharp
         m_MethodName: Remove
         m_Mode: 1

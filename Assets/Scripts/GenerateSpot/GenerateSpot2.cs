@@ -7,14 +7,13 @@ using TMPro;
 using RealityEditor;
 using UnityEngine.UI;
 using SculptingPro;
-
 using DimBoxes;
 using Normal.Realtime;
 using Oculus.Interaction;
 
 
 
-public class GenerateSpot : MonoBehaviour
+public class GenerateSpot2 : MonoBehaviour
 {
 
     public bool isAcopy = false;
@@ -26,25 +25,17 @@ public class GenerateSpot : MonoBehaviour
 
 
     //Manager
-    public RealityEditorManager manager;
+    public RealityEditorManager2 manager;
     VoiceToPrompt voiceToPrompt;
 
     // Transform Control
-    public Vector3 pos;
-    public Vector3 size;
-    public Vector3 TransRotation;
 
     public bool isselsected = false;
-
     public GameObject loadingIcon;
 
     public string Prompt;
 
-
-    public TMP_Text previewText;
     public TMP_Text URLIDText;
-    
-    GrabObject externalController = null;
 
     
     //Control Interface
@@ -61,7 +52,6 @@ public class GenerateSpot : MonoBehaviour
 
     public GameObject DownloadPanel;
     public GameObject selectMenu;
-    public GameObject AimStart;
 
     public GameObject ColorBtn;
     public GameObject ErasingPanel;
@@ -72,8 +62,6 @@ public class GenerateSpot : MonoBehaviour
 
     // LoadObject
     public GameObject TargetObject;
-    public GameObject BackGroundOnly;
-    public GameObject Contianier;
 
     public recordData RecordData;
 
@@ -84,7 +72,6 @@ public class GenerateSpot : MonoBehaviour
     public BoundBox Outlinebox;
     ModelDownloader modelDownloader;
 
-    public int CountID;
     bool promptGenrated = false;
     bool  InstructGen = false,Inpainted=false;
 
@@ -96,11 +83,7 @@ public class GenerateSpot : MonoBehaviour
     public RealtimeTransform _realtimeTransform;
     public RealtimeView _realtimeView;
 
-    // Start is called before the first frame update
-
-    //public bool scanning=false;
-
-
+    
     public Shader VertexColor,UnlitShader;
 
     public Material TargetMaterial;
@@ -111,8 +94,7 @@ public class GenerateSpot : MonoBehaviour
     public GameObject EraseQuad;
 
     public RawImage PreviewWindow;
-
-
+    
     public Transform Player;
 
     public Toggle sculptMode;
@@ -122,28 +104,48 @@ public class GenerateSpot : MonoBehaviour
     
     void Start()
     {
-        manager = FindObjectOfType<RealityEditorManager>();
-        externalController = GetComponent<GrabObject>();
+        
+        manager = FindObjectOfType<RealityEditorManager2>();
         modelDownloader = FindObjectOfType<ModelDownloader>();
         _realtimeTransform = GetComponent<RealtimeTransform>();
         _realtimeView = GetComponent<RealtimeView>();
         _grabbable = GetComponent<Grabbable>();
         downloadURL=manager.ServerURL;
 
-        // Player = Camera.main.transform;
+        // Player=Camera.main.transform;
+        Player = manager.PlayerCamera; 
         
         SpotType = GenerateType.Add;
-        initAdd();
+        // initAdd();
+        
+        
+
+        // URLID=TimestampGenerator.GetTimestamp();
+
+        // StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_generated.zip"));
+    
+        // StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_Instruction.zip"));
+
+
         RecordData = GetComponent<recordData>();
 
 
         _grabbable.WhenPointerEventRaised += HandlePointerEventRaised;
-        
+
+
         // //   externalController.GrabbedObjectDelegate += Grab;
         //    externalController.ReleasedObjectDelegate += Release;
+
+
+
+
         loadingIcon.SetActive(false);
-        SpotType = GenerateType.Add;
-        initAdd();
+
+
+
+
+            // SpotType = GenerateType.Add;
+            //     initAdd();
 
 
         // if (selectMenu != null) selectMenu.SetActive(true);
@@ -157,13 +159,9 @@ public class GenerateSpot : MonoBehaviour
             _realtimeView.enabled = false;
 
         }
-
-
-
- 
- 
- 
     }
+    
+    
 
     bool hasMeshFilter=false;
 
@@ -228,11 +226,17 @@ public class GenerateSpot : MonoBehaviour
 
 
         float distanceToPlayer = Vector3.Distance(transform.position, Player.position);
+
         // Calculate the alpha value based on the distance
         float alpha = Mathf.InverseLerp(maxDistance, minDistance, distanceToPlayer);
+
         // Interpolate the alpha value of the material's color
+
         Outlinebox.lineColor=new Color(Outlinebox.lineColor.r, Outlinebox.lineColor.g, Outlinebox.lineColor.b, alpha);
+
         
+
+
     }
 
 
@@ -290,6 +294,20 @@ public class GenerateSpot : MonoBehaviour
   bool isErasing=false;
     public void Erasing(){
 
+       
+
+        
+         
+
+
+        
+
+        
+
+
+
+
+
     }
 
 
@@ -326,15 +344,14 @@ public class GenerateSpot : MonoBehaviour
 
         manager.updateSelected(id, URLID);
         isselsected = true;
-       
-       
-
         if (SpotType != GenerateType.None)
         {
-
             if (TargetObject.transform.childCount != 0) OpenEditMenu();
 
         }
+
+        //   moveplayer.spot = this.gameObject;
+
         // _realtimeTransform.RequestOwnership();
         // _realtimeView.RequestOwnershipOfSelfAndChildren();
 
@@ -406,6 +423,15 @@ public class GenerateSpot : MonoBehaviour
            
 
             }
+               
+
+
+
+
+
+
+
+
 
             return true;
 
@@ -468,7 +494,10 @@ public class GenerateSpot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (manager == null)
+        {
+            FindObjectOfType<RealityEditorManager2>(); 
+        }
         URLIDText.text = URLID; 
         
         if (isAcopy)
@@ -540,11 +569,20 @@ public class GenerateSpot : MonoBehaviour
                 CloseEditMenu();
                 break;
 
+
+
+
+
+
         }
 
 
          BoundingBoxColorAlhpaDinstance();
          
+
+
+
+
         if (isselsected) PromtText.text = Prompt;
 
 
@@ -552,7 +590,8 @@ public class GenerateSpot : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
                 DebugLoadModel();
-            
+
+
         }
 
 
@@ -590,7 +629,7 @@ public class GenerateSpot : MonoBehaviour
 
     public void InturuptProcess()
     {
-        manager.sendStop();
+        // manager.sendStop();
 
     }
 
