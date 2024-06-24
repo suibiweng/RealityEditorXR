@@ -4,7 +4,7 @@ using System.Linq;
 using Normal.Realtime;
 
 
-public class SceneSaver : MonoBehaviour
+public class SceneSaver : MonoBehaviour //This is the old version and can be ignored
 {
    public AudioSource source;
    public AudioClip savingSound, loadingSound;
@@ -35,16 +35,16 @@ public class SceneSaver : MonoBehaviour
 
    void Update()
    {
-       if(OVRInput.GetUp(OVRInput.RawButton.LThumbstick)){
-           source.PlayOneShot(savingSound);
-           Debug.Log("Start Button Has Been Pressed. Saving Scene...");
-           SaveGenerateSpotsToPlayerPrefs();
-       }
-       if(OVRInput.GetUp(OVRInput.RawButton.RThumbstick)){
-           source.PlayOneShot(loadingSound);
-           Debug.Log("Load Button Has Been Pressed. Loading Scene...");
-           LoadGenerateSpotsFromPlayerPrefs();
-       }
+       // if(OVRInput.GetUp(OVRInput.RawButton.LThumbstick)){
+       //     source.PlayOneShot(savingSound);
+       //     Debug.Log("Start Button Has Been Pressed. Saving Scene...");
+       //     SaveGenerateSpotsToPlayerPrefs();
+       // }
+       // if(OVRInput.GetUp(OVRInput.RawButton.RThumbstick)){
+       //     source.PlayOneShot(loadingSound);
+       //     Debug.Log("Load Button Has Been Pressed. Loading Scene...");
+       //     LoadGenerateSpotsFromPlayerPrefs();
+       // }
    }
 
 
@@ -80,34 +80,34 @@ public class SceneSaver : MonoBehaviour
    }
 
 
-   void LoadGenerateSpotsFromPlayerPrefs()
-   {
-       // Check if the key exists
-       if (PlayerPrefs.HasKey("GenerateSpotData"))
-       {
-           // Get the JSON string
-           string json = PlayerPrefs.GetString("GenerateSpotData");
-
-
-           // Deserialize the JSON string back to the object
-           GenerateSpotDataList allData = JsonUtility.FromJson<GenerateSpotDataList>(json);
-
-
-           foreach (var data in allData.generateSpotDataList)
-           {
-               Debug.Log("Loading scene with " + allData.generateSpotDataList.Count + " Cubes");
-               GameObject newObject = Realtime.Instantiate("GenrateSpot", data.position, data.rotation);
-               // GameObject newObject = Realtime.Instantiate("NewCube", data.position, data.rotation);
-               newObject.transform.localScale = data.scale;
-               newObject.GetComponent<GenerateSpot>().URLID = data.URLID;
-               newObject.GetComponent<DataSync>().SetURLID(data.URLID);
-               RealityEditorManager.GenCubesDic.Add(data.URLID, newObject);
-               newObject.GetComponent<GenerateSpot>().initAdd();
-
-               // RealityEditorManager.selectedIDUrl = data.URLID;
-               // RealityEditorManager.IDs++;
-           }
-       }
-   }
+   // void LoadGenerateSpotsFromPlayerPrefs()
+   // {
+   //     // Check if the key exists
+   //     if (PlayerPrefs.HasKey("GenerateSpotData"))
+   //     {
+   //         // Get the JSON string
+   //         string json = PlayerPrefs.GetString("GenerateSpotData");
+   //
+   //
+   //         // Deserialize the JSON string back to the object
+   //         GenerateSpotDataList allData = JsonUtility.FromJson<GenerateSpotDataList>(json);
+   //
+   //
+   //         foreach (var data in allData.generateSpotDataList)
+   //         {
+   //             Debug.Log("Loading scene with " + allData.generateSpotDataList.Count + " Cubes");
+   //             GameObject newObject = Realtime.Instantiate("GenrateSpot", data.position, data.rotation);
+   //             // GameObject newObject = Realtime.Instantiate("NewCube", data.position, data.rotation);
+   //             newObject.transform.localScale = data.scale;
+   //             newObject.GetComponent<GenerateSpot>().URLID = data.URLID;
+   //             // newObject.GetComponent<DataSync>().SetURLID(data.URLID);  //doing this in the createSavedSpot function. 
+   //             RealityEditorManager.GenCubesDic.Add(data.URLID, newObject);
+   //             newObject.GetComponent<GenerateSpot>().initAdd();
+   //
+   //             // RealityEditorManager.selectedIDUrl = data.URLID;
+   //             // RealityEditorManager.IDs++;
+   //         }
+   //     }
+   // }
 }
 

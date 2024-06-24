@@ -21,12 +21,12 @@ public class SceneSampler : MonoBehaviour
 
         displayText.SetActive(controllersActive);
 
-        if (OVRInput.GetUp(OVRInput.Button.Start))
-        {
-            currentSceneIndex++;
-            if (currentSceneIndex >= SceneManager.sceneCountInBuildSettings) currentSceneIndex = 0;
-            SceneManager.LoadScene(currentSceneIndex);
-        }
+        // if (OVRInput.GetUp(OVRInput.Button.Start))
+        // {
+        //     currentSceneIndex++;
+        //     if (currentSceneIndex >= SceneManager.sceneCountInBuildSettings) currentSceneIndex = 0;
+        //     SceneManager.LoadScene(currentSceneIndex);
+        // }   //Sawyer Commenting this out because Im using the start button to reset the debugger
 
         Vector3 menuPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch) + Vector3.up * 0.09f;
         displayText.transform.position = menuPosition;

@@ -4552,7 +4552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PromptTextMesh: {fileID: 1167092362498039368}
   URLIDTextMesh: {fileID: 696682105605600011}
-  spot: {fileID: 4204464118960621351}
+  spot: {fileID: 0}
 --- !u!114 &476003111313948772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4565,8 +4565,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4b4b9013053ce48a774219e80c29f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prompt: {fileID: 1167092362498039368}
-  URLIDText: {fileID: 696682105605600011}
 --- !u!114 &6889092148364235388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27811,7 +27809,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6148612481697692351
 RectTransform:
   m_ObjectHideFlags: 0

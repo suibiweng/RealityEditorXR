@@ -31383,7 +31383,6 @@ MonoBehaviour:
   SpotType: 0
   _realtimeTransform: {fileID: 8650774925828809234}
   _realtimeView: {fileID: 5762142017443533441}
-  moveplayer: {fileID: 0}
   VertexColor: {fileID: 4800000, guid: 8ec827264c825604e885456c3e895654, type: 3}
   UnlitShader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
   TargetMaterial: {fileID: 0}
@@ -31586,7 +31585,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RT: {fileID: 8400000, guid: 3eaeb10b757ba4443bd7d0f5ec6267c2, type: 2}
   indicator: {fileID: 0}
-  osc: {fileID: 0}
   imgCount: 0
   instruction: 
   campoints: {fileID: 0}
@@ -31605,7 +31603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PromptTextMesh: {fileID: 6195446469161077708}
   URLIDTextMesh: {fileID: 5504490850751686287}
-  spot: {fileID: 9192335279720567459}
+  spot: {fileID: 0}
 --- !u!114 &4851475907054294496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31618,8 +31616,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4b4b9013053ce48a774219e80c29f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prompt: {fileID: 6195446469161077708}
-  URLIDText: {fileID: 5504490850751686287}
 --- !u!114 &1896584044408326136
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,10 +9,10 @@ using RealityEditor;
 using TMPro;
 
 
-public class DownloadReconstruction : MonoBehaviour
+public class DownloadReconstruction2 : MonoBehaviour
 {
 
-    public GenerateSpot spot;
+    public GenerateSpot2 spot;
     private Dictionary<string, string> fileNameToUrlMap;
     public Dropdown dropdown; // Assign this in the Inspector
 
@@ -163,7 +163,9 @@ public class DownloadReconstruction : MonoBehaviour
            spot.ChangeID(selectedFileName);
 
            spot.downloadModel( url+DownLoadURL,spot.TargetObject);
-           
+
+
+
     }
 
     void Update(){

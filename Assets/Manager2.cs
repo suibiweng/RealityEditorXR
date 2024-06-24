@@ -29,6 +29,13 @@ public class Manager2 : MonoBehaviour
 
     private void createSpot(Vector3 spawnPos)
     {
-        Realtime.Instantiate("GenrateSpot2.0", spawnPos, Quaternion.identity);
+        Realtime.InstantiateOptions options = new Realtime.InstantiateOptions
+        {
+            ownedByClient = true,
+            preventOwnershipTakeover = false,
+            // destroyWhenOwnerOrLastClientLeaves = true,
+            useInstance = null // or specify the Realtime instance if necessary
+        };
+        Realtime.Instantiate("GenrateSpot2.0", spawnPos, Quaternion.identity, options);
     }
 }

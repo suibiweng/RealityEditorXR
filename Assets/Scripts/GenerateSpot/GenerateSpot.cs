@@ -128,7 +128,7 @@ public class GenerateSpot : MonoBehaviour
         _realtimeTransform = GetComponent<RealtimeTransform>();
         _realtimeView = GetComponent<RealtimeView>();
         _grabbable = GetComponent<Grabbable>();
-        downloadURL=manager.ServerURL;
+        downloadURL = manager.ServerURL;
 
         // Player = Camera.main.transform;
         

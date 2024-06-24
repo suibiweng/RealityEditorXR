@@ -2137,6 +2137,7 @@ GameObject:
   - component: {fileID: 2583683164494291810}
   - component: {fileID: 569363535511576296}
   - component: {fileID: 696682105605600011}
+  - component: {fileID: 1381861259518007602}
   m_Layer: 0
   m_Name: URLID
   m_TagString: Untagged
@@ -2301,6 +2302,27 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 569363535511576296}
   m_maskType: 0
+--- !u!114 &1381861259518007602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424956509761871412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -363599832, guid: c424820a8880b8845bda10ec0b41507e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _realtime: {fileID: 0}
+  _sceneViewUUID: 
+  _viewUUID: 
+  _sceneViewPreventOwnershipTakeover: 0
+  _sceneViewDestroyWhenOwnerOrLastClientLeaves: 1
+  _sceneViewDestroyWhenOwnerOrLastClientLeavesMigrated: 1
+  _sceneViewDestroyWhenLastClientLeaves: 1
+  _components: []
+  _childViews: []
 --- !u!1 &458706341671844170
 GameObject:
   m_ObjectHideFlags: 0
@@ -3543,7 +3565,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: Say Something
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3570,7 +3592,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 19.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3652,9 +3674,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0c0f688ca09254db0eb44ebe89cd0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PromptTextMesh: {fileID: 0}
-  URLIDTextMesh: {fileID: 0}
-  spot: {fileID: 0}
 --- !u!1 &1194436799925147633
 GameObject:
   m_ObjectHideFlags: 0
@@ -4120,12 +4139,13 @@ GameObject:
   - component: {fileID: 6148612482922856129}
   - component: {fileID: 6148612482922856135}
   - component: {fileID: 6148612482922856134}
-  - component: {fileID: -8484851729914132731}
-  - component: {fileID: -4772333348440836202}
-  - component: {fileID: 2911210317674589114}
   - component: {fileID: 476003111313948772}
+  - component: {fileID: 2911210317674589114}
   - component: {fileID: 6889092148364235388}
-  - component: {fileID: 2656873361722702185}
+  - component: {fileID: 1978521006554837053}
+  - component: {fileID: -8471173886137273503}
+  - component: {fileID: 8137861163800681387}
+  - component: {fileID: 1542145297195941304}
   m_Layer: 0
   m_Name: GenrateSpot2.0
   m_TagString: GenerateSpot
@@ -4294,12 +4314,19 @@ MonoBehaviour:
   isselsected: 0
   loadingIcon: {fileID: 8156244992385004863}
   Prompt: 
+  dataSync: {fileID: 1542145297195941304}
   URLIDText: {fileID: 696682105605600011}
   PromtText: {fileID: 1167092362498039368}
   LitseningText: {fileID: 6148612480976159198}
   UiMenu: {fileID: 6148612480887782685}
-  controlPanels: []
-  PanelsToggles: []
+  controlPanels:
+  - {fileID: 0}
+  - {fileID: 6148612481526342885}
+  - {fileID: 0}
+  PanelsToggles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   VoicePanel: {fileID: 6148612481697692344}
   EditMenu: {fileID: 3848411419340054149}
   ScanningPanel: {fileID: 6148612481526342885}
@@ -4315,8 +4342,8 @@ MonoBehaviour:
   Outlinebox: {fileID: 6148612481019881555}
   _grabbable: {fileID: 6148612482922856129}
   SpotType: 0
-  _realtimeTransform: {fileID: -4772333348440836202}
-  _realtimeView: {fileID: -8484851729914132731}
+  _realtimeTransform: {fileID: 0}
+  _realtimeView: {fileID: 0}
   VertexColor: {fileID: 4800000, guid: 8ec827264c825604e885456c3e895654, type: 3}
   UnlitShader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
   TargetMaterial: {fileID: 0}
@@ -4328,6 +4355,7 @@ MonoBehaviour:
   Player: {fileID: 0}
   sculptMode: {fileID: 0}
   SculptingModeOn: 0
+  DataSyncTestNumber: 0
   Text_Scanning_Btn: {fileID: 5928899881653964542}
   Text_Instruction: {fileID: 5928899881653964542}
   checkInterval: 5
@@ -4460,7 +4488,7 @@ MonoBehaviour:
   _grabbable: {fileID: 6148612482922856129}
   _rigidbody: {fileID: 6148612482922856130}
   _scaleMassWithSize: 1
---- !u!114 &-8484851729914132731
+--- !u!114 &476003111313948772
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4469,42 +4497,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1683885090753417592}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: -363599832, guid: c424820a8880b8845bda10ec0b41507e, type: 3}
+  m_Script: {fileID: 11500000, guid: 3c4b4b9013053ce48a774219e80c29f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _realtime: {fileID: 0}
-  _sceneViewUUID: 
-  _viewUUID: 
-  _sceneViewPreventOwnershipTakeover: 0
-  _sceneViewDestroyWhenOwnerOrLastClientLeaves: 1
-  _sceneViewDestroyWhenOwnerOrLastClientLeavesMigrated: 1
-  _sceneViewDestroyWhenLastClientLeaves: 1
-  _components:
-  - componentID: 1
-    component: {fileID: -4772333348440836202}
-  - componentID: 2
-    component: {fileID: 0}
-  _childViews:
-  - componentID: 1
-    component: {fileID: 7034200858793356536}
---- !u!114 &-4772333348440836202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683885090753417592}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1029778088, guid: c424820a8880b8845bda10ec0b41507e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interpolate: 1
-  _syncPosition: 1
-  _syncRotation: 1
-  _syncScale: 1
-  _syncVelocity: 1
-  _maintainOwnershipWhileSleeping: 1
+  _prompt: {fileID: 0}
+  URLIDText: {fileID: 0}
 --- !u!114 &2911210317674589114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4523,18 +4520,6 @@ MonoBehaviour:
   instruction: 
   campoints: {fileID: 0}
   recordingInterval: 0
---- !u!114 &476003111313948772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683885090753417592}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c4b4b9013053ce48a774219e80c29f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6889092148364235388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4558,7 +4543,7 @@ MonoBehaviour:
   _releaseDistance: 0
   _resetGrabOnGrabsUpdated: 1
   _physicsGrabbable: {fileID: 6148612482922856134}
---- !u!114 &2656873361722702185
+--- !u!114 &1978521006554837053
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4567,13 +4552,72 @@ MonoBehaviour:
   m_GameObject: {fileID: 1683885090753417592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6acfc19fc101a384999c0a8e5a0d047b, type: 3}
+  m_Script: {fileID: 11500000, guid: 36c1ed20089668641ad1ade6abb1b235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spot: {fileID: 0}
+  spot: {fileID: -5027042412233038839}
   dropdown: {fileID: 1557097163}
   CurrentFile: {fileID: 4551482114936054898}
   url: http://192.168.0.139:8000/FromIPAD/
+--- !u!114 &-8471173886137273503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683885090753417592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -363599832, guid: c424820a8880b8845bda10ec0b41507e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _realtime: {fileID: 0}
+  _sceneViewUUID: 
+  _viewUUID: 
+  _sceneViewPreventOwnershipTakeover: 0
+  _sceneViewDestroyWhenOwnerOrLastClientLeaves: 1
+  _sceneViewDestroyWhenOwnerOrLastClientLeavesMigrated: 1
+  _sceneViewDestroyWhenLastClientLeaves: 1
+  _components:
+  - componentID: 1
+    component: {fileID: 8137861163800681387}
+  - componentID: 2
+    component: {fileID: 1542145297195941304}
+  _childViews:
+  - componentID: 1
+    component: {fileID: 1381861259518007602}
+  - componentID: 2
+    component: {fileID: 7034200858793356536}
+--- !u!114 &8137861163800681387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683885090753417592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1029778088, guid: c424820a8880b8845bda10ec0b41507e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolate: 1
+  _syncPosition: 1
+  _syncRotation: 1
+  _syncScale: 1
+  _syncVelocity: 1
+  _maintainOwnershipWhileSleeping: 0
+--- !u!114 &1542145297195941304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683885090753417592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b0c0f688ca09254db0eb44ebe89cd0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1683885090962764969
 GameObject:
   m_ObjectHideFlags: 0
@@ -7232,8 +7276,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GenerateSpot, Assembly-CSharp
+      - m_Target: {fileID: -5027042412233038839}
+        m_TargetAssemblyTypeName: GenerateSpot2, Assembly-CSharp
         m_MethodName: setTheType
         m_Mode: 3
         m_Arguments:
@@ -7390,8 +7434,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GenerateSpot, Assembly-CSharp
+      - m_Target: {fileID: -5027042412233038839}
+        m_TargetAssemblyTypeName: GenerateSpot2, Assembly-CSharp
         m_MethodName: materialModify
         m_Mode: 1
         m_Arguments:
@@ -7524,8 +7568,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GenerateSpot, Assembly-CSharp
+      - m_Target: {fileID: -5027042412233038839}
+        m_TargetAssemblyTypeName: GenerateSpot2, Assembly-CSharp
         m_MethodName: setTheType
         m_Mode: 3
         m_Arguments:
@@ -8100,8 +8144,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GenerateSpot, Assembly-CSharp
+      - m_Target: {fileID: -5027042412233038839}
+        m_TargetAssemblyTypeName: GenerateSpot2, Assembly-CSharp
         m_MethodName: Copy
         m_Mode: 1
         m_Arguments:
@@ -9506,8 +9550,8 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GenerateSpot, Assembly-CSharp
+      - m_Target: {fileID: -5027042412233038839}
+        m_TargetAssemblyTypeName: GenerateSpot2, Assembly-CSharp
         m_MethodName: Erasing
         m_Mode: 1
         m_Arguments:
@@ -10330,7 +10374,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2656873361722702185}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: DownloadReconstruction, Assembly-CSharp
         m_MethodName: PreviousModel
         m_Mode: 1
@@ -12300,7 +12344,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5549117313486525058
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12404,8 +12448,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GenerateSpot, Assembly-CSharp
+      - m_Target: {fileID: -5027042412233038839}
+        m_TargetAssemblyTypeName: GenerateSpot2, Assembly-CSharp
         m_MethodName: ConfirmGeneration
         m_Mode: 1
         m_Arguments:
@@ -12416,8 +12460,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GenerateSpot, Assembly-CSharp
+      - m_Target: {fileID: -5027042412233038839}
+        m_TargetAssemblyTypeName: GenerateSpot2, Assembly-CSharp
         m_MethodName: OnSelect
         m_Mode: 1
         m_Arguments:
@@ -27183,8 +27227,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GenerateSpot, Assembly-CSharp
+      - m_Target: {fileID: -5027042412233038839}
+        m_TargetAssemblyTypeName: GenerateSpot2, Assembly-CSharp
         m_MethodName: OnSelect
         m_Mode: 1
         m_Arguments:
@@ -27195,8 +27239,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GenerateSpot, Assembly-CSharp
+      - m_Target: {fileID: -5027042412233038839}
+        m_TargetAssemblyTypeName: GenerateSpot2, Assembly-CSharp
         m_MethodName: onLitsenClick
         m_Mode: 1
         m_Arguments:
@@ -27779,7 +27823,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6148612481697692351
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30887,7 +30931,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2656873361722702185}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: DownloadReconstruction, Assembly-CSharp
         m_MethodName: ToNextModel
         m_Mode: 1

@@ -24,14 +24,18 @@ public class RealityEditorManager2 : MonoBehaviour
     TextMeshPro debugText;
     
     public GameObject sculptingMenu,scuptingBrush;
-    
+    public OSC osc;
+
     void Start()
     {
+        osc=FindObjectOfType<OSC>();   
 
         ServerURL+=":"+downloadPort+"/";
      //   GenCubes= new List<GameObject>();
         GenCubesDic=new Dictionary<string,GameObject>();
       //  IDs=GenCubes.Count;
+      osc.SetAllMessageHandler(ReciveFromOSC);
+
         
     }
 
@@ -90,33 +94,41 @@ public class RealityEditorManager2 : MonoBehaviour
         }
     }
     
-    public void createSpot(Vector3 pos)
+    private void createSpot(Vector3 pos)
     {
-        GameObject gcube = Realtime.Instantiate("GenrateSpot2.0", pos, Quaternion.identity);
+        Realtime.InstantiateOptions options = new Realtime.InstantiateOptions
+        {
+            ownedByClient = true,
+            preventOwnershipTakeover = false,
+            // destroyWhenOwnerOrLastClientLeaves = true,
+            useInstance = null // or specify the Realtime instance if necessary
+        };
+        GameObject gcube = Realtime.Instantiate("GenrateSpot2.0", pos, Quaternion.identity, options); //this might be obsolete trying new options feature
+        // GameObject gcube = Instantiate("GenrateSpot2.0", pos, Quaternion.identity); 
+
         gcube.GetComponent<GenerateSpot2>().id=IDs;
         string urlid=TimestampGenerator.GetTimestamp();
         gcube.GetComponent<GenerateSpot2>().URLID=urlid;
-        Debug.Log("Adding cube to the dictionary");
-        GenCubesDic.Add(urlid,gcube);
-        selectedIDUrl=urlid;
+        gcube.GetComponent<DataSync>().SetURLID(urlid); //setting the network urlid once right after we make the spot.
+        Debug.Log("Setting the network urlid to be: " + urlid);
+        GenCubesDic.Add(urlid,gcube); //think about this: Are we adding the cube to the other players dictionaries? 
+        selectedIDUrl=urlid;  
         IDs++;
     }
 
-    public void createSavedSpot(Vector3 pos, Quaternion rot, Vector3 scale) // same as create spot function but includes scaling and rotating
+    public GameObject createSavedSpot(Vector3 pos, Quaternion rot, Vector3 scale, string urlid) // same as create spot function but includes scaling and rotating
     {
         Debug.Log("Creating Saved spot at " + pos);
         GameObject gcube = Realtime.Instantiate("GenrateSpot2.0", pos, rot);
         gcube.transform.localScale = scale;
-
-        // GenCubes.Add(gcube);
         gcube.GetComponent<GenerateSpot2>().id=IDs;
-        string urlid=TimestampGenerator.GetTimestamp();
         gcube.GetComponent<GenerateSpot2>().URLID=urlid;
-
+        gcube.GetComponent<DataSync>().SetURLID(urlid); //setting the network urlid once right after we make the spot. 
         GenCubesDic.Add(urlid,gcube);
         selectedIDUrl=urlid;
         Debug.Log("Setting the new spots SelectedIDUrl to be: " + selectedIDUrl);
         IDs++;
+        return gcube; 
 
     }
 
@@ -125,20 +137,7 @@ public class RealityEditorManager2 : MonoBehaviour
        GenCubesDic.Remove(urlid);
      
     }
-
-    public void promtGenerateModel(int id,string promt,string URLID){
-        OscMessage message = new OscMessage()
-        {
-            address = "/PromtGenerateModel"
-        };
-        message.values.Add(id);
-        message.values.Add(promt);
-        message.values.Add(URLID);
-        message.values.Add("genrated");
-        
-    }
-
-
+   
     public void InstructModify(int id,string promt,string urlid){
         OscMessage message = new OscMessage()
         {
@@ -147,7 +146,8 @@ public class RealityEditorManager2 : MonoBehaviour
         message.values.Add(id);
         message.values.Add(promt);
         message.values.Add(urlid);
-        
+        osc.Send(message);
+
     }
     
     public void ScanObj(int id){
@@ -164,7 +164,7 @@ public class RealityEditorManager2 : MonoBehaviour
     public void setPrompt(string txt)
     {
         //GenCubes[selectedID].GetComponent<GenerateSpot>().Prompt=txt;
-        GenCubesDic[selectedIDUrl].GetComponent<GenerateSpot>().Prompt=txt;
+        GenCubesDic[selectedIDUrl].GetComponent<GenerateSpot2>().Prompt=txt;
         
     }
     
@@ -174,6 +174,73 @@ public class RealityEditorManager2 : MonoBehaviour
        // GenCubesDic[Modifiedkey] = value;
        
     }
+    
+    public void promtGenerateModel(int id,string promt,string URLID){
+        Debug.Log("Checkpoint 2");
 
+        OscMessage message = new OscMessage()
+        {
+            address = "/PromtGenerateModel"
+        };
+        Debug.Log("Checkpoint 3");
+
+        message.values.Add(id);
+        message.values.Add(promt);
+        message.values.Add(URLID);
+        message.values.Add("genrated");
+        Debug.Log("Checkpoint 4");
+        osc.Send(message);
+        Debug.Log("Checkpoint 5");
+
+
+    }
+    public void ReciveFromOSC(OscMessage oscMessage){
+        switch(oscMessage.address){
+            case "/GenrateModel":
+            
+                // debugText.text=oscMessage.values
+                // modelDownloader.AddTask(
+                //     CreateModelInfoFromOSC(oscMessage,
+                //     GenCubes[oscMessage.GetInt(0)].GetComponent<GenerateSpot>().TargetObject)
+                //     );
+
+                //     GenCubes[oscMessage.GetInt(0)].GetComponent<GenerateSpot>().PreViewQuad.SetActive(false);
+                //     GenCubes[oscMessage.GetInt(0)].GetComponent<GenerateSpot>().loadingIcon.SetActive(false);
+                //     modelDownloader.startDownload();
+                break;
+
+            case "/GenrateBackGround":
+                // modelDownloader.AddTask(
+                // CreateModelInfoFromOSC(oscMessage,
+                // GenCubes[oscMessage.GetInt(0)].GetComponent<GenerateSpot>().BackGroundOnly)
+                // );
+                break;
+
+            case "/GenratObjOnly":
+
+                // modelDownloader.AddTask(
+                // CreateModelInfoFromOSC(oscMessage,
+                // GenCubes[oscMessage.GetInt(0)].GetComponent<GenerateSpot>().TargetObject)
+                // );
+
+                break;
+            
+        }
+    }
+    public void sendStop(){
+        
+        OscMessage message = new OscMessage()
+        {
+            address = "/stopProcess"
+        };
+    
+
+        osc.Send(message);
+
+    }
+    
+    
+    
+    
     
 }

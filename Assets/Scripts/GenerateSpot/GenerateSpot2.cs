@@ -35,8 +35,9 @@ public class GenerateSpot2 : MonoBehaviour
 
     public string Prompt;
 
+    public DataSync dataSync; 
+    
     public TMP_Text URLIDText;
-
     
     //Control Interface
     public TMP_Text PromtText;
@@ -64,25 +65,21 @@ public class GenerateSpot2 : MonoBehaviour
     public GameObject TargetObject;
 
     public recordData RecordData;
-
     
     public Projector erasingProjector;
-
-
+    
     public BoundBox Outlinebox;
-    ModelDownloader modelDownloader;
+    ModelDownloader2 modelDownloader;
 
     bool promptGenrated = false;
     bool  InstructGen = false,Inpainted=false;
 
     public Grabbable _grabbable;
-
-
+    
     public GenerateType SpotType;
 
     public RealtimeTransform _realtimeTransform;
     public RealtimeView _realtimeView;
-
     
     public Shader VertexColor,UnlitShader;
 
@@ -101,12 +98,13 @@ public class GenerateSpot2 : MonoBehaviour
 
     public bool SculptingModeOn=false;
 
+    public int DataSyncTestNumber; 
     
     void Start()
     {
-        
+        dataSync = GetComponent<DataSync>(); 
         manager = FindObjectOfType<RealityEditorManager2>();
-        modelDownloader = FindObjectOfType<ModelDownloader>();
+        modelDownloader = FindObjectOfType<ModelDownloader2>();
         _realtimeTransform = GetComponent<RealtimeTransform>();
         _realtimeView = GetComponent<RealtimeView>();
         _grabbable = GetComponent<Grabbable>();
@@ -116,10 +114,8 @@ public class GenerateSpot2 : MonoBehaviour
         Player = manager.PlayerCamera; 
         
         SpotType = GenerateType.Add;
-        // initAdd();
+        initAdd();
         
-        
-
         // URLID=TimestampGenerator.GetTimestamp();
 
         // StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_generated.zip"));
@@ -128,26 +124,17 @@ public class GenerateSpot2 : MonoBehaviour
 
 
         RecordData = GetComponent<recordData>();
-
-
+        
         _grabbable.WhenPointerEventRaised += HandlePointerEventRaised;
-
-
+        
         // //   externalController.GrabbedObjectDelegate += Grab;
         //    externalController.ReleasedObjectDelegate += Release;
-
-
-
-
+        
         loadingIcon.SetActive(false);
-
-
-
-
-            // SpotType = GenerateType.Add;
-            //     initAdd();
-
-
+        
+        // SpotType = GenerateType.Add;
+        initAdd();
+        
         // if (selectMenu != null) selectMenu.SetActive(true);
         //  ControlPanels();
 
@@ -161,8 +148,6 @@ public class GenerateSpot2 : MonoBehaviour
         }
     }
     
-    
-
     bool hasMeshFilter=false;
 
 
@@ -174,22 +159,16 @@ public class GenerateSpot2 : MonoBehaviour
         }else{
             manager.turnSculptingMenu(sculptMode.isOn);
              StopScupting();
-
-
-
+             
         }
-
-
 
     }
     void StopScupting(){
 
         SculptingModeOn=false;
-
-
+        
     }
-
-
+    
     public void StartSculpting(){
 
         SculptingModeOn=true;
@@ -198,33 +177,20 @@ public class GenerateSpot2 : MonoBehaviour
             hasMeshFilter = true;
             TargetObject.GetComponentInChildren<MeshFilter>().gameObject.AddComponent<SculptingPro_Model>();
         }
-            
-
     }
-
-
-
-
-
-
-
+    
     public void ChangeID(string ID){
         manager.ChangeID(URLID,ID,this.gameObject);
-
         URLID=ID;
-
 
     }
     
-
-
-
+    
      float minDistance = 0.1f; // Minimum distance for full opacity
     float maxDistance = 1f; // 
 
     void BoundingBoxColorAlhpaDinstance(){
-
-
+        
         float distanceToPlayer = Vector3.Distance(transform.position, Player.position);
 
         // Calculate the alpha value based on the distance
@@ -233,16 +199,12 @@ public class GenerateSpot2 : MonoBehaviour
         // Interpolate the alpha value of the material's color
 
         Outlinebox.lineColor=new Color(Outlinebox.lineColor.r, Outlinebox.lineColor.g, Outlinebox.lineColor.b, alpha);
-
         
-
-
     }
 
 
     public void setTheType(int select)
     {
-
         switch (select)
         {
             case 0:
@@ -257,14 +219,12 @@ public class GenerateSpot2 : MonoBehaviour
                 break;
 
         }
-
-
+        
     }
 
 
     public void initAdd()
     {
-
         StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_generated.zip"));
         isMaterialChanging = false;
         VoicePanel.SetActive(true);
@@ -272,18 +232,13 @@ public class GenerateSpot2 : MonoBehaviour
 
     void initReconstruction()
     {
-
-
         ScanningPanel.SetActive(true);
-
     }
 
 
     void OpenEditMenu()
     {
         EditMenu.SetActive(true);
-
-
     }
 
     void CloseEditMenu()
@@ -293,52 +248,27 @@ public class GenerateSpot2 : MonoBehaviour
 
   bool isErasing=false;
     public void Erasing(){
-
-       
-
         
-         
-
-
-        
-
-        
-
-
-
-
-
     }
-
-
-
+    
     private void HandlePointerEventRaised(PointerEvent evt)
     {
         switch (evt.Type)
         {
             case PointerEventType.Select:
                 OnSelect();
-               
-
-
-
-                // URLIDText.text = "should be requesting the transform and view in grab";
-
+                
                 break;
             case PointerEventType.Unselect:
 
             // PreviewWindow.gameObject.SetActive(false);
              Release();
 
-                // URLIDText.text = "REleeeeeese";
                 break;
         }
     }
 
-
-
-
-
+    
     public void OnSelect()
     {
 
@@ -356,9 +286,7 @@ public class GenerateSpot2 : MonoBehaviour
         // _realtimeView.RequestOwnershipOfSelfAndChildren();
 
     }
-
-
-
+    
     public void Grab(OVRInput.Controller grabHand)
     {
         manager.updateSelected(id, URLID);
@@ -383,8 +311,6 @@ public class GenerateSpot2 : MonoBehaviour
         GameObject ACopy = Instantiate(this.gameObject);
         ACopy.GetComponent<GenerateSpot>().isAcopy = true;
 
-
-
     }
 
     bool originTex=false;
@@ -394,7 +320,6 @@ public class GenerateSpot2 : MonoBehaviour
 
         if (obj.childCount == 0)
         {
-
             return false;
 
         }
@@ -405,9 +330,7 @@ public class GenerateSpot2 : MonoBehaviour
             renderer = obj.gameObject.GetComponentInChildren<Renderer>();
 
             renderer.materials[0].shader = shader;
-
-
-           
+            
             TargetMaterial=renderer.materials[0];
             if(SpotType!=GenerateType.Add)
             {
@@ -416,37 +339,16 @@ public class GenerateSpot2 : MonoBehaviour
 
 
                      OriginTex=TargetMaterial.GetTexture("_MainTex");
-
-
+                     
                 }
 
-           
-
             }
-               
-
-
-
-
-
-
-
-
-
+            
             return true;
-
-
+            
         }
-
-
-
-
+        
     }
-
-
-
-
-
 
 
     public void ControlPanels()
@@ -455,9 +357,6 @@ public class GenerateSpot2 : MonoBehaviour
         {
 
             controlPanels[i].SetActive(PanelsToggles[i].isOn);
-
-
-
 
         }
 
@@ -494,11 +393,27 @@ public class GenerateSpot2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (OVRInput.GetUp(OVRInput.RawButton.Start))
+        {
+            // dataSync.
+            Debug.Log("increasing the test number and syncing it");
+            DataSyncTestNumber++; 
+            dataSync.SetTestNumber(DataSyncTestNumber);
+
+        }
+        
         if (manager == null)
         {
-            FindObjectOfType<RealityEditorManager2>(); 
+            FindObjectOfType<RealityEditorManager2>();  //this shouldnt be necessary
         }
-        URLIDText.text = URLID; 
+
+        if (_realtimeView.isOwnedLocallyInHierarchy)
+        {
+            // Debug.Log("Setting the URLID to: " + URLID);
+            dataSync.SetURLID(URLID); 
+        }
+        // URLIDText.text = URLID; //commented this out while trying to figure out data syncing
+        URLIDText.text = "" + DataSyncTestNumber; 
         
         if (isAcopy)
         {
@@ -629,7 +544,7 @@ public class GenerateSpot2 : MonoBehaviour
 
     public void InturuptProcess()
     {
-        // manager.sendStop();
+        manager.sendStop();
 
     }
 
@@ -654,12 +569,16 @@ public class GenerateSpot2 : MonoBehaviour
 
         if (isMaterialChanging)
         {
+            Debug.Log("Running ModifyModelinstruction inside confirm generation");
+
             ModifyModelinstruction();
 
         }
         else
         {
+            Debug.Log("Running generate model inside confirm generation");
             GenrateModel();
+            Debug.Log("Finished Running generate model inside confirm generation");
 
         }
         OpenEditMenu();
@@ -701,7 +620,6 @@ public class GenerateSpot2 : MonoBehaviour
     public void GenrateModel()
     {
         manager.promtGenerateModel(id, Prompt, URLID);
-        URLIDText.text = URLID;
         // PreViewQuad.SetActive(true);
         loadingIcon.SetActive(true);
         Prompt = "";
@@ -711,7 +629,6 @@ public class GenerateSpot2 : MonoBehaviour
     void ModifyModelinstruction()
     {
         manager.InstructModify(id, Prompt, URLID);
-        URLIDText.text = URLID;
         loadingIcon.SetActive(true);
         Prompt = "";
         InstructGen = false;

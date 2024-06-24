@@ -301,17 +301,13 @@ public class RealityEditorManager : MonoBehaviour
         };
         message.values.Add(id);
         //message.values.Add(promt);
-
-
-
-
+        
     }
 
 
     public void setPrompt(string txt)
     {
-
-
+        
         //GenCubes[selectedID].GetComponent<GenerateSpot>().Prompt=txt;
         GenCubesDic[selectedIDUrl].GetComponent<GenerateSpot>().Prompt=txt;
 
@@ -321,19 +317,11 @@ public class RealityEditorManager : MonoBehaviour
 
     public void ChangeID(string PreviousKey,string Modifiedkey,GameObject v){
 
-
-        
-
         GenCubesDic.Add(Modifiedkey,v);
        // GenCubesDic.Remove(PreviousKey);
         
        // GenCubesDic[Modifiedkey] = value;
-
-
-
-
-
-
+       
     }
 
 

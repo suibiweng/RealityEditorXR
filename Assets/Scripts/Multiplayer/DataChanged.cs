@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class DataChanged : MonoBehaviour {
     [SerializeField]
-    // private TextMeshPro _prompt, URLIDText;
-    // private DataSync _DataSync;
+    private TextMeshPro _prompt, URLIDText;
+    private DataSync _DataSync;
 
     private void Awake() {
         // _DataSync = GetComponent<DataSync>();

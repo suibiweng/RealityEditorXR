@@ -17,6 +17,7 @@ public class SceneSaverTest : MonoBehaviour
        public Vector3 position;
        public Quaternion rotation;
        public Vector3 scale;
+       public string urlid; 
    }
 
 
@@ -54,6 +55,8 @@ public class SceneSaverTest : MonoBehaviour
            data.position = generateSpot.transform.position;
            data.rotation = generateSpot.transform.rotation;
            data.scale = generateSpot.transform.localScale;
+           data.urlid = generateSpot.GetComponent<GenerateSpot2>().URLID; 
+           Debug.Log("saving the urlid: " + data.urlid);
            generateSpotDataList.Add(data);
        }
 
@@ -80,17 +83,16 @@ public class SceneSaverTest : MonoBehaviour
            string json = PlayerPrefs.GetString("GenerateSpotData");
            // Debug.Log("Loading the JSON String: " + json);
 
-           // Deserialize the JSON string back to the object
+           // Deserialize the JSON string back to the object 
            GenerateSpotDataList allData = JsonUtility.FromJson<GenerateSpotDataList>(json);
-
+ 
            Debug.Log("Loading scene with " + allData.generateSpotDataList.Count + " Cubes");
            foreach (var data in allData.generateSpotDataList)
            {
-               RealityEditorManager2.createSavedSpot(data.position, data.rotation, data.scale);
-               // GameObject newObject = Realtime.Instantiate("GenrateSpot2.0", data.position, data.rotation);
-               // newObject.transform.localScale = data.scale;
-               // RealityEditorManager.selectedIDUrl = data.URLID; 
-               // RealityEditorManager.IDs++;
+               GameObject newObject = RealityEditorManager2.createSavedSpot(data.position, data.rotation, data.scale, data.urlid);
+               Debug.Log("loading urlid: " + data.urlid);
+               // newObject.GetComponent<GenerateSpot2>().URLID = data.URLID;
+               newObject.GetComponent<GenerateSpot2>().initAdd();
            }
        }
    }

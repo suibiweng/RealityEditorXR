@@ -3791,7 +3791,6 @@ GameObject:
   - component: {fileID: 1121881327}
   - component: {fileID: 1121881329}
   - component: {fileID: 1121881328}
-  - component: {fileID: 1121881330}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -3994,21 +3993,6 @@ MonoBehaviour:
   savingSound: {fileID: 8300000, guid: 6ad851833fd5df24c84fbadccdab63d2, type: 3}
   loadingSound: {fileID: 8300000, guid: e73b66c29312de047ba040fb2231cdda, type: 3}
   RealityEditorManager: {fileID: 1121881326}
---- !u!114 &1121881330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1121881322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0610612f9d193094d9d9b717970dd7c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  source: {fileID: 1121881328}
-  savingSound: {fileID: 8300000, guid: 6ad851833fd5df24c84fbadccdab63d2, type: 3}
-  loadingSound: {fileID: 8300000, guid: e73b66c29312de047ba040fb2231cdda, type: 3}
 --- !u!1 &1129249193
 GameObject:
   m_ObjectHideFlags: 0
@@ -4137,6 +4121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69b3ef0e98d615a4382cba294c037a33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  msgString: 
 --- !u!114 &1152827081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4432,7 +4417,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1211863606
 MonoBehaviour:
   m_ObjectHideFlags: 0
