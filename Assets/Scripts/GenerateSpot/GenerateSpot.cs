@@ -44,7 +44,7 @@ public class GenerateSpot : MonoBehaviour
     public TMP_Text previewText;
     public TMP_Text URLIDText;
     
-    GrabObject externalController = null;
+    // GrabObject externalController = null;
 
     
     //Control Interface
@@ -123,7 +123,7 @@ public class GenerateSpot : MonoBehaviour
     void Start()
     {
         manager = FindObjectOfType<RealityEditorManager>();
-        externalController = GetComponent<GrabObject>();
+        // externalController = GetComponent<GrabObject>();
         modelDownloader = FindObjectOfType<ModelDownloader>();
         _realtimeTransform = GetComponent<RealtimeTransform>();
         _realtimeView = GetComponent<RealtimeView>();

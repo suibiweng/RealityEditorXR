@@ -52,13 +52,13 @@ public class    ColorStyler : MonoBehaviour
 
     private void Start()
     {
-        if (TryGetComponent<GrabObject>(out var grabOject))
-        {
-            grabOject.GrabbedObjectDelegate += Grab;
-            grabOject.ReleasedObjectDelegate += Release;
+        // if (TryGetComponent<GrabObject>(out var grabOject))
+        // {
+        //     grabOject.GrabbedObjectDelegate += Grab;
+        //     grabOject.ReleasedObjectDelegate += Release;
 
-            // grabOject.CursorPositionDelegate += Cursor;
-        }
+        //     // grabOject.CursorPositionDelegate += Cursor;
+        // }
 
         manager=FindAnyObjectByType<RealityEditorManager>();
 

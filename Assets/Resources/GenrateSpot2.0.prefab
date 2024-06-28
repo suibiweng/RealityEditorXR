@@ -4442,6 +4442,9 @@ MonoBehaviour:
     MaxScale:
       Constrain: 0
       Value: 3
+    ConstrainXScale: 1
+    ConstrainYScale: 0
+    ConstrainZScale: 0
 --- !u!114 &6148612482922856129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4461,6 +4464,9 @@ MonoBehaviour:
   _twoGrabTransformer: {fileID: 6148612482922856136}
   _targetTransform: {fileID: 0}
   _maxGrabPoints: -1
+  _rigidbody: {fileID: 0}
+  _kinematicWhileSelected: 1
+  _throwWhenUnselected: 1
 --- !u!114 &6148612482922856135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4473,6 +4479,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3236b8f205019504589358e7e0412a38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _positionConstraints:
+    ConstraintsAreRelative: 0
+    XAxis:
+      ConstrainAxis: 0
+      AxisRange:
+        Min: 0
+        Max: 0
+    YAxis:
+      ConstrainAxis: 0
+      AxisRange:
+        Min: 0
+        Max: 0
+    ZAxis:
+      ConstrainAxis: 0
+      AxisRange:
+        Min: 0
+        Max: 0
+  _rotationConstraints:
+    XAxis:
+      ConstrainAxis: 0
+      AxisRange:
+        Min: 0
+        Max: 0
+    YAxis:
+      ConstrainAxis: 0
+      AxisRange:
+        Min: 0
+        Max: 0
+    ZAxis:
+      ConstrainAxis: 0
+      AxisRange:
+        Min: 0
+        Max: 0
 --- !u!114 &6148612482922856134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4485,7 +4524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bedaac29a943f844a7074b53c8bdf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _grabbable: {fileID: 6148612482922856129}
+  _pointable: {fileID: 6148612482922856129}
   _rigidbody: {fileID: 6148612482922856130}
   _scaleMassWithSize: 1
 --- !u!114 &476003111313948772

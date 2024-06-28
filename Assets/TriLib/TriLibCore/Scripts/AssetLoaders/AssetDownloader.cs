@@ -37,7 +37,7 @@ namespace TriLibCore
 #if UNITY_2023_1_OR_NEWER
                     unityWebRequest = UnityWebRequest.PostWwwForm(uri, data); 
 #else
-                    unityWebRequest = UnityWebRequest.Post(uri, data);
+                    unityWebRequest = UnityWebRequest.PostWwwForm(uri, data);
 #endif
                     break;
                 case HttpRequestMethod.Put:

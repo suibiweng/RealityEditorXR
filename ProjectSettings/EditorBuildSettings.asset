@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/StereoCamNDITesting.unity
+    guid: 25951f1f7f1e30045a3a413a1c7b76c5
   - enabled: 0
     path: Assets/Scenes/1.0.unity
     guid: f2fea7ace86997841a554a80efb78d0c
@@ -14,12 +17,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/VR/OculusIntegration_Dependency/SPExampleVR_Cube.unity
     guid: ebc7c25d2dc13e04d90aaf06efb53cfc
-  - enabled: 0
-    path: Assets/Oculus/Interaction/Samples/Scenes/Features/UseGrabPressure.unity
-    guid: 7e42218241842f94cb568988a6037516
-  - enabled: 0
-    path: Assets/Oculus/Interaction/Samples/Scenes/Examples/TransformerExamples.unity
-    guid: 7475942f60c376744ba1ec487d140105
   - enabled: 0
     path: Assets/Scenes/UITest.unity
     guid: e6ae9782ad4467a46964ae9cae56e673
