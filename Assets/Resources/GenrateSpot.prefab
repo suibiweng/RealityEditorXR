@@ -4114,10 +4114,7 @@ GameObject:
   - component: {fileID: 6148612481019881565}
   - component: {fileID: 6148612481019881555}
   - component: {fileID: 6148612482922856130}
-  - component: {fileID: 6148612482922856136}
   - component: {fileID: 6148612482922856129}
-  - component: {fileID: 6148612482922856135}
-  - component: {fileID: 6148612482922856134}
   - component: {fileID: -8484851729914132731}
   - component: {fileID: -4772333348440836202}
   - component: {fileID: 2911210317674589114}
@@ -4125,6 +4122,7 @@ GameObject:
   - component: {fileID: 476003111313948772}
   - component: {fileID: 6889092148364235388}
   - component: {fileID: 2656873361722702185}
+  - component: {fileID: -8863264084217483408}
   m_Layer: 0
   m_Name: GenrateSpot
   m_TagString: Untagged
@@ -4426,29 +4424,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6148612482922856136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683885090753417592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b053556d972eae24b947c1477538bff1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _constraints:
-    ConstraintsAreRelative: 0
-    MinScale:
-      Constrain: 0
-      Value: 1
-    MaxScale:
-      Constrain: 0
-      Value: 3
-    ConstrainXScale: 1
-    ConstrainYScale: 0
-    ConstrainZScale: 0
 --- !u!114 &6148612482922856129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4464,73 +4439,13 @@ MonoBehaviour:
   _transferOnSecondSelection: 0
   _addNewPointsToFront: 0
   _forwardElement: {fileID: 0}
-  _oneGrabTransformer: {fileID: 6148612482922856135}
-  _twoGrabTransformer: {fileID: 6148612482922856136}
+  _oneGrabTransformer: {fileID: 0}
+  _twoGrabTransformer: {fileID: 0}
   _targetTransform: {fileID: 0}
   _maxGrabPoints: -1
   _rigidbody: {fileID: 0}
   _kinematicWhileSelected: 1
   _throwWhenUnselected: 1
---- !u!114 &6148612482922856135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683885090753417592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3236b8f205019504589358e7e0412a38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _positionConstraints:
-    ConstraintsAreRelative: 0
-    XAxis:
-      ConstrainAxis: 0
-      AxisRange:
-        Min: 0
-        Max: 0
-    YAxis:
-      ConstrainAxis: 0
-      AxisRange:
-        Min: 0
-        Max: 0
-    ZAxis:
-      ConstrainAxis: 0
-      AxisRange:
-        Min: 0
-        Max: 0
-  _rotationConstraints:
-    XAxis:
-      ConstrainAxis: 0
-      AxisRange:
-        Min: 0
-        Max: 0
-    YAxis:
-      ConstrainAxis: 0
-      AxisRange:
-        Min: 0
-        Max: 0
-    ZAxis:
-      ConstrainAxis: 0
-      AxisRange:
-        Min: 0
-        Max: 0
---- !u!114 &6148612482922856134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683885090753417592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bedaac29a943f844a7074b53c8bdf9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pointable: {fileID: 6148612482922856129}
-  _rigidbody: {fileID: 6148612482922856130}
-  _scaleMassWithSize: 1
 --- !u!114 &-8484851729914132731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4642,7 +4557,7 @@ MonoBehaviour:
   _useClosestPointAsGrabSource: 1
   _releaseDistance: 0
   _resetGrabOnGrabsUpdated: 1
-  _physicsGrabbable: {fileID: 6148612482922856134}
+  _physicsGrabbable: {fileID: 0}
 --- !u!114 &2656873361722702185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4659,6 +4574,68 @@ MonoBehaviour:
   dropdown: {fileID: 1557097163}
   CurrentFile: {fileID: 4551482114936054898}
   url: http://192.168.0.139:8000/FromIPAD/
+--- !u!114 &-8863264084217483408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683885090753417592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb7085c111fcb44493d57d4e336d3fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _positionConstraints:
+    ConstraintsAreRelative: 0
+    XAxis:
+      ConstrainAxis: 0
+      AxisRange:
+        Min: 0
+        Max: 0
+    YAxis:
+      ConstrainAxis: 0
+      AxisRange:
+        Min: 0
+        Max: 0
+    ZAxis:
+      ConstrainAxis: 0
+      AxisRange:
+        Min: 0
+        Max: 0
+  _rotationConstraints:
+    XAxis:
+      ConstrainAxis: 0
+      AxisRange:
+        Min: 0
+        Max: 0
+    YAxis:
+      ConstrainAxis: 0
+      AxisRange:
+        Min: 0
+        Max: 0
+    ZAxis:
+      ConstrainAxis: 0
+      AxisRange:
+        Min: 0
+        Max: 0
+  _scaleConstraints:
+    ConstraintsAreRelative: 1
+    XAxis:
+      ConstrainAxis: 1
+      AxisRange:
+        Min: 1
+        Max: 1
+    YAxis:
+      ConstrainAxis: 1
+      AxisRange:
+        Min: 1
+        Max: 1
+    ZAxis:
+      ConstrainAxis: 1
+      AxisRange:
+        Min: 1
+        Max: 1
 --- !u!1 &1683885090962764969
 GameObject:
   m_ObjectHideFlags: 0
@@ -10584,7 +10561,7 @@ MonoBehaviour:
   _useClosestPointAsGrabSource: 1
   _releaseDistance: 0
   _resetGrabOnGrabsUpdated: 1
-  _physicsGrabbable: {fileID: 6148612482922856134}
+  _physicsGrabbable: {fileID: 0}
 --- !u!1 &4926795596893517574
 GameObject:
   m_ObjectHideFlags: 0
