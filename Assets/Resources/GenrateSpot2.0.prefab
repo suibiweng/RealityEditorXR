@@ -3475,7 +3475,6 @@ GameObject:
   - component: {fileID: 1167092362498037875}
   - component: {fileID: 1167092362498039368}
   - component: {fileID: 7034200858793356536}
-  - component: {fileID: 8906983100836255715}
   m_Layer: 0
   m_Name: PromptTMP
   m_TagString: Untagged
@@ -3660,20 +3659,8 @@ MonoBehaviour:
   - componentID: 1
     component: {fileID: 0}
   - componentID: 2
-    component: {fileID: 8906983100836255715}
+    component: {fileID: 0}
   _childViews: []
---- !u!114 &8906983100836255715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167092362498037995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b0c0f688ca09254db0eb44ebe89cd0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1194436799925147633
 GameObject:
   m_ObjectHideFlags: 0
@@ -4139,13 +4126,12 @@ GameObject:
   - component: {fileID: 6148612482922856129}
   - component: {fileID: 6148612482922856135}
   - component: {fileID: 6148612482922856134}
-  - component: {fileID: 476003111313948772}
   - component: {fileID: 2911210317674589114}
   - component: {fileID: 6889092148364235388}
   - component: {fileID: 1978521006554837053}
   - component: {fileID: -8471173886137273503}
   - component: {fileID: 8137861163800681387}
-  - component: {fileID: 1542145297195941304}
+  - component: {fileID: 1932805372583642278}
   m_Layer: 0
   m_Name: GenrateSpot2.0
   m_TagString: GenerateSpot
@@ -4314,7 +4300,7 @@ MonoBehaviour:
   isselsected: 0
   loadingIcon: {fileID: 8156244992385004863}
   Prompt: 
-  dataSync: {fileID: 1542145297195941304}
+  dataSync: {fileID: 0}
   URLIDText: {fileID: 696682105605600011}
   PromtText: {fileID: 1167092362498039368}
   LitseningText: {fileID: 6148612480976159198}
@@ -4488,20 +4474,6 @@ MonoBehaviour:
   _grabbable: {fileID: 6148612482922856129}
   _rigidbody: {fileID: 6148612482922856130}
   _scaleMassWithSize: 1
---- !u!114 &476003111313948772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683885090753417592}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c4b4b9013053ce48a774219e80c29f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prompt: {fileID: 0}
-  URLIDText: {fileID: 0}
 --- !u!114 &2911210317674589114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4582,7 +4554,9 @@ MonoBehaviour:
   - componentID: 1
     component: {fileID: 8137861163800681387}
   - componentID: 2
-    component: {fileID: 1542145297195941304}
+    component: {fileID: 0}
+  - componentID: 3
+    component: {fileID: 1932805372583642278}
   _childViews:
   - componentID: 1
     component: {fileID: 1381861259518007602}
@@ -4606,7 +4580,7 @@ MonoBehaviour:
   _syncScale: 1
   _syncVelocity: 1
   _maintainOwnershipWhileSleeping: 0
---- !u!114 &1542145297195941304
+--- !u!114 &1932805372583642278
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4615,7 +4589,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1683885090753417592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b0c0f688ca09254db0eb44ebe89cd0f, type: 3}
+  m_Script: {fileID: 11500000, guid: aca8c5825acef60408f2f37fd377231f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1683885090962764969

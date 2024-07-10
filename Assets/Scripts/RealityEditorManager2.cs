@@ -25,7 +25,7 @@ public class RealityEditorManager2 : MonoBehaviour
     
     public GameObject sculptingMenu,scuptingBrush;
     public OSC osc;
-
+    private int colorcubeMover; 
     void Start()
     {
         osc=FindObjectOfType<OSC>();   
@@ -104,18 +104,16 @@ public class RealityEditorManager2 : MonoBehaviour
             useInstance = null // or specify the Realtime instance if necessary
         };
         GameObject gcube = Realtime.Instantiate("GenrateSpot2.0", pos, Quaternion.identity, options); //this might be obsolete trying new options feature
-        // GameObject gcube = Instantiate("GenrateSpot2.0", pos, Quaternion.identity); 
-
         gcube.GetComponent<GenerateSpot2>().id=IDs;
-        string urlid=TimestampGenerator.GetTimestamp();
+        string urlid=TimestampGenerator.GetTimestamp(); 
         gcube.GetComponent<GenerateSpot2>().URLID=urlid;
-        gcube.GetComponent<DataSync>().SetURLID(urlid); //setting the network urlid once right after we make the spot.
+        Debug.Log("The new Cube's URLID is: " + urlid);
+        // gcube.GetComponent<DataSync2>().SetURLID(urlid); //setting the network urlid once right after we make the spot. But this dont work
         Debug.Log("Setting the network urlid to be: " + urlid);
         GenCubesDic.Add(urlid,gcube); //think about this: Are we adding the cube to the other players dictionaries? 
         selectedIDUrl=urlid;  
         IDs++;
     }
-
     public GameObject createSavedSpot(Vector3 pos, Quaternion rot, Vector3 scale, string urlid) // same as create spot function but includes scaling and rotating
     {
         Debug.Log("Creating Saved spot at " + pos);
@@ -123,7 +121,7 @@ public class RealityEditorManager2 : MonoBehaviour
         gcube.transform.localScale = scale;
         gcube.GetComponent<GenerateSpot2>().id=IDs;
         gcube.GetComponent<GenerateSpot2>().URLID=urlid;
-        gcube.GetComponent<DataSync>().SetURLID(urlid); //setting the network urlid once right after we make the spot. 
+        // gcube.GetComponent<DataSync2>().SetURLID(urlid); //setting the network urlid once right after we make the spot. But this dont work
         GenCubesDic.Add(urlid,gcube);
         selectedIDUrl=urlid;
         Debug.Log("Setting the new spots SelectedIDUrl to be: " + selectedIDUrl);

@@ -35,7 +35,7 @@ public class GenerateSpot2 : MonoBehaviour
 
     public string Prompt;
 
-    public DataSync dataSync; 
+    public DataSync2 dataSync; 
     
     public TMP_Text URLIDText;
     
@@ -98,11 +98,11 @@ public class GenerateSpot2 : MonoBehaviour
 
     public bool SculptingModeOn=false;
 
-    public int DataSyncTestNumber; 
+    public string DataSyncTestNumber; 
     
     void Start()
     {
-        dataSync = GetComponent<DataSync>(); 
+        dataSync = GetComponent<DataSync2>(); 
         manager = FindObjectOfType<RealityEditorManager2>();
         modelDownloader = FindObjectOfType<ModelDownloader2>();
         _realtimeTransform = GetComponent<RealtimeTransform>();
@@ -393,27 +393,18 @@ public class GenerateSpot2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (OVRInput.GetUp(OVRInput.RawButton.Start))
+        if (_realtimeView.isOwnedLocallySelf)
         {
-            // dataSync.
-            Debug.Log("increasing the test number and syncing it");
-            DataSyncTestNumber++; 
-            dataSync.SetTestNumber(DataSyncTestNumber);
-
+            dataSync.SetURLID(URLID); 
+            dataSync.Setprompt(Prompt);
         }
-        
         if (manager == null)
         {
             FindObjectOfType<RealityEditorManager2>();  //this shouldnt be necessary
         }
 
-        if (_realtimeView.isOwnedLocallyInHierarchy)
-        {
-            // Debug.Log("Setting the URLID to: " + URLID);
-            dataSync.SetURLID(URLID); 
-        }
-        // URLIDText.text = URLID; //commented this out while trying to figure out data syncing
-        URLIDText.text = "" + DataSyncTestNumber; 
+        
+        URLIDText.text = URLID; //commented this out while trying to figure out data syncing
         
         if (isAcopy)
         {

@@ -139,7 +139,7 @@ namespace Oculus.VoiceSDK.UX
         // Refresh text
         private void SetText(string newText, Color newColor)
         {
-            // Ignore if same
+            // Ignore if same 
             if (Label == null || string.Equals(newText, Label.text) && newColor == Label.color)
             {
                 return;
