@@ -1322,6 +1322,10 @@ MonoBehaviour:
   _sceneViewDestroyWhenLastClientLeaves: 1
   _components:
   - componentID: 1
+    component: {fileID: 0}
+  - componentID: 2
+    component: {fileID: 0}
+  - componentID: 3
     component: {fileID: 466581404}
   _childViews: []
 --- !u!114 &475017172 stripped
@@ -3931,8 +3935,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   source: {fileID: 1378611037}
-  savingSound: {fileID: 8300000, guid: 6ad851833fd5df24c84fbadccdab63d2, type: 3}
-  loadingSound: {fileID: 8300000, guid: e73b66c29312de047ba040fb2231cdda, type: 3}
+  savingSound: {fileID: 8300000, guid: 98e759dfda69aa7468d95f5a2c88e366, type: 3}
+  loadingSound: {fileID: 8300000, guid: 523f822c1c7b699489c49fea2353c2de, type: 3}
   RealityEditorManager2: {fileID: 1378611038}
 --- !u!82 &1378611037
 AudioSource:

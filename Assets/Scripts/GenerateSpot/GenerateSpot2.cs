@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
 using System;
@@ -35,7 +36,7 @@ public class GenerateSpot2 : MonoBehaviour
 
     public string Prompt;
 
-    public DataSync dataSync; 
+    public DataSync2 dataSync; 
     
     public TMP_Text URLIDText;
     
@@ -98,11 +99,11 @@ public class GenerateSpot2 : MonoBehaviour
 
     public bool SculptingModeOn=false;
 
-    public int DataSyncTestNumber; 
+    public string DataSyncTestNumber; 
     
     void Start()
     {
-        dataSync = GetComponent<DataSync>(); 
+        dataSync = GetComponent<DataSync2>(); 
         manager = FindObjectOfType<RealityEditorManager2>();
         modelDownloader = FindObjectOfType<ModelDownloader2>();
         _realtimeTransform = GetComponent<RealtimeTransform>();
@@ -393,27 +394,18 @@ public class GenerateSpot2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (OVRInput.GetUp(OVRInput.RawButton.Start))
+        if (_realtimeView.isOwnedLocallySelf)
         {
-            // dataSync.
-            Debug.Log("increasing the test number and syncing it");
-            DataSyncTestNumber++; 
-            dataSync.SetTestNumber(DataSyncTestNumber);
-
-        }
-        
-        if (manager == null)
-        {
-            FindObjectOfType<RealityEditorManager2>();  //this shouldnt be necessary
-        }
-
-        if (_realtimeView.isOwnedLocallyInHierarchy)
-        {
-            // Debug.Log("Setting the URLID to: " + URLID);
             dataSync.SetURLID(URLID); 
+            dataSync.Setprompt(Prompt);
         }
-        // URLIDText.text = URLID; //commented this out while trying to figure out data syncing
-        URLIDText.text = "" + DataSyncTestNumber; 
+        // if (manager == null)
+        // {
+        //     FindObjectOfType<RealityEditorManager2>();  //this shouldnt be necessary
+        // }
+
+        
+        URLIDText.text = URLID; //commented this out while trying to figure out data syncing
         
         if (isAcopy)
         {
@@ -498,8 +490,8 @@ public class GenerateSpot2 : MonoBehaviour
 
 
 
-        if (isselsected) PromtText.text = Prompt;
-
+        // if (isselsected) PromtText.text = Prompt;
+        PromtText.text = Prompt; 
 
 
         if (Input.GetKeyDown(KeyCode.X))
@@ -652,13 +644,13 @@ public class GenerateSpot2 : MonoBehaviour
         {
 
             Destroy(TargetObject.transform.GetChild(0).gameObject);
-
-
-
         }
 
 
     }
+    
+    
+    
 
     bool StartScanning = false;
     public TMP_Text Text_Scanning_Btn;
@@ -900,6 +892,11 @@ public class GenerateSpot2 : MonoBehaviour
                 DownloadPanel.SetActive(true);
             }
         }
+    }
+
+    public void deletespot()
+    {
+        Realtime.Destroy(gameObject); //destroys the game object on the network, this is called from the UI button
     }
 
 }
