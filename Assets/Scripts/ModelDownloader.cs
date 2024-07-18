@@ -7,8 +7,7 @@ using RealityEditor;
 
 
 public class ModelDownloader : MonoBehaviour
-{
-    public bool isDownloading=false;
+{    public bool isDownloading=false;
      private Queue<ModelIformation> Tasks; 
  /// <summary>
 
@@ -81,7 +80,7 @@ public class ModelDownloader : MonoBehaviour
             AssetDownloader.LoadModelFromUri(webRequest, OnLoad, OnMaterialsLoad, OnProgress, OnError, modelInfo.gameobjectWarp, assetLoaderOptions);
 
 
-
+ 
         }
 
 

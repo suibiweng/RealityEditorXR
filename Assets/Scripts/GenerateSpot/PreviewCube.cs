@@ -16,7 +16,7 @@ public class PreviewCube : MonoBehaviour
         Cube= Instantiate(previewCube,transform.position,Quaternion.identity)as GameObject;
         GenerateSpot spot =Cube.GetComponent<GenerateSpot>();
         Cube.name=this.gameObject.name;
-        spot.previewText.text=Cube.name;
+      //  spot.previewText.text=Cube.name;
         this.transform.parent=spot.TargetObject.transform;
 
         this.transform.localPosition= Vector3.zero;
