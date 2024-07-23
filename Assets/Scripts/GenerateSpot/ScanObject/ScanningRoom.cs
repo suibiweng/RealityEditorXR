@@ -16,10 +16,10 @@ public class ScanningRoom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
-            scanParticle.Play();
+        // if (OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
+        //     scanParticle.Play();
         
-        else scanParticle.Stop();
+        // else scanParticle.Stop();
         
     }
 }
