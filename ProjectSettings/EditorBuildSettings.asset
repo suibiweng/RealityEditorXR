@@ -6,11 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/StarterSamples/Usage/Passthrough.unity
-    guid: 58e5fc2486c774a4e88ac76261268d52
+    path: Assets/Scenes/RoomScanTest.unity
+    guid: 00fa337c78791a547809b9f7cbec5951
   - enabled: 1
     path: Assets/Scenes/RoomScan.unity
     guid: b25d3c9493b9a284ab2c7f5720965b65
+  - enabled: 1
+    path: Assets/Scenes/2.0.unity
+    guid: a4e4b75e1cda6194d9ea4ebcef4c69ce
+  - enabled: 1
+    path: Assets/StarterSamples/Usage/Passthrough.unity
+    guid: 58e5fc2486c774a4e88ac76261268d52
   - enabled: 1
     path: Assets/Scenes/Depth Test.unity
     guid: 9164a30b2eeb3f64d9cb136f805d4eb8
@@ -20,9 +26,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/1.0.unity
     guid: f2fea7ace86997841a554a80efb78d0c
-  - enabled: 0
-    path: Assets/Scenes/2.0.unity
-    guid: a4e4b75e1cda6194d9ea4ebcef4c69ce
   - enabled: 0
     path: Assets/VR/OculusIntegration_Dependency/SPExampleVR_Cube.unity
     guid: ebc7c25d2dc13e04d90aaf06efb53cfc
