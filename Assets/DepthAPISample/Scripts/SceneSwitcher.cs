@@ -27,12 +27,12 @@ namespace DepthAPISample
     {
         private void Update()
         {
-            if (OVRInput.GetDown(OVRInput.RawButton.Start))
+            if (OVRInput.GetDown(OVRInput.RawButton.Start))    //commented this out because I needed the start button and this was breaking that. 
             {
-                var sceneIndex = SceneManager.GetActiveScene().buildIndex;
-                sceneIndex = (sceneIndex + 1) % SceneManager.sceneCountInBuildSettings;
-                SceneManager.LoadScene(sceneIndex);
-            }
+                // var sceneIndex = SceneManager.GetActiveScene().buildIndex;
+                // sceneIndex = (sceneIndex + 1) % SceneManager.sceneCountInBuildSettings;
+                // SceneManager.LoadScene(sceneIndex);
+            }                  
         }
     }
 }

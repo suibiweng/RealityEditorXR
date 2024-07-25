@@ -33,7 +33,8 @@ public class GenerateSpot2 : MonoBehaviour
 
     public bool isselsected = false;
     public GameObject loadingIcon;
-
+    public ParticleSystem loadingParticles;
+    public Renderer SmoothCubeRenderer; 
     public string Prompt;
 
     public DataSync2 dataSync; 
@@ -132,6 +133,7 @@ public class GenerateSpot2 : MonoBehaviour
         //    externalController.ReleasedObjectDelegate += Release;
         
         loadingIcon.SetActive(false);
+        loadingParticles.Stop(); 
         
         // SpotType = GenerateType.Add;
         initAdd();
@@ -226,6 +228,7 @@ public class GenerateSpot2 : MonoBehaviour
 
     public void initAdd()
     {
+        Debug.Log("Inside the initAdd Function");
         StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_generated.zip"));
         isMaterialChanging = false;
         VoicePanel.SetActive(true);
@@ -292,7 +295,6 @@ public class GenerateSpot2 : MonoBehaviour
     {
         manager.updateSelected(id, URLID);
         isselsected = true;
-        Debug.Log("should be requesting the transform and view in grab");
         //URLIDText.text = "should be requesting the transform and view in grab";
         // _realtimeTransform.RequestOwnership();
         // _realtimeView.RequestOwnershipOfSelfAndChildren();
@@ -301,7 +303,6 @@ public class GenerateSpot2 : MonoBehaviour
 
     public void Release()
     {
-        Debug.Log("should be releasing the cube");
 
         // URLIDText.text = "should be releasing the cube";
         // Outlinebox.line_renderer=false;
@@ -399,13 +400,8 @@ public class GenerateSpot2 : MonoBehaviour
             dataSync.SetURLID(URLID); 
             dataSync.Setprompt(Prompt);
         }
-        // if (manager == null)
-        // {
-        //     FindObjectOfType<RealityEditorManager2>();  //this shouldnt be necessary
-        // }
-
         
-        URLIDText.text = URLID; //commented this out while trying to figure out data syncing
+        URLIDText.text = URLID; 
         
         if (isAcopy)
         {
@@ -583,7 +579,7 @@ public class GenerateSpot2 : MonoBehaviour
     {
         manager.InstructModify(id, "A Metal Apple", URLID);
         URLIDText.text = URLID;
-        loadingIcon.SetActive(true);
+        // loadingIcon.SetActive(true);
         Prompt = "";
         InstructGen = false;
         StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_Instruction.zip"));
@@ -598,7 +594,7 @@ public class GenerateSpot2 : MonoBehaviour
         manager.promtGenerateModel(id, "Apple", URLID);
         URLIDText.text = URLID;
         // PreViewQuad.SetActive(true);
-        loadingIcon.SetActive(true);
+        // loadingIcon.SetActive(true);
         Prompt = "";
 
     }
@@ -613,7 +609,9 @@ public class GenerateSpot2 : MonoBehaviour
     {
         manager.promtGenerateModel(id, Prompt, URLID);
         // PreViewQuad.SetActive(true);
-        loadingIcon.SetActive(true);
+        // loadingIcon.SetActive(true);
+        loadingParticles.Play();
+        SmoothCubeRenderer.enabled = false;
         Prompt = "";
 
     }
@@ -621,7 +619,9 @@ public class GenerateSpot2 : MonoBehaviour
     void ModifyModelinstruction()
     {
         manager.InstructModify(id, Prompt, URLID);
-        loadingIcon.SetActive(true);
+        // loadingIcon.SetActive(true);
+        loadingParticles.Play();
+        SmoothCubeRenderer.enabled = false;
         Prompt = "";
         InstructGen = false;
         SpotType=GenerateType.Instruction;
@@ -717,8 +717,11 @@ public class GenerateSpot2 : MonoBehaviour
                 gameobjectWarp = warp
             }
         );
-
+        //just downloaded the model so we can clean up a bit of unnecessary stuff
         loadingIcon.SetActive(false);
+        loadingParticles.Stop();
+        SmoothCubeRenderer.enabled = false;
+        VoicePanel.SetActive(false);
         modelDownloader.startDownload();
     }
 
@@ -888,6 +891,7 @@ public class GenerateSpot2 : MonoBehaviour
                 
                 Debug.Log("Image applied to new material successfully.");
                 loadingIcon.SetActive(false);
+                loadingParticles.Stop();
 
                 DownloadPanel.SetActive(true);
             }
