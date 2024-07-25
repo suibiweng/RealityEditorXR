@@ -9,7 +9,7 @@ public class SceneSaverTest : MonoBehaviour
    public AudioSource source;
    public AudioClip savingSound, loadingSound;
 
-   public RealityEditorManager2 RealityEditorManager2; 
+   public RealityEditorManager RealityEditorManager2; 
    // public GameObject GenSpotPrefab;
    [System.Serializable]
    public class GenerateSpotData
@@ -55,7 +55,7 @@ public class SceneSaverTest : MonoBehaviour
            data.position = generateSpot.transform.position;
            data.rotation = generateSpot.transform.rotation;
            data.scale = generateSpot.transform.localScale;
-           data.urlid = generateSpot.GetComponent<GenerateSpot2>().URLID; 
+           data.urlid = generateSpot.GetComponent<GenerateSpot>().URLID; 
            Debug.Log("saving the urlid: " + data.urlid);
            generateSpotDataList.Add(data);
        }
@@ -92,7 +92,7 @@ public class SceneSaverTest : MonoBehaviour
                GameObject newObject = RealityEditorManager2.createSavedSpot(data.position, data.rotation, data.scale, data.urlid);
                Debug.Log("loading urlid: " + data.urlid);
                // newObject.GetComponent<GenerateSpot2>().URLID = data.URLID;
-               newObject.GetComponent<GenerateSpot2>().initAdd();
+               newObject.GetComponent<GenerateSpot>().initAdd();
            }
        }
    }

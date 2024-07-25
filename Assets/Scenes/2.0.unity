@@ -3872,7 +3872,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1378611033}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15854dfb53bfe504ea60c7a2d9ac181c, type: 3}
+  m_Script: {fileID: 11500000, guid: c59e034d4de00774cbec2e6dff4af9ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   LeftHand: {fileID: 544014882}
@@ -3883,6 +3883,7 @@ MonoBehaviour:
   ServerURL: http://192.168.137.1
   SceneSaverTest: {fileID: 1378611036}
   selectedIDUrl: 
+  Cursor: {fileID: 0}
   sculptingMenu: {fileID: 0}
   scuptingBrush: {fileID: 0}
   osc: {fileID: 1378611042}
@@ -3895,7 +3896,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1378611033}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7601b2bb75b86ba4992a0807e5029d47, type: 3}
+  m_Script: {fileID: 11500000, guid: 55a61a5e17fdb8443a5f740063fad6a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 1378611038}
@@ -3910,7 +3911,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1378611033}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5eddbf6b81af7c740905ca6bc0f10abf, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a42a73671d2b2841bf4832704379958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isDownloading: 0

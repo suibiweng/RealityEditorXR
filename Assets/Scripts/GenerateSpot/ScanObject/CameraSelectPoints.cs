@@ -85,7 +85,7 @@ public class CameraSelectPoints : MonoBehaviour
 
             if(cameraType==CameraType.Stereo){
 
-                Vector3 screenPos = screenCam.WorldToScreenPoint(Manager.getSelectSpot().GetComponent<GenerateSpot>().AimStart.transform.position);
+                Vector3 screenPos = screenCam.WorldToScreenPoint(Manager.getSelectSpot().GetComponent<GenerateSpot>().transform.position);
 
               //Vector3 screenPos = screenCam.WorldToScreenPoint(testTarget.transform.position);
                LeftAim=new Vector2(-(screenPos.x/2+leftOffset.x),screenPos.y/2+leftOffset.y);
@@ -116,7 +116,7 @@ public class CameraSelectPoints : MonoBehaviour
 
 
 
-                 Vector3 screenPos = screenCam.WorldToScreenPoint(Manager.getSelectSpot().GetComponent<GenerateSpot>().AimStart.transform.position);
+                 Vector3 screenPos = screenCam.WorldToScreenPoint(Manager.getSelectSpot().GetComponent<GenerateSpot>().transform.position);
 
 
                 LeftPoint.gameObject.SetActive(false);

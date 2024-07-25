@@ -4273,13 +4273,10 @@ MonoBehaviour:
   downloadURL: http://192.168.0.139:8000/
   URLID: 
   manager: {fileID: 0}
-  pos: {x: 0, y: 0, z: 0}
-  size: {x: 0, y: 0, z: 0}
-  TransRotation: {x: 0, y: 0, z: 0}
   isselsected: 0
   loadingIcon: {fileID: 8156244992385004863}
   Prompt: 
-  previewText: {fileID: 0}
+  dataSync: {fileID: 0}
   URLIDText: {fileID: 696682105605600011}
   PromtText: {fileID: 1167092362498039368}
   LitseningText: {fileID: 6148612480976159198}
@@ -4297,18 +4294,14 @@ MonoBehaviour:
   ScanningPanel: {fileID: 6148612481526342885}
   DownloadPanel: {fileID: 6863999300241291195}
   selectMenu: {fileID: 6597491865064482090}
-  AimStart: {fileID: 1163502487755132263}
   ColorBtn: {fileID: 3848411419944183241}
   ErasingPanel: {fileID: 144490556410114673}
   EraseBtn: {fileID: 505638995841852597}
   Britheness: {fileID: 8303370352235479404}
   TargetObject: {fileID: 5137789135296656347}
-  BackGroundOnly: {fileID: 6206533663996856818}
-  Contianier: {fileID: 1683885090962764969}
   RecordData: {fileID: 0}
   erasingProjector: {fileID: 4354984841847318464}
   Outlinebox: {fileID: 6148612481019881555}
-  CountID: 0
   _grabbable: {fileID: 0}
   SpotType: 0
   _realtimeTransform: {fileID: -4772333348440836202}
@@ -4324,6 +4317,7 @@ MonoBehaviour:
   Player: {fileID: 0}
   sculptMode: {fileID: 0}
   SculptingModeOn: 0
+  DataSyncTestNumber: 
   Text_Scanning_Btn: {fileID: 5928899881653964488}
   Text_Instruction: {fileID: 5928899881653964542}
   checkInterval: 5

@@ -1716,7 +1716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2547,7 +2547,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 1, g: 0.12189148, b: 0, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2568,11 +2568,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.01
-  far clip plane: 393.97
+  near clip plane: 20.07
+  far clip plane: 26.92
   field of view: 60
   orthographic: 1
-  orthographic size: 4.8
+  orthographic size: 4
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -2588,6 +2588,23 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1 &2046602759 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5407099670143455882, guid: f92cdc2d6e0bddc48a48b76240f83b08, type: 3}
+  m_PrefabInstance: {fileID: 2706442448342515734}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &2046602764
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046602759}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &803909443878734225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2653,7 +2670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5192341053235442058, guid: f92cdc2d6e0bddc48a48b76240f83b08, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.15
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 5192341053235442058, guid: f92cdc2d6e0bddc48a48b76240f83b08, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2709,7 +2726,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5192341053235442058, guid: f92cdc2d6e0bddc48a48b76240f83b08, type: 3}
       insertIndex: 0
       addedObject: {fileID: 1543310695}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5407099670143455882, guid: f92cdc2d6e0bddc48a48b76240f83b08, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2046602764}
   m_SourcePrefab: {fileID: 100100000, guid: f92cdc2d6e0bddc48a48b76240f83b08, type: 3}
 --- !u!4 &2706442448342515739 stripped
 Transform:
