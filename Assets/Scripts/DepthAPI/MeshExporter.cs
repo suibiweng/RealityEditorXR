@@ -1,5 +1,6 @@
 using System.Collections;
 using System.IO;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -11,7 +12,10 @@ public class MeshExporter : MonoBehaviour
 
     void Start()
     {
-
+        // Uncomment the following lines to use the desired functionality
+        // ExportMesh(objectToExport, filePath);
+        // UploadMeshDirectly(objectToExport);
+        // CropAndUploadMesh(boundingBoxObject);
     }
 
     public void ExportMesh(GameObject obj, string filePath)
@@ -47,6 +51,97 @@ public class MeshExporter : MonoBehaviour
         byte[] meshData = System.Text.Encoding.UTF8.GetBytes(meshString);
 
         UploadMesh(meshData);
+    }
+
+    // public void CropMeshWithBoundingBox(GameObject boundingBox)
+    // {
+    //     MeshFilter meshFilter = objectToExport.GetComponent<MeshFilter>();
+    //     if (meshFilter == null)
+    //     {
+    //         Debug.LogError("The object to export does not have a MeshFilter component.");
+    //         return;
+    //     }
+
+    //     Mesh originalMesh = meshFilter.mesh;
+    //     Mesh croppedMesh = CropMesh(originalMesh, boundingBox.transform);
+
+    //     // Update the mesh filter with the cropped mesh
+    //     meshFilter.mesh = croppedMesh;
+    // }
+
+    public void CropAndUploadMesh(MeshFilter targetMesh,GameObject boundingBox)
+    {
+        MeshFilter meshFilter = targetMesh;
+        if (meshFilter == null)
+        {
+            Debug.LogError("The object to export does not have a MeshFilter component.");
+            return;
+        }
+
+        Mesh originalMesh = meshFilter.mesh;
+        Mesh croppedMesh = CropMesh(originalMesh, boundingBox.transform);
+
+        string meshString = MeshToString(croppedMesh, objectToExport.transform);
+        byte[] meshData = System.Text.Encoding.UTF8.GetBytes(meshString);
+
+        UploadMesh(meshData);
+    }
+
+    private Mesh CropMesh(Mesh mesh, Transform boundingBoxTransform)
+    {
+        Vector3[] originalVertices = mesh.vertices;
+        int[] originalTriangles = mesh.triangles;
+
+        List<Vector3> newVertices = new List<Vector3>();
+        List<int> newTriangles = new List<int>();
+
+        Dictionary<int, int> vertexMap = new Dictionary<int, int>();
+
+        // Define the bounds of the bounding box in local space
+        Vector3 localCenter = boundingBoxTransform.localPosition;
+        
+        Vector3 localExtents = boundingBoxTransform.gameObject.GetComponent<BoundingBox>().transform.localScale/2;
+        
+        
+        Quaternion localRotation = boundingBoxTransform.localRotation;
+
+        // Find vertices within the bounding box
+        for (int i = 0; i < originalVertices.Length; i++)
+        {
+            Vector3 localVertex = originalVertices[i];
+            Vector3 rotatedVertex = Quaternion.Inverse(localRotation) * (localVertex - localCenter);
+
+            if (Mathf.Abs(rotatedVertex.x) <= localExtents.x &&
+                Mathf.Abs(rotatedVertex.y) <= localExtents.y &&
+                Mathf.Abs(rotatedVertex.z) <= localExtents.z)
+            {
+                vertexMap[i] = newVertices.Count;
+                newVertices.Add(originalVertices[i]);
+            }
+        }
+
+        // Create new triangles using the vertices within the bounding box
+        for (int i = 0; i < originalTriangles.Length; i += 3)
+        {
+            int v0 = originalTriangles[i];
+            int v1 = originalTriangles[i + 1];
+            int v2 = originalTriangles[i + 2];
+
+            if (vertexMap.ContainsKey(v0) && vertexMap.ContainsKey(v1) && vertexMap.ContainsKey(v2))
+            {
+                newTriangles.Add(vertexMap[v0]);
+                newTriangles.Add(vertexMap[v1]);
+                newTriangles.Add(vertexMap[v2]);
+            }
+        }
+
+        // Create new mesh
+        Mesh newMesh = new Mesh();
+        newMesh.vertices = newVertices.ToArray();
+        newMesh.triangles = newTriangles.ToArray();
+        newMesh.RecalculateNormals();
+
+        return newMesh;
     }
 
     private string MeshToString(Mesh mesh, Transform transform)
