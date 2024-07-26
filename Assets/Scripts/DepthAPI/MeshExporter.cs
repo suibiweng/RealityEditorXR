@@ -1,21 +1,30 @@
 using System.Collections;
-using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using System.IO;
 
 public class MeshExporter : MonoBehaviour
 {
     public GameObject objectToExport;
     public string filePath = "Assets/ExportedMesh.obj";
     public string serverUrl = "http://your-laptop-ip:port/upload";
+    public GameObject box;
 
     void Start()
     {
         // Uncomment the following lines to use the desired functionality
         // ExportMesh(objectToExport, filePath);
         // UploadMeshDirectly(objectToExport);
-        // CropAndUploadMesh(boundingBoxObject);
+        // CropAndUploadMesh(box);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            CropAndUploadMesh(box);
+        }
     }
 
     public void ExportMesh(GameObject obj, string filePath)
@@ -27,7 +36,7 @@ public class MeshExporter : MonoBehaviour
             return;
         }
 
-        Mesh mesh = meshFilter.mesh;
+        Mesh mesh = CreateReadableMesh(meshFilter.mesh);
 
         using (StreamWriter sw = new StreamWriter(filePath))
         {
@@ -46,45 +55,83 @@ public class MeshExporter : MonoBehaviour
             return;
         }
 
-        Mesh mesh = meshFilter.mesh;
+        Mesh mesh = CreateReadableMesh(meshFilter.mesh);
         string meshString = MeshToString(mesh, obj.transform);
         byte[] meshData = System.Text.Encoding.UTF8.GetBytes(meshString);
 
         UploadMesh(meshData);
     }
 
-    // public void CropMeshWithBoundingBox(GameObject boundingBox)
-    // {
-    //     MeshFilter meshFilter = objectToExport.GetComponent<MeshFilter>();
-    //     if (meshFilter == null)
-    //     {
-    //         Debug.LogError("The object to export does not have a MeshFilter component.");
-    //         return;
-    //     }
-
-    //     Mesh originalMesh = meshFilter.mesh;
-    //     Mesh croppedMesh = CropMesh(originalMesh, boundingBox.transform);
-
-    //     // Update the mesh filter with the cropped mesh
-    //     meshFilter.mesh = croppedMesh;
-    // }
-
-    public void CropAndUploadMesh(MeshFilter targetMesh,GameObject boundingBox)
+    public void CropMeshWithBoundingBox(GameObject boundingBox)
     {
-        MeshFilter meshFilter = targetMesh;
+        MeshFilter meshFilter = objectToExport.GetComponent<MeshFilter>();
         if (meshFilter == null)
         {
             Debug.LogError("The object to export does not have a MeshFilter component.");
             return;
         }
 
-        Mesh originalMesh = meshFilter.mesh;
+        Mesh originalMesh = CreateReadableMesh(meshFilter.mesh);
+        Mesh croppedMesh = CropMesh(originalMesh, boundingBox.transform);
+
+        // Update the mesh filter with the cropped mesh
+        meshFilter.mesh = croppedMesh;
+    }
+
+    public void CropAndUploadMesh(GameObject boundingBox)
+    {
+        MeshFilter meshFilter = objectToExport.GetComponent<MeshFilter>();
+        if (meshFilter == null)
+        {
+            Debug.LogError("The object to export does not have a MeshFilter component.");
+            return;
+        }
+
+        Mesh originalMesh = CreateReadableMesh(meshFilter.mesh);
         Mesh croppedMesh = CropMesh(originalMesh, boundingBox.transform);
 
         string meshString = MeshToString(croppedMesh, objectToExport.transform);
         byte[] meshData = System.Text.Encoding.UTF8.GetBytes(meshString);
 
         UploadMesh(meshData);
+    }
+
+    private Mesh CreateReadableMesh(Mesh originalMesh)
+    {
+        // Create a new mesh
+        Mesh newMesh = new Mesh();
+
+        // Copy vertices
+        newMesh.vertices = originalMesh.vertices;
+        
+        // Copy normals
+        if (originalMesh.normals != null && originalMesh.normals.Length > 0)
+        {
+            newMesh.normals = originalMesh.normals;
+        }
+
+        // Copy UVs
+        if (originalMesh.uv != null && originalMesh.uv.Length > 0)
+        {
+            newMesh.uv = originalMesh.uv;
+        }
+
+        // Copy tangents
+        if (originalMesh.tangents != null && originalMesh.tangents.Length > 0)
+        {
+            newMesh.tangents = originalMesh.tangents;
+        }
+
+        // Copy colors
+        if (originalMesh.colors != null && originalMesh.colors.Length > 0)
+        {
+            newMesh.colors = originalMesh.colors;
+        }
+
+        // Copy triangles
+        newMesh.triangles = originalMesh.triangles;
+
+        return newMesh;
     }
 
     private Mesh CropMesh(Mesh mesh, Transform boundingBoxTransform)
@@ -99,10 +146,7 @@ public class MeshExporter : MonoBehaviour
 
         // Define the bounds of the bounding box in local space
         Vector3 localCenter = boundingBoxTransform.localPosition;
-        
-        Vector3 localExtents = boundingBoxTransform.gameObject.GetComponent<BoundingBox>().transform.localScale/2;
-        
-        
+        Vector3 localExtents = boundingBoxTransform.localScale / 2;
         Quaternion localRotation = boundingBoxTransform.localRotation;
 
         // Find vertices within the bounding box
@@ -175,9 +219,9 @@ public class MeshExporter : MonoBehaviour
         }
         sb.AppendLine();
 
-        for (int i = 0; i < triangles.Length; i += 3)
+        for (int i = 0; triangles != null && i < triangles.Length; i += 3)
         {
-            sb.AppendLine(string.Format("f {0}/{0}/{0} {1}/{1}/{1} {2}/{2}/{2}", 
+            sb.AppendLine(string.Format("f {0}/{0}/{0} {1}/{1}/{1} {2}/{2}/{2}",
                 triangles[i] + 1, triangles[i + 1] + 1, triangles[i + 2] + 1));
         }
 

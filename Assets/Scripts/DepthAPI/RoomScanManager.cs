@@ -44,7 +44,7 @@ public class RoomScanManager : MonoBehaviour
 
     public void uploadCropRoomMesh(){
 
-        meshExporter.CropAndUploadMesh(targetObj.GetComponent<MeshFilter>(),BoundingBox);
+        //meshExporter.CropAndUploadMesh(targetObj.GetComponent<MeshFilter>(),BoundingBox);
 
 
     }
