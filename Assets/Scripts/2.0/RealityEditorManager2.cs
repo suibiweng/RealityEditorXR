@@ -42,17 +42,10 @@ public class RealityEditorManager2 : MonoBehaviour
 
     public void updateSelected(int id,string IDurl)
     {
-        int i = 0; 
-        foreach (var idurl in GenCubesDic)
-        {
-            i++; 
-            Debug.Log("Dictionary item " + i + " is " + idurl.Key);
-        }
- 
-        i = 0; 
+        
      //   GenCubes[selectedID].GetComponent<GenerateSpot>().isselsected=false;
        // GenCubes[id].GetComponent<GenerateSpot>().isselsected=true;
-       Debug.Log("Using a dictionary in The manager, The key you are looking for is: " + IDurl); 
+       // Debug.Log("Using a dictionary in The manager, The key you are looking for is: " + IDurl); 
         GenCubesDic[selectedIDUrl].GetComponent<GenerateSpot2>().isselsected=false;
         GenCubesDic[selectedIDUrl].GetComponent<RealtimeTransform>().ClearOwnership(); 
         GenCubesDic[IDurl].GetComponent<GenerateSpot2>().isselsected=true;
@@ -107,16 +100,16 @@ public class RealityEditorManager2 : MonoBehaviour
         gcube.GetComponent<GenerateSpot2>().id=IDs;
         string urlid=TimestampGenerator.GetTimestamp(); 
         gcube.GetComponent<GenerateSpot2>().URLID=urlid;
-        Debug.Log("The new Cube's URLID is: " + urlid);
+        // Debug.Log("The new Cube's URLID is: " + urlid);
         // gcube.GetComponent<DataSync2>().SetURLID(urlid); //setting the network urlid once right after we make the spot. But this dont work
-        Debug.Log("Setting the network urlid to be: " + urlid);
+        // Debug.Log("Setting the network urlid to be: " + urlid);
         GenCubesDic.Add(urlid,gcube); //think about this: Are we adding the cube to the other players dictionaries? 
         selectedIDUrl=urlid;  
         IDs++;
     }
     public GameObject createSavedSpot(Vector3 pos, Quaternion rot, Vector3 scale, string urlid) // same as create spot function but includes scaling and rotating
     {
-        Debug.Log("Creating Saved spot at " + pos);
+        // Debug.Log("Creating Saved spot at " + pos);
         GameObject gcube = Realtime.Instantiate("GenrateSpot2.0", pos, rot);
         gcube.transform.localScale = scale;
         gcube.GetComponent<GenerateSpot2>().id=IDs;
@@ -124,7 +117,7 @@ public class RealityEditorManager2 : MonoBehaviour
         // gcube.GetComponent<DataSync2>().SetURLID(urlid); //setting the network urlid once right after we make the spot. But this dont work
         GenCubesDic.Add(urlid,gcube);
         selectedIDUrl=urlid;
-        Debug.Log("Setting the new spots SelectedIDUrl to be: " + selectedIDUrl);
+        // Debug.Log("Setting the new spots SelectedIDUrl to be: " + selectedIDUrl);
         IDs++;
         return gcube; 
 
@@ -174,21 +167,17 @@ public class RealityEditorManager2 : MonoBehaviour
     }
     
     public void promtGenerateModel(int id,string promt,string URLID){
-        Debug.Log("Checkpoint 2");
 
         OscMessage message = new OscMessage()
         {
             address = "/PromtGenerateModel"
         };
-        Debug.Log("Checkpoint 3");
 
         message.values.Add(id);
         message.values.Add(promt);
         message.values.Add(URLID);
         message.values.Add("genrated");
-        Debug.Log("Checkpoint 4");
         osc.Send(message);
-        Debug.Log("Checkpoint 5");
 
 
     }
