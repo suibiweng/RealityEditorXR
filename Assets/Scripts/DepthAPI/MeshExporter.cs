@@ -11,8 +11,7 @@ public class MeshExporter : MonoBehaviour
 
     void Start()
     {
-        ExportMesh(objectToExport, filePath);
-        UploadMesh(filePath);
+
     }
 
     public void ExportMesh(GameObject obj, string filePath)
@@ -32,6 +31,22 @@ public class MeshExporter : MonoBehaviour
         }
 
         Debug.Log("Mesh exported to " + filePath);
+    }
+
+    public void UploadMeshDirectly(GameObject obj)
+    {
+        MeshFilter meshFilter = obj.GetComponent<MeshFilter>();
+        if (meshFilter == null)
+        {
+            Debug.LogError("The selected object does not have a MeshFilter component.");
+            return;
+        }
+
+        Mesh mesh = meshFilter.mesh;
+        string meshString = MeshToString(mesh, obj.transform);
+        byte[] meshData = System.Text.Encoding.UTF8.GetBytes(meshString);
+
+        UploadMesh(meshData);
     }
 
     private string MeshToString(Mesh mesh, Transform transform)
@@ -74,17 +89,15 @@ public class MeshExporter : MonoBehaviour
         return sb.ToString();
     }
 
-    private void UploadMesh(string filePath)
+    private void UploadMesh(byte[] meshData)
     {
-        StartCoroutine(Upload(filePath));
+        StartCoroutine(Upload(meshData));
     }
 
-    private IEnumerator Upload(string filePath)
+    private IEnumerator Upload(byte[] meshData)
     {
-        byte[] fileData = File.ReadAllBytes(filePath);
-
         WWWForm form = new WWWForm();
-        form.AddBinaryData("file", fileData, Path.GetFileName(filePath), "application/octet-stream");
+        form.AddBinaryData("file", meshData, "exportedMesh.obj", "application/octet-stream");
 
         using (UnityWebRequest www = UnityWebRequest.Post(serverUrl, form))
         {
