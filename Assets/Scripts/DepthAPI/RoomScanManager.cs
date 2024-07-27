@@ -11,9 +11,13 @@ public class RoomScanManager : MonoBehaviour
 
     public GameObject BoundingBox;
 
+
+    public List<Transform> cropboxes ;
+
     // Start is called before the first frame update
     void Start()
     {
+        cropboxes = new List<Transform>();
     //    StartCoroutine(searchRoomMesh(1.0f));
     
         //Search room mesh
@@ -49,6 +53,27 @@ public class RoomScanManager : MonoBehaviour
 
     }
 
+    public void getAllCropBoxes(){
+
+        foreach (GameObject g in GameObject.FindGameObjectsWithTag("CropBox")){
+
+            cropboxes.Add(g.GetComponent<RectTransform>());
+            
+            Debug.Log(g.name+"");            
+
+
+            
+
+
+
+        }
+        
+
+
+
+
+    }
+
 
     
 
@@ -56,6 +81,7 @@ public class RoomScanManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         
     }
 }
