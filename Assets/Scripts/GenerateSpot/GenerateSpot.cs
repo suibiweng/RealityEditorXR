@@ -31,8 +31,11 @@ public class GenerateSpot : MonoBehaviour
     // Transform Control
 
     public bool isselsected = false;
+    
     public GameObject loadingIcon;
-
+    
+    public ParticleSystem loadingParticles;
+    public Renderer SmoothCubeRenderer; 
     public string Prompt;
 
     public DataSync dataSync; 
@@ -114,6 +117,9 @@ public class GenerateSpot : MonoBehaviour
         Player = manager.PlayerCamera; 
         
         SpotType = GenerateType.Add;
+        
+        loadingIcon.SetActive(false);
+        loadingParticles.Stop();
         initAdd();
         
         // URLID=TimestampGenerator.GetTimestamp();
@@ -611,8 +617,11 @@ public class GenerateSpot : MonoBehaviour
     public void GenrateModel()
     {
         manager.promtGenerateModel(id, Prompt, URLID);
+        loadingParticles.Play();
+        SmoothCubeRenderer.enabled = false;
+
         // PreViewQuad.SetActive(true);
-        loadingIcon.SetActive(true);
+        // loadingIcon.SetActive(true);
         Prompt = "";
 
     }
@@ -620,6 +629,9 @@ public class GenerateSpot : MonoBehaviour
     void ModifyModelinstruction()
     {
         manager.InstructModify(id, Prompt, URLID);
+        loadingParticles.Play();
+        SmoothCubeRenderer.enabled = false;
+
         loadingIcon.SetActive(true);
         Prompt = "";
         InstructGen = false;
@@ -718,6 +730,9 @@ public class GenerateSpot : MonoBehaviour
         );
 
         loadingIcon.SetActive(false);
+        loadingParticles.Stop();
+        SmoothCubeRenderer.enabled = false;
+
         modelDownloader.startDownload();
     }
 
@@ -887,6 +902,7 @@ public class GenerateSpot : MonoBehaviour
                 
                 Debug.Log("Image applied to new material successfully.");
                 loadingIcon.SetActive(false);
+                loadingParticles.Stop();
 
                 DownloadPanel.SetActive(true);
             }
