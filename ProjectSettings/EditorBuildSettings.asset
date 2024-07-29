@@ -6,21 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/2.1.unity
+    guid: fce75ad71e14aed4d9e09dbf95892d50
+  - enabled: 1
+    path: Assets/Scenes/2.0.unity
+    guid: a4e4b75e1cda6194d9ea4ebcef4c69ce
+  - enabled: 0
     path: Assets/Scenes/RoomScanTest.unity
     guid: 00fa337c78791a547809b9f7cbec5951
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ControlBoundingBox.unity
     guid: 8928ad31dfd0633449113f6bed10dd82
   - enabled: 0
     path: Assets/Scenes/RoomScan.unity
     guid: b25d3c9493b9a284ab2c7f5720965b65
-  - enabled: 1
-    path: Assets/Scenes/2.0.unity
-    guid: a4e4b75e1cda6194d9ea4ebcef4c69ce
-  - enabled: 1
+  - enabled: 0
     path: Assets/StarterSamples/Usage/Passthrough.unity
     guid: 58e5fc2486c774a4e88ac76261268d52
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Depth Test.unity
     guid: 9164a30b2eeb3f64d9cb136f805d4eb8
   - enabled: 0
