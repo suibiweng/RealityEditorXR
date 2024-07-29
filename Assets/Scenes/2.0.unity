@@ -3880,7 +3880,7 @@ MonoBehaviour:
   PlayerCamera: {fileID: 544014884}
   uploadPort: 8080
   downloadPort: 8000
-  ServerURL: http://192.168.137.1
+  ServerURL: http://192.168.0.139
   SceneSaverTest: {fileID: 1378611036}
   selectedIDUrl: 
   Cursor: {fileID: 0}
@@ -3928,7 +3928,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inPort: 1337
-  outIP: 192.168.137.1
+  outIP: 192.168.0.139
   outPort: 6161
 --- !u!1001 &1446069044
 PrefabInstance:

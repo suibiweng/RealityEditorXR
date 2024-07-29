@@ -118,7 +118,7 @@ public class GenerateSpot : MonoBehaviour
         
         // URLID=TimestampGenerator.GetTimestamp();
 
-        // StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_generated.zip"));
+        StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_generated.zip"));
     
         // StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_Instruction.zip"));
 
