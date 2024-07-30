@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class RoomScanManager : MonoBehaviour
 {
@@ -8,16 +9,15 @@ public class RoomScanManager : MonoBehaviour
     public MeshExporter meshExporter;
     public GameObject targetObj;
 
+    public List<GameObject> Cropboxes;
+
 
     public GameObject BoundingBox;
-
-
-    public List<Transform> cropboxes ;
 
     // Start is called before the first frame update
     void Start()
     {
-        cropboxes = new List<Transform>();
+        Cropboxes=new List<GameObject>();
     //    StartCoroutine(searchRoomMesh(1.0f));
     
         //Search room mesh
@@ -26,6 +26,7 @@ public class RoomScanManager : MonoBehaviour
 
  
     MeshFilter TargetMesh;
+    Vector3 RoomPosition;
 
     public void getMeshObj (MeshFilter meshFilter)
     {
@@ -33,6 +34,12 @@ public class RoomScanManager : MonoBehaviour
         targetObj=meshFilter.gameObject;
         TargetMesh=meshFilter;
         meshExporter.objectToExport=meshFilter.gameObject;
+
+        RoomPosition=targetObj.transform.position;
+
+         Debug.Log("Room:"+RoomPosition+targetObj.transform.localScale+targetObj.transform.rotation.eulerAngles);
+
+
 
     }
 
@@ -53,21 +60,20 @@ public class RoomScanManager : MonoBehaviour
 
     }
 
-    public void getAllCropBoxes(){
+    public void getallCropBoxes(){
 
         foreach (GameObject g in GameObject.FindGameObjectsWithTag("CropBox")){
 
-            cropboxes.Add(g.GetComponent<RectTransform>());
-            
-            Debug.Log(g.name+"");            
-
+            Debug.Log(g.name + g.transform.position+g.transform.localScale+g.transform.rotation.eulerAngles);
+            Cropboxes.Add(g);
 
             
+
+
 
 
 
         }
-        
 
 
 
@@ -81,7 +87,6 @@ public class RoomScanManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         
     }
 }

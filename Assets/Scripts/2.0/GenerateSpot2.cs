@@ -111,8 +111,8 @@ public class GenerateSpot2 : MonoBehaviour
         _grabbable = GetComponent<Grabbable>();
         downloadURL=manager.ServerURL;
 
-        // Player=Camera.main.transform;
-        Player = manager.PlayerCamera; 
+        Player=Camera.main.transform;
+        // Player = manager.PlayerCamera; 
         
         SpotType = GenerateType.Add;
         initAdd();
@@ -191,18 +191,18 @@ public class GenerateSpot2 : MonoBehaviour
      float minDistance = 0.1f; // Minimum distance for full opacity
     float maxDistance = 1f; // 
 
-    void BoundingBoxColorAlhpaDinstance(){
-        
-        float distanceToPlayer = Vector3.Distance(transform.position, Player.position);
-
-        // Calculate the alpha value based on the distance
-        float alpha = Mathf.InverseLerp(maxDistance, minDistance, distanceToPlayer);
-
-        // Interpolate the alpha value of the material's color
-
-        Outlinebox.lineColor=new Color(Outlinebox.lineColor.r, Outlinebox.lineColor.g, Outlinebox.lineColor.b, alpha);
-        
-    }
+    // void BoundingBoxColorAlhpaDinstance(){
+    //     
+    //     float distanceToPlayer = Vector3.Distance(transform.position, Player.position);
+    //
+    //     // Calculate the alpha value based on the distance
+    //     float alpha = Mathf.InverseLerp(maxDistance, minDistance, distanceToPlayer);
+    //
+    //     // Interpolate the alpha value of the material's color
+    //
+    //     Outlinebox.lineColor=new Color(Outlinebox.lineColor.r, Outlinebox.lineColor.g, Outlinebox.lineColor.b, alpha);
+    //     
+    // }
 
 
     public void setTheType(int select)
@@ -479,7 +479,7 @@ public class GenerateSpot2 : MonoBehaviour
         }
 
 
-         BoundingBoxColorAlhpaDinstance();
+         // BoundingBoxColorAlhpaDinstance(); commented this out since were getting rid of the bounding box and the code wont find the player
          
 
 
@@ -516,7 +516,7 @@ public class GenerateSpot2 : MonoBehaviour
 
         }
 
-        Text_Instruction.text = RecordData.instruction;
+        // Text_Instruction.text = RecordData.instruction;  //This might need to be uncommented, It was gettting errors and seems unimportant
 
 
 
