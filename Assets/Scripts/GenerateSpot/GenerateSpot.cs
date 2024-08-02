@@ -124,7 +124,7 @@ public class GenerateSpot : MonoBehaviour
         
         // URLID=TimestampGenerator.GetTimestamp();
 
-        StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_generated.zip"));
+       // StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_generated.zip"));
     
         // StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_Instruction.zip"));
 
@@ -895,7 +895,6 @@ public class GenerateSpot : MonoBehaviour
                 erasingProjector.material=material;
                 // erasingProjector.GetComponent<EraseProjectorControl>().mat=material;
                 erasingProjector.gameObject.SetActive(false);
-
                 ProjectorMeterial=material;
 
 
