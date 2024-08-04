@@ -13872,17 +13872,17 @@ MonoBehaviour:
       ConstrainAxis: 1
       AxisRange:
         Min: 0
-        Max: 1
+        Max: 10
     YAxis:
       ConstrainAxis: 1
       AxisRange:
         Min: 0
-        Max: 1
+        Max: 10
     ZAxis:
       ConstrainAxis: 1
       AxisRange:
         Min: 0
-        Max: 1
+        Max: 10
 --- !u!114 &4075572116202520391
 MonoBehaviour:
   m_ObjectHideFlags: 0

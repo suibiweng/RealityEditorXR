@@ -54,7 +54,7 @@ public class RealityEditorManager : MonoBehaviour
         i = 0; 
      //   GenCubes[selectedID].GetComponent<GenerateSpot>().isselsected=false;
        // GenCubes[id].GetComponent<GenerateSpot>().isselsected=true;
-       Debug.Log("Using a dictionary in The manager, The key you are looking for is: " + IDurl); 
+        Debug.Log("Using a dictionary in The manager, The key you are looking for is: " + IDurl); 
         GenCubesDic[selectedIDUrl].GetComponent<GenerateSpot>().isselsected=false;
         GenCubesDic[selectedIDUrl].GetComponent<RealtimeTransform>().ClearOwnership(); 
         GenCubesDic[IDurl].GetComponent<GenerateSpot>().isselsected=true;
