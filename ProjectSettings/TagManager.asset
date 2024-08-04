@@ -8,6 +8,7 @@ TagManager:
   - UIcursor
   - GenerateSpot
   - CropBox
+  - ErasineLine
   layers:
   - Default
   - TransparentFX
