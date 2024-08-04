@@ -22,16 +22,22 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ColorMask: 0
-    - _StencilComp: 8
-    - _StencilOp: 2
-    - _StencilReadMask: 255
-    - _StencilReferenceID: 1
-    - _StencilWriteMask: 255
+    - _ColorMask: 39.97
+    - _FeatherAmount: 1
+    - _FresnelPower: 0.97
+    - _StencilComp: 5
+    - _StencilOp: 6
+    - _StencilReadMask: 657.5
+    - _StencilReferenceID: -49.2
+    - _StencilWriteMask: 21
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
