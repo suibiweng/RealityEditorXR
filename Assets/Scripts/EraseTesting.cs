@@ -5,6 +5,7 @@ using UnityEngine;
 public class EraseTesting : MonoBehaviour
 {
     public GameObject mask;
+    public GameObject colorAdj;
     public bool turnON=false;
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class EraseTesting : MonoBehaviour
     {
 
         mask.SetActive(turnON);
+        colorAdj.SetActive(turnON);
         
     }
 

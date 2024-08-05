@@ -32,10 +32,10 @@ Material:
     - _ColorMask: 39.97
     - _FeatherAmount: 1
     - _FresnelPower: 0.97
-    - _StencilComp: 5
-    - _StencilOp: 6
+    - _StencilComp: 8
+    - _StencilOp: 2
     - _StencilReadMask: 657.5
-    - _StencilReferenceID: -49.2
+    - _StencilReferenceID: 1
     - _StencilWriteMask: 21
     - _ZWrite: 0
     m_Colors:
