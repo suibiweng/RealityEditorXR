@@ -2752,7 +2752,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6729336077803748279}
         m_TargetAssemblyTypeName: GenerateSpot, Assembly-CSharp
         m_MethodName: ScanObject
         m_Mode: 1
@@ -13705,6 +13705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RT: {fileID: 8400000, guid: 3eaeb10b757ba4443bd7d0f5ec6267c2, type: 2}
   indicator: {fileID: 0}
+  osc: {fileID: 0}
   imgCount: 0
   instruction: 
   campoints: {fileID: 0}
@@ -31076,7 +31077,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6729336077803748279}
         m_TargetAssemblyTypeName: GenerateSpot, Assembly-CSharp
         m_MethodName: StartToinpainting
         m_Mode: 1
@@ -34141,7 +34142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4096464666264670982
 RectTransform:
   m_ObjectHideFlags: 0

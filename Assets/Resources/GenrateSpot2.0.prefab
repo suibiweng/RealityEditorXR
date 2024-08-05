@@ -4424,6 +4424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RT: {fileID: 8400000, guid: 3eaeb10b757ba4443bd7d0f5ec6267c2, type: 2}
   indicator: {fileID: 0}
+  osc: {fileID: 0}
   imgCount: 0
   instruction: 
   campoints: {fileID: 0}
