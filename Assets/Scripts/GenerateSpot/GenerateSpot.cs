@@ -120,7 +120,7 @@ public class GenerateSpot : MonoBehaviour
         
         loadingIcon.SetActive(false);
         loadingParticles.Stop();
-        initAdd();
+      //  initAdd();
         
         // URLID=TimestampGenerator.GetTimestamp();
 
@@ -286,10 +286,7 @@ public class GenerateSpot : MonoBehaviour
 
         }
 
-        //   moveplayer.spot = this.gameObject;
-
-        // _realtimeTransform.RequestOwnership();
-        // _realtimeView.RequestOwnershipOfSelfAndChildren();
+  
 
     }
     

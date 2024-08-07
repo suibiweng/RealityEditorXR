@@ -36,7 +36,7 @@ public class RealityEditorManager : MonoBehaviour
      //   GenCubes= new List<GameObject>();
         GenCubesDic=new Dictionary<string,GameObject>();
       //  IDs=GenCubes.Count;
-      osc.SetAllMessageHandler(ReciveFromOSC);
+     // osc.SetAllMessageHandler(ReciveFromOSC);
 
         
     }
@@ -44,14 +44,14 @@ public class RealityEditorManager : MonoBehaviour
 
     public void updateSelected(int id,string IDurl)
     {
-        int i = 0; 
-        foreach (var idurl in GenCubesDic)
-        {
-            i++; 
-            Debug.Log("Dictionary item " + i + " is " + idurl.Key);
-        }
+        // int i = 0; 
+        // foreach (var idurl in GenCubesDic)
+        // {
+        //     i++; 
+        //     Debug.Log("Dictionary item " + i + " is " + idurl.Key);
+        // }
  
-        i = 0; 
+        // i = 0; 
      //   GenCubes[selectedID].GetComponent<GenerateSpot>().isselsected=false;
        // GenCubes[id].GetComponent<GenerateSpot>().isselsected=true;
         Debug.Log("Using a dictionary in The manager, The key you are looking for is: " + IDurl); 
@@ -194,39 +194,39 @@ public class RealityEditorManager : MonoBehaviour
 
 
     }
-    public void ReciveFromOSC(OscMessage oscMessage){
-        switch(oscMessage.address){
-            case "/GenrateModel":
+    // public void ReciveFromOSC(OscMessage oscMessage){
+    //     switch(oscMessage.address){
+    //         case "/GenrateModel":
             
-                // debugText.text=oscMessage.values
-                // modelDownloader.AddTask(
-                //     CreateModelInfoFromOSC(oscMessage,
-                //     GenCubes[oscMessage.GetInt(0)].GetComponent<GenerateSpot>().TargetObject)
-                //     );
+    //             // debugText.text=oscMessage.values
+    //             // modelDownloader.AddTask(
+    //             //     CreateModelInfoFromOSC(oscMessage,
+    //             //     GenCubes[oscMessage.GetInt(0)].GetComponent<GenerateSpot>().TargetObject)
+    //             //     );
 
-                //     GenCubes[oscMessage.GetInt(0)].GetComponent<GenerateSpot>().PreViewQuad.SetActive(false);
-                //     GenCubes[oscMessage.GetInt(0)].GetComponent<GenerateSpot>().loadingIcon.SetActive(false);
-                //     modelDownloader.startDownload();
-                break;
+    //             //     GenCubes[oscMessage.GetInt(0)].GetComponent<GenerateSpot>().PreViewQuad.SetActive(false);
+    //             //     GenCubes[oscMessage.GetInt(0)].GetComponent<GenerateSpot>().loadingIcon.SetActive(false);
+    //             //     modelDownloader.startDownload();
+    //             break;
 
-            case "/GenrateBackGround":
-                // modelDownloader.AddTask(
-                // CreateModelInfoFromOSC(oscMessage,
-                // GenCubes[oscMessage.GetInt(0)].GetComponent<GenerateSpot>().BackGroundOnly)
-                // );
-                break;
+    //         case "/GenrateBackGround":
+    //             // modelDownloader.AddTask(
+    //             // CreateModelInfoFromOSC(oscMessage,
+    //             // GenCubes[oscMessage.GetInt(0)].GetComponent<GenerateSpot>().BackGroundOnly)
+    //             // );
+    //             break;
 
-            case "/GenratObjOnly":
+    //         case "/GenratObjOnly":
 
-                // modelDownloader.AddTask(
-                // CreateModelInfoFromOSC(oscMessage,
-                // GenCubes[oscMessage.GetInt(0)].GetComponent<GenerateSpot>().TargetObject)
-                // );
+    //             // modelDownloader.AddTask(
+    //             // CreateModelInfoFromOSC(oscMessage,
+    //             // GenCubes[oscMessage.GetInt(0)].GetComponent<GenerateSpot>().TargetObject)
+    //             // );
 
-                break;
+    //             break;
             
-        }
-    }
+    //     }
+    // }
     public void sendStop(){
         
         OscMessage message = new OscMessage()

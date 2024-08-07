@@ -5,6 +5,7 @@ using System;
 using System.IO;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using RealityEditor;
 
 public class recordData : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class recordData : MonoBehaviour
     public GameObject indicator;
 
     public ArrayList cameraPoses;
+
+    public RealityEditorManager manager;
 
 
     public OSC osc;
@@ -32,6 +35,8 @@ public class recordData : MonoBehaviour
     // recording interval in seconds
     [SerializeField] private int recordingInterval;
 
+    public Camera screenCam;
+
 
     // Start is called before the first frame update
     void Start()
@@ -39,14 +44,21 @@ public class recordData : MonoBehaviour
         cameraPoses=new ArrayList();
         osc=FindObjectOfType<OSC>();
         spot=GetComponent<GenerateSpot>();
-        campoints=FindObjectOfType<CameraSelectPoints>();
+ 
+        manager =spot.manager;
+        screenCam=GameObject.FindGameObjectWithTag("USBCamera").GetComponent<Camera>();
        
-        indicator=campoints.indicator;
+     //   indicator=campoints.indicator;
 
     }
     public void StartInpainting(){
 
         Startinpanting=true;
+
+
+        if(spot.isselsected){
+
+        Vector3 screenPos = screenCam.WorldToScreenPoint(spot.gameObject.transform.position);
 
 
 
@@ -55,11 +67,22 @@ public class recordData : MonoBehaviour
             address = "/InpaintBackGround"
         };
         message.values.Add(spot.URLID);
-        message.values.Add(campoints.rCenterAim.x);
-        message.values.Add(campoints.rCenterAim.y);
+
+
+       
+
+        message.values.Add(screenPos.x);
+        message.values.Add(-screenPos.y);
 
 
         osc.Send(message);
+
+
+
+
+
+        }
+
 
 
 
@@ -127,17 +150,24 @@ public class recordData : MonoBehaviour
 
 
 
-        if(Startinpanting){
 
-            instruction="Press left Trigger to capture";
 
-            //    if(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger)){
-            //          StartCoroutine(UploadCoroutine((Texture2D)campoints.CameraTexture, campoints.centerAim));
-            //    }
+         StartInpainting();
+
+
+
+
+        // if(Startinpanting){
+
+        //     instruction="Press left Trigger to capture";
+
+        //     //    if(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger)){
+        //     //          StartCoroutine(UploadCoroutine((Texture2D)campoints.CameraTexture, campoints.centerAim));
+        //     //    }
 
         
         
-        }
+        // }
 
 
 

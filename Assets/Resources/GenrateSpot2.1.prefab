@@ -13640,7 +13640,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2411515764204973149}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee7abbac048f81d44bafe6a4fb1135b2, type: 3}
   m_Name: 
@@ -13705,11 +13705,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RT: {fileID: 8400000, guid: 3eaeb10b757ba4443bd7d0f5ec6267c2, type: 2}
   indicator: {fileID: 0}
+  manager: {fileID: 0}
   osc: {fileID: 0}
   imgCount: 0
   instruction: 
   campoints: {fileID: 0}
   recordingInterval: 0
+  screenCam: {fileID: 0}
 --- !u!114 &2265763797212092557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28542,7 +28544,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5792871510643504013}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -28605,7 +28607,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5792871510643504013}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: befaa124e0b7c104d81b7998a001baf9, type: 3}
   m_Name: 
@@ -42640,7 +42642,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7635826562936255635, guid: 5cb2a28734dc5c143bc4287469c5237c, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7635826562936255635, guid: 5cb2a28734dc5c143bc4287469c5237c, type: 3}
       propertyPath: m_Materials.Array.data[0]

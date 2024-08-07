@@ -9,6 +9,7 @@ TagManager:
   - GenerateSpot
   - CropBox
   - ErasineLine
+  - USBCamera
   layers:
   - Default
   - TransparentFX

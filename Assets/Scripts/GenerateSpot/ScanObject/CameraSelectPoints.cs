@@ -49,7 +49,6 @@ public class CameraSelectPoints : MonoBehaviour
     {
         Manager=FindObjectOfType<RealityEditorManager>();
         canvasGroup=GetComponent<CanvasGroup>();
-
         CameraTexture=GetComponent<RawImage>().texture;
         
         
