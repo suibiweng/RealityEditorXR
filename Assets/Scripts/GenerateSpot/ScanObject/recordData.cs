@@ -51,6 +51,8 @@ public class recordData : MonoBehaviour
      //   indicator=campoints.indicator;
 
     }
+
+     public Vector3 screenPos;
     public void StartInpainting(){
 
         Startinpanting=true;
@@ -58,7 +60,7 @@ public class recordData : MonoBehaviour
 
         if(spot.isselsected){
 
-        Vector3 screenPos = screenCam.WorldToScreenPoint(spot.gameObject.transform.position);
+         
 
 
 
@@ -152,24 +154,11 @@ public class recordData : MonoBehaviour
 
 
 
-         StartInpainting();
+         //StartInpainting();
 
 
 
-
-        // if(Startinpanting){
-
-        //     instruction="Press left Trigger to capture";
-
-        //     //    if(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger)){
-        //     //          StartCoroutine(UploadCoroutine((Texture2D)campoints.CameraTexture, campoints.centerAim));
-        //     //    }
-
-        
-        
-        // }
-
-
+        screenPos = screenCam.WorldToScreenPoint(spot.gameObject.transform.position);
 
         if (recording)
         {
