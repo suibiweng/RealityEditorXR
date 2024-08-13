@@ -151,7 +151,34 @@ public class RoomScanManager : MonoBehaviour
 
     public void UpdateRoomScanning(){
 
-            OscMessage message;
+        if(!capturing)
+            StartCoroutine( DelayCapture(0.2f));
+
+   
+
+
+
+        
+    }
+
+    bool   capturing=false;
+    IEnumerator DelayCapture(float delaysecod){
+        capturing=true;
+
+        Capture();
+
+         yield return new WaitForSeconds(delaysecod);
+         
+        capturing=false;
+
+
+    }
+
+
+    void  Capture()
+{
+
+             OscMessage message;
 
                 message = new OscMessage();
                 message.address = "/Roomscan";
@@ -169,8 +196,9 @@ public class RoomScanManager : MonoBehaviour
 
 
 
-        
-    }
+
+
+}
 
 
     public void EndRoomScanning(){
