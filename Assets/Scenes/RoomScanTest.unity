@@ -25733,7 +25733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f736df6d50eff19488460d970ade97d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomScanManager: {fileID: 0}
+  roomScanManager: {fileID: 864394166}
   ScanButton: {fileID: 1675637194}
   ScanTextBtn: {fileID: 871553517}
 --- !u!114 &890106702
@@ -25920,8 +25920,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.37, y: 1.49, z: 0.23}
+  m_Center: {x: 0, y: 0.37, z: 0}
 --- !u!4 &890106708
 Transform:
   m_ObjectHideFlags: 0
@@ -50647,7 +50647,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1675637192}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 890106701}
+        m_TargetAssemblyTypeName: RoomScanMenu, Assembly-CSharp
+        m_MethodName: ButtonScanPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1683327929
 GameObject:
   m_ObjectHideFlags: 0
@@ -52732,7 +52744,6 @@ GameObject:
   - component: {fileID: 1768807577}
   - component: {fileID: 1768807576}
   - component: {fileID: 1768807575}
-  - component: {fileID: 1768807574}
   m_Layer: 0
   m_Name: Menu
   m_TagString: Untagged
@@ -52770,19 +52781,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.00010936, y: -0.06}
   m_SizeDelta: {x: 450, y: 800}
   m_Pivot: {x: 0.5, y: 0}
---- !u!114 &1768807574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1768807572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a6ab36234f54b944a6e2d856be8f221, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
 --- !u!114 &1768807575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95720,6 +95718,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GenrateSpot2.1
       objectReference: {fileID: 0}
+    - target: {fileID: 2411515764204973149, guid: 91232e6e613e77f4d970b1e34b14fdf2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570139413044296356, guid: 91232e6e613e77f4d970b1e34b14fdf2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.738
@@ -95771,10 +95773,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3371581397841013250, guid: 91232e6e613e77f4d970b1e34b14fdf2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91232e6e613e77f4d970b1e34b14fdf2, type: 3}
 --- !u!222 &7703591798415676860
 CanvasRenderer:

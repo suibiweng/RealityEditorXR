@@ -22,13 +22,13 @@ public class RoomScanMenu : MonoBehaviour
     public void ButtonScanPressed(){
         if(!roomScanManager.recording){
 
-            ScanTextBtn.text="Start to Scan the Room";
+            ScanTextBtn.text="Stop";
             roomScanManager.StartRoomScanning();
 
         }else {
 
 
-             ScanTextBtn.text="Stop to Scan the Room";
+             ScanTextBtn.text="Start";
              roomScanManager.EndRoomScanning();
 
 

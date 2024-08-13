@@ -6,17 +6,17 @@ public class DepthCaptureControl : MonoBehaviour
 {
     public OSC osc;
     public GenerateSpot generateSpot;
-
     public recordData recorddata;
+    public SpatialPicture spatialPicture;
+
+
     // Start is called before the first frame update
     void Start()
     {
         osc =GameObject.FindAnyObjectByType<OSC>();
-
         generateSpot = GetComponent<GenerateSpot>();
-
         recorddata=GetComponent<recordData>();
-
+              //  manager= FindAnyObjectByType<RealityEditorManager>();
 
     }
 
@@ -35,6 +35,8 @@ public class DepthCaptureControl : MonoBehaviour
         message.values.Add(recorddata.screenPos.x);
         message.values.Add(-recorddata.screenPos.y);
         osc.Send(message);
+        spatialPicture.gameObject.SetActive(true);
+        StartCoroutine(spatialPicture.DownloadTextures(generateSpot.downloadURL+"/"+generateSpot.URLID+"_RGB.png",generateSpot.downloadURL+"/"+generateSpot.URLID+"_Depth.png"));
 
 
 
