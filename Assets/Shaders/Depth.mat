@@ -24,11 +24,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _DepthMap:
-        m_Texture: {fileID: 2800000, guid: 37d8cf13d96036348bc1090f893fe2df, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Texture: {fileID: 2800000, guid: 2ddc2e0a8b481e44a95a273dc5825187, type: 3}
+        m_Scale: {x: 0.68, y: 1.1}
+        m_Offset: {x: 0, y: 0.65}
     - _RGBMAP:
-        m_Texture: {fileID: 2800000, guid: 273b65261b2539e4ba114c4e9ddc5ffc, type: 3}
+        m_Texture: {fileID: 2800000, guid: 940bd27a83e472045926ba5cead3ab62, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -38,7 +38,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _EdgeLength: 9.2
-    - _Power: 28.86
+    - _Power: 0.07
     - _TessEdgeLength: 8.6
     - __dirty: 0
     m_Colors: []

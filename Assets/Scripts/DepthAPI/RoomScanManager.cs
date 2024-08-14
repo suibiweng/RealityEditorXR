@@ -135,7 +135,7 @@ public class RoomScanManager : MonoBehaviour
         message = new OscMessage();
         message.address = "/RoomScanStart";
         message.values.Add(ID);
-        // osc.Send(message);
+        osc.Send(message);
         imgCount=0;
 
 

@@ -14,6 +14,7 @@ public class SpatialPicture : MonoBehaviour
     {
 
        meshRenderer=GetComponent<MeshRenderer>();
+       
        material=meshRenderer.materials[0];
     }
 
