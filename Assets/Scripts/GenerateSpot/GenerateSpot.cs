@@ -97,11 +97,15 @@ public class GenerateSpot : MonoBehaviour
     
     public Transform Player;
 
-    public Toggle sculptMode;
+    public Toggle sculptMode,PositionisLock;
 
     public bool SculptingModeOn=false;
 
     public string DataSyncTestNumber; 
+
+  
+
+    
     
     void Start()
     {
@@ -169,6 +173,27 @@ public class GenerateSpot : MonoBehaviour
         }
 
     }
+    public void toLockthePosition()
+    {
+        if(PositionisLock.isOn){
+
+            _grabbable.enabled = false;
+        }else{
+
+
+            _grabbable.enabled = true;
+
+
+        }
+
+
+
+
+
+    }
+
+
+
     void StopScupting(){
 
         SculptingModeOn=false;
@@ -401,6 +426,12 @@ public class GenerateSpot : MonoBehaviour
             dataSync.SetURLID(URLID); 
             dataSync.Setprompt(Prompt);
         }
+
+
+
+ toLockthePosition();
+
+        
         // if (manager == null)
         // {
         //     FindObjectOfType<RealityEditorManager2>();  //this shouldnt be necessary
