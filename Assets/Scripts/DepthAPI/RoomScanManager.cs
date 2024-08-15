@@ -7,8 +7,10 @@ using RealityEditor;
 public class RoomScanManager : MonoBehaviour
 {
 
+    public ParticleSystem hintParticle;
+
     public MeshExporter meshExporter;
-    public GameObject targetObj;
+    public GameObject Roommesh;
 
     public List<GameObject> Cropboxes;
 
@@ -33,6 +35,9 @@ public class RoomScanManager : MonoBehaviour
     //    StartCoroutine(searchRoomMesh(1.0f));
 
     osc =FindAnyObjectByType<OSC>();      
+
+
+    StartCoroutine(DelayTurnOffMesh());
     
         //Search room mesh
 
@@ -45,14 +50,25 @@ public class RoomScanManager : MonoBehaviour
     public void getMeshObj (MeshFilter meshFilter)
     {
 
-        targetObj=meshFilter.gameObject;
+        Roommesh=meshFilter.gameObject;
         TargetMesh=meshFilter;
         meshExporter.objectToExport=meshFilter.gameObject;
 
-        RoomPosition=targetObj.transform.position;
+        // RoomPosition=Roommesh.transform.position;
+        //  Debug.Log("Room:"+RoomPosition+Roommesh.transform.localScale+Roommesh.transform.rotation.eulerAngles);
 
-         Debug.Log("Room:"+RoomPosition+targetObj.transform.localScale+targetObj.transform.rotation.eulerAngles);
 
+
+     
+
+
+
+    }
+    IEnumerator DelayTurnOffMesh(){
+        yield return new WaitForSeconds(1);
+
+
+           Roommesh.SetActive(false);
 
 
     }
@@ -60,7 +76,7 @@ public class RoomScanManager : MonoBehaviour
 
     public void uploadRoomMesh(){
 
-        meshExporter.UploadMeshDirectly(targetObj);
+        meshExporter.UploadMeshDirectly(Roommesh);
 
 
     }
@@ -108,11 +124,13 @@ public class RoomScanManager : MonoBehaviour
     {
 
 
-         if(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger)){
+         if(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger)){
             if(recording){
 
 
                 UpdateRoomScanning();
+
+                hintParticle.Play();
 
 
             }
@@ -137,6 +155,8 @@ public class RoomScanManager : MonoBehaviour
         message.values.Add(ID);
         osc.Send(message);
         imgCount=0;
+
+           Roommesh.SetActive(true);
 
 
 
@@ -208,6 +228,10 @@ public class RoomScanManager : MonoBehaviour
         message = new OscMessage();
         message.address = "/RoomscanEnd";
         osc.Send(message);
+
+
+
+        Roommesh.SetActive(false);
 
 
 
