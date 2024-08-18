@@ -229,6 +229,9 @@ public class RoomScanManager : MonoBehaviour
         message.address = "/RoomscanEnd";
         osc.Send(message);
 
+        hintParticle.Stop();
+        hintParticle.Clear();
+
 
 
         Roommesh.SetActive(false);
