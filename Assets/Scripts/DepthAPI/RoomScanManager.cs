@@ -202,7 +202,7 @@ public class RoomScanManager : MonoBehaviour
 
                 message = new OscMessage();
                 message.address = "/Roomscan";
-                message.values.Add(ID+"_RoomScan_"+imgCount+".jpg");
+                message.values.Add(ID+"_RoomScan_"+imgCount+"");
                 //message.values.Add(this.transform.localToWorldMatrix.ToString());
              
                 // osc.Send(message);

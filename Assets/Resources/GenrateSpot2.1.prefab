@@ -13818,6 +13818,7 @@ MonoBehaviour:
   PositionisLock: {fileID: 7988670100017120005}
   SculptingModeOn: 0
   DataSyncTestNumber: 0
+  grabFreeTransformer: {fileID: 0}
   Text_Scanning_Btn: {fileID: 1772249755537355246}
   Text_Instruction: {fileID: 1772249755537355246}
   checkInterval: 5
@@ -14021,7 +14022,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2411515764204973149}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a1bc992571301d4a9602ac95ef4c71a, type: 3}
   m_Name: 
@@ -26273,7 +26274,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &5194881942178329888
 GameObject:
   m_ObjectHideFlags: 0

@@ -103,6 +103,8 @@ public class GenerateSpot : MonoBehaviour
 
     public string DataSyncTestNumber; 
 
+    public GrabFreeTransformer grabFreeTransformer;
+
   
 
     
@@ -115,6 +117,8 @@ public class GenerateSpot : MonoBehaviour
         _realtimeTransform = GetComponent<RealtimeTransform>();
         _realtimeView = GetComponent<RealtimeView>();
         _grabbable = GetComponent<Grabbable>();
+
+        grabFreeTransformer=GetComponent<GrabFreeTransformer>();
         downloadURL=manager.ServerURL;
 
         // Player=Camera.main.transform;
@@ -177,11 +181,17 @@ public class GenerateSpot : MonoBehaviour
     {
         if(PositionisLock.isOn){
 
-            _grabbable.enabled = false;
+           // grabFreeTransformer.enabled=false;
+
+_grabbable.enabled = false;
+            //
         }else{
 
+            
+          //  grabFreeTransformer.enabled=true;
 
-            _grabbable.enabled = true;
+_grabbable.enabled = true;
+            //
 
 
         }
