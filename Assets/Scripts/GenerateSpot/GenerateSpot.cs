@@ -53,7 +53,6 @@ public class GenerateSpot : MonoBehaviour
     public GameObject VoicePanel;
     public GameObject EditMenu;
     public GameObject ScanningPanel;
-
     public GameObject DownloadPanel;
     public GameObject selectMenu;
 
@@ -66,7 +65,6 @@ public class GenerateSpot : MonoBehaviour
 
     // LoadObject
     public GameObject TargetObject;
-
     public recordData RecordData;
     
     public Projector erasingProjector;
@@ -78,6 +76,7 @@ public class GenerateSpot : MonoBehaviour
     bool  InstructGen = false,Inpainted=false;
 
     public Grabbable _grabbable;
+    public GrabInteractable grabInteractable;
     
     public GenerateType SpotType;
 
@@ -117,6 +116,7 @@ public class GenerateSpot : MonoBehaviour
         _realtimeTransform = GetComponent<RealtimeTransform>();
         _realtimeView = GetComponent<RealtimeView>();
         _grabbable = GetComponent<Grabbable>();
+        grabInteractable=GetComponent<GrabInteractable>();
 
         grabFreeTransformer=GetComponent<GrabFreeTransformer>();
         downloadURL=manager.ServerURL;
@@ -128,29 +128,19 @@ public class GenerateSpot : MonoBehaviour
         
         loadingIcon.SetActive(false);
         loadingParticles.Stop();
-      //  initAdd();
-        
-        // URLID=TimestampGenerator.GetTimestamp();
 
-       // StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_generated.zip"));
-    
-        // StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_Instruction.zip"));
 
 
         RecordData = GetComponent<recordData>();
         
         _grabbable.WhenPointerEventRaised += HandlePointerEventRaised;
-        
-        // //   externalController.GrabbedObjectDelegate += Grab;
-        //    externalController.ReleasedObjectDelegate += Release;
+
         
         loadingIcon.SetActive(false);
         
-        // SpotType = GenerateType.Add;
-        initAdd();
         
-        // if (selectMenu != null) selectMenu.SetActive(true);
-        //  ControlPanels();
+       // initAdd();
+
 
         if (isAcopy)
         {
@@ -183,14 +173,18 @@ public class GenerateSpot : MonoBehaviour
 
            // grabFreeTransformer.enabled=false;
 
-_grabbable.enabled = false;
+             _grabbable.enabled = false;
+             grabInteractable.Disable();
             //
         }else{
+            _grabbable.enabled = true;
 
             
           //  grabFreeTransformer.enabled=true;
 
-_grabbable.enabled = true;
+            grabInteractable.Enable();
+
+// 
             //
 
 
@@ -258,9 +252,22 @@ _grabbable.enabled = true;
                 SpotType = GenerateType.Reconstruction;
                 initReconstruction();
                 break;
+            case 3:
+                SpotType = GenerateType.VirtualFurniture;
+                initVfurniture();
+
+            break;
+              
 
         }
         
+    }
+
+
+
+    void initVfurniture()
+    {
+       //  StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_furniture.zip"));
     }
 
 
@@ -374,8 +381,6 @@ _grabbable.enabled = true;
             {
                 if(!originTex){
                     originTex=true;
-
-
                      OriginTex=TargetMaterial.GetTexture("_MainTex");
                      
                 }
@@ -439,13 +444,9 @@ _grabbable.enabled = true;
 
 
 
- toLockthePosition();
+        toLockthePosition();
 
         
-        // if (manager == null)
-        // {
-        //     FindObjectOfType<RealityEditorManager2>();  //this shouldnt be necessary
-        // }
 
         
         URLIDText.text = URLID; //commented this out while trying to figure out data syncing
@@ -508,11 +509,17 @@ _grabbable.enabled = true;
                  TargetMaterial.SetTexture("_MainTex", OriginTex);
              }
 
-                
+            break;
+
+            case GenerateType.VirtualFurniture:
+                setMaterialforGenrated(TargetObject.transform,UnlitShader);
+
+            break;
 
 
 
-                break;
+
+
 
             case GenerateType.None:
 

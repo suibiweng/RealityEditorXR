@@ -40,7 +40,7 @@ public class RoomScanManager : MonoBehaviour
 
     StartCoroutine(DelayTurnOffMesh());
 
-    manager=FindAnyObjectByType<RealityEditorManager>();
+   // manager=FindObjectOfType<RealityEditorManager>();
     
         //Search room mesh
 
