@@ -20,6 +20,7 @@ public class RoomScanManager : MonoBehaviour
 
     public OSC osc;
 
+    public RealityEditorManager manager;
 
 
     
@@ -38,6 +39,8 @@ public class RoomScanManager : MonoBehaviour
 
 
     StartCoroutine(DelayTurnOffMesh());
+
+    manager=FindAnyObjectByType<RealityEditorManager>();
     
         //Search room mesh
 
@@ -97,11 +100,11 @@ public class RoomScanManager : MonoBehaviour
             Debug.Log(g.name + g.transform.position+g.transform.localScale+g.transform.rotation.eulerAngles);
             Cropboxes.Add(g);
 
-            
 
+            manager.createReconstructionSpot(g.transform.position, g.transform.localScale);
+            //need a OSC send to Server to crop mesh
 
-
-
+        
 
         }
 
