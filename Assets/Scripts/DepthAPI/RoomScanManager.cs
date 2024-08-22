@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using RealityEditor;
+using Oculus.Platform;
 
 public class RoomScanManager : MonoBehaviour
 {
@@ -35,7 +36,7 @@ public class RoomScanManager : MonoBehaviour
     
     //    StartCoroutine(searchRoomMesh(1.0f));
 
-    osc =FindAnyObjectByType<OSC>();      
+    osc =FindObjectOfType<OSC>();      
 
 
     StartCoroutine(DelayTurnOffMesh());
@@ -102,24 +103,43 @@ public class RoomScanManager : MonoBehaviour
 
      IEnumerator DelaySetupFurniture(){
 
+    
 
                 yield return new WaitForSeconds(3f);
         // Cropboxes=new List<GameObject>();
         GameObject [] boxes =GameObject.FindGameObjectsWithTag("CropBox");
+        osc =FindObjectOfType<OSC>();      
+        int index= 0;
 
 
 
         foreach (GameObject g in boxes){
 
 
-             yield return new WaitForSeconds(1.0f);
+            //  yield return new WaitForSeconds(1.0f);
 
 
             Vector3 offestPostion = g.transform.position+new Vector3(0 ,g.transform.position.y-g.transform.localScale.y*0.5f,0);
 
 
-            manager.createReconstructionSpot(g.transform.position,g.transform.rotation, g.transform.localScale*0.5f);
+            string urlid=manager.createReconstructionSpot(g.transform.position,g.transform.rotation, g.transform.localScale*0.5f,index.ToString());
             //need a OSC send to Server to crop mesh
+
+            OscMessage message =new OscMessage(){
+                address="/CreateCropBox"
+            };
+
+            message.values.Add(urlid);
+            message.values.Add(g.transform.position);
+            message.values.Add(g.transform.rotation);
+            message.values.Add(g.transform.localScale*0.5f);
+
+
+            osc.Send(message);
+
+
+
+            index++;
 
         
 

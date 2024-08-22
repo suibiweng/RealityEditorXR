@@ -10,6 +10,7 @@ using SculptingPro;
 using DimBoxes;
 using Normal.Realtime;
 using Oculus.Interaction;
+using Oculus.Platform;
 
 
 
@@ -269,9 +270,22 @@ public class GenerateSpot : MonoBehaviour
 
     void initVfurniture()
     {
+
+        grabInteractable=GetComponent<GrabInteractable>();
+
+        grabFreeTransformer=GetComponent<GrabFreeTransformer>();
         PositionisLock.isOn=true;
-        toLockthePosition();
+       toLockthePosition();
+
+       
        //StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_furniture.zip"));
+    }
+
+
+    IEnumerator setLockposition(){
+        yield return new WaitForSeconds(0);
+
+
     }
 
 
