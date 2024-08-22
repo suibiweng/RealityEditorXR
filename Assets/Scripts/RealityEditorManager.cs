@@ -86,7 +86,7 @@ public class RealityEditorManager : MonoBehaviour
         }
     }
 
-    public void createReconstructionSpot(Vector3 pos,Vector3 scale){
+    public void createReconstructionSpot(Vector3 pos,Quaternion rot,Vector3 scale){
 
 
         Realtime.InstantiateOptions options = new Realtime.InstantiateOptions
@@ -97,11 +97,17 @@ public class RealityEditorManager : MonoBehaviour
             useInstance = null // or specify the Realtime instance if necessary
         };
         GameObject gcube = Realtime.Instantiate("GenrateSpot2.1", pos, Quaternion.identity, options); //this might be obsolete trying new options feature
+      
+        gcube.transform.localScale = scale;
+        gcube.transform.rotation=rot;
+      
         gcube.GetComponent<GenerateSpot>().id=IDs;
         string urlid=TimestampGenerator.GetTimestamp(); 
         gcube.GetComponent<GenerateSpot>().URLID=urlid;
+
+
         
-        gcube.transform.localScale = scale;
+        gcube.GetComponent<GenerateSpot>().setTheType(2);
         
         Debug.Log("The new Cube's URLID is: " + urlid);
         // gcube.GetComponent<DataSync2>().SetURLID(urlid); //setting the network urlid once right after we make the spot. But this dont work

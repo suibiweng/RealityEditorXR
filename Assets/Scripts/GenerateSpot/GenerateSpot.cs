@@ -252,7 +252,7 @@ public class GenerateSpot : MonoBehaviour
                 SpotType = GenerateType.Reconstruction;
                 initReconstruction();
                 break;
-            case 3:
+            case 2:
                 SpotType = GenerateType.VirtualFurniture;
                 initVfurniture();
 
@@ -260,6 +260,8 @@ public class GenerateSpot : MonoBehaviour
               
 
         }
+
+        selectMenu.SetActive(false);
         
     }
 
@@ -267,7 +269,9 @@ public class GenerateSpot : MonoBehaviour
 
     void initVfurniture()
     {
-       //  StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_furniture.zip"));
+        PositionisLock.isOn=true;
+        toLockthePosition();
+       //StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_furniture.zip"));
     }
 
 

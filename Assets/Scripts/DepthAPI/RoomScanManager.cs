@@ -32,7 +32,7 @@ public class RoomScanManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cropboxes=new List<GameObject>();
+    
     //    StartCoroutine(searchRoomMesh(1.0f));
 
     osc =FindAnyObjectByType<OSC>();      
@@ -95,13 +95,30 @@ public class RoomScanManager : MonoBehaviour
 
     public void getallCropBoxes(){
 
-        foreach (GameObject g in GameObject.FindGameObjectsWithTag("CropBox")){
 
-            Debug.Log(g.name + g.transform.position+g.transform.localScale+g.transform.rotation.eulerAngles);
-            Cropboxes.Add(g);
+            StartCoroutine(DelaySetupFurniture());
+
+    }
+
+     IEnumerator DelaySetupFurniture(){
 
 
-            manager.createReconstructionSpot(g.transform.position, g.transform.localScale);
+                yield return new WaitForSeconds(3f);
+        // Cropboxes=new List<GameObject>();
+        GameObject [] boxes =GameObject.FindGameObjectsWithTag("CropBox");
+
+
+
+        foreach (GameObject g in boxes){
+
+
+             yield return new WaitForSeconds(1.0f);
+
+
+            Vector3 offestPostion = g.transform.position+new Vector3(0 ,g.transform.position.y-g.transform.localScale.y*0.5f,0);
+
+
+            manager.createReconstructionSpot(g.transform.position,g.transform.rotation, g.transform.localScale*0.5f);
             //need a OSC send to Server to crop mesh
 
         
@@ -111,7 +128,8 @@ public class RoomScanManager : MonoBehaviour
 
 
 
-    }
+
+     }
 
 
 
