@@ -65,6 +65,9 @@ public class MeshExporter : MonoBehaviour
         byte[] meshData = System.Text.Encoding.UTF8.GetBytes(meshString);
 
         UploadMesh(meshData);
+
+
+        obj.SetActive(false);
     }
 
 

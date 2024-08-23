@@ -36,7 +36,7 @@ public class RoomScanManager : MonoBehaviour
     
     //    StartCoroutine(searchRoomMesh(1.0f));
 
-    osc =FindObjectOfType<OSC>();      
+    // osc =FindObjectOfType<OSC>();      
 
 
     StartCoroutine(DelayTurnOffMesh());
@@ -80,19 +80,14 @@ public class RoomScanManager : MonoBehaviour
 
     public void uploadRoomMesh(){
 
+        Roommesh.SetActive(true);
+
         meshExporter.UploadMeshDirectly(Roommesh);
 
 
     }
 
-
-
-    public void uploadCropRoomMesh(){
-
-        //meshExporter.CropAndUploadMesh(targetObj.GetComponent<MeshFilter>(),BoundingBox);
-
-
-    }
+ GameObject [] boxes ;
 
     public void getallCropBoxes(){
 
@@ -101,49 +96,55 @@ public class RoomScanManager : MonoBehaviour
 
     }
 
+
+
+
+
+public void setAllFurnitures()
+
+
+{
+
+    int index=0;
+      foreach (GameObject g in boxes){
+
+            Vector3 offestPostion = g.transform.position+new Vector3(0 ,g.transform.position.y-g.transform.localScale.y*0.5f,0);
+            string urlid=manager.createReconstructionSpot(g.transform.position,g.transform.rotation, g.transform.localScale*0.5f,index.ToString());
+            //need a OSC send to Server to crop mesh
+            OscMessage message =new OscMessage(){
+                address="/CreateCropBox"
+            };
+            message.values.Add(urlid);
+            message.values.Add(g.transform.position);
+            message.values.Add(g.transform.rotation);
+            message.values.Add(g.transform.localScale*0.5f);
+            osc.Send(message);
+            index++;
+
+        }
+
+
+
+
+        }
+
+
+
+
+
      IEnumerator DelaySetupFurniture(){
 
     
 
                 yield return new WaitForSeconds(3f);
         // Cropboxes=new List<GameObject>();
-        GameObject [] boxes =GameObject.FindGameObjectsWithTag("CropBox");
-        osc =FindObjectOfType<OSC>();      
-        int index= 0;
+        boxes =GameObject.FindGameObjectsWithTag("CropBox");
+        //osc =FindObjectOfType<OSC>();      
+        // int index= 0;
 
 
 
-        foreach (GameObject g in boxes){
-
-
-            //  yield return new WaitForSeconds(1.0f);
-
-
-            Vector3 offestPostion = g.transform.position+new Vector3(0 ,g.transform.position.y-g.transform.localScale.y*0.5f,0);
-
-
-            string urlid=manager.createReconstructionSpot(g.transform.position,g.transform.rotation, g.transform.localScale*0.5f,index.ToString());
-            //need a OSC send to Server to crop mesh
-
-            OscMessage message =new OscMessage(){
-                address="/CreateCropBox"
-            };
-
-            message.values.Add(urlid);
-            message.values.Add(g.transform.position);
-            message.values.Add(g.transform.rotation);
-            message.values.Add(g.transform.localScale*0.5f);
-
-
-            osc.Send(message);
-
-
-
-            index++;
-
-        
-
-        }
+      
 
 
 
