@@ -14654,7 +14654,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToExport: {fileID: 0}
   filePath: Assets/ExportedMesh.obj
-  serverUrl: http://10.0.0.123:5000/upload
+  serverUrl: http://192.168.0.139:5000/upload
   box: {fileID: 0}
 --- !u!4 &864394168
 Transform:
@@ -19676,7 +19676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inPort: 1337
-  outIP: 10.0.0.123
+  outIP: 192.168.0.139
   outPort: 6161
 --- !u!1001 &1391312537
 PrefabInstance:

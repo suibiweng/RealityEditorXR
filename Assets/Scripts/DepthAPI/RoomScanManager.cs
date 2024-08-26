@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using RealityEditor;
 using Oculus.Platform;
+using Unity.VisualScripting;
 
 public class RoomScanManager : MonoBehaviour
 {
@@ -108,6 +109,7 @@ IEnumerator DelaySetupFurniture(){
         //osc =FindObjectOfType<OSC>();      
         // int index= 0;
 
+
             int index=0;
       foreach (GameObject g in boxes){
             yield return new WaitForSeconds(1f);
@@ -119,9 +121,9 @@ IEnumerator DelaySetupFurniture(){
                 address="/CreateCropBox"
             };
             message.values.Add(urlid);
-            message.values.Add(g.transform.position);
-            message.values.Add(g.transform.rotation);
-            message.values.Add(g.transform.localScale*0.5f);
+            message.values.Add(g.transform.position.ToString());
+            message.values.Add(g.transform.rotation.ToString());
+            message.values.Add((g.transform.localScale*0.5f).ToString());
             osc.Send(message);
             index++;
 
