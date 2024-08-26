@@ -92,21 +92,25 @@ public class RoomScanManager : MonoBehaviour
     public void getallCropBoxes(){
 
 
-            StartCoroutine(DelaySetupFurniture());
+            // StartCoroutine(DelaySetupFurniture());
 
     }
 
 
 
 
+IEnumerator DelaySetupFurniture(){
 
-public void setAllFurnitures()
 
+        yield return new WaitForSeconds(1f);
+        // Cropboxes=new List<GameObject>();
+        boxes =GameObject.FindGameObjectsWithTag("CropBox");
+        //osc =FindObjectOfType<OSC>();      
+        // int index= 0;
 
-{
-
-    int index=0;
+            int index=0;
       foreach (GameObject g in boxes){
+            yield return new WaitForSeconds(1f);
 
             Vector3 offestPostion = g.transform.position+new Vector3(0 ,g.transform.position.y-g.transform.localScale.y*0.5f,0);
             string urlid=manager.createReconstructionSpot(g.transform.position,g.transform.rotation, g.transform.localScale*0.5f,index.ToString());
@@ -126,31 +130,27 @@ public void setAllFurnitures()
 
 
 
-        }
+}
 
 
 
 
 
-     IEnumerator DelaySetupFurniture(){
+public void setAllFurnitures()
 
-    
 
-                yield return new WaitForSeconds(3f);
-        // Cropboxes=new List<GameObject>();
-        boxes =GameObject.FindGameObjectsWithTag("CropBox");
-        //osc =FindObjectOfType<OSC>();      
-        // int index= 0;
+{
+
+
+StartCoroutine(DelaySetupFurniture());
 
 
 
-      
+}
 
 
 
 
-
-     }
 
 
 

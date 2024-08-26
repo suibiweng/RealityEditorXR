@@ -67,7 +67,7 @@ public class MeshExporter : MonoBehaviour
         UploadMesh(meshData);
 
 
-        obj.SetActive(false);
+        //obj.SetActive(false);
     }
 
 
