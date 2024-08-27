@@ -33,9 +33,6 @@ EditorBuildSettings:
     path: Assets/Scenes/1.0.unity
     guid: f2fea7ace86997841a554a80efb78d0c
   - enabled: 0
-    path: Assets/VR/OculusIntegration_Dependency/SPExampleVR_Cube.unity
-    guid: ebc7c25d2dc13e04d90aaf06efb53cfc
-  - enabled: 0
     path: Assets/Scenes/CamOnhand.unity
     guid: 5dc80947ee2b66049bfd24f22c046f8e
   - enabled: 0

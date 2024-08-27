@@ -10,6 +10,7 @@ using SculptingPro;
 using DimBoxes;
 using Normal.Realtime;
 using Oculus.Interaction;
+using Oculus.Platform;
 
 
 
@@ -53,7 +54,6 @@ public class GenerateSpot : MonoBehaviour
     public GameObject VoicePanel;
     public GameObject EditMenu;
     public GameObject ScanningPanel;
-
     public GameObject DownloadPanel;
     public GameObject selectMenu;
 
@@ -66,7 +66,6 @@ public class GenerateSpot : MonoBehaviour
 
     // LoadObject
     public GameObject TargetObject;
-
     public recordData RecordData;
     
     public Projector erasingProjector;
@@ -78,6 +77,7 @@ public class GenerateSpot : MonoBehaviour
     bool  InstructGen = false,Inpainted=false;
 
     public Grabbable _grabbable;
+    public GrabInteractable grabInteractable;
     
     public GenerateType SpotType;
 
@@ -97,11 +97,17 @@ public class GenerateSpot : MonoBehaviour
     
     public Transform Player;
 
-    public Toggle sculptMode;
+    public Toggle sculptMode,PositionisLock;
 
     public bool SculptingModeOn=false;
 
     public string DataSyncTestNumber; 
+
+    public GrabFreeTransformer grabFreeTransformer;
+
+  
+
+    
     
     void Start()
     {
@@ -111,6 +117,9 @@ public class GenerateSpot : MonoBehaviour
         _realtimeTransform = GetComponent<RealtimeTransform>();
         _realtimeView = GetComponent<RealtimeView>();
         _grabbable = GetComponent<Grabbable>();
+        grabInteractable=GetComponent<GrabInteractable>();
+
+        grabFreeTransformer=GetComponent<GrabFreeTransformer>();
         downloadURL=manager.ServerURL;
 
         // Player=Camera.main.transform;
@@ -120,29 +129,19 @@ public class GenerateSpot : MonoBehaviour
         
         loadingIcon.SetActive(false);
         loadingParticles.Stop();
-      //  initAdd();
-        
-        // URLID=TimestampGenerator.GetTimestamp();
 
-       // StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_generated.zip"));
-    
-        // StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_Instruction.zip"));
 
 
         RecordData = GetComponent<recordData>();
         
         _grabbable.WhenPointerEventRaised += HandlePointerEventRaised;
-        
-        // //   externalController.GrabbedObjectDelegate += Grab;
-        //    externalController.ReleasedObjectDelegate += Release;
+
         
         loadingIcon.SetActive(false);
         
-        // SpotType = GenerateType.Add;
-        initAdd();
         
-        // if (selectMenu != null) selectMenu.SetActive(true);
-        //  ControlPanels();
+       // initAdd();
+
 
         if (isAcopy)
         {
@@ -169,6 +168,37 @@ public class GenerateSpot : MonoBehaviour
         }
 
     }
+    public void toLockthePosition()
+    {
+        if(PositionisLock.isOn){
+
+           // grabFreeTransformer.enabled=false;
+
+             _grabbable.enabled = false;
+             grabInteractable.Disable();
+            //
+        }else{
+            _grabbable.enabled = true;
+
+            
+          //  grabFreeTransformer.enabled=true;
+
+            grabInteractable.Enable();
+
+// 
+            //
+
+
+        }
+
+
+
+
+
+    }
+
+
+
     void StopScupting(){
 
         SculptingModeOn=false;
@@ -223,9 +253,39 @@ public class GenerateSpot : MonoBehaviour
                 SpotType = GenerateType.Reconstruction;
                 initReconstruction();
                 break;
+            case 2:
+                SpotType = GenerateType.VirtualFurniture;
+                initVfurniture();
+
+            break;
+              
 
         }
+
+        selectMenu.SetActive(false);
         
+    }
+
+
+
+    void initVfurniture()
+    {
+
+        grabInteractable=GetComponent<GrabInteractable>();
+
+        grabFreeTransformer=GetComponent<GrabFreeTransformer>();
+        PositionisLock.isOn=true;
+       toLockthePosition();
+
+       
+       //StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_furniture.zip"));
+    }
+
+
+    IEnumerator setLockposition(){
+        yield return new WaitForSeconds(0);
+
+
     }
 
 
@@ -339,8 +399,6 @@ public class GenerateSpot : MonoBehaviour
             {
                 if(!originTex){
                     originTex=true;
-
-
                      OriginTex=TargetMaterial.GetTexture("_MainTex");
                      
                 }
@@ -401,10 +459,12 @@ public class GenerateSpot : MonoBehaviour
             dataSync.SetURLID(URLID); 
             dataSync.Setprompt(Prompt);
         }
-        // if (manager == null)
-        // {
-        //     FindObjectOfType<RealityEditorManager2>();  //this shouldnt be necessary
-        // }
+
+
+
+        toLockthePosition();
+
+        
 
         
         URLIDText.text = URLID; //commented this out while trying to figure out data syncing
@@ -467,11 +527,17 @@ public class GenerateSpot : MonoBehaviour
                  TargetMaterial.SetTexture("_MainTex", OriginTex);
              }
 
-                
+            break;
+
+            case GenerateType.VirtualFurniture:
+                setMaterialforGenrated(TargetObject.transform,UnlitShader);
+
+            break;
 
 
 
-                break;
+
+
 
             case GenerateType.None:
 

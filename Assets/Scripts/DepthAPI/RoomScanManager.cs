@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using RealityEditor;
+using Oculus.Platform;
+using Unity.VisualScripting;
 
 public class RoomScanManager : MonoBehaviour
 {
 
+    public ParticleSystem hintParticle;
+
     public MeshExporter meshExporter;
-    public GameObject targetObj;
+    public GameObject Roommesh;
 
     public List<GameObject> Cropboxes;
 
@@ -18,6 +22,7 @@ public class RoomScanManager : MonoBehaviour
 
     public OSC osc;
 
+    public RealityEditorManager manager;
 
 
     
@@ -29,10 +34,15 @@ public class RoomScanManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cropboxes=new List<GameObject>();
+    
     //    StartCoroutine(searchRoomMesh(1.0f));
 
-    osc =FindAnyObjectByType<OSC>();      
+    // osc =FindObjectOfType<OSC>();      
+
+
+    StartCoroutine(DelayTurnOffMesh());
+
+   // manager=FindObjectOfType<RealityEditorManager>();
     
         //Search room mesh
 
@@ -45,14 +55,25 @@ public class RoomScanManager : MonoBehaviour
     public void getMeshObj (MeshFilter meshFilter)
     {
 
-        targetObj=meshFilter.gameObject;
+        Roommesh=meshFilter.gameObject;
         TargetMesh=meshFilter;
         meshExporter.objectToExport=meshFilter.gameObject;
 
-        RoomPosition=targetObj.transform.position;
+        // RoomPosition=Roommesh.transform.position;
+        //  Debug.Log("Room:"+RoomPosition+Roommesh.transform.localScale+Roommesh.transform.rotation.eulerAngles);
 
-         Debug.Log("Room:"+RoomPosition+targetObj.transform.localScale+targetObj.transform.rotation.eulerAngles);
 
+
+     
+
+
+
+    }
+    IEnumerator DelayTurnOffMesh(){
+        yield return new WaitForSeconds(1);
+
+
+           Roommesh.SetActive(false);
 
 
     }
@@ -60,39 +81,78 @@ public class RoomScanManager : MonoBehaviour
 
     public void uploadRoomMesh(){
 
-        meshExporter.UploadMeshDirectly(targetObj);
+        Roommesh.SetActive(true);
+
+        meshExporter.UploadMeshDirectly(Roommesh);
 
 
     }
 
-
-
-    public void uploadCropRoomMesh(){
-
-        //meshExporter.CropAndUploadMesh(targetObj.GetComponent<MeshFilter>(),BoundingBox);
-
-
-    }
+ GameObject [] boxes ;
 
     public void getallCropBoxes(){
 
-        foreach (GameObject g in GameObject.FindGameObjectsWithTag("CropBox")){
 
-            Debug.Log(g.name + g.transform.position+g.transform.localScale+g.transform.rotation.eulerAngles);
-            Cropboxes.Add(g);
+            // StartCoroutine(DelaySetupFurniture());
 
-            
+    }
 
 
 
 
+IEnumerator DelaySetupFurniture(){
+
+
+        yield return new WaitForSeconds(1f);
+        // Cropboxes=new List<GameObject>();
+        boxes =GameObject.FindGameObjectsWithTag("CropBox");
+        //osc =FindObjectOfType<OSC>();      
+        // int index= 0;
+
+
+            int index=0;
+      foreach (GameObject g in boxes){
+            yield return new WaitForSeconds(1f);
+
+            Vector3 offestPostion = g.transform.position+new Vector3(0 ,g.transform.position.y-g.transform.localScale.y*0.5f,0);
+            string urlid=manager.createReconstructionSpot(g.transform.position,g.transform.rotation, g.transform.localScale*0.5f,index.ToString());
+            //need a OSC send to Server to crop mesh
+            OscMessage message =new OscMessage(){
+                address="/CreateCropBox"
+            };
+            message.values.Add(urlid);
+            message.values.Add(g.transform.position.ToString());
+            message.values.Add(g.transform.rotation.ToString());
+            message.values.Add((g.transform.localScale*0.5f).ToString());
+            osc.Send(message);
+            index++;
 
         }
 
 
 
 
-    }
+}
+
+
+
+
+
+public void setAllFurnitures()
+
+
+{
+
+
+StartCoroutine(DelaySetupFurniture());
+
+
+
+}
+
+
+
+
 
 
 
@@ -108,11 +168,13 @@ public class RoomScanManager : MonoBehaviour
     {
 
 
-         if(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger)){
+         if(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger)){
             if(recording){
 
 
                 UpdateRoomScanning();
+
+                hintParticle.Play();
 
 
             }
@@ -137,6 +199,8 @@ public class RoomScanManager : MonoBehaviour
         message.values.Add(ID);
         osc.Send(message);
         imgCount=0;
+
+           Roommesh.SetActive(true);
 
 
 
@@ -182,7 +246,7 @@ public class RoomScanManager : MonoBehaviour
 
                 message = new OscMessage();
                 message.address = "/Roomscan";
-                message.values.Add(ID+"_RoomScan_"+imgCount+".jpg");
+                message.values.Add(ID+"_RoomScan_"+imgCount+"");
                 //message.values.Add(this.transform.localToWorldMatrix.ToString());
              
                 // osc.Send(message);
@@ -208,6 +272,13 @@ public class RoomScanManager : MonoBehaviour
         message = new OscMessage();
         message.address = "/RoomscanEnd";
         osc.Send(message);
+
+        hintParticle.Stop();
+        hintParticle.Clear();
+
+
+
+        Roommesh.SetActive(false);
 
 
 
