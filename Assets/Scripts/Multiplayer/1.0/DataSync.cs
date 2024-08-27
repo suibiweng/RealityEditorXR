@@ -21,6 +21,7 @@ public class DataSync : RealtimeComponent<DataSyncModel>
             // Unregister from events
             previousModel.PromptDidChange -= PromptDidChange;
             previousModel.URLIDDidChange -= URLIDDidChange;  
+            previousModel.ColorDidChange -= ColorDidChange;  
 
 
         }
@@ -37,6 +38,8 @@ public class DataSync : RealtimeComponent<DataSyncModel>
             // Register for events so we'll know if the data changes later
             currentModel.PromptDidChange += PromptDidChange;
             currentModel.URLIDDidChange += URLIDDidChange;
+            currentModel.ColorDidChange += ColorDidChange;
+
 
         }
     }
@@ -46,6 +49,9 @@ public class DataSync : RealtimeComponent<DataSyncModel>
     }
     private void URLIDDidChange(DataSyncModel model, string URLID) {
         UpdateTextURLID();
+    }
+    private void ColorDidChange(DataSyncModel model, Color URLID) {
+        UpdateColor();
     }
     
     private void UpdateTextPrompt() {
@@ -61,6 +67,11 @@ public class DataSync : RealtimeComponent<DataSyncModel>
              Debug.Log("and Adding "+ model.URLID + " to the dictionary");
             _manager2.GenCubesDic.Add(model.URLID, gameObject);
         }
+    }
+    private void UpdateColor()
+    {
+       //change the color of the slider
+       
     }
 
     public void Setprompt(string prompt) {
