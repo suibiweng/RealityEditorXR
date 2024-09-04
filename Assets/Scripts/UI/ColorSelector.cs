@@ -21,6 +21,8 @@ public class ColorSelector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        // spot=transform.parent.gameObject.GetComponent<GenerateSpot>();
         
 
 
